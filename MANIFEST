@@ -19,8 +19,15 @@ META.yml
 README
 t/CAD-Format-DWG-AC1003/01-use.t
 t/CAD-Format-DWG-AC1003/02-version.t
-t/CAD-Format-DWG-AC1003/03-header-magic.t
-t/CAD-Format-DWG-AC1003/04-header-zeros.t
+t/CAD-Format-DWG-AC1003/03-header-insertion_base_x.t
+t/CAD-Format-DWG-AC1003/04-header-insertion_base_y.t
+t/CAD-Format-DWG-AC1003/05-header-insertion_base_z.t
+t/CAD-Format-DWG-AC1003/06-header-magic.t
+t/CAD-Format-DWG-AC1003/07-header-zeros.t
 t/data/blank/BLANK.DWG
+t/data/header/base/BASE.DWG
+t/data/header/base/BASE_X.DWG
+t/data/header/base/BASE_Y.DWG
+t/data/header/base/BASE_Z.DWG
 xt/CAD-Format-DWG-AC1003/01-pod_coverage.t
 xt/CAD-Format-DWG-AC1003/02-pod.t

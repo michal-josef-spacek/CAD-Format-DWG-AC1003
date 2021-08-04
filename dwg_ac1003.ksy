@@ -28,12 +28,17 @@ types:
         contents: [0x41, 0x43, 0x31, 0x30, 0x30, 0x33]
       - id: zeros
         size: 6
-##      - id: insertion_base_x
-##        size: 8
-##        doc: 0x000c-0x0013
-##      - id: insertion_base_y
-##        size: 8
-##        doc: 0x0014-0x001b
+      - id: unknown1
+        size: 82
+      - id: insertion_base_x
+        size: 8
+        doc: 0x005e-0x0065
+      - id: insertion_base_y
+        size: 8
+        doc: 0x0066-0x006d
+      - id: insertion_base_z
+        size: 8
+        doc: 0x006e-0x0075
 ##      - id: unknown2
 ##        size: 12
 ##      - id: number_of_entities
