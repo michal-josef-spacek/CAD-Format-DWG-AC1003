@@ -42,18 +42,18 @@ types:
       - id: number_of_entities
         type: s2
         doc: 0x0076-0x0077
-##      - id: drawing_first_x
-##        size: 8
-##      - id: drawing_first_y
-##        size: 8
-##      - id: unknown3
-##        size: 8
-##      - id: drawing_second_x
-##        size: 8
-##      - id: drawing_second_y
-##        size: 8
-##      - id: unknown4
-##        size: 8
+      - id: drawing_first_x
+        size: 8
+      - id: drawing_first_y
+        size: 8
+      - id: unknown
+        size: 8
+      - id: drawing_second_x
+        size: 8
+      - id: drawing_second_y
+        size: 8
+      - id: unknown4
+        size: 8
 ##      - id: limits_min_x
 ##        size: 8
 ##        doc: 0x005a-0x0061

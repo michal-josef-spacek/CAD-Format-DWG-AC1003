@@ -887,6 +887,12 @@ sub _read {
     $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
     $self->{number_of_entities} = $self->{_io}->read_s2le();
+    $self->{drawing_first_x} = $self->{_io}->read_bytes(8);
+    $self->{drawing_first_y} = $self->{_io}->read_bytes(8);
+    $self->{unknown} = $self->{_io}->read_bytes(8);
+    $self->{drawing_second_x} = $self->{_io}->read_bytes(8);
+    $self->{drawing_second_y} = $self->{_io}->read_bytes(8);
+    $self->{unknown4} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -922,6 +928,36 @@ sub insertion_base_z {
 sub number_of_entities {
     my ($self) = @_;
     return $self->{number_of_entities};
+}
+
+sub drawing_first_x {
+    my ($self) = @_;
+    return $self->{drawing_first_x};
+}
+
+sub drawing_first_y {
+    my ($self) = @_;
+    return $self->{drawing_first_y};
+}
+
+sub unknown {
+    my ($self) = @_;
+    return $self->{unknown};
+}
+
+sub drawing_second_x {
+    my ($self) = @_;
+    return $self->{drawing_second_x};
+}
+
+sub drawing_second_y {
+    my ($self) = @_;
+    return $self->{drawing_second_y};
+}
+
+sub unknown4 {
+    my ($self) = @_;
+    return $self->{unknown4};
 }
 
 ########################################################################
