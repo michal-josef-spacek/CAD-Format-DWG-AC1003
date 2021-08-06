@@ -886,6 +886,7 @@ sub _read {
     $self->{insertion_base_x} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
+    $self->{number_of_entities} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -916,6 +917,11 @@ sub insertion_base_y {
 sub insertion_base_z {
     my ($self) = @_;
     return $self->{insertion_base_z};
+}
+
+sub number_of_entities {
+    my ($self) = @_;
+    return $self->{number_of_entities};
 }
 
 ########################################################################

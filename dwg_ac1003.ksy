@@ -39,11 +39,9 @@ types:
       - id: insertion_base_z
         size: 8
         doc: 0x006e-0x0075
-##      - id: unknown2
-##        size: 12
-##      - id: number_of_entities
-##        type: s2
-##        doc: 0x0028-0x0029
+      - id: number_of_entities
+        type: s2
+        doc: 0x0076-0x0077
 ##      - id: drawing_first_x
 ##        size: 8
 ##      - id: drawing_first_y
