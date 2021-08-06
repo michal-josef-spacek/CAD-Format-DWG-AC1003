@@ -893,6 +893,10 @@ sub _read {
     $self->{drawing_second_x} = $self->{_io}->read_bytes(8);
     $self->{drawing_second_y} = $self->{_io}->read_bytes(8);
     $self->{unknown4} = $self->{_io}->read_bytes(8);
+    $self->{limits_min_x} = $self->{_io}->read_bytes(8);
+    $self->{limits_min_y} = $self->{_io}->read_bytes(8);
+    $self->{limits_max_x} = $self->{_io}->read_bytes(8);
+    $self->{limits_max_y} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -958,6 +962,26 @@ sub drawing_second_y {
 sub unknown4 {
     my ($self) = @_;
     return $self->{unknown4};
+}
+
+sub limits_min_x {
+    my ($self) = @_;
+    return $self->{limits_min_x};
+}
+
+sub limits_min_y {
+    my ($self) = @_;
+    return $self->{limits_min_y};
+}
+
+sub limits_max_x {
+    my ($self) = @_;
+    return $self->{limits_max_x};
+}
+
+sub limits_max_y {
+    my ($self) = @_;
+    return $self->{limits_max_y};
 }
 
 ########################################################################
