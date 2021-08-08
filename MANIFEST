@@ -50,11 +50,12 @@ t/CAD-Format-DWG-AC1003/30-header-snap_iso_pair.t
 t/CAD-Format-DWG-AC1003/31-header-snap_resolution_x.t
 t/CAD-Format-DWG-AC1003/32-header-snap_resolution_y.t
 t/CAD-Format-DWG-AC1003/33-header-snap_style.t
-t/CAD-Format-DWG-AC1003/34-header-view_ctrl_x.t
-t/CAD-Format-DWG-AC1003/35-header-view_ctrl_y.t
-t/CAD-Format-DWG-AC1003/36-header-view_size.t
-t/CAD-Format-DWG-AC1003/37-header-zeros.t
-t/CAD-Format-DWG-AC1003/38-header-zero_one_or_three.t
+t/CAD-Format-DWG-AC1003/34-header-text_size.t
+t/CAD-Format-DWG-AC1003/35-header-view_ctrl_x.t
+t/CAD-Format-DWG-AC1003/36-header-view_ctrl_y.t
+t/CAD-Format-DWG-AC1003/37-header-view_size.t
+t/CAD-Format-DWG-AC1003/38-header-zeros.t
+t/CAD-Format-DWG-AC1003/39-header-zero_one_or_three.t
 t/data/blank/BLANK.DWG
 t/data/header/base/BASE.DWG
 t/data/header/base/BASE_X.DWG
@@ -105,6 +106,8 @@ t/data/header/snap/SNAP_ROT.DWG
 t/data/header/snap/SNAP_ST.DWG
 t/data/header/snap/SNAP_ST2.DWG
 t/data/header/snap/SNAP_VAL.DWG
+t/data/header/text_size/TEXT_SIZE1.DWG
+t/data/header/text_size/TEXT_SIZE2.DWG
 t/data/header/view/VIEW.DWG
 t/data/header/zero_one_or_three/BLANK.DWG
 xt/CAD-Format-DWG-AC1003/01-pod_coverage.t
