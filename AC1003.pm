@@ -149,8 +149,10 @@ sub _read {
     $self->{trace_width} = $self->{_io}->read_bytes(8);
     $self->{unknown5} = $self->{_io}->read_bytes(30);
     $self->{axis} = $self->{_io}->read_s2le();
-    $self->{axis_value} = $self->{_io}->read_bytes(8);
-    $self->{unknown6} = $self->{_io}->read_bytes(30);
+    $self->{axis_value_x} = $self->{_io}->read_bytes(8);
+    $self->{axis_value_y} = $self->{_io}->read_bytes(8);
+    $self->{unknown7} = $self->{_io}->read_bytes(8);
+    $self->{unknown8} = $self->{_io}->read_bytes(14);
     $self->{osnap} = $self->{_io}->read_s2le();
 }
 
@@ -369,14 +371,24 @@ sub axis {
     return $self->{axis};
 }
 
-sub axis_value {
+sub axis_value_x {
     my ($self) = @_;
-    return $self->{axis_value};
+    return $self->{axis_value_x};
 }
 
-sub unknown6 {
+sub axis_value_y {
     my ($self) = @_;
-    return $self->{unknown6};
+    return $self->{axis_value_y};
+}
+
+sub unknown7 {
+    my ($self) = @_;
+    return $self->{unknown7};
+}
+
+sub unknown8 {
+    my ($self) = @_;
+    return $self->{unknown8};
 }
 
 sub osnap {

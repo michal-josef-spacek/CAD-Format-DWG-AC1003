@@ -137,11 +137,12 @@ types:
       - id: axis
         type: s2
         doc: 0x0168-0x0169
-      - id: axis_value
+      - id: axis_value_x
         size: 8
         doc: 0x016a-0x171
-      - id: unknown6
+      - id: axis_value_y
         size: 8
+        doc: 0x0172-0x0179
       - id: unknown7
         size: 8
       - id: unknown8
