@@ -32,8 +32,15 @@ t/CAD-Format-DWG-AC1003/12-header-limits_max_x.t
 t/CAD-Format-DWG-AC1003/13-header-limits_max_y.t
 t/CAD-Format-DWG-AC1003/14-header-magic.t
 t/CAD-Format-DWG-AC1003/15-header-number_of_entities.t
-t/CAD-Format-DWG-AC1003/16-header-zeros.t
-t/CAD-Format-DWG-AC1003/17-header-zero_one_or_three.t
+t/CAD-Format-DWG-AC1003/16-header-snap.t
+t/CAD-Format-DWG-AC1003/17-header-snap_angle.t
+t/CAD-Format-DWG-AC1003/18-header-snap_base_x.t
+t/CAD-Format-DWG-AC1003/19-header-snap_base_y.t
+t/CAD-Format-DWG-AC1003/20-header-snap_resolution_x.t
+t/CAD-Format-DWG-AC1003/21-header-snap_resolution_y.t
+t/CAD-Format-DWG-AC1003/22-header-snap_style.t
+t/CAD-Format-DWG-AC1003/23-header-zeros.t
+t/CAD-Format-DWG-AC1003/24-header-zero_one_or_three.t
 t/data/blank/BLANK.DWG
 t/data/header/base/BASE.DWG
 t/data/header/base/BASE_X.DWG
