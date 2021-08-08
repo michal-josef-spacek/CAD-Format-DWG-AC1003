@@ -123,6 +123,9 @@ types:
       - id: drag
         type: s2
         doc: 0x0130-0x0131
+      - id: linetype_scale
+        size: 8
+        doc: 0x0132-0x0139
 ##      - id: text_size
 ##        size: 8
 ##      - id: trace_width

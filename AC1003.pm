@@ -132,6 +132,7 @@ sub _read {
     $self->{fill} = $self->{_io}->read_s2le();
     $self->{qtext} = $self->{_io}->read_s2le();
     $self->{drag} = $self->{_io}->read_s2le();
+    $self->{linetype_scale} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -322,6 +323,11 @@ sub qtext {
 sub drag {
     my ($self) = @_;
     return $self->{drag};
+}
+
+sub linetype_scale {
+    my ($self) = @_;
+    return $self->{linetype_scale};
 }
 
 1;
