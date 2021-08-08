@@ -84,7 +84,9 @@ t/data/header/qtext/QTEXT_ON.DWG
 t/data/header/regen/REGEN_OFF.DWG
 t/data/header/regen/REGEN_ON.DWG
 t/data/header/snap/SNAP_AS.DWG
-t/data/header/snap/SNAP_ISO_PAIR_ON.DWG
+t/data/header/snap/SNAP_ISO_PAIR_LEFT.DWG
+t/data/header/snap/SNAP_ISO_PAIR_RIGHT.DWG
+t/data/header/snap/SNAP_ISO_PAIR_TOP.DWG
 t/data/header/snap/SNAP_OFF.DWG
 t/data/header/snap/SNAP_ON.DWG
 t/data/header/snap/SNAP_ROT.DWG
