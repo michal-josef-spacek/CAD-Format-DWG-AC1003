@@ -46,8 +46,11 @@ t/CAD-Format-DWG-AC1003/26-header-snap_iso_pair.t
 t/CAD-Format-DWG-AC1003/27-header-snap_resolution_x.t
 t/CAD-Format-DWG-AC1003/28-header-snap_resolution_y.t
 t/CAD-Format-DWG-AC1003/29-header-snap_style.t
-t/CAD-Format-DWG-AC1003/30-header-zeros.t
-t/CAD-Format-DWG-AC1003/31-header-zero_one_or_three.t
+t/CAD-Format-DWG-AC1003/30-header-view_ctrl_x.t
+t/CAD-Format-DWG-AC1003/31-header-view_ctrl_y.t
+t/CAD-Format-DWG-AC1003/32-header-view_size.t
+t/CAD-Format-DWG-AC1003/33-header-zeros.t
+t/CAD-Format-DWG-AC1003/34-header-zero_one_or_three.t
 t/data/blank/BLANK.DWG
 t/data/header/base/BASE.DWG
 t/data/header/base/BASE_X.DWG
@@ -78,6 +81,7 @@ t/data/header/snap/SNAP_ROT.DWG
 t/data/header/snap/SNAP_ST.DWG
 t/data/header/snap/SNAP_ST2.DWG
 t/data/header/snap/SNAP_VAL.DWG
+t/data/header/view/VIEW.DWG
 t/data/header/zero_one_or_three/BLANK.DWG
 xt/CAD-Format-DWG-AC1003/01-pod_coverage.t
 xt/CAD-Format-DWG-AC1003/02-pod.t

@@ -68,16 +68,16 @@ types:
       - id: limits_max_y
         size: 8
         doc: 0x00c0-0x00c7
-      - id: dwgview1
+      - id: view_ctrl_x
         size: 8
         doc: 0x00c8-0x00cf
-      - id: dwgview2
+      - id: view_ctrl_y
         size: 8
         doc: 0x00d0-0x00d7
       - id: unknown4
         size: 8
         doc: 0x00d8-0x00da
-      - id: dwgview3
+      - id: view_size
         size: 8
         doc: 0x00e0-0x00e7
       - id: snap

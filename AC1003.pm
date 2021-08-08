@@ -112,10 +112,10 @@ sub _read {
     $self->{limits_min_y} = $self->{_io}->read_bytes(8);
     $self->{limits_max_x} = $self->{_io}->read_bytes(8);
     $self->{limits_max_y} = $self->{_io}->read_bytes(8);
-    $self->{dwgview1} = $self->{_io}->read_bytes(8);
-    $self->{dwgview2} = $self->{_io}->read_bytes(8);
+    $self->{view_ctrl_x} = $self->{_io}->read_bytes(8);
+    $self->{view_ctrl_y} = $self->{_io}->read_bytes(8);
     $self->{unknown4} = $self->{_io}->read_bytes(8);
-    $self->{dwgview3} = $self->{_io}->read_bytes(8);
+    $self->{view_size} = $self->{_io}->read_bytes(8);
     $self->{snap} = $self->{_io}->read_s2le();
     $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
     $self->{snap_resolution_y} = $self->{_io}->read_bytes(8);
@@ -222,14 +222,14 @@ sub limits_max_y {
     return $self->{limits_max_y};
 }
 
-sub dwgview1 {
+sub view_ctrl_x {
     my ($self) = @_;
-    return $self->{dwgview1};
+    return $self->{view_ctrl_x};
 }
 
-sub dwgview2 {
+sub view_ctrl_y {
     my ($self) = @_;
-    return $self->{dwgview2};
+    return $self->{view_ctrl_y};
 }
 
 sub unknown4 {
@@ -237,9 +237,9 @@ sub unknown4 {
     return $self->{unknown4};
 }
 
-sub dwgview3 {
+sub view_size {
     my ($self) = @_;
-    return $self->{dwgview3};
+    return $self->{view_size};
 }
 
 sub snap {
