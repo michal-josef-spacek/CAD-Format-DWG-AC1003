@@ -146,8 +146,10 @@ types:
       - id: sketch_increment
         size: 8
         doc: 0x017a-0x0181
+      - id: fillet_radius
+        size: 8
       - id: unknown8
-        size: 14
+        size: 6
       - id: osnap
         enum: osnap_modes
         type: s2

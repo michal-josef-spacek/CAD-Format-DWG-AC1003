@@ -152,7 +152,8 @@ sub _read {
     $self->{axis_value_x} = $self->{_io}->read_bytes(8);
     $self->{axis_value_y} = $self->{_io}->read_bytes(8);
     $self->{sketch_increment} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(14);
+    $self->{fillet_radius} = $self->{_io}->read_bytes(8);
+    $self->{unknown8} = $self->{_io}->read_bytes(6);
     $self->{osnap} = $self->{_io}->read_s2le();
 }
 
@@ -384,6 +385,11 @@ sub axis_value_y {
 sub sketch_increment {
     my ($self) = @_;
     return $self->{sketch_increment};
+}
+
+sub fillet_radius {
+    my ($self) = @_;
+    return $self->{fillet_radius};
 }
 
 sub unknown8 {
