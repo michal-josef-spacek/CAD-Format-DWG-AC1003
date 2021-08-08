@@ -120,6 +120,9 @@ types:
       - id: qtext
         type: s2
         doc: 0x012e-0x012f
+      - id: drag
+        type: s2
+        doc: 0x0130-0x0131
 ##      - id: text_size
 ##        size: 8
 ##      - id: trace_width

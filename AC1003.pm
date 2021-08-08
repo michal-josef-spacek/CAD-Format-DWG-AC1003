@@ -131,6 +131,7 @@ sub _read {
     $self->{regen} = $self->{_io}->read_s2le();
     $self->{fill} = $self->{_io}->read_s2le();
     $self->{qtext} = $self->{_io}->read_s2le();
+    $self->{drag} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -316,6 +317,11 @@ sub fill {
 sub qtext {
     my ($self) = @_;
     return $self->{qtext};
+}
+
+sub drag {
+    my ($self) = @_;
+    return $self->{drag};
 }
 
 1;
