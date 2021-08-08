@@ -128,6 +128,8 @@ sub _read {
     $self->{grid_unit_x} = $self->{_io}->read_bytes(8);
     $self->{grid_unit_y} = $self->{_io}->read_bytes(8);
     $self->{ortho} = $self->{_io}->read_s2le();
+    $self->{unknown5} = $self->{_io}->read_bytes(2);
+    $self->{fill} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -298,6 +300,16 @@ sub grid_unit_y {
 sub ortho {
     my ($self) = @_;
     return $self->{ortho};
+}
+
+sub unknown5 {
+    my ($self) = @_;
+    return $self->{unknown5};
+}
+
+sub fill {
+    my ($self) = @_;
+    return $self->{fill};
 }
 
 1;

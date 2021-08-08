@@ -111,12 +111,11 @@ types:
       - id: ortho
         type: s2
         doc: 0x0128-0x0129
-##      - id: unknown6
-##        size: 2
-##        doc: XXX could be ffff
-##      - id: fill
-##        type: s2
-##        doc: 0x00b2-0x00b3 (XXX could be ffff)
+      - id: unknown5
+        size: 2
+      - id: fill
+        type: s2
+        doc: 0x012c-0x012d
 ##      - id: text_size
 ##        size: 8
 ##      - id: trace_width
