@@ -33,6 +33,7 @@ t/CAD-Format-DWG-AC1003/13-header-limits_max_y.t
 t/CAD-Format-DWG-AC1003/14-header-magic.t
 t/CAD-Format-DWG-AC1003/15-header-number_of_entities.t
 t/CAD-Format-DWG-AC1003/16-header-zeros.t
+t/CAD-Format-DWG-AC1003/17-header-zero_one_or_three.t
 t/data/blank/BLANK.DWG
 t/data/header/base/BASE.DWG
 t/data/header/base/BASE_X.DWG
@@ -53,5 +54,6 @@ t/data/header/snap/SNAP_ROT.DWG
 t/data/header/snap/SNAP_ST.DWG
 t/data/header/snap/SNAP_ST2.DWG
 t/data/header/snap/SNAP_VAL.DWG
+t/data/header/zero_one_or_three/BLANK.DWG
 xt/CAD-Format-DWG-AC1003/01-pod_coverage.t
 xt/CAD-Format-DWG-AC1003/02-pod.t
