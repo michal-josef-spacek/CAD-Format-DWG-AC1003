@@ -130,6 +130,7 @@ sub _read {
     $self->{ortho} = $self->{_io}->read_s2le();
     $self->{regen} = $self->{_io}->read_s2le();
     $self->{fill} = $self->{_io}->read_s2le();
+    $self->{qtext} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -310,6 +311,11 @@ sub regen {
 sub fill {
     my ($self) = @_;
     return $self->{fill};
+}
+
+sub qtext {
+    my ($self) = @_;
+    return $self->{qtext};
 }
 
 1;

@@ -117,6 +117,9 @@ types:
       - id: fill
         type: s2
         doc: 0x012c-0x012d
+      - id: qtext
+        type: s2
+        doc: 0x012e-0x012f
 ##      - id: text_size
 ##        size: 8
 ##      - id: trace_width
