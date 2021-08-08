@@ -31,7 +31,13 @@ types:
       - id: zero_one_or_three
         type: s1
       - id: unknown1
-        size: 81
+        type: s2
+      - id: unknown2
+        type: s2
+      - id: unknown3
+        type: s2
+      - id: unknown4
+        size: 75
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065
@@ -48,13 +54,13 @@ types:
         size: 8
       - id: drawing_first_y
         size: 8
-      - id: unknown2
+      - id: unknown5
         size: 8
       - id: drawing_second_x
         size: 8
       - id: drawing_second_y
         size: 8
-      - id: unknown3
+      - id: unknown6
         size: 8
       - id: limits_min_x
         size: 8
@@ -74,7 +80,7 @@ types:
       - id: view_ctrl_y
         size: 8
         doc: 0x00d0-0x00d7
-      - id: unknown4
+      - id: unknown7
         size: 8
         doc: 0x00d8-0x00da
       - id: view_size
@@ -132,9 +138,9 @@ types:
       - id: trace_width
         size: 8
         doc: 0x0142-0x0149
-      - id: unknown5
+      - id: unknown8
         size: 18
-      - id: unknown6
+      - id: unknown9
         size: 8
       - id: linear_units_format
         enum: unit_types
@@ -157,7 +163,7 @@ types:
         doc: 0x017a-0x0181
       - id: fillet_radius
         size: 8
-      - id: unknown9
+      - id: unknown10
         size: 6
       - id: osnap
         enum: osnap_modes
