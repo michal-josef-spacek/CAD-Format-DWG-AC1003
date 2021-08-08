@@ -151,7 +151,7 @@ sub _read {
     $self->{axis} = $self->{_io}->read_s2le();
     $self->{axis_value_x} = $self->{_io}->read_bytes(8);
     $self->{axis_value_y} = $self->{_io}->read_bytes(8);
-    $self->{unknown7} = $self->{_io}->read_bytes(8);
+    $self->{sketch_increment} = $self->{_io}->read_bytes(8);
     $self->{unknown8} = $self->{_io}->read_bytes(14);
     $self->{osnap} = $self->{_io}->read_s2le();
 }
@@ -381,9 +381,9 @@ sub axis_value_y {
     return $self->{axis_value_y};
 }
 
-sub unknown7 {
+sub sketch_increment {
     my ($self) = @_;
-    return $self->{unknown7};
+    return $self->{sketch_increment};
 }
 
 sub unknown8 {

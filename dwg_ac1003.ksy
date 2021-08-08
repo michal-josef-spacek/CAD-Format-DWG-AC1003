@@ -143,8 +143,9 @@ types:
       - id: axis_value_y
         size: 8
         doc: 0x0172-0x0179
-      - id: unknown7
+      - id: sketch_increment
         size: 8
+        doc: 0x017a-0x0181
       - id: unknown8
         size: 14
       - id: osnap
