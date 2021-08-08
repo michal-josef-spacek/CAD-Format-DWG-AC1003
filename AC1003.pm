@@ -147,7 +147,10 @@ sub _read {
     $self->{linetype_scale} = $self->{_io}->read_bytes(8);
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
-    $self->{unknown5} = $self->{_io}->read_bytes(70);
+    $self->{unknown5} = $self->{_io}->read_bytes(30);
+    $self->{axis} = $self->{_io}->read_s2le();
+    $self->{axis_value} = $self->{_io}->read_bytes(8);
+    $self->{unknown6} = $self->{_io}->read_bytes(30);
     $self->{osnap} = $self->{_io}->read_s2le();
 }
 
@@ -359,6 +362,21 @@ sub trace_width {
 sub unknown5 {
     my ($self) = @_;
     return $self->{unknown5};
+}
+
+sub axis {
+    my ($self) = @_;
+    return $self->{axis};
+}
+
+sub axis_value {
+    my ($self) = @_;
+    return $self->{axis_value};
+}
+
+sub unknown6 {
+    my ($self) = @_;
+    return $self->{unknown6};
 }
 
 sub osnap {

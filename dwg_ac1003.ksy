@@ -133,7 +133,19 @@ types:
         size: 8
         doc: 0x0142-0x0149
       - id: unknown5
-        size: 70
+        size: 30
+      - id: axis
+        type: s2
+        doc: 0x0168-0x0169
+      - id: axis_value
+        size: 8
+        doc: 0x016a-0x171
+      - id: unknown6
+        size: 8
+      - id: unknown7
+        size: 8
+      - id: unknown8
+        size: 14
       - id: osnap
         enum: osnap_modes
         type: s2
