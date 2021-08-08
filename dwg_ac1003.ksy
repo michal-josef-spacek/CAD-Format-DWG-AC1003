@@ -97,9 +97,11 @@ types:
         size: 8
       - id: snap_style
         type: s2
-##      - id: grid
-##        type: s2
-##        doc: 0x00a4-0x00a5
+      - id: unknown5
+        type: s2
+      - id: grid
+        type: s2
+        doc: 0x0116-0x0117
 ##      - id: grid_value
 ##        size: 8
 ##        doc: 0x00a6-0x00ad

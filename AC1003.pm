@@ -909,6 +909,8 @@ sub _read {
     $self->{snap_base_y} = $self->{_io}->read_bytes(8);
     $self->{snap_angle} = $self->{_io}->read_bytes(8);
     $self->{snap_style} = $self->{_io}->read_s2le();
+    $self->{unknown5} = $self->{_io}->read_s2le();
+    $self->{grid} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -1054,6 +1056,16 @@ sub snap_angle {
 sub snap_style {
     my ($self) = @_;
     return $self->{snap_style};
+}
+
+sub unknown5 {
+    my ($self) = @_;
+    return $self->{unknown5};
+}
+
+sub grid {
+    my ($self) = @_;
+    return $self->{grid};
 }
 
 ########################################################################
