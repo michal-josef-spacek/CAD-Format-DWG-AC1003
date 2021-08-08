@@ -163,43 +163,17 @@ types:
         doc: 0x0190-0x0191
 ##      - id: actual_layer
 ##        type: s2
-##        doc: 0x00c4-0x00c5
 ##      - id: actual_color
 ##        type: s2
-##        doc: 0x00c6-0x00c7
-##      - id: unknown7
-##        size: 2
 ##      - id: layers
 ##        type: s2
 ##        repeat: expr
 ##        repeat-expr: 127
-##      - id: unknown8
-##        size: 8
-##      - id: unknown9
-##        size: 8
 ##      - id: units_type
 ##        type: s2
 ##        enum: unit_types
-##        doc: 0x01d8-0x01d9
 ##      - id: number_of_digits
 ##        type: s2
-##        doc: 0x01da-0x01db
-##      - id: unknown10
-##        size: 4
-##      - id: axis
-##        type: s2
-##        doc: 0x01e0-0x01e1
-##      - id: axis_value
-##        size: 8
-##        doc: 0x01e2-0x01e9
-##      - id: unknown11
-##        size: 8
-##        doc: XXX Value is 0.25 somewhere
-##      - id: unknown12
-##        size: 8
-##        doc: XXX Value is 0.1 somewhere
-##      - id: unknown13
-##        size: 8
 ##  entity:
 ##    seq:
 ##      - id: entity_type
