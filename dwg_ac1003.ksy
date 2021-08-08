@@ -58,13 +58,13 @@ types:
         size: 8
       - id: limits_min_x
         size: 8
-        doc: 0x005a-0x0061
+        doc: 0x00a8-0x00af
       - id: limits_min_y
         size: 8
-        doc: 0x0062-0x0069
+        doc: 0x00b0-0x00b7
       - id: limits_max_x
         size: 8
-        doc: 0x006a-0x0071
+        doc: 0x00b8-0x00bf
       - id: limits_max_y
         size: 8
 ##      - id: snap
@@ -73,6 +73,7 @@ types:
 ##      - id: snap_resolution
 ##        size: 8
 ##        doc: 0x009c-0x00a3
+        doc: 0x00c0-0x00c7
       - id: dwgview1
         size: 8
         doc: 0x00c8-0x00cf
