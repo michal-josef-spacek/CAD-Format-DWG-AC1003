@@ -128,7 +128,7 @@ sub _read {
     $self->{grid_unit_x} = $self->{_io}->read_bytes(8);
     $self->{grid_unit_y} = $self->{_io}->read_bytes(8);
     $self->{ortho} = $self->{_io}->read_s2le();
-    $self->{unknown5} = $self->{_io}->read_bytes(2);
+    $self->{regen} = $self->{_io}->read_s2le();
     $self->{fill} = $self->{_io}->read_s2le();
 }
 
@@ -302,9 +302,9 @@ sub ortho {
     return $self->{ortho};
 }
 
-sub unknown5 {
+sub regen {
     my ($self) = @_;
-    return $self->{unknown5};
+    return $self->{regen};
 }
 
 sub fill {

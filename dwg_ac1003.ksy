@@ -111,8 +111,9 @@ types:
       - id: ortho
         type: s2
         doc: 0x0128-0x0129
-      - id: unknown5
-        size: 2
+      - id: regen
+        type: s2
+        doc: 0x012a-0x012b
       - id: fill
         type: s2
         doc: 0x012c-0x012d
