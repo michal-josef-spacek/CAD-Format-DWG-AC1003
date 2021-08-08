@@ -67,21 +67,24 @@ types:
         doc: 0x006a-0x0071
       - id: limits_max_y
         size: 8
-##        doc: 0x0072-0x0079
-##      - id: dwgview1
-##        size: 8
-##      - id: dwgview2
-##        size: 8
-##      - id: unknown5
-##        size: 8
-##      - id: dwgview3
-##        size: 8
 ##      - id: snap
 ##        type: s2
 ##        doc: 0x009a-0x009b
 ##      - id: snap_resolution
 ##        size: 8
 ##        doc: 0x009c-0x00a3
+      - id: dwgview1
+        size: 8
+        doc: 0x00c8-0x00cf
+      - id: dwgview2
+        size: 8
+        doc: 0x00d0-0x00d7
+      - id: unknown5
+        size: 8
+        doc: 0x00d8-0x00da
+      - id: dwgview3
+        size: 8
+        doc: 0x00e0-0x00e7
 ##      - id: grid
 ##        type: s2
 ##        doc: 0x00a4-0x00a5

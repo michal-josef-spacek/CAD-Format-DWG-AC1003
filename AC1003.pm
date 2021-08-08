@@ -898,6 +898,10 @@ sub _read {
     $self->{limits_min_y} = $self->{_io}->read_bytes(8);
     $self->{limits_max_x} = $self->{_io}->read_bytes(8);
     $self->{limits_max_y} = $self->{_io}->read_bytes(8);
+    $self->{dwgview1} = $self->{_io}->read_bytes(8);
+    $self->{dwgview2} = $self->{_io}->read_bytes(8);
+    $self->{unknown5} = $self->{_io}->read_bytes(8);
+    $self->{dwgview3} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -988,6 +992,26 @@ sub limits_max_x {
 sub limits_max_y {
     my ($self) = @_;
     return $self->{limits_max_y};
+}
+
+sub dwgview1 {
+    my ($self) = @_;
+    return $self->{dwgview1};
+}
+
+sub dwgview2 {
+    my ($self) = @_;
+    return $self->{dwgview2};
+}
+
+sub unknown5 {
+    my ($self) = @_;
+    return $self->{unknown5};
+}
+
+sub dwgview3 {
+    my ($self) = @_;
+    return $self->{dwgview3};
 }
 
 ########################################################################
