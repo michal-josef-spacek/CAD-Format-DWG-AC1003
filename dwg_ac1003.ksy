@@ -108,9 +108,9 @@ types:
       - id: grid_unit_y
         size: 8
         doc: 0x0120-0x0127
-##      - id: ortho
-##        type: s2
-##        doc: 0x00ae-0x00af
+      - id: ortho
+        type: s2
+        doc: 0x0128-0x0129
 ##      - id: unknown6
 ##        size: 2
 ##        doc: XXX could be ffff
