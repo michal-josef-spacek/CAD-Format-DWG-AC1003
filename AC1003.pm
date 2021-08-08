@@ -51,6 +51,7 @@ our $UNIT_TYPES_SCIENTIFIC = 1;
 our $UNIT_TYPES_DECIMAL = 2;
 our $UNIT_TYPES_ENGINEERING = 3;
 our $UNIT_TYPES_ARCHITECTURAL = 4;
+our $UNIT_TYPES_FRACTIONAL = 5;
 
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;
@@ -149,7 +150,7 @@ sub _read {
     $self->{trace_width} = $self->{_io}->read_bytes(8);
     $self->{unknown5} = $self->{_io}->read_bytes(18);
     $self->{unknown6} = $self->{_io}->read_bytes(8);
-    $self->{unknown7} = $self->{_io}->read_s2le();
+    $self->{linear_units_format} = $self->{_io}->read_s2le();
     $self->{display_precision} = $self->{_io}->read_s2le();
     $self->{axis} = $self->{_io}->read_s2le();
     $self->{axis_value_x} = $self->{_io}->read_bytes(8);
@@ -375,9 +376,9 @@ sub unknown6 {
     return $self->{unknown6};
 }
 
-sub unknown7 {
+sub linear_units_format {
     my ($self) = @_;
-    return $self->{unknown7};
+    return $self->{linear_units_format};
 }
 
 sub display_precision {

@@ -136,8 +136,10 @@ types:
         size: 18
       - id: unknown6
         size: 8
-      - id: unknown7
+      - id: linear_units_format
+        enum: unit_types
         type: s2
+        doc: $LUNITS
       - id: display_precision
         type: s2
         doc: $LUPREC
@@ -428,3 +430,4 @@ enums:
     2: decimal
     3: engineering
     4: architectural
+    5: fractional
