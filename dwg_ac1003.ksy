@@ -28,8 +28,10 @@ types:
         contents: [0x41, 0x43, 0x31, 0x30, 0x30, 0x33]
       - id: zeros
         size: 6
+      - id: zero_one_or_three
+        type: s1
       - id: unknown1
-        size: 82
+        size: 81
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065
