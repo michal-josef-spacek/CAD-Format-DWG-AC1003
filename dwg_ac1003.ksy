@@ -160,224 +160,224 @@ types:
 ##        doc: XXX Value is 0.1 somewhere
 ##      - id: unknown13
 ##        size: 8
-  entity:
-    seq:
-      - id: entity_type
-        type: s2
-        enum: entities
-      - id: data
-        type:
-          switch-on: entity_type
-          cases:
-            'entities::foo': entity_foo
-            'entities::arc': entity_arc
-            'entities::block_begin': entity_block_begin
-            'entities::block_end': entity_block_end
-            'entities::block_insert' : entity_block_insert
-            'entities::circle': entity_circle
-            'entities::line': entity_line
-            'entities::load': entity_load
-            'entities::point': entity_point
-            'entities::repeat_begin': entity_repeat_begin
-            'entities::repeat_end': entity_repeat_end
-            'entities::shape': entity_shape
-            'entities::solid': entity_solid
-            'entities::text': entity_text
-            'entities::tmp': entity_tmp
-            'entities::trace': entity_trace
-  entity_foo:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-  entity_arc:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: radius
-        size: 8
-      - id: angle_from
-        size: 8
-      - id: angle_to
-        size: 8
-  entity_block_begin:
-    seq:
-      - id: layer
-        type: s2
-      - id: size
-        type: s2
-      - id: value
-        size: size
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-  entity_block_end:
-    seq:
-      - id: layer
-        type: s2
-  entity_block_insert:
-    seq:
-      - id: layer
-        type: s2
-      - id: size
-        type: s2
-      - id: value
-        size: size
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: x_scale
-        size: 8
-      - id: y_scale
-        size: 8
-      - id: rotation_angle
-        size: 8
-  entity_circle:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: radius
-        size: 8
-  entity_line:
-    seq:
-      - id: layer
-        type: s2
-      - id: x1
-        size: 8
-      - id: y1
-        size: 8
-      - id: x2
-        size: 8
-      - id: y2
-        size: 8
-  entity_load:
-    seq:
-      - id: layer
-        type: s2
-      - id: size
-        type: s2
-      - id: value
-        size: size
-  entity_point:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-  entity_repeat_begin:
-    seq:
-      - id: layer
-        type: s2
-  entity_repeat_end:
-    seq:
-      - id: layer
-        type: s2
-      - id: columns
-        type: s2
-      - id: rows
-        type: s2
-      - id: column_distance
-        size: 8
-      - id: row_distance
-        size: 8
-  entity_shape:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: height
-        size: 8
-      - id: angle
-        size: 8
-      - id: item_num
-        type: s2
-  entity_solid:
-    seq:
-      - id: layer
-        type: s2
-      - id: from_x
-        size: 8
-      - id: from_y
-        size: 8
-      - id: from_and_x
-        size: 8
-      - id: from_and_y
-        size: 8
-      - id: to_x
-        size: 8
-      - id: to_y
-        size: 8
-      - id: to_and_x
-        size: 8
-      - id: to_and_y
-        size: 8
-  entity_text:
-    seq:
-      - id: layer
-        type: s2
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: height
-        size: 8
-      - id: angle
-        size: 8
-      - id: size
-        type: s2
-      - id: value
-        size: size
-  entity_tmp:
-    doc: Removed after redraw
-    seq:
-      - id: layer
-        type: s2
-      - id: x1
-        size: 8
-      - id: y1
-        size: 8
-      - id: x2
-        size: 8
-      - id: y2
-        size: 8
-  entity_trace:
-    seq:
-      - id: layer
-        type: s2
-      - id: from_x
-        size: 8
-      - id: from_y
-        size: 8
-      - id: from_and_x
-        size: 8
-      - id: from_and_y
-        size: 8
-      - id: to_x
-        size: 8
-      - id: to_y
-        size: 8
-      - id: to_and_x
-        size: 8
-      - id: to_and_y
-        size: 8
+##  entity:
+##    seq:
+##      - id: entity_type
+##        type: s2
+##        enum: entities
+##      - id: data
+##        type:
+##          switch-on: entity_type
+##          cases:
+##            'entities::foo': entity_foo
+##            'entities::arc': entity_arc
+##            'entities::block_begin': entity_block_begin
+##            'entities::block_end': entity_block_end
+##            'entities::block_insert' : entity_block_insert
+##            'entities::circle': entity_circle
+##            'entities::line': entity_line
+##            'entities::load': entity_load
+##            'entities::point': entity_point
+##            'entities::repeat_begin': entity_repeat_begin
+##            'entities::repeat_end': entity_repeat_end
+##            'entities::shape': entity_shape
+##            'entities::solid': entity_solid
+##            'entities::text': entity_text
+##            'entities::tmp': entity_tmp
+##            'entities::trace': entity_trace
+##  entity_foo:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##  entity_arc:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##      - id: radius
+##        size: 8
+##      - id: angle_from
+##        size: 8
+##      - id: angle_to
+##        size: 8
+##  entity_block_begin:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: size
+##        type: s2
+##      - id: value
+##        size: size
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##  entity_block_end:
+##    seq:
+##      - id: layer
+##        type: s2
+##  entity_block_insert:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: size
+##        type: s2
+##      - id: value
+##        size: size
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##      - id: x_scale
+##        size: 8
+##      - id: y_scale
+##        size: 8
+##      - id: rotation_angle
+##        size: 8
+##  entity_circle:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##      - id: radius
+##        size: 8
+##  entity_line:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x1
+##        size: 8
+##      - id: y1
+##        size: 8
+##      - id: x2
+##        size: 8
+##      - id: y2
+##        size: 8
+##  entity_load:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: size
+##        type: s2
+##      - id: value
+##        size: size
+##  entity_point:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##  entity_repeat_begin:
+##    seq:
+##      - id: layer
+##        type: s2
+##  entity_repeat_end:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: columns
+##        type: s2
+##      - id: rows
+##        type: s2
+##      - id: column_distance
+##        size: 8
+##      - id: row_distance
+##        size: 8
+##  entity_shape:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##      - id: height
+##        size: 8
+##      - id: angle
+##        size: 8
+##      - id: item_num
+##        type: s2
+##  entity_solid:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: from_x
+##        size: 8
+##      - id: from_y
+##        size: 8
+##      - id: from_and_x
+##        size: 8
+##      - id: from_and_y
+##        size: 8
+##      - id: to_x
+##        size: 8
+##      - id: to_y
+##        size: 8
+##      - id: to_and_x
+##        size: 8
+##      - id: to_and_y
+##        size: 8
+##  entity_text:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x
+##        size: 8
+##      - id: y
+##        size: 8
+##      - id: height
+##        size: 8
+##      - id: angle
+##        size: 8
+##      - id: size
+##        type: s2
+##      - id: value
+##        size: size
+##  entity_tmp:
+##    doc: Removed after redraw
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: x1
+##        size: 8
+##      - id: y1
+##        size: 8
+##      - id: x2
+##        size: 8
+##      - id: y2
+##        size: 8
+##  entity_trace:
+##    seq:
+##      - id: layer
+##        type: s2
+##      - id: from_x
+##        size: 8
+##      - id: from_y
+##        size: 8
+##      - id: from_and_x
+##        size: 8
+##      - id: from_and_y
+##        size: 8
+##      - id: to_x
+##        size: 8
+##      - id: to_y
+##        size: 8
+##      - id: to_and_x
+##        size: 8
+##      - id: to_and_y
+##        size: 8
 enums:
   entities:
     ## TODO Many tmps
