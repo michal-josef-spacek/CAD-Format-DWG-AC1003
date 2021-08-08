@@ -147,13 +147,16 @@ sub _read {
     $self->{linetype_scale} = $self->{_io}->read_bytes(8);
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
-    $self->{unknown5} = $self->{_io}->read_bytes(30);
+    $self->{unknown5} = $self->{_io}->read_bytes(18);
+    $self->{unknown6} = $self->{_io}->read_bytes(8);
+    $self->{unknown7} = $self->{_io}->read_s2le();
+    $self->{display_precision} = $self->{_io}->read_s2le();
     $self->{axis} = $self->{_io}->read_s2le();
     $self->{axis_value_x} = $self->{_io}->read_bytes(8);
     $self->{axis_value_y} = $self->{_io}->read_bytes(8);
     $self->{sketch_increment} = $self->{_io}->read_bytes(8);
     $self->{fillet_radius} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(6);
+    $self->{unknown9} = $self->{_io}->read_bytes(6);
     $self->{osnap} = $self->{_io}->read_s2le();
 }
 
@@ -367,6 +370,21 @@ sub unknown5 {
     return $self->{unknown5};
 }
 
+sub unknown6 {
+    my ($self) = @_;
+    return $self->{unknown6};
+}
+
+sub unknown7 {
+    my ($self) = @_;
+    return $self->{unknown7};
+}
+
+sub display_precision {
+    my ($self) = @_;
+    return $self->{display_precision};
+}
+
 sub axis {
     my ($self) = @_;
     return $self->{axis};
@@ -392,9 +410,9 @@ sub fillet_radius {
     return $self->{fillet_radius};
 }
 
-sub unknown8 {
+sub unknown9 {
     my ($self) = @_;
-    return $self->{unknown8};
+    return $self->{unknown9};
 }
 
 sub osnap {

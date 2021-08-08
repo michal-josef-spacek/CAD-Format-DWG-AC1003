@@ -133,7 +133,14 @@ types:
         size: 8
         doc: 0x0142-0x0149
       - id: unknown5
-        size: 30
+        size: 18
+      - id: unknown6
+        size: 8
+      - id: unknown7
+        type: s2
+      - id: display_precision
+        type: s2
+        doc: $LUPREC
       - id: axis
         type: s2
         doc: 0x0168-0x0169
@@ -148,7 +155,7 @@ types:
         doc: 0x017a-0x0181
       - id: fillet_radius
         size: 8
-      - id: unknown8
+      - id: unknown9
         size: 6
       - id: osnap
         enum: osnap_modes
