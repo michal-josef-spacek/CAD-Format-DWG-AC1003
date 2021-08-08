@@ -67,12 +67,6 @@ types:
         doc: 0x00b8-0x00bf
       - id: limits_max_y
         size: 8
-##      - id: snap
-##        type: s2
-##        doc: 0x009a-0x009b
-##      - id: snap_resolution
-##        size: 8
-##        doc: 0x009c-0x00a3
         doc: 0x00c0-0x00c7
       - id: dwgview1
         size: 8
@@ -86,6 +80,23 @@ types:
       - id: dwgview3
         size: 8
         doc: 0x00e0-0x00e7
+      - id: snap
+        type: s2
+        doc: 0x00e8-0x00e9
+      - id: snap_resolution_x
+        size: 8
+        doc: 0x00ea-0x00f1
+      - id: snap_resolution_y
+        size: 8
+        doc: 0x00f2-0x00f9
+      - id: snap_base_x
+        size: 8
+      - id: snap_base_y
+        size: 8
+      - id: snap_angle
+        size: 8
+      - id: snap_style
+        type: s2
 ##      - id: grid
 ##        type: s2
 ##        doc: 0x00a4-0x00a5

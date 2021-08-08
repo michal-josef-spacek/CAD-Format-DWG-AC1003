@@ -902,6 +902,13 @@ sub _read {
     $self->{dwgview2} = $self->{_io}->read_bytes(8);
     $self->{unknown5} = $self->{_io}->read_bytes(8);
     $self->{dwgview3} = $self->{_io}->read_bytes(8);
+    $self->{snap} = $self->{_io}->read_s2le();
+    $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
+    $self->{snap_resolution_y} = $self->{_io}->read_bytes(8);
+    $self->{snap_base_x} = $self->{_io}->read_bytes(8);
+    $self->{snap_base_y} = $self->{_io}->read_bytes(8);
+    $self->{snap_angle} = $self->{_io}->read_bytes(8);
+    $self->{snap_style} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -1012,6 +1019,41 @@ sub unknown5 {
 sub dwgview3 {
     my ($self) = @_;
     return $self->{dwgview3};
+}
+
+sub snap {
+    my ($self) = @_;
+    return $self->{snap};
+}
+
+sub snap_resolution_x {
+    my ($self) = @_;
+    return $self->{snap_resolution_x};
+}
+
+sub snap_resolution_y {
+    my ($self) = @_;
+    return $self->{snap_resolution_y};
+}
+
+sub snap_base_x {
+    my ($self) = @_;
+    return $self->{snap_base_x};
+}
+
+sub snap_base_y {
+    my ($self) = @_;
+    return $self->{snap_base_y};
+}
+
+sub snap_angle {
+    my ($self) = @_;
+    return $self->{snap_angle};
+}
+
+sub snap_style {
+    my ($self) = @_;
+    return $self->{snap_style};
 }
 
 ########################################################################
