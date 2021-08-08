@@ -890,17 +890,17 @@ sub _read {
     $self->{number_of_entities} = $self->{_io}->read_s2le();
     $self->{drawing_first_x} = $self->{_io}->read_bytes(8);
     $self->{drawing_first_y} = $self->{_io}->read_bytes(8);
-    $self->{unknown} = $self->{_io}->read_bytes(8);
+    $self->{unknown2} = $self->{_io}->read_bytes(8);
     $self->{drawing_second_x} = $self->{_io}->read_bytes(8);
     $self->{drawing_second_y} = $self->{_io}->read_bytes(8);
-    $self->{unknown4} = $self->{_io}->read_bytes(8);
+    $self->{unknown3} = $self->{_io}->read_bytes(8);
     $self->{limits_min_x} = $self->{_io}->read_bytes(8);
     $self->{limits_min_y} = $self->{_io}->read_bytes(8);
     $self->{limits_max_x} = $self->{_io}->read_bytes(8);
     $self->{limits_max_y} = $self->{_io}->read_bytes(8);
     $self->{dwgview1} = $self->{_io}->read_bytes(8);
     $self->{dwgview2} = $self->{_io}->read_bytes(8);
-    $self->{unknown5} = $self->{_io}->read_bytes(8);
+    $self->{unknown4} = $self->{_io}->read_bytes(8);
     $self->{dwgview3} = $self->{_io}->read_bytes(8);
     $self->{snap} = $self->{_io}->read_s2le();
     $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
@@ -961,9 +961,9 @@ sub drawing_first_y {
     return $self->{drawing_first_y};
 }
 
-sub unknown {
+sub unknown2 {
     my ($self) = @_;
-    return $self->{unknown};
+    return $self->{unknown2};
 }
 
 sub drawing_second_x {
@@ -976,9 +976,9 @@ sub drawing_second_y {
     return $self->{drawing_second_y};
 }
 
-sub unknown4 {
+sub unknown3 {
     my ($self) = @_;
-    return $self->{unknown4};
+    return $self->{unknown3};
 }
 
 sub limits_min_x {
@@ -1011,9 +1011,9 @@ sub dwgview2 {
     return $self->{dwgview2};
 }
 
-sub unknown5 {
+sub unknown4 {
     my ($self) = @_;
-    return $self->{unknown5};
+    return $self->{unknown4};
 }
 
 sub dwgview3 {

@@ -48,13 +48,13 @@ types:
         size: 8
       - id: drawing_first_y
         size: 8
-      - id: unknown
+      - id: unknown2
         size: 8
       - id: drawing_second_x
         size: 8
       - id: drawing_second_y
         size: 8
-      - id: unknown4
+      - id: unknown3
         size: 8
       - id: limits_min_x
         size: 8
@@ -74,7 +74,7 @@ types:
       - id: dwgview2
         size: 8
         doc: 0x00d0-0x00d7
-      - id: unknown5
+      - id: unknown4
         size: 8
         doc: 0x00d8-0x00da
       - id: dwgview3
