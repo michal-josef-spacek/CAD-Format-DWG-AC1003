@@ -97,7 +97,7 @@ types:
         size: 8
       - id: snap_style
         type: s2
-      - id: unknown5
+      - id: snap_iso_pair
         type: s2
       - id: grid
         type: s2

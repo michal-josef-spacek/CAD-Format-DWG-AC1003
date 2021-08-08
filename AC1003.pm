@@ -909,7 +909,7 @@ sub _read {
     $self->{snap_base_y} = $self->{_io}->read_bytes(8);
     $self->{snap_angle} = $self->{_io}->read_bytes(8);
     $self->{snap_style} = $self->{_io}->read_s2le();
-    $self->{unknown5} = $self->{_io}->read_s2le();
+    $self->{snap_iso_pair} = $self->{_io}->read_s2le();
     $self->{grid} = $self->{_io}->read_s2le();
     $self->{grid_unit_x} = $self->{_io}->read_bytes(8);
     $self->{grid_unit_y} = $self->{_io}->read_bytes(8);
@@ -1060,9 +1060,9 @@ sub snap_style {
     return $self->{snap_style};
 }
 
-sub unknown5 {
+sub snap_iso_pair {
     my ($self) = @_;
-    return $self->{unknown5};
+    return $self->{snap_iso_pair};
 }
 
 sub grid {
