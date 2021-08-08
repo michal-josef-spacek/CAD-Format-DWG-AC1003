@@ -126,10 +126,18 @@ types:
       - id: linetype_scale
         size: 8
         doc: 0x0132-0x0139
-##      - id: text_size
-##        size: 8
-##      - id: trace_width
-##        size: 8
+      - id: text_size
+        size: 8
+        doc: 0x013a-0x0141
+      - id: trace_width
+        size: 8
+        doc: 0x0142-0x0149
+      - id: unknown5
+        size: 70
+      - id: osnap
+        enum: osnap_modes
+        type: s2
+        doc: 0x0190-0x0191
 ##      - id: actual_layer
 ##        type: s2
 ##        doc: 0x00c4-0x00c5
@@ -406,6 +414,18 @@ enums:
     12: block_begin
     13: block_end
     14: block_insert
+  osnap_modes:
+    0: none
+    1: endpoint
+    2: midpoint
+    4: center
+    8: node
+    16: quadrant
+    32: intersection
+    64: insertion
+    128: perpendicular
+    256: tangent
+    512: nearest
   unit_types:
     1: scientific
     2: decimal

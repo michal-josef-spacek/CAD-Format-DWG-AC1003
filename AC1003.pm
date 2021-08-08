@@ -35,6 +35,18 @@ our $ENTITIES_BLOCK_BEGIN = 12;
 our $ENTITIES_BLOCK_END = 13;
 our $ENTITIES_BLOCK_INSERT = 14;
 
+our $OSNAP_MODES_NONE = 0;
+our $OSNAP_MODES_ENDPOINT = 1;
+our $OSNAP_MODES_MIDPOINT = 2;
+our $OSNAP_MODES_CENTER = 4;
+our $OSNAP_MODES_NODE = 8;
+our $OSNAP_MODES_QUADRANT = 16;
+our $OSNAP_MODES_INTERSECTION = 32;
+our $OSNAP_MODES_INSERTION = 64;
+our $OSNAP_MODES_PERPENDICULAR = 128;
+our $OSNAP_MODES_TANGENT = 256;
+our $OSNAP_MODES_NEAREST = 512;
+
 our $UNIT_TYPES_SCIENTIFIC = 1;
 our $UNIT_TYPES_DECIMAL = 2;
 our $UNIT_TYPES_ENGINEERING = 3;
@@ -133,6 +145,10 @@ sub _read {
     $self->{qtext} = $self->{_io}->read_s2le();
     $self->{drag} = $self->{_io}->read_s2le();
     $self->{linetype_scale} = $self->{_io}->read_bytes(8);
+    $self->{text_size} = $self->{_io}->read_bytes(8);
+    $self->{trace_width} = $self->{_io}->read_bytes(8);
+    $self->{unknown5} = $self->{_io}->read_bytes(70);
+    $self->{osnap} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -328,6 +344,26 @@ sub drag {
 sub linetype_scale {
     my ($self) = @_;
     return $self->{linetype_scale};
+}
+
+sub text_size {
+    my ($self) = @_;
+    return $self->{text_size};
+}
+
+sub trace_width {
+    my ($self) = @_;
+    return $self->{trace_width};
+}
+
+sub unknown5 {
+    my ($self) = @_;
+    return $self->{unknown5};
+}
+
+sub osnap {
+    my ($self) = @_;
+    return $self->{osnap};
 }
 
 1;
