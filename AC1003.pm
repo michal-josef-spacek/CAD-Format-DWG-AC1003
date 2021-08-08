@@ -911,6 +911,8 @@ sub _read {
     $self->{snap_style} = $self->{_io}->read_s2le();
     $self->{unknown5} = $self->{_io}->read_s2le();
     $self->{grid} = $self->{_io}->read_s2le();
+    $self->{grid_unit_x} = $self->{_io}->read_bytes(8);
+    $self->{grid_unit_y} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -1066,6 +1068,16 @@ sub unknown5 {
 sub grid {
     my ($self) = @_;
     return $self->{grid};
+}
+
+sub grid_unit_x {
+    my ($self) = @_;
+    return $self->{grid_unit_x};
+}
+
+sub grid_unit_y {
+    my ($self) = @_;
+    return $self->{grid_unit_y};
 }
 
 ########################################################################

@@ -102,9 +102,12 @@ types:
       - id: grid
         type: s2
         doc: 0x0116-0x0117
-##      - id: grid_value
-##        size: 8
-##        doc: 0x00a6-0x00ad
+      - id: grid_unit_x
+        size: 8
+        doc: 0x0118-0x011f
+      - id: grid_unit_y
+        size: 8
+        doc: 0x0120-0x0127
 ##      - id: ortho
 ##        type: s2
 ##        doc: 0x00ae-0x00af
