@@ -170,6 +170,9 @@ sub _read {
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
+    $self->{unknown12} = $self->{_io}->read_bytes(449);
+    $self->{angle_base} = $self->{_io}->read_bytes(8);
+    $self->{angle_direction} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -455,6 +458,21 @@ sub unknown11 {
 sub osnap {
     my ($self) = @_;
     return $self->{osnap};
+}
+
+sub unknown12 {
+    my ($self) = @_;
+    return $self->{unknown12};
+}
+
+sub angle_base {
+    my ($self) = @_;
+    return $self->{angle_base};
+}
+
+sub angle_direction {
+    my ($self) = @_;
+    return $self->{angle_direction};
 }
 
 1;

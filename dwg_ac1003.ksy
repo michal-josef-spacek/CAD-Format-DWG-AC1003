@@ -176,6 +176,14 @@ types:
         enum: osnap_modes
         type: s2
         doc: 0x0190-0x0191
+      - id: unknown12
+        size: 449
+      - id: angle_base
+        size: 8
+        doc: 0x0353-0x035a, $ANGBASE
+      - id: angle_direction
+        type: s2
+        doc: 0x035b-0x035c, $ANGDIR
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color
