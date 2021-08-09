@@ -163,8 +163,10 @@ types:
         doc: 0x017a-0x0181
       - id: fillet_radius
         size: 8
-      - id: unknown10
-        size: 2
+      - id: units_for_angles
+        enum: units_for_angles
+        type: s2
+        doc: $AUNITS
       - id: angular_precision
         type: s2
         doc: $AUPREC
@@ -442,3 +444,9 @@ enums:
     3: engineering
     4: architectural
     5: fractional
+  units_for_angles:
+    0: decimal_degrees
+    1: degrees_minutes_seconds
+    2: gradians
+    3: radians
+    4: surveyor_s_units

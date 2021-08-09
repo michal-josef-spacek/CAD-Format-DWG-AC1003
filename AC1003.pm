@@ -53,6 +53,12 @@ our $UNIT_TYPES_ENGINEERING = 3;
 our $UNIT_TYPES_ARCHITECTURAL = 4;
 our $UNIT_TYPES_FRACTIONAL = 5;
 
+our $UNITS_FOR_ANGLES_DECIMAL_DEGREES = 0;
+our $UNITS_FOR_ANGLES_DEGREES_MINUTES_SECONDS = 1;
+our $UNITS_FOR_ANGLES_GRADIANS = 2;
+our $UNITS_FOR_ANGLES_RADIANS = 3;
+our $UNITS_FOR_ANGLES_SURVEYOR_S_UNITS = 4;
+
 sub new {
     my ($class, $_io, $_parent, $_root) = @_;
     my $self = IO::KaitaiStruct::Struct->new($_io);
@@ -160,7 +166,7 @@ sub _read {
     $self->{axis_value_y} = $self->{_io}->read_bytes(8);
     $self->{sketch_increment} = $self->{_io}->read_bytes(8);
     $self->{fillet_radius} = $self->{_io}->read_bytes(8);
-    $self->{unknown10} = $self->{_io}->read_bytes(2);
+    $self->{units_for_angles} = $self->{_io}->read_s2le();
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
@@ -431,9 +437,9 @@ sub fillet_radius {
     return $self->{fillet_radius};
 }
 
-sub unknown10 {
+sub units_for_angles {
     my ($self) = @_;
-    return $self->{unknown10};
+    return $self->{units_for_angles};
 }
 
 sub angular_precision {
