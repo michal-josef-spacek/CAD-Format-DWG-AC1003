@@ -164,7 +164,12 @@ types:
       - id: fillet_radius
         size: 8
       - id: unknown10
-        size: 6
+        size: 2
+      - id: angular_precision
+        type: s2
+        doc: $AUPREC
+      - id: unknown11
+        size: 2
       - id: osnap
         enum: osnap_modes
         type: s2
