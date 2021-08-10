@@ -176,8 +176,10 @@ types:
         enum: osnap_modes
         type: s2
         doc: 0x0190-0x0191
-      - id: unknown9
+      - id: attributes
+        enum: attributes
         type: s2
+        doc: 0x0192-0x0193
       - id: unknown10
         size: 102
       - id: limits_check
@@ -519,3 +521,7 @@ enums:
     0: absolute_coordinates
     1: absolute_coordinates_realtime
     2: relative_polar_coordinates
+  attributes:
+    0: off
+    1: normal
+    2: on

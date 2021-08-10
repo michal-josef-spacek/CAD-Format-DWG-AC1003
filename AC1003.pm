@@ -39,6 +39,10 @@ our $ENTITIES_BLOCK_BEGIN = 12;
 our $ENTITIES_BLOCK_END = 13;
 our $ENTITIES_BLOCK_INSERT = 14;
 
+our $ATTRIBUTES_FALSE = 0;
+our $ATTRIBUTES_NORMAL = 1;
+our $ATTRIBUTES_TRUE = 2;
+
 our $ANGLE_DIRECTION_COUNTERCLOCKWISE = 0;
 our $ANGLE_DIRECTION_CLOCKWISE = 1;
 
@@ -180,7 +184,7 @@ sub _read {
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{unknown8} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
-    $self->{unknown9} = $self->{_io}->read_s2le();
+    $self->{attributes} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(102);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_bytes(45);
@@ -489,9 +493,9 @@ sub osnap {
     return $self->{osnap};
 }
 
-sub unknown9 {
+sub attributes {
     my ($self) = @_;
-    return $self->{unknown9};
+    return $self->{attributes};
 }
 
 sub unknown10 {
