@@ -138,8 +138,11 @@ types:
       - id: trace_width
         size: 8
         doc: 0x0142-0x0149
+      - id: current_layer
+        type: s2
+        doc: 0x014a-0x014b, $CLAYER
       - id: unknown6
-        size: 18
+        size: 16
       - id: unknown7
         size: 8
       - id: linear_units_format

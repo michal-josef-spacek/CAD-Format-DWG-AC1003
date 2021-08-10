@@ -171,7 +171,8 @@ sub _read {
     $self->{linetype_scale} = $self->{_io}->read_bytes(8);
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
-    $self->{unknown6} = $self->{_io}->read_bytes(18);
+    $self->{current_layer} = $self->{_io}->read_s2le();
+    $self->{unknown6} = $self->{_io}->read_bytes(16);
     $self->{unknown7} = $self->{_io}->read_bytes(8);
     $self->{linear_units_format} = $self->{_io}->read_s2le();
     $self->{linear_units_precision} = $self->{_io}->read_s2le();
@@ -438,6 +439,11 @@ sub text_size {
 sub trace_width {
     my ($self) = @_;
     return $self->{trace_width};
+}
+
+sub current_layer {
+    my ($self) = @_;
+    return $self->{current_layer};
 }
 
 sub unknown6 {
