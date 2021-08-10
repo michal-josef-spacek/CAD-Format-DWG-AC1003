@@ -185,17 +185,17 @@ sub _read {
     $self->{text_style} = $self->{_io}->read_s2le();
     $self->{osnap} = $self->{_io}->read_s2le();
     $self->{attributes} = $self->{_io}->read_s2le();
-    $self->{unknown10} = $self->{_io}->read_bytes(102);
+    $self->{unknown8} = $self->{_io}->read_bytes(102);
     $self->{limits_check} = $self->{_io}->read_s2le();
-    $self->{unknown11} = $self->{_io}->read_bytes(45);
+    $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
     $self->{thickness} = $self->{_io}->read_bytes(8);
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown12} = $self->{_io}->read_bytes(200);
+    $self->{unknown10} = $self->{_io}->read_bytes(200);
     $self->{coordinates} = $self->{_io}->read_s2le();
-    $self->{unknown13} = $self->{_io}->read_bytes(4);
+    $self->{unknown11} = $self->{_io}->read_bytes(4);
     $self->{create_date_days} = $self->{_io}->read_u4le();
     $self->{create_date_ms} = $self->{_io}->read_bytes(4);
     $self->{update_date_days} = $self->{_io}->read_u4le();
@@ -205,9 +205,9 @@ sub _read {
     $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
     $self->{user_elapsed_times_ms} = $self->{_io}->read_bytes(4);
     $self->{user_timer} = $self->{_io}->read_s2le();
-    $self->{unknown14} = $self->{_io}->read_s2le();
-    $self->{unknown15} = $self->{_io}->read_bytes(8);
-    $self->{unknown16} = $self->{_io}->read_bytes(8);
+    $self->{unknown12} = $self->{_io}->read_s2le();
+    $self->{unknown13} = $self->{_io}->read_bytes(8);
+    $self->{unknown14} = $self->{_io}->read_bytes(8);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
@@ -510,9 +510,9 @@ sub attributes {
     return $self->{attributes};
 }
 
-sub unknown10 {
+sub unknown8 {
     my ($self) = @_;
-    return $self->{unknown10};
+    return $self->{unknown8};
 }
 
 sub limits_check {
@@ -520,9 +520,9 @@ sub limits_check {
     return $self->{limits_check};
 }
 
-sub unknown11 {
+sub unknown9 {
     my ($self) = @_;
-    return $self->{unknown11};
+    return $self->{unknown9};
 }
 
 sub elevation {
@@ -550,9 +550,9 @@ sub view_point_z {
     return $self->{view_point_z};
 }
 
-sub unknown12 {
+sub unknown10 {
     my ($self) = @_;
-    return $self->{unknown12};
+    return $self->{unknown10};
 }
 
 sub coordinates {
@@ -560,9 +560,9 @@ sub coordinates {
     return $self->{coordinates};
 }
 
-sub unknown13 {
+sub unknown11 {
     my ($self) = @_;
-    return $self->{unknown13};
+    return $self->{unknown11};
 }
 
 sub create_date_days {
@@ -610,19 +610,19 @@ sub user_timer {
     return $self->{user_timer};
 }
 
+sub unknown12 {
+    my ($self) = @_;
+    return $self->{unknown12};
+}
+
+sub unknown13 {
+    my ($self) = @_;
+    return $self->{unknown13};
+}
+
 sub unknown14 {
     my ($self) = @_;
     return $self->{unknown14};
-}
-
-sub unknown15 {
-    my ($self) = @_;
-    return $self->{unknown15};
-}
-
-sub unknown16 {
-    my ($self) = @_;
-    return $self->{unknown16};
 }
 
 sub angle_base {

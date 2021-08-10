@@ -181,13 +181,13 @@ types:
         enum: attributes
         type: s2
         doc: 0x0192-0x0193
-      - id: unknown10
+      - id: unknown8
         size: 102
       - id: limits_check
         enum: limits_check
         type: s2
         doc: 0x01fa-0x01fb, $LIMCHECK
-      - id: unknown11
+      - id: unknown9
         size: 45
       - id: elevation
         size: 8
@@ -204,13 +204,13 @@ types:
       - id: view_point_z
         size: 8
         doc: $VIEWDIR/30
-      - id: unknown12
+      - id: unknown10
         size: 200
       - id: coordinates
         enum: coordinates
         type: s2
         doc: 0x0319-0x031a, $COORDS
-      - id: unknown13
+      - id: unknown11
         size: 4
       - id: create_date_days
         type: u4
@@ -237,11 +237,11 @@ types:
       - id: user_timer
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
-      - id: unknown14
+      - id: unknown12
         type: s2
-      - id: unknown15
+      - id: unknown13
         size: 8
-      - id: unknown16
+      - id: unknown14
         size: 8
       - id: angle_base
         size: 8
