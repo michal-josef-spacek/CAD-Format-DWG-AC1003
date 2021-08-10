@@ -54,13 +54,13 @@ types:
         size: 8
       - id: drawing_first_y
         size: 8
-      - id: unknown5
+      - id: drawing_first_z
         size: 8
       - id: drawing_second_x
         size: 8
       - id: drawing_second_y
         size: 8
-      - id: unknown6
+      - id: drawing_second_z
         size: 8
       - id: limits_min_x
         size: 8
