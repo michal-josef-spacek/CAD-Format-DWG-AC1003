@@ -179,7 +179,13 @@ types:
       - id: unknown9
         type: s2
       - id: unknown10
-        size: 149
+        size: 102
+      - id: limits_check
+        enum: limits_check
+        type: s2
+        doc: 0x01fa-0x01fb, $LIMCHECK
+      - id: unknown11
+        size: 45
       - id: elevation
         size: 8
         doc: $ELEVATION
@@ -195,7 +201,7 @@ types:
       - id: view_point_z
         size: 8
         doc: $VIEWDIR/30
-      - id: unknown11
+      - id: unknown12
         size: 258
       - id: angle_base
         size: 8
@@ -484,3 +490,6 @@ enums:
   angle_direction:
     0: counterclockwise
     1: clockwise
+  limits_check:
+    0: objects_can_outside_grid
+    1: objects_cannot_outside_grid

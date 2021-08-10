@@ -50,6 +50,9 @@ our $UNITS_FOR_ANGLES_GRADIANS = 2;
 our $UNITS_FOR_ANGLES_RADIANS = 3;
 our $UNITS_FOR_ANGLES_SURVEYOR_S_UNITS = 4;
 
+our $LIMITS_CHECK_OBJECTS_CAN_OUTSIDE_GRID = 0;
+our $LIMITS_CHECK_OBJECTS_CANNOT_OUTSIDE_GRID = 1;
+
 our $OSNAP_MODES_NONE = 0;
 our $OSNAP_MODES_ENDPOINT = 1;
 our $OSNAP_MODES_MIDPOINT = 2;
@@ -174,13 +177,15 @@ sub _read {
     $self->{unknown8} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_s2le();
-    $self->{unknown10} = $self->{_io}->read_bytes(149);
+    $self->{unknown10} = $self->{_io}->read_bytes(102);
+    $self->{limits_check} = $self->{_io}->read_s2le();
+    $self->{unknown11} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
     $self->{thickness} = $self->{_io}->read_bytes(8);
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown11} = $self->{_io}->read_bytes(258);
+    $self->{unknown12} = $self->{_io}->read_bytes(258);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
@@ -481,6 +486,16 @@ sub unknown10 {
     return $self->{unknown10};
 }
 
+sub limits_check {
+    my ($self) = @_;
+    return $self->{limits_check};
+}
+
+sub unknown11 {
+    my ($self) = @_;
+    return $self->{unknown11};
+}
+
 sub elevation {
     my ($self) = @_;
     return $self->{elevation};
@@ -506,9 +521,9 @@ sub view_point_z {
     return $self->{view_point_z};
 }
 
-sub unknown11 {
+sub unknown12 {
     my ($self) = @_;
-    return $self->{unknown11};
+    return $self->{unknown12};
 }
 
 sub angle_base {
