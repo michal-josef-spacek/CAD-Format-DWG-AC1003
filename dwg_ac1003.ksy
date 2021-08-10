@@ -213,6 +213,9 @@ types:
       - id: point_mode
         type: s2
         doc: 0x035d-0x035e, $PDMODE
+      - id: point_size
+        size: 8
+        doc: $PDSIZE
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color
