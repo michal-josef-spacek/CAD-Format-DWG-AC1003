@@ -187,8 +187,13 @@ types:
         enum: attributes
         type: s2
         doc: 0x0192-0x0193
+      - id: menu
+        size: 15
+        type: str
+        encoding: ASCII
+        doc: $MENU
       - id: unknown8
-        size: 102
+        size: 87
       - id: limits_check
         enum: limits_check
         type: s2

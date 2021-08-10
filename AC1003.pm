@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 use IO::KaitaiStruct 0.009_000;
+use Encode;
 
 ########################################################################
 package CAD::Format::DWG::AC1003;
@@ -187,7 +188,8 @@ sub _read {
     $self->{text_style} = $self->{_io}->read_s2le();
     $self->{osnap} = $self->{_io}->read_s2le();
     $self->{attributes} = $self->{_io}->read_s2le();
-    $self->{unknown8} = $self->{_io}->read_bytes(102);
+    $self->{menu} = Encode::decode("ASCII", $self->{_io}->read_bytes(15));
+    $self->{unknown8} = $self->{_io}->read_bytes(87);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -521,6 +523,11 @@ sub osnap {
 sub attributes {
     my ($self) = @_;
     return $self->{attributes};
+}
+
+sub menu {
+    my ($self) = @_;
+    return $self->{menu};
 }
 
 sub unknown8 {
