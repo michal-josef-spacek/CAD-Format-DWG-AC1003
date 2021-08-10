@@ -233,11 +233,6 @@ types:
 ##        type: s2
 ##        repeat: expr
 ##        repeat-expr: 127
-##      - id: units_type
-##        type: s2
-##        enum: unit_types
-##      - id: number_of_digits
-##        type: s2
 ##  entity:
 ##    seq:
 ##      - id: entity_type
