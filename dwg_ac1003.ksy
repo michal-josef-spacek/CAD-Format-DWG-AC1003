@@ -180,11 +180,13 @@ types:
         size: 167
       - id: view_point_x
         size: 8
-        doc: 0x0239-0x0241
+        doc: 0x0239-0x0241, $VIEWDIR/10
       - id: view_point_y
         size: 8
+        doc: $VIEWDIR/20
       - id: view_point_z
         size: 8
+        doc: $VIEWDIR/30
       - id: unknown13
         size: 258
       - id: angle_base
