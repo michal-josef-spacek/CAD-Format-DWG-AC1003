@@ -192,8 +192,10 @@ types:
         type: str
         encoding: ASCII
         doc: $MENU
+      - id: dim_scale
+        size: 8
       - id: unknown8
-        size: 87
+        size: 79
       - id: limits_check
         enum: limits_check
         type: s2

@@ -189,7 +189,8 @@ sub _read {
     $self->{osnap} = $self->{_io}->read_s2le();
     $self->{attributes} = $self->{_io}->read_s2le();
     $self->{menu} = Encode::decode("ASCII", $self->{_io}->read_bytes(15));
-    $self->{unknown8} = $self->{_io}->read_bytes(87);
+    $self->{dim_scale} = $self->{_io}->read_bytes(8);
+    $self->{unknown8} = $self->{_io}->read_bytes(79);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -528,6 +529,11 @@ sub attributes {
 sub menu {
     my ($self) = @_;
     return $self->{menu};
+}
+
+sub dim_scale {
+    my ($self) = @_;
+    return $self->{dim_scale};
 }
 
 sub unknown8 {
