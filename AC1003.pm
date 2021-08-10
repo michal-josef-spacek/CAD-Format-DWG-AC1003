@@ -172,7 +172,8 @@ sub _read {
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
     $self->{current_layer} = $self->{_io}->read_s2le();
-    $self->{unknown6} = $self->{_io}->read_bytes(16);
+    $self->{unknown6a} = $self->{_io}->read_s2le();
+    $self->{unknown6b} = $self->{_io}->read_bytes(14);
     $self->{unknown7} = $self->{_io}->read_bytes(8);
     $self->{linear_units_format} = $self->{_io}->read_s2le();
     $self->{linear_units_precision} = $self->{_io}->read_s2le();
@@ -196,7 +197,8 @@ sub _read {
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
     $self->{unknown10} = $self->{_io}->read_bytes(200);
     $self->{coordinates} = $self->{_io}->read_s2le();
-    $self->{unknown11} = $self->{_io}->read_bytes(4);
+    $self->{unknown11} = $self->{_io}->read_s2le();
+    $self->{current_linetype} = $self->{_io}->read_s2le();
     $self->{create_date_days} = $self->{_io}->read_u4le();
     $self->{create_date_ms} = $self->{_io}->read_bytes(4);
     $self->{update_date_days} = $self->{_io}->read_u4le();
@@ -446,9 +448,14 @@ sub current_layer {
     return $self->{current_layer};
 }
 
-sub unknown6 {
+sub unknown6a {
     my ($self) = @_;
-    return $self->{unknown6};
+    return $self->{unknown6a};
+}
+
+sub unknown6b {
+    my ($self) = @_;
+    return $self->{unknown6b};
 }
 
 sub unknown7 {
@@ -569,6 +576,11 @@ sub coordinates {
 sub unknown11 {
     my ($self) = @_;
     return $self->{unknown11};
+}
+
+sub current_linetype {
+    my ($self) = @_;
+    return $self->{current_linetype};
 }
 
 sub create_date_days {

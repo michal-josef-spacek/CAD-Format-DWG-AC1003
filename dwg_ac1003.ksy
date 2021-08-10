@@ -141,8 +141,11 @@ types:
       - id: current_layer
         type: s2
         doc: 0x014a-0x014b, $CLAYER
-      - id: unknown6
-        size: 16
+      - id: unknown6a
+        type: s2
+        doc: 0x014c-0x014d
+      - id: unknown6b
+        size: 14
       - id: unknown7
         size: 8
       - id: linear_units_format
@@ -214,7 +217,10 @@ types:
         type: s2
         doc: 0x0319-0x031a, $COORDS
       - id: unknown11
-        size: 4
+        type: s2
+      - id: current_linetype
+        type: s2
+        doc: ff - bylayer, fe - byblock, other index, $CELTYPE
       - id: create_date_days
         type: u4
       - id: create_date_ms
