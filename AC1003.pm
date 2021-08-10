@@ -182,7 +182,7 @@ sub _read {
     $self->{fillet_radius} = $self->{_io}->read_bytes(8);
     $self->{units_for_angles} = $self->{_io}->read_s2le();
     $self->{angular_precision} = $self->{_io}->read_s2le();
-    $self->{unknown8} = $self->{_io}->read_bytes(2);
+    $self->{text_style} = $self->{_io}->read_s2le();
     $self->{osnap} = $self->{_io}->read_s2le();
     $self->{attributes} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(102);
@@ -495,9 +495,9 @@ sub angular_precision {
     return $self->{angular_precision};
 }
 
-sub unknown8 {
+sub text_style {
     my ($self) = @_;
-    return $self->{unknown8};
+    return $self->{text_style};
 }
 
 sub osnap {

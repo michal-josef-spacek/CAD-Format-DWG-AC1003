@@ -170,8 +170,9 @@ types:
       - id: angular_precision
         type: s2
         doc: $AUPREC
-      - id: unknown8
-        size: 2
+      - id: text_style
+        type: s2
+        doc: 0x018e-0x018f, $TEXTSTYLE (index)
       - id: osnap
         enum: osnap_modes
         type: s2
