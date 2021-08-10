@@ -216,6 +216,9 @@ types:
       - id: point_size
         size: 8
         doc: $PDSIZE
+      - id: polyline_width
+        size: 8
+        doc: $PLINEWID
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color

@@ -190,6 +190,7 @@ sub _read {
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
     $self->{point_size} = $self->{_io}->read_bytes(8);
+    $self->{polyline_width} = $self->{_io}->read_bytes(8);
 }
 
 sub magic {
@@ -545,6 +546,11 @@ sub point_mode {
 sub point_size {
     my ($self) = @_;
     return $self->{point_size};
+}
+
+sub polyline_width {
+    my ($self) = @_;
+    return $self->{polyline_width};
 }
 
 1;
