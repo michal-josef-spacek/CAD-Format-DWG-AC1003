@@ -177,7 +177,10 @@ types:
         type: s2
         doc: 0x0190-0x0191
       - id: unknown12
-        size: 167
+        size: 159
+      - id: thickness
+        size: 8
+        doc: $THICKNESS
       - id: view_point_x
         size: 8
         doc: 0x0239-0x0241, $VIEWDIR/10
