@@ -190,7 +190,16 @@ sub _read {
     $self->{attributes} = $self->{_io}->read_s2le();
     $self->{menu} = Encode::decode("ASCII", $self->{_io}->read_bytes(15));
     $self->{dim_scale} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(79);
+    $self->{dim_arrowhead_size} = $self->{_io}->read_bytes(8);
+    $self->{dim_ex0} = $self->{_io}->read_bytes(8);
+    $self->{dim_dli} = $self->{_io}->read_bytes(8);
+    $self->{dim_rnd} = $self->{_io}->read_bytes(8);
+    $self->{dim_dle} = $self->{_io}->read_bytes(8);
+    $self->{dim_exe} = $self->{_io}->read_bytes(8);
+    $self->{dim_tp} = $self->{_io}->read_bytes(8);
+    $self->{dim_tm} = $self->{_io}->read_bytes(8);
+    $self->{dim_txt} = $self->{_io}->read_bytes(8);
+    $self->{unknown8} = $self->{_io}->read_bytes(7);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -534,6 +543,51 @@ sub menu {
 sub dim_scale {
     my ($self) = @_;
     return $self->{dim_scale};
+}
+
+sub dim_arrowhead_size {
+    my ($self) = @_;
+    return $self->{dim_arrowhead_size};
+}
+
+sub dim_ex0 {
+    my ($self) = @_;
+    return $self->{dim_ex0};
+}
+
+sub dim_dli {
+    my ($self) = @_;
+    return $self->{dim_dli};
+}
+
+sub dim_rnd {
+    my ($self) = @_;
+    return $self->{dim_rnd};
+}
+
+sub dim_dle {
+    my ($self) = @_;
+    return $self->{dim_dle};
+}
+
+sub dim_exe {
+    my ($self) = @_;
+    return $self->{dim_exe};
+}
+
+sub dim_tp {
+    my ($self) = @_;
+    return $self->{dim_tp};
+}
+
+sub dim_tm {
+    my ($self) = @_;
+    return $self->{dim_tm};
+}
+
+sub dim_txt {
+    my ($self) = @_;
+    return $self->{dim_txt};
 }
 
 sub unknown8 {

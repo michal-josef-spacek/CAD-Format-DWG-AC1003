@@ -194,8 +194,36 @@ types:
         doc: $MENU
       - id: dim_scale
         size: 8
+        doc: $DIMSCALE
+      - id: dim_arrowhead_size
+        size: 8
+        doc: $DIMASZ
+      - id: dim_ex0
+        size: 8
+        doc: $DIMEXO
+      - id: dim_dli
+        size: 8
+        doc: $DIMDLI
+      - id: dim_rnd
+        size: 8
+        doc: $DIMRND
+      - id: dim_dle
+        size: 8
+        doc: $DIMDLE
+      - id: dim_exe
+        size: 8
+        doc: $DIMEXE
+      - id: dim_tp
+        size: 8
+        doc: $DIMTP
+      - id: dim_tm
+        size: 8
+        doc: $DIMTM
+      - id: dim_txt
+        size: 8
+        doc: $DIMTXT
       - id: unknown8
-        size: 79
+        size: 7
       - id: limits_check
         enum: limits_check
         type: s2
