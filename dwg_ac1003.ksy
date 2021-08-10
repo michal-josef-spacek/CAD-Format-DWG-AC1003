@@ -146,7 +146,7 @@ types:
         enum: unit_types
         type: s2
         doc: $LUNITS
-      - id: display_precision
+      - id: linear_units_precision
         type: s2
         doc: $LUPREC
       - id: axis

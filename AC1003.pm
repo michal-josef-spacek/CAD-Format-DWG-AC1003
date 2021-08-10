@@ -163,7 +163,7 @@ sub _read {
     $self->{unknown8} = $self->{_io}->read_bytes(18);
     $self->{unknown9} = $self->{_io}->read_bytes(8);
     $self->{linear_units_format} = $self->{_io}->read_s2le();
-    $self->{display_precision} = $self->{_io}->read_s2le();
+    $self->{linear_units_precision} = $self->{_io}->read_s2le();
     $self->{axis} = $self->{_io}->read_s2le();
     $self->{axis_value_x} = $self->{_io}->read_bytes(8);
     $self->{axis_value_y} = $self->{_io}->read_bytes(8);
@@ -413,9 +413,9 @@ sub linear_units_format {
     return $self->{linear_units_format};
 }
 
-sub display_precision {
+sub linear_units_precision {
     my ($self) = @_;
-    return $self->{display_precision};
+    return $self->{linear_units_precision};
 }
 
 sub axis {
