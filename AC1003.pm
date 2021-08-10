@@ -197,6 +197,11 @@ sub _read {
     $self->{point_mode} = $self->{_io}->read_s2le();
     $self->{point_size} = $self->{_io}->read_bytes(8);
     $self->{polyline_width} = $self->{_io}->read_bytes(8);
+    $self->{user_integer_1} = $self->{_io}->read_s2le();
+    $self->{user_integer_2} = $self->{_io}->read_s2le();
+    $self->{user_integer_3} = $self->{_io}->read_s2le();
+    $self->{user_integer_4} = $self->{_io}->read_s2le();
+    $self->{user_integer_5} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -567,6 +572,31 @@ sub point_size {
 sub polyline_width {
     my ($self) = @_;
     return $self->{polyline_width};
+}
+
+sub user_integer_1 {
+    my ($self) = @_;
+    return $self->{user_integer_1};
+}
+
+sub user_integer_2 {
+    my ($self) = @_;
+    return $self->{user_integer_2};
+}
+
+sub user_integer_3 {
+    my ($self) = @_;
+    return $self->{user_integer_3};
+}
+
+sub user_integer_4 {
+    my ($self) = @_;
+    return $self->{user_integer_4};
+}
+
+sub user_integer_5 {
+    my ($self) = @_;
+    return $self->{user_integer_5};
 }
 
 1;

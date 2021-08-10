@@ -225,6 +225,21 @@ types:
       - id: polyline_width
         size: 8
         doc: $PLINEWID
+      - id: user_integer_1
+        type: s2
+        doc: 0x035f-0x0360, $USERI1
+      - id: user_integer_2
+        type: s2
+        doc: 0x0361-0x0362, $USERI2
+      - id: user_integer_3
+        type: s2
+        doc: 0x0363-0x0364, $USERI3
+      - id: user_integer_4
+        type: s2
+        doc: 0x0365-0x0366, $USERI4
+      - id: user_integer_5
+        type: s2
+        doc: 0x0367-0x0368, $USERI5
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color
