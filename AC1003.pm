@@ -195,7 +195,19 @@ sub _read {
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
     $self->{unknown12} = $self->{_io}->read_bytes(200);
     $self->{coordinates} = $self->{_io}->read_s2le();
-    $self->{unknown13} = $self->{_io}->read_bytes(56);
+    $self->{unknown13} = $self->{_io}->read_bytes(4);
+    $self->{create_date_days} = $self->{_io}->read_u4le();
+    $self->{create_date_ms} = $self->{_io}->read_bytes(4);
+    $self->{update_date_days} = $self->{_io}->read_u4le();
+    $self->{update_date_ms} = $self->{_io}->read_bytes(4);
+    $self->{total_editing_time_days} = $self->{_io}->read_u4le();
+    $self->{total_editing_time_ms} = $self->{_io}->read_bytes(4);
+    $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
+    $self->{user_elapsed_times_ms} = $self->{_io}->read_bytes(4);
+    $self->{user_timer} = $self->{_io}->read_s2le();
+    $self->{unknown14} = $self->{_io}->read_s2le();
+    $self->{unknown15} = $self->{_io}->read_bytes(8);
+    $self->{unknown16} = $self->{_io}->read_bytes(8);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
@@ -551,6 +563,66 @@ sub coordinates {
 sub unknown13 {
     my ($self) = @_;
     return $self->{unknown13};
+}
+
+sub create_date_days {
+    my ($self) = @_;
+    return $self->{create_date_days};
+}
+
+sub create_date_ms {
+    my ($self) = @_;
+    return $self->{create_date_ms};
+}
+
+sub update_date_days {
+    my ($self) = @_;
+    return $self->{update_date_days};
+}
+
+sub update_date_ms {
+    my ($self) = @_;
+    return $self->{update_date_ms};
+}
+
+sub total_editing_time_days {
+    my ($self) = @_;
+    return $self->{total_editing_time_days};
+}
+
+sub total_editing_time_ms {
+    my ($self) = @_;
+    return $self->{total_editing_time_ms};
+}
+
+sub user_elapsed_timer_days {
+    my ($self) = @_;
+    return $self->{user_elapsed_timer_days};
+}
+
+sub user_elapsed_times_ms {
+    my ($self) = @_;
+    return $self->{user_elapsed_times_ms};
+}
+
+sub user_timer {
+    my ($self) = @_;
+    return $self->{user_timer};
+}
+
+sub unknown14 {
+    my ($self) = @_;
+    return $self->{unknown14};
+}
+
+sub unknown15 {
+    my ($self) = @_;
+    return $self->{unknown15};
+}
+
+sub unknown16 {
+    my ($self) = @_;
+    return $self->{unknown16};
 }
 
 sub angle_base {

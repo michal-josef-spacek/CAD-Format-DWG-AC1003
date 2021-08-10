@@ -210,7 +210,38 @@ types:
         type: s2
         doc: 0x0319-0x031a, $COORDS
       - id: unknown13
-        size: 56
+        size: 4
+      - id: create_date_days
+        type: u4
+      - id: create_date_ms
+        size: 4
+        doc: TODO ?
+      - id: update_date_days
+        type: u4
+      - id: update_date_ms
+        size: 4
+        doc: TODO ?
+      - id: total_editing_time_days
+        type: u4
+        doc: Part of $TDINDWG
+      - id: total_editing_time_ms
+        size: 4
+        doc: TODO ? Part of $TDINDWG
+      - id: user_elapsed_timer_days
+        type: u4
+        doc: Part of $TDUSRTIMER
+      - id: user_elapsed_times_ms
+        size: 4
+        doc: TODO ? Part of $TDUSRTIMER
+      - id: user_timer
+        type: s2
+        doc: 0x033f-0x0340, $USRTIMER
+      - id: unknown14
+        type: s2
+      - id: unknown15
+        size: 8
+      - id: unknown16
+        size: 8
       - id: angle_base
         size: 8
         doc: 0x0353-0x035a, $ANGBASE
