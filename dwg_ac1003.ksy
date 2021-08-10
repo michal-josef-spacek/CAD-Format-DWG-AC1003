@@ -182,6 +182,7 @@ types:
         size: 8
         doc: 0x0353-0x035a, $ANGBASE
       - id: angle_direction
+        enum: angle_direction
         type: s2
         doc: 0x035b-0x035c, $ANGDIR
 ##      - id: actual_layer
@@ -458,3 +459,6 @@ enums:
     2: gradians
     3: radians
     4: surveyor_s_units
+  angle_direction:
+    0: counterclockwise
+    1: clockwise
