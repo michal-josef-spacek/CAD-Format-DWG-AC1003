@@ -212,13 +212,13 @@ sub _read {
     $self->{unknown11} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
     $self->{create_date_days} = $self->{_io}->read_u4le();
-    $self->{create_date_ms} = $self->{_io}->read_bytes(4);
+    $self->{create_date_ms} = $self->{_io}->read_u4le();
     $self->{update_date_days} = $self->{_io}->read_u4le();
-    $self->{update_date_ms} = $self->{_io}->read_bytes(4);
+    $self->{update_date_ms} = $self->{_io}->read_u4le();
     $self->{total_editing_time_days} = $self->{_io}->read_u4le();
-    $self->{total_editing_time_ms} = $self->{_io}->read_bytes(4);
+    $self->{total_editing_time_ms} = $self->{_io}->read_u4le();
     $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
-    $self->{user_elapsed_times_ms} = $self->{_io}->read_bytes(4);
+    $self->{user_elapsed_times_ms} = $self->{_io}->read_u4le();
     $self->{user_timer} = $self->{_io}->read_s2le();
     $self->{unknown12} = $self->{_io}->read_s2le();
     $self->{unknown13} = $self->{_io}->read_bytes(8);

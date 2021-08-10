@@ -258,25 +258,26 @@ types:
         doc: ff - bylayer, fe - byblock, other index, $CELTYPE
       - id: create_date_days
         type: u4
+        doc: part of $TDCREATE
       - id: create_date_ms
-        size: 4
-        doc: TODO ?
+        type: u4
+        doc: part of $TDCREATE, TODO decode?
       - id: update_date_days
         type: u4
       - id: update_date_ms
-        size: 4
-        doc: TODO ?
+        type: u4
+        doc: TODO decode?
       - id: total_editing_time_days
         type: u4
         doc: Part of $TDINDWG
       - id: total_editing_time_ms
-        size: 4
+        type: u4
         doc: TODO ? Part of $TDINDWG
       - id: user_elapsed_timer_days
         type: u4
         doc: Part of $TDUSRTIMER
       - id: user_elapsed_times_ms
-        size: 4
+        type: u4
         doc: TODO ? Part of $TDUSRTIMER
       - id: user_timer
         type: s2
