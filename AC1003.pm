@@ -183,6 +183,7 @@ sub _read {
     $self->{unknown11} = $self->{_io}->read_bytes(258);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
+    $self->{point_mode} = $self->{_io}->read_s2le();
 }
 
 sub magic {
@@ -518,6 +519,11 @@ sub angle_base {
 sub angle_direction {
     my ($self) = @_;
     return $self->{angle_direction};
+}
+
+sub point_mode {
+    my ($self) = @_;
+    return $self->{point_mode};
 }
 
 1;

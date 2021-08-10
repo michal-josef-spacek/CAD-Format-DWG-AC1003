@@ -204,6 +204,9 @@ types:
         enum: angle_direction
         type: s2
         doc: 0x035b-0x035c, $ANGDIR
+      - id: point_mode
+        type: s2
+        doc: 0x035d-0x035e, $PDMODE
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color
