@@ -202,7 +202,13 @@ types:
         size: 8
         doc: $VIEWDIR/30
       - id: unknown12
-        size: 258
+        size: 200
+      - id: coordinates
+        enum: coordinates
+        type: s2
+        doc: 0x0319-0x031a, $COORDS
+      - id: unknown13
+        size: 56
       - id: angle_base
         size: 8
         doc: 0x0353-0x035a, $ANGBASE
@@ -499,3 +505,7 @@ enums:
   limits_check:
     0: objects_can_outside_grid
     1: objects_cannot_outside_grid
+  coordinates:
+    0: absolute_coordinates
+    1: absolute_coordinates_realtime
+    2: relative_polar_coordinates

@@ -18,6 +18,10 @@ sub from_file {
     return new($class, IO::KaitaiStruct::Stream->new($fd));
 }
 
+our $COORDINATES_ABSOLUTE_COORDINATES = 0;
+our $COORDINATES_ABSOLUTE_COORDINATES_REALTIME = 1;
+our $COORDINATES_RELATIVE_POLAR_COORDINATES = 2;
+
 our $ENTITIES_FOO = -2;
 our $ENTITIES_TMP = -1;
 our $ENTITIES_LINE = 1;
@@ -185,7 +189,9 @@ sub _read {
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown12} = $self->{_io}->read_bytes(258);
+    $self->{unknown12} = $self->{_io}->read_bytes(200);
+    $self->{coordinates} = $self->{_io}->read_s2le();
+    $self->{unknown13} = $self->{_io}->read_bytes(56);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
@@ -526,6 +532,16 @@ sub view_point_z {
 sub unknown12 {
     my ($self) = @_;
     return $self->{unknown12};
+}
+
+sub coordinates {
+    my ($self) = @_;
+    return $self->{coordinates};
+}
+
+sub unknown13 {
+    my ($self) = @_;
+    return $self->{unknown13};
 }
 
 sub angle_base {
