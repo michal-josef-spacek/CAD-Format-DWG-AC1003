@@ -177,7 +177,16 @@ types:
         type: s2
         doc: 0x0190-0x0191
       - id: unknown12
-        size: 449
+        size: 167
+      - id: view_point_x
+        size: 8
+        doc: 0x0239-0x0241
+      - id: view_point_y
+        size: 8
+      - id: view_point_z
+        size: 8
+      - id: unknown13
+        size: 258
       - id: angle_base
         size: 8
         doc: 0x0353-0x035a, $ANGBASE

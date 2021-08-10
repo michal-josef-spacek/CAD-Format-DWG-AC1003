@@ -173,7 +173,11 @@ sub _read {
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
-    $self->{unknown12} = $self->{_io}->read_bytes(449);
+    $self->{unknown12} = $self->{_io}->read_bytes(167);
+    $self->{view_point_x} = $self->{_io}->read_bytes(8);
+    $self->{view_point_y} = $self->{_io}->read_bytes(8);
+    $self->{view_point_z} = $self->{_io}->read_bytes(8);
+    $self->{unknown13} = $self->{_io}->read_bytes(258);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
 }
@@ -466,6 +470,26 @@ sub osnap {
 sub unknown12 {
     my ($self) = @_;
     return $self->{unknown12};
+}
+
+sub view_point_x {
+    my ($self) = @_;
+    return $self->{view_point_x};
+}
+
+sub view_point_y {
+    my ($self) = @_;
+    return $self->{view_point_y};
+}
+
+sub view_point_z {
+    my ($self) = @_;
+    return $self->{view_point_z};
+}
+
+sub unknown13 {
+    my ($self) = @_;
+    return $self->{unknown13};
 }
 
 sub angle_base {
