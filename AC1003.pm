@@ -139,7 +139,7 @@ sub _read {
     $self->{limits_max_y} = $self->{_io}->read_bytes(8);
     $self->{view_ctrl_x} = $self->{_io}->read_bytes(8);
     $self->{view_ctrl_y} = $self->{_io}->read_bytes(8);
-    $self->{unknown7} = $self->{_io}->read_bytes(8);
+    $self->{unknown5} = $self->{_io}->read_bytes(8);
     $self->{view_size} = $self->{_io}->read_bytes(8);
     $self->{snap} = $self->{_io}->read_s2le();
     $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
@@ -160,8 +160,8 @@ sub _read {
     $self->{linetype_scale} = $self->{_io}->read_bytes(8);
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(18);
-    $self->{unknown9} = $self->{_io}->read_bytes(8);
+    $self->{unknown6} = $self->{_io}->read_bytes(18);
+    $self->{unknown7} = $self->{_io}->read_bytes(8);
     $self->{linear_units_format} = $self->{_io}->read_s2le();
     $self->{linear_units_precision} = $self->{_io}->read_s2le();
     $self->{axis} = $self->{_io}->read_s2le();
@@ -171,15 +171,16 @@ sub _read {
     $self->{fillet_radius} = $self->{_io}->read_bytes(8);
     $self->{units_for_angles} = $self->{_io}->read_s2le();
     $self->{angular_precision} = $self->{_io}->read_s2le();
-    $self->{unknown11} = $self->{_io}->read_bytes(2);
+    $self->{unknown8} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
-    $self->{unknown12} = $self->{_io}->read_bytes(151);
+    $self->{unknown9} = $self->{_io}->read_s2le();
+    $self->{unknown10} = $self->{_io}->read_bytes(149);
     $self->{elevation} = $self->{_io}->read_bytes(8);
     $self->{thickness} = $self->{_io}->read_bytes(8);
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown13} = $self->{_io}->read_bytes(258);
+    $self->{unknown11} = $self->{_io}->read_bytes(258);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
 }
@@ -299,9 +300,9 @@ sub view_ctrl_y {
     return $self->{view_ctrl_y};
 }
 
-sub unknown7 {
+sub unknown5 {
     my ($self) = @_;
-    return $self->{unknown7};
+    return $self->{unknown5};
 }
 
 sub view_size {
@@ -404,14 +405,14 @@ sub trace_width {
     return $self->{trace_width};
 }
 
-sub unknown8 {
+sub unknown6 {
     my ($self) = @_;
-    return $self->{unknown8};
+    return $self->{unknown6};
 }
 
-sub unknown9 {
+sub unknown7 {
     my ($self) = @_;
-    return $self->{unknown9};
+    return $self->{unknown7};
 }
 
 sub linear_units_format {
@@ -459,9 +460,9 @@ sub angular_precision {
     return $self->{angular_precision};
 }
 
-sub unknown11 {
+sub unknown8 {
     my ($self) = @_;
-    return $self->{unknown11};
+    return $self->{unknown8};
 }
 
 sub osnap {
@@ -469,9 +470,14 @@ sub osnap {
     return $self->{osnap};
 }
 
-sub unknown12 {
+sub unknown9 {
     my ($self) = @_;
-    return $self->{unknown12};
+    return $self->{unknown9};
+}
+
+sub unknown10 {
+    my ($self) = @_;
+    return $self->{unknown10};
 }
 
 sub elevation {
@@ -499,9 +505,9 @@ sub view_point_z {
     return $self->{view_point_z};
 }
 
-sub unknown13 {
+sub unknown11 {
     my ($self) = @_;
-    return $self->{unknown13};
+    return $self->{unknown11};
 }
 
 sub angle_base {

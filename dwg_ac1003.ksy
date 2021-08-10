@@ -80,7 +80,7 @@ types:
       - id: view_ctrl_y
         size: 8
         doc: 0x00d0-0x00d7
-      - id: unknown7
+      - id: unknown5
         size: 8
         doc: 0x00d8-0x00da
       - id: view_size
@@ -138,9 +138,9 @@ types:
       - id: trace_width
         size: 8
         doc: 0x0142-0x0149
-      - id: unknown8
+      - id: unknown6
         size: 18
-      - id: unknown9
+      - id: unknown7
         size: 8
       - id: linear_units_format
         enum: unit_types
@@ -170,14 +170,16 @@ types:
       - id: angular_precision
         type: s2
         doc: $AUPREC
-      - id: unknown11
+      - id: unknown8
         size: 2
       - id: osnap
         enum: osnap_modes
         type: s2
         doc: 0x0190-0x0191
-      - id: unknown12
-        size: 151
+      - id: unknown9
+        type: s2
+      - id: unknown10
+        size: 149
       - id: elevation
         size: 8
         doc: $ELEVATION
@@ -193,7 +195,7 @@ types:
       - id: view_point_z
         size: 8
         doc: $VIEWDIR/30
-      - id: unknown13
+      - id: unknown11
         size: 258
       - id: angle_base
         size: 8
