@@ -177,7 +177,10 @@ types:
         type: s2
         doc: 0x0190-0x0191
       - id: unknown12
-        size: 159
+        size: 151
+      - id: elevation
+        size: 8
+        doc: $ELEVATION
       - id: thickness
         size: 8
         doc: $THICKNESS

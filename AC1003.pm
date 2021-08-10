@@ -173,7 +173,8 @@ sub _read {
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_bytes(2);
     $self->{osnap} = $self->{_io}->read_s2le();
-    $self->{unknown12} = $self->{_io}->read_bytes(159);
+    $self->{unknown12} = $self->{_io}->read_bytes(151);
+    $self->{elevation} = $self->{_io}->read_bytes(8);
     $self->{thickness} = $self->{_io}->read_bytes(8);
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
@@ -471,6 +472,11 @@ sub osnap {
 sub unknown12 {
     my ($self) = @_;
     return $self->{unknown12};
+}
+
+sub elevation {
+    my ($self) = @_;
+    return $self->{elevation};
 }
 
 sub thickness {
