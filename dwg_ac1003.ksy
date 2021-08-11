@@ -303,24 +303,23 @@ types:
         doc: part of $TDCREATE
       - id: create_date_ms
         type: u4
-        doc: part of $TDCREATE, TODO decode?
+        doc: part of $TDCREATE
       - id: update_date_days
         type: u4
       - id: update_date_ms
         type: u4
-        doc: TODO decode?
       - id: total_editing_time_days
         type: u4
         doc: Part of $TDINDWG
       - id: total_editing_time_ms
         type: u4
-        doc: TODO ? Part of $TDINDWG
+        doc: Part of $TDINDWG
       - id: user_elapsed_timer_days
         type: u4
         doc: Part of $TDUSRTIMER
       - id: user_elapsed_times_ms
         type: u4
-        doc: TODO ? Part of $TDUSRTIMER
+        doc: Part of $TDUSRTIMER
       - id: user_timer
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
@@ -376,14 +375,6 @@ types:
       - id: user_real_5
         size: 8
         doc: $USERR5
-##      - id: actual_layer
-##        type: s2
-##      - id: actual_color
-##        type: s2
-##      - id: layers
-##        type: s2
-##        repeat: expr
-##        repeat-expr: 127
     instances:
       create_date:
         value: create_date_days + (create_date_ms / 86400000.0)
