@@ -80,7 +80,7 @@ types:
       - id: view_ctrl_y
         size: 8
         doc: 0x00d0-0x00d7
-      - id: unknown5
+      - id: view_ctrl_z
         size: 8
         doc: 0x00d8-0x00da
       - id: view_size

@@ -151,7 +151,7 @@ sub _read {
     $self->{limits_max_y} = $self->{_io}->read_bytes(8);
     $self->{view_ctrl_x} = $self->{_io}->read_bytes(8);
     $self->{view_ctrl_y} = $self->{_io}->read_bytes(8);
-    $self->{unknown5} = $self->{_io}->read_bytes(8);
+    $self->{view_ctrl_z} = $self->{_io}->read_bytes(8);
     $self->{view_size} = $self->{_io}->read_bytes(8);
     $self->{snap} = $self->{_io}->read_s2le();
     $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
@@ -364,9 +364,9 @@ sub view_ctrl_y {
     return $self->{view_ctrl_y};
 }
 
-sub unknown5 {
+sub view_ctrl_z {
     my ($self) = @_;
-    return $self->{unknown5};
+    return $self->{view_ctrl_z};
 }
 
 sub view_size {
