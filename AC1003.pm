@@ -207,7 +207,7 @@ sub _read {
     $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_minimum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_text_height} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(8);
+    $self->{dim_center_mark_control} = $self->{_io}->read_bytes(8);
     $self->{unknown9} = $self->{_io}->read_bytes(15);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(45);
@@ -631,9 +631,9 @@ sub dim_text_height {
     return $self->{dim_text_height};
 }
 
-sub unknown8 {
+sub dim_center_mark_control {
     my ($self) = @_;
-    return $self->{unknown8};
+    return $self->{dim_center_mark_control};
 }
 
 sub unknown9 {

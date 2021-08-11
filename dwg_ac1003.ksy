@@ -212,12 +212,13 @@ types:
         doc: 0x01cb-0x01d2, $DIMTP
       - id: dim_minimum_tolerance_limit
         size: 8
-        doc: 0x01d2-0x01d9, $DIMTM
+        doc: 0x01d3-0x01da, $DIMTM
       - id: dim_text_height
         size: 8
-        doc: $DIMTXT
-      - id: unknown8
+        doc: 0x01db-0x01e2, $DIMTXT
+      - id: dim_center_mark_control
         size: 8
+        doc: 0x01e3-0x01ea, $DIMCEN
       - id: unknown9
         size: 15
       - id: limits_check
