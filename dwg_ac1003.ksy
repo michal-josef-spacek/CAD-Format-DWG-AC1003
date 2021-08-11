@@ -225,6 +225,9 @@ types:
       - id: dim_tolerances
         type: s1
         doc: 0x01f3, $DIMTOL
+      - id: dim_limits_default_text
+        type: s1
+        doc: 0x01f4, $DIMLIM
       - id: unknown9
         size: 5
       - id: limits_check
