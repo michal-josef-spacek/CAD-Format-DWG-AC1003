@@ -327,6 +327,12 @@ types:
 ##        type: s2
 ##        repeat: expr
 ##        repeat-expr: 127
+    instances:
+      create_date:
+        value: create_date_days + (create_date_ms / 86400000.0)
+      update_date:
+        value: update_date_days + (update_date_ms / 86400000.0)
+      ## TODO
 ##  entity:
 ##    seq:
 ##      - id: entity_type

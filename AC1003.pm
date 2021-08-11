@@ -235,6 +235,20 @@ sub _read {
     $self->{user_integer_5} = $self->{_io}->read_s2le();
 }
 
+sub create_date {
+    my ($self) = @_;
+    return $self->{create_date} if ($self->{create_date});
+    $self->{create_date} = ($self->create_date_days() + ($self->create_date_ms() / 86400000.0));
+    return $self->{create_date};
+}
+
+sub update_date {
+    my ($self) = @_;
+    return $self->{update_date} if ($self->{update_date});
+    $self->{update_date} = ($self->update_date_days() + ($self->update_date_ms() / 86400000.0));
+    return $self->{update_date};
+}
+
 sub magic {
     my ($self) = @_;
     return $self->{magic};
