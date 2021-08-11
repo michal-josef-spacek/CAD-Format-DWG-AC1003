@@ -207,9 +207,6 @@ types:
       - id: dim_extension_line_extend
         size: 8
         doc: $DIMEXE
-      - id: dim_dle
-        size: 8
-        doc: $DIMDLE
       - id: dim_tp
         size: 8
         doc: $DIMTP
@@ -220,7 +217,7 @@ types:
         size: 8
         doc: $DIMTXT
       - id: unknown8
-        size: 15
+        size: 23
       - id: limits_check
         enum: limits_check
         type: s2
@@ -283,8 +280,11 @@ types:
       - id: dim_rounding
         size: 8
         doc: $DIMRND
+      - id: dim_extension_line_extend2
+        size: 8
+        doc: $DIMDLE
       - id: unknown10
-        size: 43
+        size: 35
       - id: coordinates
         enum: coordinates
         type: s2

@@ -194,11 +194,10 @@ sub _read {
     $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
     $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend} = $self->{_io}->read_bytes(8);
-    $self->{dim_dle} = $self->{_io}->read_bytes(8);
     $self->{dim_tp} = $self->{_io}->read_bytes(8);
     $self->{dim_tm} = $self->{_io}->read_bytes(8);
     $self->{dim_txt} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(15);
+    $self->{unknown8} = $self->{_io}->read_bytes(23);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -226,7 +225,8 @@ sub _read {
     $self->{unknown10r} = $self->{_io}->read_bytes(8);
     $self->{unknown10s} = $self->{_io}->read_bytes(5);
     $self->{dim_rounding} = $self->{_io}->read_bytes(8);
-    $self->{unknown10} = $self->{_io}->read_bytes(43);
+    $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
+    $self->{unknown10} = $self->{_io}->read_bytes(35);
     $self->{coordinates} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
@@ -603,11 +603,6 @@ sub dim_extension_line_extend {
     return $self->{dim_extension_line_extend};
 }
 
-sub dim_dle {
-    my ($self) = @_;
-    return $self->{dim_dle};
-}
-
 sub dim_tp {
     my ($self) = @_;
     return $self->{dim_tp};
@@ -761,6 +756,11 @@ sub unknown10s {
 sub dim_rounding {
     my ($self) = @_;
     return $self->{dim_rounding};
+}
+
+sub dim_extension_line_extend2 {
+    my ($self) = @_;
+    return $self->{dim_extension_line_extend2};
 }
 
 sub unknown10 {
