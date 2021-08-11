@@ -204,7 +204,7 @@ sub _read {
     $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
     $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend} = $self->{_io}->read_bytes(8);
-    $self->{dim_tp} = $self->{_io}->read_bytes(8);
+    $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_tm} = $self->{_io}->read_bytes(8);
     $self->{dim_txt} = $self->{_io}->read_bytes(8);
     $self->{unknown8} = $self->{_io}->read_bytes(8);
@@ -616,9 +616,9 @@ sub dim_extension_line_extend {
     return $self->{dim_extension_line_extend};
 }
 
-sub dim_tp {
+sub dim_maximum_tolerance_limit {
     my ($self) = @_;
-    return $self->{dim_tp};
+    return $self->{dim_maximum_tolerance_limit};
 }
 
 sub dim_tm {

@@ -207,9 +207,9 @@ types:
       - id: dim_extension_line_extend
         size: 8
         doc: $DIMEXE
-      - id: dim_tp
+      - id: dim_maximum_tolerance_limit
         size: 8
-        doc: $DIMTP
+        doc: 0x01cb-0x01d2, $DIMTP
       - id: dim_tm
         size: 8
         doc: $DIMTM
