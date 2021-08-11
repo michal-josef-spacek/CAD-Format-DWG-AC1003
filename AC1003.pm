@@ -193,13 +193,12 @@ sub _read {
     $self->{dim_arrowhead_size} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
     $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
-    $self->{dim_rnd} = $self->{_io}->read_bytes(8);
-    $self->{dim_dle} = $self->{_io}->read_bytes(8);
     $self->{dim_exe} = $self->{_io}->read_bytes(8);
+    $self->{dim_dle} = $self->{_io}->read_bytes(8);
     $self->{dim_tp} = $self->{_io}->read_bytes(8);
     $self->{dim_tm} = $self->{_io}->read_bytes(8);
     $self->{dim_txt} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(7);
+    $self->{unknown8} = $self->{_io}->read_bytes(15);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown9} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -225,7 +224,9 @@ sub _read {
     $self->{unknown10p} = $self->{_io}->read_bytes(8);
     $self->{unknown10q} = $self->{_io}->read_bytes(8);
     $self->{unknown10r} = $self->{_io}->read_bytes(8);
-    $self->{unknown10} = $self->{_io}->read_bytes(56);
+    $self->{unknown10s} = $self->{_io}->read_bytes(5);
+    $self->{dim_rounding} = $self->{_io}->read_bytes(8);
+    $self->{unknown10} = $self->{_io}->read_bytes(43);
     $self->{coordinates} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
@@ -597,19 +598,14 @@ sub dim_baseline_spacing {
     return $self->{dim_baseline_spacing};
 }
 
-sub dim_rnd {
+sub dim_exe {
     my ($self) = @_;
-    return $self->{dim_rnd};
+    return $self->{dim_exe};
 }
 
 sub dim_dle {
     my ($self) = @_;
     return $self->{dim_dle};
-}
-
-sub dim_exe {
-    my ($self) = @_;
-    return $self->{dim_exe};
 }
 
 sub dim_tp {
@@ -755,6 +751,16 @@ sub unknown10q {
 sub unknown10r {
     my ($self) = @_;
     return $self->{unknown10r};
+}
+
+sub unknown10s {
+    my ($self) = @_;
+    return $self->{unknown10s};
+}
+
+sub dim_rounding {
+    my ($self) = @_;
+    return $self->{dim_rounding};
 }
 
 sub unknown10 {

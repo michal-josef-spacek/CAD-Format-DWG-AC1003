@@ -204,15 +204,12 @@ types:
       - id: dim_baseline_spacing
         size: 8
         doc: $DIMDLI
-      - id: dim_rnd
-        size: 8
-        doc: $DIMRND
-      - id: dim_dle
-        size: 8
-        doc: $DIMDLE
       - id: dim_exe
         size: 8
         doc: $DIMEXE
+      - id: dim_dle
+        size: 8
+        doc: $DIMDLE
       - id: dim_tp
         size: 8
         doc: $DIMTP
@@ -223,7 +220,7 @@ types:
         size: 8
         doc: $DIMTXT
       - id: unknown8
-        size: 7
+        size: 15
       - id: limits_check
         enum: limits_check
         type: s2
@@ -281,8 +278,13 @@ types:
         size: 8
       - id: unknown10r
         size: 8
+      - id: unknown10s
+        size: 5
+      - id: dim_rounding
+        size: 8
+        doc: $DIMRND
       - id: unknown10
-        size: 56
+        size: 43
       - id: coordinates
         enum: coordinates
         type: s2
