@@ -204,7 +204,7 @@ types:
       - id: dim_baseline_spacing
         size: 8
         doc: $DIMDLI
-      - id: dim_exe
+      - id: dim_extension_line_extend
         size: 8
         doc: $DIMEXE
       - id: dim_dle
