@@ -245,8 +245,44 @@ types:
       - id: view_point_z
         size: 8
         doc: $VIEWDIR/30
+      - id: unknown10a
+        size: 8
+      - id: unknown10b
+        size: 8
+      - id: unknown10c
+        size: 8
+      - id: unknown10d
+        size: 8
+      - id: unknown10e
+        size: 8
+      - id: unknown10f
+        size: 8
+      - id: unknown10g
+        size: 8
+      - id: unknown10h
+        size: 8
+      - id: unknown10i
+        size: 8
+      - id: unknown10j
+        size: 8
+      - id: unknown10k
+        size: 8
+      - id: unknown10l
+        size: 8
+      - id: unknown10m
+        size: 8
+      - id: unknown10n
+        size: 8
+      - id: unknown10o
+        size: 8
+      - id: unknown10p
+        size: 8
+      - id: unknown10q
+        size: 8
+      - id: unknown10r
+        size: 8
       - id: unknown10
-        size: 200
+        size: 56
       - id: coordinates
         enum: coordinates
         type: s2

@@ -207,7 +207,25 @@ sub _read {
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown10} = $self->{_io}->read_bytes(200);
+    $self->{unknown10a} = $self->{_io}->read_bytes(8);
+    $self->{unknown10b} = $self->{_io}->read_bytes(8);
+    $self->{unknown10c} = $self->{_io}->read_bytes(8);
+    $self->{unknown10d} = $self->{_io}->read_bytes(8);
+    $self->{unknown10e} = $self->{_io}->read_bytes(8);
+    $self->{unknown10f} = $self->{_io}->read_bytes(8);
+    $self->{unknown10g} = $self->{_io}->read_bytes(8);
+    $self->{unknown10h} = $self->{_io}->read_bytes(8);
+    $self->{unknown10i} = $self->{_io}->read_bytes(8);
+    $self->{unknown10j} = $self->{_io}->read_bytes(8);
+    $self->{unknown10k} = $self->{_io}->read_bytes(8);
+    $self->{unknown10l} = $self->{_io}->read_bytes(8);
+    $self->{unknown10m} = $self->{_io}->read_bytes(8);
+    $self->{unknown10n} = $self->{_io}->read_bytes(8);
+    $self->{unknown10o} = $self->{_io}->read_bytes(8);
+    $self->{unknown10p} = $self->{_io}->read_bytes(8);
+    $self->{unknown10q} = $self->{_io}->read_bytes(8);
+    $self->{unknown10r} = $self->{_io}->read_bytes(8);
+    $self->{unknown10} = $self->{_io}->read_bytes(56);
     $self->{coordinates} = $self->{_io}->read_s2le();
     $self->{unknown11} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
@@ -647,6 +665,96 @@ sub view_point_y {
 sub view_point_z {
     my ($self) = @_;
     return $self->{view_point_z};
+}
+
+sub unknown10a {
+    my ($self) = @_;
+    return $self->{unknown10a};
+}
+
+sub unknown10b {
+    my ($self) = @_;
+    return $self->{unknown10b};
+}
+
+sub unknown10c {
+    my ($self) = @_;
+    return $self->{unknown10c};
+}
+
+sub unknown10d {
+    my ($self) = @_;
+    return $self->{unknown10d};
+}
+
+sub unknown10e {
+    my ($self) = @_;
+    return $self->{unknown10e};
+}
+
+sub unknown10f {
+    my ($self) = @_;
+    return $self->{unknown10f};
+}
+
+sub unknown10g {
+    my ($self) = @_;
+    return $self->{unknown10g};
+}
+
+sub unknown10h {
+    my ($self) = @_;
+    return $self->{unknown10h};
+}
+
+sub unknown10i {
+    my ($self) = @_;
+    return $self->{unknown10i};
+}
+
+sub unknown10j {
+    my ($self) = @_;
+    return $self->{unknown10j};
+}
+
+sub unknown10k {
+    my ($self) = @_;
+    return $self->{unknown10k};
+}
+
+sub unknown10l {
+    my ($self) = @_;
+    return $self->{unknown10l};
+}
+
+sub unknown10m {
+    my ($self) = @_;
+    return $self->{unknown10m};
+}
+
+sub unknown10n {
+    my ($self) = @_;
+    return $self->{unknown10n};
+}
+
+sub unknown10o {
+    my ($self) = @_;
+    return $self->{unknown10o};
+}
+
+sub unknown10p {
+    my ($self) = @_;
+    return $self->{unknown10p};
+}
+
+sub unknown10q {
+    my ($self) = @_;
+    return $self->{unknown10q};
+}
+
+sub unknown10r {
+    my ($self) = @_;
+    return $self->{unknown10r};
 }
 
 sub unknown10 {
