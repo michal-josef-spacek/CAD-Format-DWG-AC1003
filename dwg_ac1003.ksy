@@ -319,6 +319,21 @@ types:
       - id: user_integer_5
         type: s2
         doc: 0x0367-0x0368, $USERI5
+      - id: user_real_1
+        size: 8
+        doc: $USERR1
+      - id: user_real_2
+        size: 8
+        doc: $USERR2
+      - id: user_real_3
+        size: 8
+        doc: $USERR3
+      - id: user_real_4
+        size: 8
+        doc: $USERR4
+      - id: user_real_5
+        size: 8
+        doc: $USERR5
 ##      - id: actual_layer
 ##        type: s2
 ##      - id: actual_color

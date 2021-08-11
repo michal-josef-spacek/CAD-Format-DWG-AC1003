@@ -233,6 +233,11 @@ sub _read {
     $self->{user_integer_3} = $self->{_io}->read_s2le();
     $self->{user_integer_4} = $self->{_io}->read_s2le();
     $self->{user_integer_5} = $self->{_io}->read_s2le();
+    $self->{user_real_1} = $self->{_io}->read_bytes(8);
+    $self->{user_real_2} = $self->{_io}->read_bytes(8);
+    $self->{user_real_3} = $self->{_io}->read_bytes(8);
+    $self->{user_real_4} = $self->{_io}->read_bytes(8);
+    $self->{user_real_5} = $self->{_io}->read_bytes(8);
 }
 
 sub create_date {
@@ -772,6 +777,31 @@ sub user_integer_4 {
 sub user_integer_5 {
     my ($self) = @_;
     return $self->{user_integer_5};
+}
+
+sub user_real_1 {
+    my ($self) = @_;
+    return $self->{user_real_1};
+}
+
+sub user_real_2 {
+    my ($self) = @_;
+    return $self->{user_real_2};
+}
+
+sub user_real_3 {
+    my ($self) = @_;
+    return $self->{user_real_3};
+}
+
+sub user_real_4 {
+    my ($self) = @_;
+    return $self->{user_real_4};
+}
+
+sub user_real_5 {
+    my ($self) = @_;
+    return $self->{user_real_5};
 }
 
 1;
