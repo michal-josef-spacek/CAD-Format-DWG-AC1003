@@ -219,8 +219,11 @@ types:
       - id: dim_center_mark_control
         size: 8
         doc: 0x01e3-0x01ea, $DIMCEN
+      - id: dim_oblique_stroke_size
+        size: 8
+        doc: 0x01eb-0x01f2, $DIMTSZ
       - id: unknown9
-        size: 15
+        size: 7
       - id: limits_check
         enum: limits_check
         type: s2

@@ -208,7 +208,8 @@ sub _read {
     $self->{dim_minimum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_text_height} = $self->{_io}->read_bytes(8);
     $self->{dim_center_mark_control} = $self->{_io}->read_bytes(8);
-    $self->{unknown9} = $self->{_io}->read_bytes(15);
+    $self->{dim_oblique_stroke_size} = $self->{_io}->read_bytes(8);
+    $self->{unknown9} = $self->{_io}->read_bytes(7);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -634,6 +635,11 @@ sub dim_text_height {
 sub dim_center_mark_control {
     my ($self) = @_;
     return $self->{dim_center_mark_control};
+}
+
+sub dim_oblique_stroke_size {
+    my ($self) = @_;
+    return $self->{dim_oblique_stroke_size};
 }
 
 sub unknown9 {
