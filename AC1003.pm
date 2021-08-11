@@ -206,7 +206,7 @@ sub _read {
     $self->{dim_extension_line_extend} = $self->{_io}->read_bytes(8);
     $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_minimum_tolerance_limit} = $self->{_io}->read_bytes(8);
-    $self->{dim_txt} = $self->{_io}->read_bytes(8);
+    $self->{dim_text_height} = $self->{_io}->read_bytes(8);
     $self->{unknown8} = $self->{_io}->read_bytes(8);
     $self->{unknown9} = $self->{_io}->read_bytes(15);
     $self->{limits_check} = $self->{_io}->read_s2le();
@@ -626,9 +626,9 @@ sub dim_minimum_tolerance_limit {
     return $self->{dim_minimum_tolerance_limit};
 }
 
-sub dim_txt {
+sub dim_text_height {
     my ($self) = @_;
-    return $self->{dim_txt};
+    return $self->{dim_text_height};
 }
 
 sub unknown8 {

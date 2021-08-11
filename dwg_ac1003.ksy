@@ -213,7 +213,7 @@ types:
       - id: dim_minimum_tolerance_limit
         size: 8
         doc: 0x01d2-0x01d9, $DIMTM
-      - id: dim_txt
+      - id: dim_text_height
         size: 8
         doc: $DIMTXT
       - id: unknown8
