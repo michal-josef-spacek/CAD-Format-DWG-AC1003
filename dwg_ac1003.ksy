@@ -210,7 +210,7 @@ types:
       - id: dim_maximum_tolerance_limit
         size: 8
         doc: 0x01cb-0x01d2, $DIMTP
-      - id: dim_tm
+      - id: dim_minimum_tolerance_limit
         size: 8
         doc: $DIMTM
       - id: dim_txt

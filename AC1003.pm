@@ -205,7 +205,7 @@ sub _read {
     $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend} = $self->{_io}->read_bytes(8);
     $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_bytes(8);
-    $self->{dim_tm} = $self->{_io}->read_bytes(8);
+    $self->{dim_minimum_tolerance_limit} = $self->{_io}->read_bytes(8);
     $self->{dim_txt} = $self->{_io}->read_bytes(8);
     $self->{unknown8} = $self->{_io}->read_bytes(8);
     $self->{unknown9} = $self->{_io}->read_bytes(15);
@@ -621,9 +621,9 @@ sub dim_maximum_tolerance_limit {
     return $self->{dim_maximum_tolerance_limit};
 }
 
-sub dim_tm {
+sub dim_minimum_tolerance_limit {
     my ($self) = @_;
-    return $self->{dim_tm};
+    return $self->{dim_minimum_tolerance_limit};
 }
 
 sub dim_txt {
