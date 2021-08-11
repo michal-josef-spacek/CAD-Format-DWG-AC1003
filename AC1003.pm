@@ -47,6 +47,16 @@ our $ATTRIBUTES_TRUE = 2;
 our $ANGLE_DIRECTION_COUNTERCLOCKWISE = 0;
 our $ANGLE_DIRECTION_CLOCKWISE = 1;
 
+our $CURRENT_COLOR_BYBLOCK = 0;
+our $CURRENT_COLOR_RED = 1;
+our $CURRENT_COLOR_YELLOW = 2;
+our $CURRENT_COLOR_GREEN = 3;
+our $CURRENT_COLOR_CYAN = 4;
+our $CURRENT_COLOR_BLUE = 5;
+our $CURRENT_COLOR_MAGENTA = 6;
+our $CURRENT_COLOR_WHITE = 7;
+our $CURRENT_COLOR_BYLAYER = 256;
+
 our $UNIT_TYPES_SCIENTIFIC = 1;
 our $UNIT_TYPES_DECIMAL = 2;
 our $UNIT_TYPES_ENGINEERING = 3;
@@ -229,7 +239,7 @@ sub _read {
     $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
     $self->{unknown30} = $self->{_io}->read_bytes(35);
     $self->{coordinates} = $self->{_io}->read_s2le();
-    $self->{unknown31} = $self->{_io}->read_s2le();
+    $self->{current_color} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
     $self->{create_date_days} = $self->{_io}->read_u4le();
     $self->{create_date_ms} = $self->{_io}->read_u4le();
@@ -779,9 +789,9 @@ sub coordinates {
     return $self->{coordinates};
 }
 
-sub unknown31 {
+sub current_color {
     my ($self) = @_;
-    return $self->{unknown31};
+    return $self->{current_color};
 }
 
 sub current_linetype {

@@ -291,11 +291,13 @@ types:
         enum: coordinates
         type: s2
         doc: 0x0319-0x031a, $COORDS
-      - id: unknown31
+      - id: current_color
+        enum: current_color
         type: s2
+        doc: 256d - bylayer, 0d - byblock, other index (1-255), $CECOLOR
       - id: current_linetype
         type: s2
-        doc: ff - bylayer, fe - byblock, other index, $CELTYPE
+        doc: 256d - bylayer, 255d - byblock, other index, $CELTYPE
       - id: create_date_days
         type: u4
         doc: part of $TDCREATE
@@ -663,3 +665,13 @@ enums:
     0: off
     1: normal
     2: on
+  current_color:
+    0: byblock
+    1: red
+    2: yellow
+    3: green
+    4: cyan
+    5: blue
+    6: magenta
+    7: white
+    256: bylayer

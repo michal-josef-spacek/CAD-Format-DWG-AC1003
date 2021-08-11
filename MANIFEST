@@ -27,9 +27,10 @@ t/CAD-Format-DWG-AC1003/07-header-axis.t
 t/CAD-Format-DWG-AC1003/08-header-axis_value_x.t
 t/CAD-Format-DWG-AC1003/09-header-axis_value_y.t
 t/CAD-Format-DWG-AC1003/10-header-coordinates.t
-t/CAD-Format-DWG-AC1003/11-header-current_layer.t
-t/CAD-Format-DWG-AC1003/12-header-current_linetype.t
-t/CAD-Format-DWG-AC1003/13-header-dim_arrowhead_size.t
+t/CAD-Format-DWG-AC1003/11-header-current_color.t
+t/CAD-Format-DWG-AC1003/12-header-current_layer.t
+t/CAD-Format-DWG-AC1003/13-header-current_linetype.t
+t/CAD-Format-DWG-AC1003/14-header-dim_arrowhead_size.t
 t/CAD-Format-DWG-AC1003/15-header-dim_baseline_spacing.t
 t/CAD-Format-DWG-AC1003/15-header-dim_extension_line_extend.t
 t/CAD-Format-DWG-AC1003/16-header-dim_extension_line_extend2.t
@@ -116,6 +117,10 @@ t/data/header/base/BASE_Z.DWG
 t/data/header/coordinates/C1.DWG
 t/data/header/coordinates/C2.DWG
 t/data/header/coordinates/C3.DWG
+t/data/header/current_color/CC1.DWG
+t/data/header/current_color/CC2.DWG
+t/data/header/current_color/CC3.DWG
+t/data/header/current_color/CC4.DWG
 t/data/header/current_layer/CL1.DWG
 t/data/header/current_layer/CL2.DWG
 t/data/header/current_linetype/CL1.DWG
