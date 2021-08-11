@@ -191,7 +191,7 @@ sub _read {
     $self->{menu} = Encode::decode("ASCII", $self->{_io}->read_bytes(15));
     $self->{dim_scale} = $self->{_io}->read_bytes(8);
     $self->{dim_arrowhead_size} = $self->{_io}->read_bytes(8);
-    $self->{dim_ex0} = $self->{_io}->read_bytes(8);
+    $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
     $self->{dim_dli} = $self->{_io}->read_bytes(8);
     $self->{dim_rnd} = $self->{_io}->read_bytes(8);
     $self->{dim_dle} = $self->{_io}->read_bytes(8);
@@ -564,9 +564,9 @@ sub dim_arrowhead_size {
     return $self->{dim_arrowhead_size};
 }
 
-sub dim_ex0 {
+sub dim_extension_line_offset {
     my ($self) = @_;
-    return $self->{dim_ex0};
+    return $self->{dim_extension_line_offset};
 }
 
 sub dim_dli {

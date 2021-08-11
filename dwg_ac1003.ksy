@@ -198,7 +198,7 @@ types:
       - id: dim_arrowhead_size
         size: 8
         doc: $DIMASZ
-      - id: dim_ex0
+      - id: dim_extension_line_offset
         size: 8
         doc: $DIMEXO
       - id: dim_dli
