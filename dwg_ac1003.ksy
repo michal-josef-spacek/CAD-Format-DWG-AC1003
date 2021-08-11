@@ -223,8 +223,8 @@ types:
         size: 8
         doc: 0x01eb-0x01f2, $DIMTSZ
       - id: dim_tolerances
-        type: s2
-        doc: 0x01f3-0x01f4, $DIMTOL
+        type: s1
+        doc: 0x01f3, $DIMTOL
       - id: unknown9
         size: 5
       - id: limits_check

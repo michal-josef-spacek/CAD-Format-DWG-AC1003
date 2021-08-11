@@ -209,7 +209,7 @@ sub _read {
     $self->{dim_text_height} = $self->{_io}->read_bytes(8);
     $self->{dim_center_mark_control} = $self->{_io}->read_bytes(8);
     $self->{dim_oblique_stroke_size} = $self->{_io}->read_bytes(8);
-    $self->{dim_tolerances} = $self->{_io}->read_s2le();
+    $self->{dim_tolerances} = $self->{_io}->read_s1();
     $self->{unknown9} = $self->{_io}->read_bytes(5);
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(45);
