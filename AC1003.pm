@@ -197,38 +197,39 @@ sub _read {
     $self->{dim_tp} = $self->{_io}->read_bytes(8);
     $self->{dim_tm} = $self->{_io}->read_bytes(8);
     $self->{dim_txt} = $self->{_io}->read_bytes(8);
-    $self->{unknown8} = $self->{_io}->read_bytes(23);
+    $self->{unknown8} = $self->{_io}->read_bytes(8);
+    $self->{unknown9} = $self->{_io}->read_bytes(15);
     $self->{limits_check} = $self->{_io}->read_s2le();
-    $self->{unknown9} = $self->{_io}->read_bytes(45);
+    $self->{unknown10} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
     $self->{thickness} = $self->{_io}->read_bytes(8);
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
-    $self->{unknown10a} = $self->{_io}->read_bytes(8);
-    $self->{unknown10b} = $self->{_io}->read_bytes(8);
-    $self->{unknown10c} = $self->{_io}->read_bytes(8);
-    $self->{unknown10d} = $self->{_io}->read_bytes(8);
-    $self->{unknown10e} = $self->{_io}->read_bytes(8);
-    $self->{unknown10f} = $self->{_io}->read_bytes(8);
-    $self->{unknown10g} = $self->{_io}->read_bytes(8);
-    $self->{unknown10h} = $self->{_io}->read_bytes(8);
-    $self->{unknown10i} = $self->{_io}->read_bytes(8);
-    $self->{unknown10j} = $self->{_io}->read_bytes(8);
-    $self->{unknown10k} = $self->{_io}->read_bytes(8);
-    $self->{unknown10l} = $self->{_io}->read_bytes(8);
-    $self->{unknown10m} = $self->{_io}->read_bytes(8);
-    $self->{unknown10n} = $self->{_io}->read_bytes(8);
-    $self->{unknown10o} = $self->{_io}->read_bytes(8);
-    $self->{unknown10p} = $self->{_io}->read_bytes(8);
-    $self->{unknown10q} = $self->{_io}->read_bytes(8);
-    $self->{unknown10r} = $self->{_io}->read_bytes(8);
-    $self->{unknown10s} = $self->{_io}->read_bytes(5);
+    $self->{unknown11} = $self->{_io}->read_bytes(8);
+    $self->{unknown12} = $self->{_io}->read_bytes(8);
+    $self->{unknown13} = $self->{_io}->read_bytes(8);
+    $self->{unknown14} = $self->{_io}->read_bytes(8);
+    $self->{unknown15} = $self->{_io}->read_bytes(8);
+    $self->{unknown16} = $self->{_io}->read_bytes(8);
+    $self->{unknown17} = $self->{_io}->read_bytes(8);
+    $self->{unknown18} = $self->{_io}->read_bytes(8);
+    $self->{unknown19} = $self->{_io}->read_bytes(8);
+    $self->{unknown20} = $self->{_io}->read_bytes(8);
+    $self->{unknown21} = $self->{_io}->read_bytes(8);
+    $self->{unknown22} = $self->{_io}->read_bytes(8);
+    $self->{unknown23} = $self->{_io}->read_bytes(8);
+    $self->{unknown24} = $self->{_io}->read_bytes(8);
+    $self->{unknown25} = $self->{_io}->read_bytes(8);
+    $self->{unknown26} = $self->{_io}->read_bytes(8);
+    $self->{unknown27} = $self->{_io}->read_bytes(8);
+    $self->{unknown28} = $self->{_io}->read_bytes(8);
+    $self->{unknown29} = $self->{_io}->read_bytes(5);
     $self->{dim_rounding} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
-    $self->{unknown10} = $self->{_io}->read_bytes(35);
+    $self->{unknown30} = $self->{_io}->read_bytes(35);
     $self->{coordinates} = $self->{_io}->read_s2le();
-    $self->{unknown11} = $self->{_io}->read_s2le();
+    $self->{unknown31} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
     $self->{create_date_days} = $self->{_io}->read_u4le();
     $self->{create_date_ms} = $self->{_io}->read_u4le();
@@ -239,9 +240,9 @@ sub _read {
     $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
     $self->{user_elapsed_times_ms} = $self->{_io}->read_u4le();
     $self->{user_timer} = $self->{_io}->read_s2le();
-    $self->{unknown12} = $self->{_io}->read_s2le();
-    $self->{unknown13} = $self->{_io}->read_bytes(8);
-    $self->{unknown14} = $self->{_io}->read_bytes(8);
+    $self->{unknown32} = $self->{_io}->read_s2le();
+    $self->{unknown33} = $self->{_io}->read_bytes(8);
+    $self->{unknown34} = $self->{_io}->read_bytes(8);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
@@ -623,14 +624,19 @@ sub unknown8 {
     return $self->{unknown8};
 }
 
+sub unknown9 {
+    my ($self) = @_;
+    return $self->{unknown9};
+}
+
 sub limits_check {
     my ($self) = @_;
     return $self->{limits_check};
 }
 
-sub unknown9 {
+sub unknown10 {
     my ($self) = @_;
-    return $self->{unknown9};
+    return $self->{unknown10};
 }
 
 sub elevation {
@@ -658,99 +664,99 @@ sub view_point_z {
     return $self->{view_point_z};
 }
 
-sub unknown10a {
+sub unknown11 {
     my ($self) = @_;
-    return $self->{unknown10a};
+    return $self->{unknown11};
 }
 
-sub unknown10b {
+sub unknown12 {
     my ($self) = @_;
-    return $self->{unknown10b};
+    return $self->{unknown12};
 }
 
-sub unknown10c {
+sub unknown13 {
     my ($self) = @_;
-    return $self->{unknown10c};
+    return $self->{unknown13};
 }
 
-sub unknown10d {
+sub unknown14 {
     my ($self) = @_;
-    return $self->{unknown10d};
+    return $self->{unknown14};
 }
 
-sub unknown10e {
+sub unknown15 {
     my ($self) = @_;
-    return $self->{unknown10e};
+    return $self->{unknown15};
 }
 
-sub unknown10f {
+sub unknown16 {
     my ($self) = @_;
-    return $self->{unknown10f};
+    return $self->{unknown16};
 }
 
-sub unknown10g {
+sub unknown17 {
     my ($self) = @_;
-    return $self->{unknown10g};
+    return $self->{unknown17};
 }
 
-sub unknown10h {
+sub unknown18 {
     my ($self) = @_;
-    return $self->{unknown10h};
+    return $self->{unknown18};
 }
 
-sub unknown10i {
+sub unknown19 {
     my ($self) = @_;
-    return $self->{unknown10i};
+    return $self->{unknown19};
 }
 
-sub unknown10j {
+sub unknown20 {
     my ($self) = @_;
-    return $self->{unknown10j};
+    return $self->{unknown20};
 }
 
-sub unknown10k {
+sub unknown21 {
     my ($self) = @_;
-    return $self->{unknown10k};
+    return $self->{unknown21};
 }
 
-sub unknown10l {
+sub unknown22 {
     my ($self) = @_;
-    return $self->{unknown10l};
+    return $self->{unknown22};
 }
 
-sub unknown10m {
+sub unknown23 {
     my ($self) = @_;
-    return $self->{unknown10m};
+    return $self->{unknown23};
 }
 
-sub unknown10n {
+sub unknown24 {
     my ($self) = @_;
-    return $self->{unknown10n};
+    return $self->{unknown24};
 }
 
-sub unknown10o {
+sub unknown25 {
     my ($self) = @_;
-    return $self->{unknown10o};
+    return $self->{unknown25};
 }
 
-sub unknown10p {
+sub unknown26 {
     my ($self) = @_;
-    return $self->{unknown10p};
+    return $self->{unknown26};
 }
 
-sub unknown10q {
+sub unknown27 {
     my ($self) = @_;
-    return $self->{unknown10q};
+    return $self->{unknown27};
 }
 
-sub unknown10r {
+sub unknown28 {
     my ($self) = @_;
-    return $self->{unknown10r};
+    return $self->{unknown28};
 }
 
-sub unknown10s {
+sub unknown29 {
     my ($self) = @_;
-    return $self->{unknown10s};
+    return $self->{unknown29};
 }
 
 sub dim_rounding {
@@ -763,9 +769,9 @@ sub dim_extension_line_extend2 {
     return $self->{dim_extension_line_extend2};
 }
 
-sub unknown10 {
+sub unknown30 {
     my ($self) = @_;
-    return $self->{unknown10};
+    return $self->{unknown30};
 }
 
 sub coordinates {
@@ -773,9 +779,9 @@ sub coordinates {
     return $self->{coordinates};
 }
 
-sub unknown11 {
+sub unknown31 {
     my ($self) = @_;
-    return $self->{unknown11};
+    return $self->{unknown31};
 }
 
 sub current_linetype {
@@ -828,19 +834,19 @@ sub user_timer {
     return $self->{user_timer};
 }
 
-sub unknown12 {
+sub unknown32 {
     my ($self) = @_;
-    return $self->{unknown12};
+    return $self->{unknown32};
 }
 
-sub unknown13 {
+sub unknown33 {
     my ($self) = @_;
-    return $self->{unknown13};
+    return $self->{unknown33};
 }
 
-sub unknown14 {
+sub unknown34 {
     my ($self) = @_;
-    return $self->{unknown14};
+    return $self->{unknown34};
 }
 
 sub angle_base {

@@ -217,12 +217,14 @@ types:
         size: 8
         doc: $DIMTXT
       - id: unknown8
-        size: 23
+        size: 8
+      - id: unknown9
+        size: 15
       - id: limits_check
         enum: limits_check
         type: s2
         doc: 0x01fa-0x01fb, $LIMCHECK
-      - id: unknown9
+      - id: unknown10
         size: 45
       - id: elevation
         size: 8
@@ -239,43 +241,43 @@ types:
       - id: view_point_z
         size: 8
         doc: $VIEWDIR/30
-      - id: unknown10a
+      - id: unknown11
         size: 8
-      - id: unknown10b
+      - id: unknown12
         size: 8
-      - id: unknown10c
+      - id: unknown13
         size: 8
-      - id: unknown10d
+      - id: unknown14
         size: 8
-      - id: unknown10e
+      - id: unknown15
         size: 8
-      - id: unknown10f
+      - id: unknown16
         size: 8
-      - id: unknown10g
+      - id: unknown17
         size: 8
-      - id: unknown10h
+      - id: unknown18
         size: 8
-      - id: unknown10i
+      - id: unknown19
         size: 8
-      - id: unknown10j
+      - id: unknown20
         size: 8
-      - id: unknown10k
+      - id: unknown21
         size: 8
-      - id: unknown10l
+      - id: unknown22
         size: 8
-      - id: unknown10m
+      - id: unknown23
         size: 8
-      - id: unknown10n
+      - id: unknown24
         size: 8
-      - id: unknown10o
+      - id: unknown25
         size: 8
-      - id: unknown10p
+      - id: unknown26
         size: 8
-      - id: unknown10q
+      - id: unknown27
         size: 8
-      - id: unknown10r
+      - id: unknown28
         size: 8
-      - id: unknown10s
+      - id: unknown29
         size: 5
       - id: dim_rounding
         size: 8
@@ -283,13 +285,13 @@ types:
       - id: dim_extension_line_extend2
         size: 8
         doc: $DIMDLE
-      - id: unknown10
+      - id: unknown30
         size: 35
       - id: coordinates
         enum: coordinates
         type: s2
         doc: 0x0319-0x031a, $COORDS
-      - id: unknown11
+      - id: unknown31
         type: s2
       - id: current_linetype
         type: s2
@@ -320,11 +322,11 @@ types:
       - id: user_timer
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
-      - id: unknown12
+      - id: unknown32
         type: s2
-      - id: unknown13
+      - id: unknown33
         size: 8
-      - id: unknown14
+      - id: unknown34
         size: 8
       - id: angle_base
         size: 8
