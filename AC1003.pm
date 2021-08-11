@@ -234,7 +234,9 @@ sub _read {
     $self->{unknown26} = $self->{_io}->read_bytes(8);
     $self->{unknown27} = $self->{_io}->read_bytes(8);
     $self->{unknown28} = $self->{_io}->read_bytes(8);
-    $self->{unknown29} = $self->{_io}->read_bytes(5);
+    $self->{unknown29} = $self->{_io}->read_bytes(2);
+    $self->{blip} = $self->{_io}->read_s1();
+    $self->{unknown29a} = $self->{_io}->read_bytes(2);
     $self->{dim_rounding} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
     $self->{unknown30} = $self->{_io}->read_bytes(35);
@@ -767,6 +769,16 @@ sub unknown28 {
 sub unknown29 {
     my ($self) = @_;
     return $self->{unknown29};
+}
+
+sub blip {
+    my ($self) = @_;
+    return $self->{blip};
+}
+
+sub unknown29a {
+    my ($self) = @_;
+    return $self->{unknown29a};
 }
 
 sub dim_rounding {

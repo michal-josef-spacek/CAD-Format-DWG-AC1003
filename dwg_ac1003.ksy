@@ -237,10 +237,10 @@ types:
         doc: 0x0239-0x0241, $VIEWDIR/10
       - id: view_point_y
         size: 8
-        doc: $VIEWDIR/20
+        doc: 0x0242-0x0249, $VIEWDIR/20
       - id: view_point_z
         size: 8
-        doc: $VIEWDIR/30
+        doc: 0x024a-0x0251, $VIEWDIR/30
       - id: unknown11
         size: 8
       - id: unknown12
@@ -278,10 +278,15 @@ types:
       - id: unknown28
         size: 8
       - id: unknown29
-        size: 5
+        size: 2
+      - id: blip
+        type: s1
+        doc: 0x00e3, $BLIPMODE, TODO s1 or s2?
+      - id: unknown29a
+        size: 2
       - id: dim_rounding
         size: 8
-        doc: $DIMRND
+        doc: 0x02e6-0x02ed, $DIMRND
       - id: dim_extension_line_extend2
         size: 8
         doc: $DIMDLE
