@@ -192,7 +192,7 @@ sub _read {
     $self->{dim_scale} = $self->{_io}->read_bytes(8);
     $self->{dim_arrowhead_size} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
-    $self->{dim_dli} = $self->{_io}->read_bytes(8);
+    $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
     $self->{dim_rnd} = $self->{_io}->read_bytes(8);
     $self->{dim_dle} = $self->{_io}->read_bytes(8);
     $self->{dim_exe} = $self->{_io}->read_bytes(8);
@@ -569,9 +569,9 @@ sub dim_extension_line_offset {
     return $self->{dim_extension_line_offset};
 }
 
-sub dim_dli {
+sub dim_baseline_spacing {
     my ($self) = @_;
-    return $self->{dim_dli};
+    return $self->{dim_baseline_spacing};
 }
 
 sub dim_rnd {

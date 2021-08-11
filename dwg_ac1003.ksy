@@ -201,7 +201,7 @@ types:
       - id: dim_extension_line_offset
         size: 8
         doc: $DIMEXO
-      - id: dim_dli
+      - id: dim_baseline_spacing
         size: 8
         doc: $DIMDLI
       - id: dim_rnd
