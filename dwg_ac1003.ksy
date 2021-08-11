@@ -212,7 +212,7 @@ types:
         doc: 0x01cb-0x01d2, $DIMTP
       - id: dim_minimum_tolerance_limit
         size: 8
-        doc: $DIMTM
+        doc: 0x01d2-0x01d9, $DIMTM
       - id: dim_txt
         size: 8
         doc: $DIMTXT
