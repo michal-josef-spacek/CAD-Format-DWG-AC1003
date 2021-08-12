@@ -231,8 +231,11 @@ types:
       - id: dim_text_ext_inside_line_position
         type: s1
         doc: 0x01f5, $DIMTIH
+      - id: dim_text_ext_outside_line_position
+        type: s1
+        doc: 0x01f5, $DIMTOH
       - id: unknown9
-        size: 4
+        size: 3
       - id: limits_check
         enum: limits_check
         type: s2
