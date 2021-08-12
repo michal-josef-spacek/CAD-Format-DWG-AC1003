@@ -234,8 +234,14 @@ types:
       - id: dim_text_ext_outside_line_position
         type: s1
         doc: 0x01f5, $DIMTOH
+      - id: dim_extension_line_first_suppress
+        type: s1
+        doc: 0x01f6, $DIMSE1
+      - id: dim_extension_line_second_suppress
+        type: s1
+        doc: 0x01f7, $DIMSE2
       - id: unknown9
-        size: 3
+        size: 1
       - id: limits_check
         enum: limits_check
         type: s2
