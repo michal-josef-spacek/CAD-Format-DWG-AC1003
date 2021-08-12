@@ -390,6 +390,24 @@ types:
       - id: user_real_5
         size: 8
         doc: $USERR5
+      - id: unknown35
+        size: 36
+      - id: unknown36
+        size: 8
+      - id: unknown37
+        size: 8
+      - id: unknown38
+        type: s2
+      - id: unknown39
+        size: 31
+      - id: unknown40
+        size: 63
+      - id: unknown41
+        size: 8
+      - id: unknown42
+        size: 100
+      - id: unknown43
+        size: 1
     instances:
       create_date:
         value: create_date_days + (create_date_ms / 86400000.0)

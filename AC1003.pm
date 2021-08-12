@@ -273,6 +273,15 @@ sub _read {
     $self->{user_real_3} = $self->{_io}->read_bytes(8);
     $self->{user_real_4} = $self->{_io}->read_bytes(8);
     $self->{user_real_5} = $self->{_io}->read_bytes(8);
+    $self->{unknown35} = $self->{_io}->read_bytes(36);
+    $self->{unknown36} = $self->{_io}->read_bytes(8);
+    $self->{unknown37} = $self->{_io}->read_bytes(8);
+    $self->{unknown38} = $self->{_io}->read_s2le();
+    $self->{unknown39} = $self->{_io}->read_bytes(31);
+    $self->{unknown40} = $self->{_io}->read_bytes(63);
+    $self->{unknown41} = $self->{_io}->read_bytes(8);
+    $self->{unknown42} = $self->{_io}->read_bytes(100);
+    $self->{unknown43} = $self->{_io}->read_bytes(1);
 }
 
 sub create_date {
@@ -962,6 +971,51 @@ sub user_real_4 {
 sub user_real_5 {
     my ($self) = @_;
     return $self->{user_real_5};
+}
+
+sub unknown35 {
+    my ($self) = @_;
+    return $self->{unknown35};
+}
+
+sub unknown36 {
+    my ($self) = @_;
+    return $self->{unknown36};
+}
+
+sub unknown37 {
+    my ($self) = @_;
+    return $self->{unknown37};
+}
+
+sub unknown38 {
+    my ($self) = @_;
+    return $self->{unknown38};
+}
+
+sub unknown39 {
+    my ($self) = @_;
+    return $self->{unknown39};
+}
+
+sub unknown40 {
+    my ($self) = @_;
+    return $self->{unknown40};
+}
+
+sub unknown41 {
+    my ($self) = @_;
+    return $self->{unknown41};
+}
+
+sub unknown42 {
+    my ($self) = @_;
+    return $self->{unknown42};
+}
+
+sub unknown43 {
+    my ($self) = @_;
+    return $self->{unknown43};
 }
 
 1;
