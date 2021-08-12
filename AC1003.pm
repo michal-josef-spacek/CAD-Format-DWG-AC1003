@@ -215,7 +215,7 @@ sub _read {
     $self->{dim_text_ext_outside_line_position} = $self->{_io}->read_s1();
     $self->{dim_extension_line_first_suppress} = $self->{_io}->read_s1();
     $self->{dim_extension_line_second_suppress} = $self->{_io}->read_s1();
-    $self->{unknown9} = $self->{_io}->read_bytes(1);
+    $self->{dim_text_vertical_position} = $self->{_io}->read_s1();
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_bytes(8);
@@ -687,9 +687,9 @@ sub dim_extension_line_second_suppress {
     return $self->{dim_extension_line_second_suppress};
 }
 
-sub unknown9 {
+sub dim_text_vertical_position {
     my ($self) = @_;
-    return $self->{unknown9};
+    return $self->{dim_text_vertical_position};
 }
 
 sub limits_check {
