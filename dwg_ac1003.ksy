@@ -409,9 +409,9 @@ types:
       - id: dim_alternate_units
         type: s1
         doc: 0x03a1, $DIMALT
-      - id: unknown34b
+      - id: dim_alternate_units_decimal_places
         type: s1
-        doc: 0x03a2
+        doc: 0x03a2, $DIMALTD
       - id: dim_associative
         type: s1
         doc: 0x03a3, $DIMASO

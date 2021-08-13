@@ -279,7 +279,7 @@ sub _read {
     $self->{user_real_4} = $self->{_io}->read_bytes(8);
     $self->{user_real_5} = $self->{_io}->read_bytes(8);
     $self->{dim_alternate_units} = $self->{_io}->read_s1();
-    $self->{unknown34b} = $self->{_io}->read_s1();
+    $self->{dim_alternate_units_decimal_places} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
     $self->{dim_sho} = $self->{_io}->read_s1();
     $self->{unknown35} = $self->{_io}->read_bytes(33);
@@ -1012,9 +1012,9 @@ sub dim_alternate_units {
     return $self->{dim_alternate_units};
 }
 
-sub unknown34b {
+sub dim_alternate_units_decimal_places {
     my ($self) = @_;
-    return $self->{unknown34b};
+    return $self->{dim_alternate_units_decimal_places};
 }
 
 sub dim_associative {
