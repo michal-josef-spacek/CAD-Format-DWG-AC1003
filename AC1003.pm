@@ -282,11 +282,10 @@ sub _read {
     $self->{dim_alternate_units_decimal_places} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
     $self->{dim_sho} = $self->{_io}->read_s1();
-    $self->{unknown35} = $self->{_io}->read_bytes(33);
+    $self->{unknown35} = $self->{_io}->read_bytes(32);
+    $self->{dim_alternate_units_multiplier} = $self->{_io}->read_bytes(8);
     $self->{unknown36} = $self->{_io}->read_bytes(8);
-    $self->{unknown37} = $self->{_io}->read_bytes(8);
-    $self->{unknown38} = $self->{_io}->read_s2le();
-    $self->{unknown39} = $self->{_io}->read_bytes(31);
+    $self->{unknown39} = $self->{_io}->read_bytes(34);
     $self->{unknown40} = $self->{_io}->read_bytes(63);
     $self->{unknown41} = $self->{_io}->read_bytes(8);
     $self->{unknown42} = $self->{_io}->read_bytes(100);
@@ -1032,19 +1031,14 @@ sub unknown35 {
     return $self->{unknown35};
 }
 
+sub dim_alternate_units_multiplier {
+    my ($self) = @_;
+    return $self->{dim_alternate_units_multiplier};
+}
+
 sub unknown36 {
     my ($self) = @_;
     return $self->{unknown36};
-}
-
-sub unknown37 {
-    my ($self) = @_;
-    return $self->{unknown37};
-}
-
-sub unknown38 {
-    my ($self) = @_;
-    return $self->{unknown38};
 }
 
 sub unknown39 {

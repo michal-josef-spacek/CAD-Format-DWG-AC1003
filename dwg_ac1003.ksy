@@ -419,15 +419,14 @@ types:
         type: s1
         doc: 0x03a4, $DIMSHO
       - id: unknown35
-        size: 33
+        size: 32
+      - id: dim_alternate_units_multiplier
+        size: 8
+        doc: 0x03c5-0x03cc, $DIMALTF
       - id: unknown36
         size: 8
-      - id: unknown37
-        size: 8
-      - id: unknown38
-        type: s2
       - id: unknown39
-        size: 31
+        size: 34
       - id: unknown40
         size: 63
       - id: unknown41
