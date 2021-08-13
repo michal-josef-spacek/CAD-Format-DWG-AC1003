@@ -406,9 +406,9 @@ types:
       - id: user_real_5
         size: 8
         doc: $USERR5
-      - id: unknown34a
+      - id: dim_alternate_units
         type: s1
-        doc: 0x03a1
+        doc: 0x03a1, $DIMALT
       - id: unknown34b
         type: s1
         doc: 0x03a2

@@ -278,7 +278,7 @@ sub _read {
     $self->{user_real_3} = $self->{_io}->read_bytes(8);
     $self->{user_real_4} = $self->{_io}->read_bytes(8);
     $self->{user_real_5} = $self->{_io}->read_bytes(8);
-    $self->{unknown34a} = $self->{_io}->read_s1();
+    $self->{dim_alternate_units} = $self->{_io}->read_s1();
     $self->{unknown34b} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
     $self->{dim_sho} = $self->{_io}->read_s1();
@@ -1007,9 +1007,9 @@ sub user_real_5 {
     return $self->{user_real_5};
 }
 
-sub unknown34a {
+sub dim_alternate_units {
     my ($self) = @_;
-    return $self->{unknown34a};
+    return $self->{dim_alternate_units};
 }
 
 sub unknown34b {
