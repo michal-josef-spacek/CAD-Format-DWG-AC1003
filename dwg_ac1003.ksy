@@ -315,7 +315,7 @@ types:
         doc: 0x02e6-0x02ed, $DIMRND
       - id: dim_extension_line_extend2
         size: 8
-        doc: $DIMDLE
+        doc: 0x02ee-0x02f5, $DIMDLE
       - id: unknown30
         size: 35
       - id: coordinates
@@ -406,8 +406,17 @@ types:
       - id: user_real_5
         size: 8
         doc: $USERR5
+      - id: unknown34a
+        type: s1
+        doc: 0x03a1
+      - id: unknown34b
+        type: s1
+        doc: 0x03a2
+      - id: dim_associative
+        type: s1
+        doc: 0x03a3, $DIMASO
       - id: unknown35
-        size: 36
+        size: 34
       - id: unknown36
         size: 8
       - id: unknown37
