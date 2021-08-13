@@ -304,9 +304,12 @@ types:
         size: 2
       - id: blip
         type: s1
-        doc: 0x00e3, $BLIPMODE, TODO s1 or s2?
+        doc: 0x02e3, $BLIPMODE, TODO s1 or s2?
       - id: unknown29a
-        size: 2
+        size: 1
+      - id: dim_suppression_of_zeros
+        type: s1
+        doc: 0x02e5, $DIMZIN
       - id: dim_rounding
         size: 8
         doc: 0x02e6-0x02ed, $DIMRND
