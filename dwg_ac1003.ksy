@@ -415,8 +415,11 @@ types:
       - id: dim_associative
         type: s1
         doc: 0x03a3, $DIMASO
+      - id: dim_sho
+        type: s1
+        doc: 0x03a4, $DIMSHO
       - id: unknown35
-        size: 34
+        size: 33
       - id: unknown36
         size: 8
       - id: unknown37

@@ -281,7 +281,8 @@ sub _read {
     $self->{unknown34a} = $self->{_io}->read_s1();
     $self->{unknown34b} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
-    $self->{unknown35} = $self->{_io}->read_bytes(34);
+    $self->{dim_sho} = $self->{_io}->read_s1();
+    $self->{unknown35} = $self->{_io}->read_bytes(33);
     $self->{unknown36} = $self->{_io}->read_bytes(8);
     $self->{unknown37} = $self->{_io}->read_bytes(8);
     $self->{unknown38} = $self->{_io}->read_s2le();
@@ -1019,6 +1020,11 @@ sub unknown34b {
 sub dim_associative {
     my ($self) = @_;
     return $self->{dim_associative};
+}
+
+sub dim_sho {
+    my ($self) = @_;
+    return $self->{dim_sho};
 }
 
 sub unknown35 {
