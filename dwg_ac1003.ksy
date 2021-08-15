@@ -26,6 +26,7 @@ types:
     seq:
       - id: magic
         contents: [0x41, 0x43, 0x31, 0x30, 0x30, 0x33]
+        doc: 0x0000-0x0005, $ACADVER
       - id: zeros
         size: 6
       - id: zero_one_or_three
@@ -40,10 +41,10 @@ types:
         size: 75
       - id: insertion_base_x
         size: 8
-        doc: 0x005e-0x0065
+        doc: 0x005e-0x0065, $INSBASE/10
       - id: insertion_base_y
         size: 8
-        doc: 0x0066-0x006d
+        doc: 0x0066-0x006d, $INSBASE/20
       - id: insertion_base_z
         size: 8
         doc: 0x006e-0x0075
@@ -52,22 +53,26 @@ types:
         doc: 0x0076-0x0077
       - id: drawing_first_x
         size: 8
+        doc: $EXTMIN/10
       - id: drawing_first_y
         size: 8
+        doc: $EXTMIN/20
       - id: drawing_first_z
         size: 8
       - id: drawing_second_x
         size: 8
+        doc: $EXTMAX/10
       - id: drawing_second_y
         size: 8
+        doc: $EXTMAX/20
       - id: drawing_second_z
         size: 8
       - id: limits_min_x
         size: 8
-        doc: 0x00a8-0x00af
+        doc: 0x00a8-0x00af, $LIMMIN/10
       - id: limits_min_y
         size: 8
-        doc: 0x00b0-0x00b7
+        doc: 0x00b0-0x00b7, $LIMMIN/20
       - id: limits_max_x
         size: 8
         doc: 0x00b8-0x00bf
@@ -76,10 +81,10 @@ types:
         doc: 0x00c0-0x00c7
       - id: view_ctrl_x
         size: 8
-        doc: 0x00c8-0x00cf
+        doc: 0x00c8-0x00cf, $VIEWCTRL/10
       - id: view_ctrl_y
         size: 8
-        doc: 0x00d0-0x00d7
+        doc: 0x00d0-0x00d7, $VIEWCTRL/20
       - id: view_ctrl_z
         size: 8
         doc: 0x00d8-0x00da
@@ -112,31 +117,31 @@ types:
         doc: 0x0114-0x0115, $SNAPISOPAIR
       - id: grid
         type: s2
-        doc: 0x0116-0x0117
+        doc: 0x0116-0x0117, $GRIDMODE
       - id: grid_unit_x
         size: 8
-        doc: 0x0118-0x011f
+        doc: 0x0118-0x011f, $GRIDUNIT/10
       - id: grid_unit_y
         size: 8
-        doc: 0x0120-0x0127
+        doc: 0x0120-0x0127, $GRIDUNIT/20
       - id: ortho
         type: s2
-        doc: 0x0128-0x0129
+        doc: 0x0128-0x0129, $ORTHOMODE
       - id: regen
         type: s2
-        doc: 0x012a-0x012b
+        doc: 0x012a-0x012b, $REGENMODE
       - id: fill
         type: s2
-        doc: 0x012c-0x012d
+        doc: 0x012c-0x012d, $FILLMODE
       - id: qtext
         type: s2
-        doc: 0x012e-0x012f
+        doc: 0x012e-0x012f, $QTEXTMODE
       - id: drag
         type: s2
-        doc: 0x0130-0x0131
+        doc: 0x0130-0x0131, $DRAGMODE
       - id: linetype_scale
         size: 8
-        doc: 0x0132-0x0139
+        doc: 0x0132-0x0139, $LTSCALE
       - id: text_size
         size: 8
         doc: 0x013a-0x0141, $TEXTSIZE
@@ -146,11 +151,11 @@ types:
       - id: current_layer
         type: s2
         doc: 0x014a-0x014b, $CLAYER
-      - id: unknown5
-        size: 8
       - id: unknown6
         size: 8
       - id: unknown7
+        size: 8
+      - id: unknown8
         size: 8
         doc: 0x015c--0x0163
       - id: linear_units_format
