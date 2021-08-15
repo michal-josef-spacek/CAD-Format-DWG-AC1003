@@ -167,13 +167,13 @@ types:
         doc: 0x0166-0x0167, $LUPREC
       - id: axis
         type: s2
-        doc: 0x0168-0x0169
+        doc: 0x0168-0x0169, $AXISMODE
       - id: axis_value_x
         size: 8
-        doc: 0x016a-0x171
+        doc: 0x016a-0x171, $AXISUNIT/10
       - id: axis_value_y
         size: 8
-        doc: 0x0172-0x0179
+        doc: 0x0172-0x0179, $AXISUNIT/20
       - id: sketch_increment
         size: 8
         doc: 0x017a-0x0181, $SKETCHINC
@@ -342,26 +342,28 @@ types:
         doc: 256d - bylayer, 255d - byblock, other index, $CELTYPE
       - id: create_date_days
         type: u4
-        doc: part of $TDCREATE
+        doc: $TDCREATE/days
       - id: create_date_ms
         type: u4
-        doc: part of $TDCREATE
+        doc: $TDCREATE/ms
       - id: update_date_days
         type: u4
+        doc: $TDUPDATE/days
       - id: update_date_ms
         type: u4
+        doc: $TDUPDATE/ms
       - id: total_editing_time_days
         type: u4
-        doc: Part of $TDINDWG
+        doc: $TDINDWG/days
       - id: total_editing_time_ms
         type: u4
-        doc: Part of $TDINDWG
+        doc: $TDINDWG/ms
       - id: user_elapsed_timer_days
         type: u4
-        doc: Part of $TDUSRTIMER
+        doc: $TDUSRTIMER/days
       - id: user_elapsed_times_ms
         type: u4
-        doc: Part of $TDUSRTIMER
+        doc: $TDUSRTIMER/ms
       - id: user_timer
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
