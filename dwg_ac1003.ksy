@@ -139,27 +139,27 @@ types:
         doc: 0x0132-0x0139
       - id: text_size
         size: 8
-        doc: 0x013a-0x0141
+        doc: 0x013a-0x0141, $TEXTSIZE
       - id: trace_width
         size: 8
-        doc: 0x0142-0x0149
+        doc: 0x0142-0x0149, $TRACEWID
       - id: current_layer
         type: s2
         doc: 0x014a-0x014b, $CLAYER
-      - id: unknown6a
-        type: s2
-        doc: 0x014c-0x014d
-      - id: unknown6b
-        size: 14
+      - id: unknown5
+        size: 8
+      - id: unknown6
+        size: 8
       - id: unknown7
         size: 8
+        doc: 0x015c--0x0163
       - id: linear_units_format
         enum: unit_types
         type: s2
-        doc: $LUNITS
+        doc: 0x0164-0x0165, $LUNITS
       - id: linear_units_precision
         type: s2
-        doc: $LUPREC
+        doc: 0x0166-0x0167, $LUPREC
       - id: axis
         type: s2
         doc: 0x0168-0x0169
@@ -171,9 +171,10 @@ types:
         doc: 0x0172-0x0179
       - id: sketch_increment
         size: 8
-        doc: 0x017a-0x0181
+        doc: 0x017a-0x0181, $SKETCHINC
       - id: fillet_radius
         size: 8
+        doc: $FILETRAD
       - id: units_for_angles
         enum: units_for_angles
         type: s2
@@ -187,11 +188,11 @@ types:
       - id: osnap
         enum: osnap_modes
         type: s2
-        doc: 0x0190-0x0191
+        doc: 0x0190-0x0191, $OSMODE
       - id: attributes
         enum: attributes
         type: s2
-        doc: 0x0192-0x0193
+        doc: 0x0192-0x0193, $ATTMODE
       - id: menu
         size: 15
         type: str
@@ -433,8 +434,12 @@ types:
         doc: 0x03cd-0x03d4, $DIMLFAC
       - id: unknown39
         size: 34
+      - id: unknown39a
+        size: 5
       - id: unknown40
-        size: 63
+        size: 8
+      - id: unknown40a
+        size: 50
       - id: unknown41
         size: 8
       - id: unknown42
