@@ -1,8 +1,11 @@
 TODO
 ====
 1. Odstranit prebytecne SNAP*.DWG soubory
-2. Kde je ulozeno dimblk, jak se to ovlivnuje
-3.
+2. Kde je ulozeno $DIMBLK, jak se to ovlivnuje?
+https://knowledge.autodesk.com/support/autocad-lt/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/AutoCAD-LT/files/GUID-6E09DCCA-313F-4FF4-BB1B-F41B512B9CC9-htm.html
+3. Kde je ulozeno $DIMPOST, jak se to ovlivnuje?
+https://knowledge.autodesk.com/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/AutoCAD-Core/files/GUID-79CCF9B1-BE33-4158-891C-50E4BF795D8E-htm.html
+4.
 
 Applied
 =======
