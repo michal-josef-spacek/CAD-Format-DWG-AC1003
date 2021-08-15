@@ -88,23 +88,28 @@ types:
         doc: 0x00e0-0x00e7
       - id: snap
         type: s2
-        doc: 0x00e8-0x00e9
+        doc: 0x00e8-0x00e9, $SNAPMODE
       - id: snap_resolution_x
         size: 8
-        doc: 0x00ea-0x00f1
+        doc: 0x00ea-0x00f1, $SNAPUNIT/10
       - id: snap_resolution_y
         size: 8
-        doc: 0x00f2-0x00f9
+        doc: 0x00f2-0x00f9, $SNAPUNIT/20
       - id: snap_base_x
         size: 8
+        doc: 0x00fa-0x0101, $SNAPBASE/10
       - id: snap_base_y
         size: 8
+        doc: 0x0102-0x0109, $SNAPBASE/20
       - id: snap_angle
         size: 8
+        doc: 0x010a-0x0111, $SNAPANG
       - id: snap_style
         type: s2
+        doc: 0x0112-0x0113, $SNAPSTYLE
       - id: snap_iso_pair
         type: s2
+        doc: 0x0114-0x0115, $SNAPISOPAIR
       - id: grid
         type: s2
         doc: 0x0116-0x0117
