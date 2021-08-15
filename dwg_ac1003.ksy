@@ -423,8 +423,9 @@ types:
       - id: dim_alternate_units_multiplier
         size: 8
         doc: 0x03c5-0x03cc, $DIMALTF
-      - id: unknown36
+      - id: dim_linear_measurements_scale_factor
         size: 8
+        doc: 0x03cd-0x03d4, $DIMLFAC
       - id: unknown39
         size: 34
       - id: unknown40
