@@ -327,8 +327,16 @@ types:
       - id: dim_extension_line_extend2
         size: 8
         doc: 0x02ee-0x02f5, $DIMDLE
+      - id: dim_arrowhead_block
+        size: 32
+        type: str
+        encoding: ASCII
+        doc: $DIMBLK
       - id: unknown30
-        size: 35
+        type: s1
+      - id: circle_zoom_percent
+        type: s2
+        doc: 0x0317-0x0318
       - id: coordinates
         enum: coordinates
         type: s2
@@ -367,10 +375,16 @@ types:
       - id: user_timer
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
-      - id: unknown32
-        type: s2
+      - id: fast_zoom
+        type: s1
+        doc: 0x0341, $FASTZOOM
       - id: unknown33
-        size: 8
+        size: 1
+      - id: sketch_type
+        type: s1
+        doc: 0x0343, $SKPOLY
+      - id: unknown33b
+        size: 7
       - id: unknown34
         size: 8
       - id: angle_base
@@ -431,8 +445,16 @@ types:
       - id: dim_sho
         type: s1
         doc: 0x03a4, $DIMSHO
-      - id: unknown35
-        size: 32
+      - id: dim_measurement_postfix
+        size: 16
+        type: str
+        encoding: ASCII
+        doc: $DIMPOST, TODO And prefix?
+      - id: dim_alternate_measurement_postfix
+        size: 16
+        type: str
+        encoding: ASCII
+        doc: $DIMAPOST, TODO And prefix
       - id: dim_alternate_units_multiplier
         size: 8
         doc: 0x03c5-0x03cc, $DIMALTF

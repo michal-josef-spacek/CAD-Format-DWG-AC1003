@@ -183,9 +183,9 @@ sub _read {
     $self->{text_size} = $self->{_io}->read_bytes(8);
     $self->{trace_width} = $self->{_io}->read_bytes(8);
     $self->{current_layer} = $self->{_io}->read_s2le();
-    $self->{unknown6a} = $self->{_io}->read_s2le();
-    $self->{unknown6b} = $self->{_io}->read_bytes(14);
+    $self->{unknown6} = $self->{_io}->read_bytes(8);
     $self->{unknown7} = $self->{_io}->read_bytes(8);
+    $self->{unknown8} = $self->{_io}->read_bytes(8);
     $self->{linear_units_format} = $self->{_io}->read_s2le();
     $self->{linear_units_precision} = $self->{_io}->read_s2le();
     $self->{axis} = $self->{_io}->read_s2le();
@@ -247,7 +247,9 @@ sub _read {
     $self->{dim_suppression_of_zeros} = $self->{_io}->read_s1();
     $self->{dim_rounding} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
-    $self->{unknown30} = $self->{_io}->read_bytes(35);
+    $self->{dim_arrowhead_block} = Encode::decode("ASCII", $self->{_io}->read_bytes(32));
+    $self->{unknown30} = $self->{_io}->read_s1();
+    $self->{circle_zoom_percent} = $self->{_io}->read_s2le();
     $self->{coordinates} = $self->{_io}->read_s2le();
     $self->{current_color} = $self->{_io}->read_s2le();
     $self->{current_linetype} = $self->{_io}->read_s2le();
@@ -260,8 +262,10 @@ sub _read {
     $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
     $self->{user_elapsed_times_ms} = $self->{_io}->read_u4le();
     $self->{user_timer} = $self->{_io}->read_s2le();
-    $self->{unknown32} = $self->{_io}->read_s2le();
-    $self->{unknown33} = $self->{_io}->read_bytes(8);
+    $self->{fast_zoom} = $self->{_io}->read_s1();
+    $self->{unknown33} = $self->{_io}->read_bytes(1);
+    $self->{sketch_type} = $self->{_io}->read_s1();
+    $self->{unknown33b} = $self->{_io}->read_bytes(7);
     $self->{unknown34} = $self->{_io}->read_bytes(8);
     $self->{angle_base} = $self->{_io}->read_bytes(8);
     $self->{angle_direction} = $self->{_io}->read_s2le();
@@ -282,11 +286,14 @@ sub _read {
     $self->{dim_alternate_units_decimal_places} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
     $self->{dim_sho} = $self->{_io}->read_s1();
-    $self->{unknown35} = $self->{_io}->read_bytes(32);
+    $self->{dim_measurement_postfix} = Encode::decode("ASCII", $self->{_io}->read_bytes(16));
+    $self->{dim_alternate_measurement_postfix} = Encode::decode("ASCII", $self->{_io}->read_bytes(16));
     $self->{dim_alternate_units_multiplier} = $self->{_io}->read_bytes(8);
     $self->{dim_linear_measurements_scale_factor} = $self->{_io}->read_bytes(8);
     $self->{unknown39} = $self->{_io}->read_bytes(34);
-    $self->{unknown40} = $self->{_io}->read_bytes(63);
+    $self->{unknown39a} = $self->{_io}->read_bytes(5);
+    $self->{unknown40} = $self->{_io}->read_bytes(8);
+    $self->{unknown40a} = $self->{_io}->read_bytes(50);
     $self->{unknown41} = $self->{_io}->read_bytes(8);
     $self->{unknown42} = $self->{_io}->read_bytes(100);
     $self->{unknown43} = $self->{_io}->read_bytes(1);
@@ -531,19 +538,19 @@ sub current_layer {
     return $self->{current_layer};
 }
 
-sub unknown6a {
+sub unknown6 {
     my ($self) = @_;
-    return $self->{unknown6a};
-}
-
-sub unknown6b {
-    my ($self) = @_;
-    return $self->{unknown6b};
+    return $self->{unknown6};
 }
 
 sub unknown7 {
     my ($self) = @_;
     return $self->{unknown7};
+}
+
+sub unknown8 {
+    my ($self) = @_;
+    return $self->{unknown8};
 }
 
 sub linear_units_format {
@@ -851,9 +858,19 @@ sub dim_extension_line_extend2 {
     return $self->{dim_extension_line_extend2};
 }
 
+sub dim_arrowhead_block {
+    my ($self) = @_;
+    return $self->{dim_arrowhead_block};
+}
+
 sub unknown30 {
     my ($self) = @_;
     return $self->{unknown30};
+}
+
+sub circle_zoom_percent {
+    my ($self) = @_;
+    return $self->{circle_zoom_percent};
 }
 
 sub coordinates {
@@ -916,14 +933,24 @@ sub user_timer {
     return $self->{user_timer};
 }
 
-sub unknown32 {
+sub fast_zoom {
     my ($self) = @_;
-    return $self->{unknown32};
+    return $self->{fast_zoom};
 }
 
 sub unknown33 {
     my ($self) = @_;
     return $self->{unknown33};
+}
+
+sub sketch_type {
+    my ($self) = @_;
+    return $self->{sketch_type};
+}
+
+sub unknown33b {
+    my ($self) = @_;
+    return $self->{unknown33b};
 }
 
 sub unknown34 {
@@ -1026,9 +1053,14 @@ sub dim_sho {
     return $self->{dim_sho};
 }
 
-sub unknown35 {
+sub dim_measurement_postfix {
     my ($self) = @_;
-    return $self->{unknown35};
+    return $self->{dim_measurement_postfix};
+}
+
+sub dim_alternate_measurement_postfix {
+    my ($self) = @_;
+    return $self->{dim_alternate_measurement_postfix};
 }
 
 sub dim_alternate_units_multiplier {
@@ -1046,9 +1078,19 @@ sub unknown39 {
     return $self->{unknown39};
 }
 
+sub unknown39a {
+    my ($self) = @_;
+    return $self->{unknown39a};
+}
+
 sub unknown40 {
     my ($self) = @_;
     return $self->{unknown40};
+}
+
+sub unknown40a {
+    my ($self) = @_;
+    return $self->{unknown40a};
 }
 
 sub unknown41 {
