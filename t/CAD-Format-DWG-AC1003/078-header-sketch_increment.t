@@ -14,7 +14,7 @@ my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SKETCH_INCREMENT1.DWG')->s,
 );
 my $sketch_increment = unpack 'd<', $obj->header->sketch_increment;
-is($sketch_increment, 0.1, 'Sketch increment - default (0.1).');
+is($sketch_increment, 0.1, 'Sketch increment (0.1 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
