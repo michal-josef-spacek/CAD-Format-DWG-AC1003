@@ -164,9 +164,9 @@ t/data/header/dim_alternate_units_decimal_places/D2.DWG
 t/data/header/dim_alternate_units_decimal_places/D3.DWG
 t/data/header/dim_alternate_units_multiplier/D1.DWG
 t/data/header/dim_alternate_units_multiplier/D2.DWG
-t/data/header/dim_arrowhead_block/D1.DWG
-t/data/header/dim_arrowhead_block/D2.DWG
-t/data/header/dim_arrowhead_block/D3.DWG
+t/data/header/dim_arrowhead_block/DIMBLK1.DWG
+t/data/header/dim_arrowhead_block/DIMBLK2.DWG
+t/data/header/dim_arrowhead_block/DIMBLK3.DWG
 t/data/header/dim_arrowhead_size/DAH1.DWG
 t/data/header/dim_arrowhead_size/DAH2.DWG
 t/data/header/dim_associative/D1.DWG
