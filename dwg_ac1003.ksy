@@ -153,11 +153,22 @@ types:
         doc: 0x014a-0x014b, $CLAYER
       - id: unknown6
         size: 8
-      - id: unknown7
-        size: 8
+        doc: 0x014c-0x0153
+      - id: unknown7a
+        size: 2
+        doc: 0x0154-0x0155
+      - id: unknown7b
+        size: 2
+        doc: 0x0156-0x0157
+      - id: unknown7c
+        size: 2
+        doc: 0x0158-0x0159
+      - id: unknown7d
+        size: 2
+        doc: 0x015a-0x015b
       - id: unknown8
         size: 8
-        doc: 0x015c--0x0163
+        doc: 0x015c-0x0163
       - id: linear_units_format
         enum: unit_types
         type: s2
