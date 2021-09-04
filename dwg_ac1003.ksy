@@ -42,7 +42,11 @@ types:
       - id: number_of_layers
         type: s2
       - id: unknown4b
-        size: 36
+        size: 18
+      - id: number_of_linetypes
+        type: s2
+      - id: unknown4c
+        size: 16
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065, $INSBASE/10
