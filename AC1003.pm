@@ -23,8 +23,7 @@ our $COORDINATES_ABSOLUTE_COORDINATES = 0;
 our $COORDINATES_ABSOLUTE_COORDINATES_REALTIME = 1;
 our $COORDINATES_RELATIVE_POLAR_COORDINATES = 2;
 
-our $ENTITIES_FOO = -2;
-our $ENTITIES_TMP = -1;
+our $ENTITIES_TMP = -127;
 our $ENTITIES_LINE = 1;
 our $ENTITIES_POINT = 2;
 our $ENTITIES_CIRCLE = 3;
@@ -116,6 +115,204 @@ sub header {
 sub entities {
     my ($self) = @_;
     return $self->{entities};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityTmp;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_size} = $self->{_io}->read_s2le();
+    $self->{xxx} = $self->{_io}->read_bytes(($self->entity_size() - 4));
+}
+
+sub entity_mode {
+    my ($self) = @_;
+    return $self->{entity_mode};
+}
+
+sub entity_size {
+    my ($self) = @_;
+    return $self->{entity_size};
+}
+
+sub xxx {
+    my ($self) = @_;
+    return $self->{xxx};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityPoint;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_size} = $self->{_io}->read_s2le();
+    $self->{entity_layer_index} = $self->{_io}->read_s1();
+    $self->{unknown2} = $self->{_io}->read_bytes(3);
+    if ($self->entity_mode()->entity_color_flag()) {
+        $self->{entity_color} = $self->{_io}->read_s1();
+    }
+    if ($self->entity_mode()->entity_linetype_flag()) {
+        $self->{entity_linetype_index} = $self->{_io}->read_s1();
+    }
+    if ($self->entity_mode()->entity_thickness_flag()) {
+        $self->{entity_thickness} = $self->{_io}->read_bytes(8);
+    }
+    $self->{x} = $self->{_io}->read_bytes(8);
+    $self->{y} = $self->{_io}->read_bytes(8);
+}
+
+sub entity_mode {
+    my ($self) = @_;
+    return $self->{entity_mode};
+}
+
+sub entity_size {
+    my ($self) = @_;
+    return $self->{entity_size};
+}
+
+sub entity_layer_index {
+    my ($self) = @_;
+    return $self->{entity_layer_index};
+}
+
+sub unknown2 {
+    my ($self) = @_;
+    return $self->{unknown2};
+}
+
+sub entity_color {
+    my ($self) = @_;
+    return $self->{entity_color};
+}
+
+sub entity_linetype_index {
+    my ($self) = @_;
+    return $self->{entity_linetype_index};
+}
+
+sub entity_thickness {
+    my ($self) = @_;
+    return $self->{entity_thickness};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::Entity;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_type} = $self->{_io}->read_s1();
+    my $_on = $self->entity_type();
+    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TMP) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POINT) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityPoint->new($self->{_io}, $self, $self->{_root});
+    }
+}
+
+sub entity_type {
+    my ($self) = @_;
+    return $self->{entity_type};
+}
+
+sub data {
+    my ($self) = @_;
+    return $self->{data};
 }
 
 ########################################################################
@@ -1119,56 +1316,6 @@ sub dim_linear_measurements_scale_factor {
 }
 
 ########################################################################
-package CAD::Format::DWG::AC1003::Entity;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{entity_type} = $self->{_io}->read_s1();
-    my $_on = $self->entity_type();
-    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
-    }
-    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
-    }
-}
-
-sub entity_type {
-    my ($self) = @_;
-    return $self->{entity_type};
-}
-
-sub data {
-    my ($self) = @_;
-    return $self->{data};
-}
-
-########################################################################
 package CAD::Format::DWG::AC1003::EntityCircle;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -1198,8 +1345,8 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{color} = $self->{_io}->read_s1();
-    $self->{unknown1} = $self->{_io}->read_bytes(2);
+    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_size} = $self->{_io}->read_s2le();
     $self->{layer_index} = $self->{_io}->read_s1();
     $self->{unknown2} = $self->{_io}->read_bytes(3);
     $self->{x} = $self->{_io}->read_bytes(8);
@@ -1207,14 +1354,14 @@ sub _read {
     $self->{radius} = $self->{_io}->read_bytes(8);
 }
 
-sub color {
+sub entity_mode {
     my ($self) = @_;
-    return $self->{color};
+    return $self->{entity_mode};
 }
 
-sub unknown1 {
+sub entity_size {
     my ($self) = @_;
-    return $self->{unknown1};
+    return $self->{entity_size};
 }
 
 sub layer_index {
@@ -1240,6 +1387,86 @@ sub y {
 sub radius {
     my ($self) = @_;
     return $self->{radius};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityMode;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_mode1} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_mode2} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_mode3} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_mode4} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_thickness_flag} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_mode5} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_linetype_flag} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_color_flag} = $self->{_io}->read_bits_int_be(1);
+}
+
+sub entity_mode1 {
+    my ($self) = @_;
+    return $self->{entity_mode1};
+}
+
+sub entity_mode2 {
+    my ($self) = @_;
+    return $self->{entity_mode2};
+}
+
+sub entity_mode3 {
+    my ($self) = @_;
+    return $self->{entity_mode3};
+}
+
+sub entity_mode4 {
+    my ($self) = @_;
+    return $self->{entity_mode4};
+}
+
+sub entity_thickness_flag {
+    my ($self) = @_;
+    return $self->{entity_thickness_flag};
+}
+
+sub entity_mode5 {
+    my ($self) = @_;
+    return $self->{entity_mode5};
+}
+
+sub entity_linetype_flag {
+    my ($self) = @_;
+    return $self->{entity_linetype_flag};
+}
+
+sub entity_color_flag {
+    my ($self) = @_;
+    return $self->{entity_color_flag};
 }
 
 ########################################################################
@@ -1272,34 +1499,58 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{color} = $self->{_io}->read_s1();
-    $self->{unknown1} = $self->{_io}->read_bytes(2);
-    $self->{layer_index} = $self->{_io}->read_s1();
+    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_size} = $self->{_io}->read_s2le();
+    $self->{entity_layer_index} = $self->{_io}->read_s1();
     $self->{unknown2} = $self->{_io}->read_bytes(3);
+    if ($self->entity_mode()->entity_color_flag()) {
+        $self->{entity_color} = $self->{_io}->read_s1();
+    }
+    if ($self->entity_mode()->entity_linetype_flag()) {
+        $self->{entity_linetype_index} = $self->{_io}->read_s1();
+    }
+    if ($self->entity_mode()->entity_thickness_flag()) {
+        $self->{entity_thickness} = $self->{_io}->read_bytes(8);
+    }
     $self->{x1} = $self->{_io}->read_bytes(8);
     $self->{y1} = $self->{_io}->read_bytes(8);
     $self->{x2} = $self->{_io}->read_bytes(8);
     $self->{y2} = $self->{_io}->read_bytes(8);
 }
 
-sub color {
+sub entity_mode {
     my ($self) = @_;
-    return $self->{color};
+    return $self->{entity_mode};
 }
 
-sub unknown1 {
+sub entity_size {
     my ($self) = @_;
-    return $self->{unknown1};
+    return $self->{entity_size};
 }
 
-sub layer_index {
+sub entity_layer_index {
     my ($self) = @_;
-    return $self->{layer_index};
+    return $self->{entity_layer_index};
 }
 
 sub unknown2 {
     my ($self) = @_;
     return $self->{unknown2};
+}
+
+sub entity_color {
+    my ($self) = @_;
+    return $self->{entity_color};
+}
+
+sub entity_linetype_index {
+    my ($self) = @_;
+    return $self->{entity_linetype_index};
+}
+
+sub entity_thickness {
+    my ($self) = @_;
+    return $self->{entity_thickness};
 }
 
 sub x1 {

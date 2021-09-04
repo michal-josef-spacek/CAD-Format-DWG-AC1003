@@ -495,30 +495,21 @@ types:
         type:
           switch-on: entity_type
           cases:
-##            'entities::foo': entity_foo
 ##            'entities::arc': entity_arc
 ##            'entities::block_begin': entity_block_begin
 ##            'entities::block_end': entity_block_end
 ##            'entities::block_insert' : entity_block_insert
             'entities::circle': entity_circle
             'entities::line': entity_line
+            'entities::tmp': entity_tmp
 ##            'entities::load': entity_load
-##            'entities::point': entity_point
+            'entities::point': entity_point
 ##            'entities::repeat_begin': entity_repeat_begin
 ##            'entities::repeat_end': entity_repeat_end
 ##            'entities::shape': entity_shape
 ##            'entities::solid': entity_solid
 ##            'entities::text': entity_text
-##            'entities::tmp': entity_tmp
 ##            'entities::trace': entity_trace
-##  entity_foo:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
 ##  entity_arc:
 ##    seq:
 ##      - id: layer
@@ -567,12 +558,30 @@ types:
 ##        size: 8
 ##      - id: rotation_angle
 ##        size: 8
+  entity_mode:
+    seq:
+      - id: entity_mode1
+        type: b1
+      - id: entity_mode2
+        type: b1
+      - id: entity_mode3
+        type: b1
+      - id: entity_mode4
+        type: b1
+      - id: entity_thickness_flag
+        type: b1
+      - id: entity_mode5
+        type: b1
+      - id: entity_linetype_flag
+        type: b1
+      - id: entity_color_flag
+        type: b1
   entity_circle:
     seq:
-      - id: color
-        type: s1
-      - id: unknown1
-        size: 2
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
       - id: layer_index
         type: s1
       - id: unknown2
@@ -585,14 +594,23 @@ types:
         size: 8
   entity_line:
     seq:
-      - id: color
-        type: s1
-      - id: unknown1
-        size: 2
-      - id: layer_index
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
         type: s1
       - id: unknown2
         size: 3
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_thickness
+        size: 8
+        if: entity_mode.entity_thickness_flag
       - id: x1
         size: 8
       - id: y1
@@ -601,6 +619,14 @@ types:
         size: 8
       - id: y2
         size: 8
+  entity_tmp:
+    seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: xxx
+        size: entity_size - 4
 ##  entity_load:
 ##    seq:
 ##      - id: layer
@@ -609,14 +635,29 @@ types:
 ##        type: s2
 ##      - id: value
 ##        size: size
-##  entity_point:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
+  entity_point:
+    seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s1
+      - id: unknown2
+        size: 3
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_thickness
+        size: 8
+        if: entity_mode.entity_thickness_flag
+      - id: x
+        size: 8
+      - id: y
+        size: 8
 ##  entity_repeat_begin:
 ##    seq:
 ##      - id: layer
@@ -718,9 +759,7 @@ types:
 ##        size: 8
 enums:
   entities:
-    ## TODO Many tmps
-    -1: tmp
-    -2: foo
+    -127: tmp
     1: line
     2: point
     3: circle
