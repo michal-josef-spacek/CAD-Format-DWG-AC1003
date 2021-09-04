@@ -17,10 +17,10 @@ meta:
 seq:
   - id: header
     type: header
-##  - id: entities
-##    type: entity
-##    repeat: expr
-##    repeat-expr: header.number_of_entities
+  - id: entities
+    type: entity
+    repeat: expr
+    repeat-expr: header.number_of_entities
 types:
   header:
     seq:
@@ -476,42 +476,28 @@ types:
       - id: dim_linear_measurements_scale_factor
         size: 8
         doc: 0x03cd-0x03d4, $DIMLFAC
-      - id: unknown39
-        size: 34
-      - id: unknown39a
-        size: 5
-      - id: unknown40
-        size: 8
-      - id: unknown40a
-        size: 50
-      - id: unknown41
-        size: 8
-      - id: unknown42
-        size: 100
-      - id: unknown43
-        size: 1
     instances:
       create_date:
         value: create_date_days + (create_date_ms / 86400000.0)
       update_date:
         value: update_date_days + (update_date_ms / 86400000.0)
       ## TODO
-##  entity:
-##    seq:
-##      - id: entity_type
-##        type: s2
-##        enum: entities
-##      - id: data
-##        type:
-##          switch-on: entity_type
-##          cases:
+  entity:
+    seq:
+      - id: entity_type
+        type: s1
+        enum: entities
+      - id: data
+        type:
+          switch-on: entity_type
+          cases:
 ##            'entities::foo': entity_foo
 ##            'entities::arc': entity_arc
 ##            'entities::block_begin': entity_block_begin
 ##            'entities::block_end': entity_block_end
 ##            'entities::block_insert' : entity_block_insert
-##            'entities::circle': entity_circle
-##            'entities::line': entity_line
+            'entities::circle': entity_circle
+            'entities::line': entity_line
 ##            'entities::load': entity_load
 ##            'entities::point': entity_point
 ##            'entities::repeat_begin': entity_repeat_begin
@@ -577,28 +563,40 @@ types:
 ##        size: 8
 ##      - id: rotation_angle
 ##        size: 8
-##  entity_circle:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##      - id: radius
-##        size: 8
-##  entity_line:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x1
-##        size: 8
-##      - id: y1
-##        size: 8
-##      - id: x2
-##        size: 8
-##      - id: y2
-##        size: 8
+  entity_circle:
+    seq:
+      - id: color
+        type: s1
+      - id: unknown1
+        size: 2
+      - id: layer_index
+        type: s1
+      - id: unknown2
+        size: 3
+      - id: x
+        size: 8
+      - id: y
+        size: 8
+      - id: radius
+        size: 8
+  entity_line:
+    seq:
+      - id: color
+        type: s1
+      - id: unknown1
+        size: 2
+      - id: layer_index
+        type: s1
+      - id: unknown2
+        size: 3
+      - id: x1
+        size: 8
+      - id: y1
+        size: 8
+      - id: x2
+        size: 8
+      - id: y2
+        size: 8
 ##  entity_load:
 ##    seq:
 ##      - id: layer
