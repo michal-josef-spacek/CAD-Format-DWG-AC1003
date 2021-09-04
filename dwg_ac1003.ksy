@@ -37,8 +37,12 @@ types:
         type: s2
       - id: unknown3
         type: s2
-      - id: unknown4
-        size: 75
+      - id: unknown4a
+        size: 37
+      - id: number_of_layers
+        type: s2
+      - id: unknown4b
+        size: 36
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065, $INSBASE/10
