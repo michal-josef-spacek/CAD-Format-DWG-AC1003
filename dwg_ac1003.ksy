@@ -576,23 +576,7 @@ types:
         type: b1
       - id: entity_color_flag
         type: b1
-  entity_circle:
-    seq:
-      - id: entity_mode
-        type: entity_mode
-      - id: entity_size
-        type: s2
-      - id: layer_index
-        type: s1
-      - id: unknown2
-        size: 3
-      - id: x
-        size: 8
-      - id: y
-        size: 8
-      - id: radius
-        size: 8
-  entity_line:
+  entity_common:
     seq:
       - id: entity_mode
         type: entity_mode
@@ -611,6 +595,20 @@ types:
       - id: entity_thickness
         size: 8
         if: entity_mode.entity_thickness_flag
+  entity_circle:
+    seq:
+      - id: entity_comon
+        type: entity_common
+      - id: x
+        size: 8
+      - id: y
+        size: 8
+      - id: radius
+        size: 8
+  entity_line:
+    seq:
+      - id: entity_comon
+        type: entity_common
       - id: x1
         size: 8
       - id: y1
@@ -637,23 +635,8 @@ types:
 ##        size: size
   entity_point:
     seq:
-      - id: entity_mode
-        type: entity_mode
-      - id: entity_size
-        type: s2
-      - id: entity_layer_index
-        type: s1
-      - id: unknown2
-        size: 3
-      - id: entity_color
-        type: s1
-        if: entity_mode.entity_color_flag
-      - id: entity_linetype_index
-        type: s1
-        if: entity_mode.entity_linetype_flag
-      - id: entity_thickness
-        size: 8
-        if: entity_mode.entity_thickness_flag
+      - id: entity_common
+        type: entity_common
       - id: x
         size: 8
       - id: y

@@ -168,7 +168,7 @@ sub xxx {
 }
 
 ########################################################################
-package CAD::Format::DWG::AC1003::EntityPoint;
+package CAD::Format::DWG::AC1003::EntityCommon;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
 
@@ -210,8 +210,6 @@ sub _read {
     if ($self->entity_mode()->entity_thickness_flag()) {
         $self->{entity_thickness} = $self->{_io}->read_bytes(8);
     }
-    $self->{x} = $self->{_io}->read_bytes(8);
-    $self->{y} = $self->{_io}->read_bytes(8);
 }
 
 sub entity_mode {
@@ -247,6 +245,46 @@ sub entity_linetype_index {
 sub entity_thickness {
     my ($self) = @_;
     return $self->{entity_thickness};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityPoint;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_bytes(8);
+    $self->{y} = $self->{_io}->read_bytes(8);
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
 }
 
 sub x {
@@ -1345,33 +1383,15 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
-    $self->{entity_size} = $self->{_io}->read_s2le();
-    $self->{layer_index} = $self->{_io}->read_s1();
-    $self->{unknown2} = $self->{_io}->read_bytes(3);
+    $self->{entity_comon} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
     $self->{x} = $self->{_io}->read_bytes(8);
     $self->{y} = $self->{_io}->read_bytes(8);
     $self->{radius} = $self->{_io}->read_bytes(8);
 }
 
-sub entity_mode {
+sub entity_comon {
     my ($self) = @_;
-    return $self->{entity_mode};
-}
-
-sub entity_size {
-    my ($self) = @_;
-    return $self->{entity_size};
-}
-
-sub layer_index {
-    my ($self) = @_;
-    return $self->{layer_index};
-}
-
-sub unknown2 {
-    my ($self) = @_;
-    return $self->{unknown2};
+    return $self->{entity_comon};
 }
 
 sub x {
@@ -1499,58 +1519,16 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
-    $self->{entity_size} = $self->{_io}->read_s2le();
-    $self->{entity_layer_index} = $self->{_io}->read_s1();
-    $self->{unknown2} = $self->{_io}->read_bytes(3);
-    if ($self->entity_mode()->entity_color_flag()) {
-        $self->{entity_color} = $self->{_io}->read_s1();
-    }
-    if ($self->entity_mode()->entity_linetype_flag()) {
-        $self->{entity_linetype_index} = $self->{_io}->read_s1();
-    }
-    if ($self->entity_mode()->entity_thickness_flag()) {
-        $self->{entity_thickness} = $self->{_io}->read_bytes(8);
-    }
+    $self->{entity_comon} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
     $self->{x1} = $self->{_io}->read_bytes(8);
     $self->{y1} = $self->{_io}->read_bytes(8);
     $self->{x2} = $self->{_io}->read_bytes(8);
     $self->{y2} = $self->{_io}->read_bytes(8);
 }
 
-sub entity_mode {
+sub entity_comon {
     my ($self) = @_;
-    return $self->{entity_mode};
-}
-
-sub entity_size {
-    my ($self) = @_;
-    return $self->{entity_size};
-}
-
-sub entity_layer_index {
-    my ($self) = @_;
-    return $self->{entity_layer_index};
-}
-
-sub unknown2 {
-    my ($self) = @_;
-    return $self->{unknown2};
-}
-
-sub entity_color {
-    my ($self) = @_;
-    return $self->{entity_color};
-}
-
-sub entity_linetype_index {
-    my ($self) = @_;
-    return $self->{entity_linetype_index};
-}
-
-sub entity_thickness {
-    my ($self) = @_;
-    return $self->{entity_thickness};
+    return $self->{entity_comon};
 }
 
 sub x1 {
