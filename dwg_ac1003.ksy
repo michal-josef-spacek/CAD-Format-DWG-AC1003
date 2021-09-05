@@ -513,6 +513,43 @@ types:
 ##            'entities::text': entity_text
 ##            'entities::trace': entity_trace
             'entities::vertex': entity_vertex
+  entity_mode:
+    seq:
+      - id: entity_mode1
+        type: b1
+      - id: entity_mode2
+        type: b1
+      - id: entity_mode3
+        type: b1
+      - id: entity_mode4
+        type: b1
+      - id: entity_thickness_flag
+        type: b1
+      - id: entity_mode5
+        type: b1
+      - id: entity_linetype_flag
+        type: b1
+      - id: entity_color_flag
+        type: b1
+  entity_common:
+    seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s1
+      - id: unknown2
+        size: 3
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_thickness
+        size: 8
+        if: entity_mode.entity_thickness_flag
   entity_arc:
     seq:
       - id: entity_common
@@ -561,43 +598,6 @@ types:
 ##        size: 8
 ##      - id: rotation_angle
 ##        size: 8
-  entity_mode:
-    seq:
-      - id: entity_mode1
-        type: b1
-      - id: entity_mode2
-        type: b1
-      - id: entity_mode3
-        type: b1
-      - id: entity_mode4
-        type: b1
-      - id: entity_thickness_flag
-        type: b1
-      - id: entity_mode5
-        type: b1
-      - id: entity_linetype_flag
-        type: b1
-      - id: entity_color_flag
-        type: b1
-  entity_common:
-    seq:
-      - id: entity_mode
-        type: entity_mode
-      - id: entity_size
-        type: s2
-      - id: entity_layer_index
-        type: s1
-      - id: unknown2
-        size: 3
-      - id: entity_color
-        type: s1
-        if: entity_mode.entity_color_flag
-      - id: entity_linetype_index
-        type: s1
-        if: entity_mode.entity_linetype_flag
-      - id: entity_thickness
-        size: 8
-        if: entity_mode.entity_thickness_flag
   entity_circle:
     seq:
       - id: entity_common
