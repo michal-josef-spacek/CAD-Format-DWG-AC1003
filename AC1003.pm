@@ -174,6 +174,92 @@ sub xxx {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntitySolid;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{from_x} = $self->{_io}->read_bytes(8);
+    $self->{from_y} = $self->{_io}->read_bytes(8);
+    $self->{from_and_x} = $self->{_io}->read_bytes(8);
+    $self->{from_and_y} = $self->{_io}->read_bytes(8);
+    $self->{to_x} = $self->{_io}->read_bytes(8);
+    $self->{to_y} = $self->{_io}->read_bytes(8);
+    $self->{to_and_x} = $self->{_io}->read_bytes(8);
+    $self->{to_and_y} = $self->{_io}->read_bytes(8);
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub from_x {
+    my ($self) = @_;
+    return $self->{from_x};
+}
+
+sub from_y {
+    my ($self) = @_;
+    return $self->{from_y};
+}
+
+sub from_and_x {
+    my ($self) = @_;
+    return $self->{from_and_x};
+}
+
+sub from_and_y {
+    my ($self) = @_;
+    return $self->{from_and_y};
+}
+
+sub to_x {
+    my ($self) = @_;
+    return $self->{to_x};
+}
+
+sub to_y {
+    my ($self) = @_;
+    return $self->{to_y};
+}
+
+sub to_and_x {
+    my ($self) = @_;
+    return $self->{to_and_x};
+}
+
+sub to_and_y {
+    my ($self) = @_;
+    return $self->{to_and_y};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityCommon;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -403,7 +489,10 @@ sub _read {
 
     $self->{entity_type} = $self->{_io}->read_s1();
     my $_on = $self->entity_type();
-    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
+    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SOLID) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntitySolid->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
         $self->{data} = CAD::Format::DWG::AC1003::EntitySeqend->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {

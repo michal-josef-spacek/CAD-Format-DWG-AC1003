@@ -517,7 +517,7 @@ types:
 ##            'entities::repeat_end': entity_repeat_end
             'entities::seqend': entity_seqend
 ##            'entities::shape': entity_shape
-##            'entities::solid': entity_solid
+            'entities::solid': entity_solid
 ##            'entities::text': entity_text
 ##            'entities::trace': entity_trace
             'entities::vertex': entity_vertex
@@ -692,26 +692,26 @@ types:
 ##        size: 8
 ##      - id: item_num
 ##        type: s2
-##  entity_solid:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: from_x
-##        size: 8
-##      - id: from_y
-##        size: 8
-##      - id: from_and_x
-##        size: 8
-##      - id: from_and_y
-##        size: 8
-##      - id: to_x
-##        size: 8
-##      - id: to_y
-##        size: 8
-##      - id: to_and_x
-##        size: 8
-##      - id: to_and_y
-##        size: 8
+  entity_solid:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: from_x
+        size: 8
+      - id: from_y
+        size: 8
+      - id: from_and_x
+        size: 8
+      - id: from_and_y
+        size: 8
+      - id: to_x
+        size: 8
+      - id: to_y
+        size: 8
+      - id: to_and_x
+        size: 8
+      - id: to_and_y
+        size: 8
 ##  entity_text:
 ##    seq:
 ##      - id: layer
