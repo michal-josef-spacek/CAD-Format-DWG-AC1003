@@ -304,6 +304,74 @@ sub y {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityArc;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_bytes(8);
+    $self->{y} = $self->{_io}->read_bytes(8);
+    $self->{radius} = $self->{_io}->read_bytes(8);
+    $self->{angle_from} = $self->{_io}->read_bytes(8);
+    $self->{angle_to} = $self->{_io}->read_bytes(8);
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+sub radius {
+    my ($self) = @_;
+    return $self->{radius};
+}
+
+sub angle_from {
+    my ($self) = @_;
+    return $self->{angle_from};
+}
+
+sub angle_to {
+    my ($self) = @_;
+    return $self->{angle_to};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::Entity;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -343,6 +411,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_ARC) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityArc->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_VERTEX) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityVertex->new($self->{_io}, $self, $self->{_root});

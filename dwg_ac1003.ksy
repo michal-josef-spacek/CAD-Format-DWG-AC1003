@@ -495,7 +495,7 @@ types:
         type:
           switch-on: entity_type
           cases:
-##            'entities::arc': entity_arc
+            'entities::arc': entity_arc
 ##            'entities::block_begin': entity_block_begin
 ##            'entities::block_end': entity_block_end
 ##            'entities::block_insert' : entity_block_insert
@@ -513,20 +513,20 @@ types:
 ##            'entities::text': entity_text
 ##            'entities::trace': entity_trace
             'entities::vertex': entity_vertex
-##  entity_arc:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##      - id: radius
-##        size: 8
-##      - id: angle_from
-##        size: 8
-##      - id: angle_to
-##        size: 8
+  entity_arc:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x
+        size: 8
+      - id: y
+        size: 8
+      - id: radius
+        size: 8
+      - id: angle_from
+        size: 8
+      - id: angle_to
+        size: 8
 ##  entity_block_begin:
 ##    seq:
 ##      - id: layer
