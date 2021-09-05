@@ -534,7 +534,7 @@ types:
         type: b1
       - id: entity_thickness_flag
         type: b1
-      - id: entity_mode5
+      - id: entity_elevation_flag
         type: b1
       - id: entity_linetype_flag
         type: b1
@@ -560,6 +560,9 @@ types:
       - id: entity_linetype_index
         type: s1
         if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        size: 8
+        if: entity_mode.entity_elevation_flag
       - id: entity_thickness
         size: 8
         if: entity_mode.entity_thickness_flag

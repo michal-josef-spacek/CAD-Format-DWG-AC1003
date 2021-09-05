@@ -301,6 +301,9 @@ sub _read {
     if ($self->entity_mode()->entity_linetype_flag()) {
         $self->{entity_linetype_index} = $self->{_io}->read_s1();
     }
+    if ($self->entity_mode()->entity_elevation_flag()) {
+        $self->{entity_elevation} = $self->{_io}->read_bytes(8);
+    }
     if ($self->entity_mode()->entity_thickness_flag()) {
         $self->{entity_thickness} = $self->{_io}->read_bytes(8);
     }
@@ -344,6 +347,11 @@ sub entity_color {
 sub entity_linetype_index {
     my ($self) = @_;
     return $self->{entity_linetype_index};
+}
+
+sub entity_elevation {
+    my ($self) = @_;
+    return $self->{entity_elevation};
 }
 
 sub entity_thickness {
@@ -1920,7 +1928,7 @@ sub _read {
     $self->{entity_mode3} = $self->{_io}->read_bits_int_be(1);
     $self->{entity_mode4} = $self->{_io}->read_bits_int_be(1);
     $self->{entity_thickness_flag} = $self->{_io}->read_bits_int_be(1);
-    $self->{entity_mode5} = $self->{_io}->read_bits_int_be(1);
+    $self->{entity_elevation_flag} = $self->{_io}->read_bits_int_be(1);
     $self->{entity_linetype_flag} = $self->{_io}->read_bits_int_be(1);
     $self->{entity_color_flag} = $self->{_io}->read_bits_int_be(1);
 }
@@ -1950,9 +1958,9 @@ sub entity_thickness_flag {
     return $self->{entity_thickness_flag};
 }
 
-sub entity_mode5 {
+sub entity_elevation_flag {
     my ($self) = @_;
-    return $self->{entity_mode5};
+    return $self->{entity_elevation_flag};
 }
 
 sub entity_linetype_flag {
