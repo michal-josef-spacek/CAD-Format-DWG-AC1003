@@ -581,6 +581,9 @@ sub _read {
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
         $self->{data} = CAD::Format::DWG::AC1003::EntitySeqend->new($self->{_io}, $self, $self->{_root});
     }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_UNKNOWN4) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
+    }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
     }

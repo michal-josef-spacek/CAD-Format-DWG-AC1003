@@ -513,6 +513,7 @@ types:
 ##            'entities::load': entity_load
             'entities::point': entity_point
             'entities::polyline': entity_polyline
+            'entities::unknown4': entity_tmp
 ##            'entities::repeat_begin': entity_repeat_begin
 ##            'entities::repeat_end': entity_repeat_end
             'entities::seqend': entity_seqend
