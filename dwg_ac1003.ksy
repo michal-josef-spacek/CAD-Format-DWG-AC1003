@@ -42,14 +42,18 @@ types:
       - id: number_of_layers
         type: s2
       - id: unknown4b
-        size: 18
-      - id: number_of_linetypes
+        size: 8
+      - id: number_of_styles
         type: s2
       - id: unknown4c
         size: 8
-      - id: number_of_views
+      - id: number_of_linetypes
         type: s2
       - id: unknown4d
+        size: 8
+      - id: number_of_views
+        type: s2
+      - id: unknown4e
         size: 6
       - id: insertion_base_x
         size: 8
