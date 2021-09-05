@@ -799,15 +799,17 @@ sub _read {
     $self->{unknown1} = $self->{_io}->read_s2le();
     $self->{unknown2} = $self->{_io}->read_s2le();
     $self->{unknown3} = $self->{_io}->read_s2le();
-    $self->{unknown4a} = $self->{_io}->read_bytes(37);
-    $self->{number_of_layers} = $self->{_io}->read_s2le();
+    $self->{unknown4a} = $self->{_io}->read_bytes(27);
+    $self->{number_of_blocks} = $self->{_io}->read_s2le();
     $self->{unknown4b} = $self->{_io}->read_bytes(8);
-    $self->{number_of_styles} = $self->{_io}->read_s2le();
+    $self->{number_of_layers} = $self->{_io}->read_s2le();
     $self->{unknown4c} = $self->{_io}->read_bytes(8);
-    $self->{number_of_linetypes} = $self->{_io}->read_s2le();
+    $self->{number_of_styles} = $self->{_io}->read_s2le();
     $self->{unknown4d} = $self->{_io}->read_bytes(8);
+    $self->{number_of_linetypes} = $self->{_io}->read_s2le();
+    $self->{unknown4e} = $self->{_io}->read_bytes(8);
     $self->{number_of_views} = $self->{_io}->read_s2le();
-    $self->{unknown4e} = $self->{_io}->read_bytes(6);
+    $self->{unknown4f} = $self->{_io}->read_bytes(6);
     $self->{insertion_base_x} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
@@ -1007,9 +1009,9 @@ sub unknown4a {
     return $self->{unknown4a};
 }
 
-sub number_of_layers {
+sub number_of_blocks {
     my ($self) = @_;
-    return $self->{number_of_layers};
+    return $self->{number_of_blocks};
 }
 
 sub unknown4b {
@@ -1017,9 +1019,9 @@ sub unknown4b {
     return $self->{unknown4b};
 }
 
-sub number_of_styles {
+sub number_of_layers {
     my ($self) = @_;
-    return $self->{number_of_styles};
+    return $self->{number_of_layers};
 }
 
 sub unknown4c {
@@ -1027,9 +1029,9 @@ sub unknown4c {
     return $self->{unknown4c};
 }
 
-sub number_of_linetypes {
+sub number_of_styles {
     my ($self) = @_;
-    return $self->{number_of_linetypes};
+    return $self->{number_of_styles};
 }
 
 sub unknown4d {
@@ -1037,14 +1039,24 @@ sub unknown4d {
     return $self->{unknown4d};
 }
 
-sub number_of_views {
+sub number_of_linetypes {
     my ($self) = @_;
-    return $self->{number_of_views};
+    return $self->{number_of_linetypes};
 }
 
 sub unknown4e {
     my ($self) = @_;
     return $self->{unknown4e};
+}
+
+sub number_of_views {
+    my ($self) = @_;
+    return $self->{number_of_views};
+}
+
+sub unknown4f {
+    my ($self) = @_;
+    return $self->{unknown4f};
 }
 
 sub insertion_base_x {

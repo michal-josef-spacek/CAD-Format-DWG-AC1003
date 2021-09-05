@@ -38,22 +38,26 @@ types:
       - id: unknown3
         type: s2
       - id: unknown4a
-        size: 37
-      - id: number_of_layers
+        size: 27
+      - id: number_of_blocks
         type: s2
       - id: unknown4b
         size: 8
-      - id: number_of_styles
+      - id: number_of_layers
         type: s2
       - id: unknown4c
         size: 8
-      - id: number_of_linetypes
+      - id: number_of_styles
         type: s2
       - id: unknown4d
         size: 8
-      - id: number_of_views
+      - id: number_of_linetypes
         type: s2
       - id: unknown4e
+        size: 8
+      - id: number_of_views
+        type: s2
+      - id: unknown4f
         size: 6
       - id: insertion_base_x
         size: 8
