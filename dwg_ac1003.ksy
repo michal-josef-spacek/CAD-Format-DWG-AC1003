@@ -504,12 +504,15 @@ types:
             'entities::tmp': entity_tmp
 ##            'entities::load': entity_load
             'entities::point': entity_point
+            'entities::polyline': entity_polyline
 ##            'entities::repeat_begin': entity_repeat_begin
 ##            'entities::repeat_end': entity_repeat_end
+            'entities::seqend': entity_seqend
 ##            'entities::shape': entity_shape
 ##            'entities::solid': entity_solid
 ##            'entities::text': entity_text
 ##            'entities::trace': entity_trace
+            'entities::vertex': entity_vertex
 ##  entity_arc:
 ##    seq:
 ##      - id: layer
@@ -597,7 +600,7 @@ types:
         if: entity_mode.entity_thickness_flag
   entity_circle:
     seq:
-      - id: entity_comon
+      - id: entity_common
         type: entity_common
       - id: x
         size: 8
@@ -607,7 +610,7 @@ types:
         size: 8
   entity_line:
     seq:
-      - id: entity_comon
+      - id: entity_common
         type: entity_common
       - id: x1
         size: 8
@@ -641,6 +644,10 @@ types:
         size: 8
       - id: y
         size: 8
+  entity_polyline:
+    seq:
+      - id: entity_common
+        type: entity_common
 ##  entity_repeat_begin:
 ##    seq:
 ##      - id: layer
@@ -657,6 +664,12 @@ types:
 ##        size: 8
 ##      - id: row_distance
 ##        size: 8
+  entity_seqend:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: unknown
+        size: 4
 ##  entity_shape:
 ##    seq:
 ##      - id: layer
@@ -740,6 +753,14 @@ types:
 ##        size: 8
 ##      - id: to_and_y
 ##        size: 8
+  entity_vertex:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x
+        size: 8
+      - id: y
+        size: 8
 enums:
   entities:
     -127: tmp
@@ -757,6 +778,12 @@ enums:
     12: block_begin
     13: block_end
     14: block_insert
+    15: unknown1
+    16: unknown2
+    17: seqend
+    18: polyline
+    19: unknown4
+    20: vertex
   osnap_modes:
     0: none
     1: endpoint

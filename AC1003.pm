@@ -38,6 +38,12 @@ our $ENTITIES_SOLID = 11;
 our $ENTITIES_BLOCK_BEGIN = 12;
 our $ENTITIES_BLOCK_END = 13;
 our $ENTITIES_BLOCK_INSERT = 14;
+our $ENTITIES_UNKNOWN1 = 15;
+our $ENTITIES_UNKNOWN2 = 16;
+our $ENTITIES_SEQEND = 17;
+our $ENTITIES_POLYLINE = 18;
+our $ENTITIES_UNKNOWN4 = 19;
+our $ENTITIES_VERTEX = 20;
 
 our $ATTRIBUTES_FALSE = 0;
 our $ATTRIBUTES_NORMAL = 1;
@@ -329,17 +335,26 @@ sub _read {
 
     $self->{entity_type} = $self->{_io}->read_s1();
     my $_on = $self->entity_type();
-    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
+    if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntitySeqend->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
     }
-    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TMP) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_VERTEX) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityVertex->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POINT) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityPoint->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TMP) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POLYLINE) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityPolyline->new($self->{_io}, $self, $self->{_root});
     }
 }
 
@@ -351,6 +366,50 @@ sub entity_type {
 sub data {
     my ($self) = @_;
     return $self->{data};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntitySeqend;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{unknown} = $self->{_io}->read_bytes(4);
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub unknown {
+    my ($self) = @_;
+    return $self->{unknown};
 }
 
 ########################################################################
@@ -1383,15 +1442,15 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entity_comon} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
     $self->{x} = $self->{_io}->read_bytes(8);
     $self->{y} = $self->{_io}->read_bytes(8);
     $self->{radius} = $self->{_io}->read_bytes(8);
 }
 
-sub entity_comon {
+sub entity_common {
     my ($self) = @_;
-    return $self->{entity_comon};
+    return $self->{entity_common};
 }
 
 sub x {
@@ -1407,6 +1466,56 @@ sub y {
 sub radius {
     my ($self) = @_;
     return $self->{radius};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityVertex;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_bytes(8);
+    $self->{y} = $self->{_io}->read_bytes(8);
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
 }
 
 ########################################################################
@@ -1519,16 +1628,16 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{entity_comon} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
     $self->{x1} = $self->{_io}->read_bytes(8);
     $self->{y1} = $self->{_io}->read_bytes(8);
     $self->{x2} = $self->{_io}->read_bytes(8);
     $self->{y2} = $self->{_io}->read_bytes(8);
 }
 
-sub entity_comon {
+sub entity_common {
     my ($self) = @_;
-    return $self->{entity_comon};
+    return $self->{entity_common};
 }
 
 sub x1 {
@@ -1549,6 +1658,44 @@ sub x2 {
 sub y2 {
     my ($self) = @_;
     return $self->{y2};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityPolyline;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
 }
 
 1;
