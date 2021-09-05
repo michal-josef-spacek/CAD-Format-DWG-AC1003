@@ -46,7 +46,11 @@ types:
       - id: number_of_linetypes
         type: s2
       - id: unknown4c
-        size: 16
+        size: 8
+      - id: number_of_views
+        type: s2
+      - id: unknown4d
+        size: 6
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065, $INSBASE/10

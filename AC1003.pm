@@ -523,7 +523,9 @@ sub _read {
     $self->{number_of_layers} = $self->{_io}->read_s2le();
     $self->{unknown4b} = $self->{_io}->read_bytes(18);
     $self->{number_of_linetypes} = $self->{_io}->read_s2le();
-    $self->{unknown4c} = $self->{_io}->read_bytes(16);
+    $self->{unknown4c} = $self->{_io}->read_bytes(8);
+    $self->{number_of_views} = $self->{_io}->read_s2le();
+    $self->{unknown4d} = $self->{_io}->read_bytes(6);
     $self->{insertion_base_x} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
@@ -741,6 +743,16 @@ sub number_of_linetypes {
 sub unknown4c {
     my ($self) = @_;
     return $self->{unknown4c};
+}
+
+sub number_of_views {
+    my ($self) = @_;
+    return $self->{number_of_views};
+}
+
+sub unknown4d {
+    my ($self) = @_;
+    return $self->{unknown4d};
 }
 
 sub insertion_base_x {
