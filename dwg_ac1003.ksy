@@ -519,7 +519,7 @@ types:
             'entities::seqend': entity_seqend
 ##            'entities::shape': entity_shape
             'entities::solid': entity_solid
-##            'entities::text': entity_text
+            'entities::text': entity_text
             'entities::trace': entity_trace
             'entities::vertex': entity_vertex
   entity_mode:
@@ -548,8 +548,12 @@ types:
         type: s2
       - id: entity_layer_index
         type: s1
-      - id: unknown2
-        size: 3
+      - id: flag1
+        type: s1
+      - id: flag2
+        type: s1
+      - id: flag3
+        type: s1
       - id: entity_color
         type: s1
         if: entity_mode.entity_color_flag
@@ -713,35 +717,23 @@ types:
         size: 8
       - id: to_and_y
         size: 8
-##  entity_text:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##      - id: height
-##        size: 8
-##      - id: angle
-##        size: 8
-##      - id: size
-##        type: s2
-##      - id: value
-##        size: size
-##  entity_tmp:
-##    doc: Removed after redraw
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x1
-##        size: 8
-##      - id: y1
-##        size: 8
-##      - id: x2
-##        size: 8
-##      - id: y2
-##        size: 8
+  entity_text:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x
+        size: 8
+      - id: y
+        size: 8
+      - id: height
+        size: 8
+      - id: size
+        type: s2
+      - id: value
+        size: size
+      - id: angle
+        size: 8
+        if: entity_common.flag2 == 1
   entity_trace:
     seq:
       - id: entity_common

@@ -292,7 +292,9 @@ sub _read {
     $self->{entity_mode} = CAD::Format::DWG::AC1003::EntityMode->new($self->{_io}, $self, $self->{_root});
     $self->{entity_size} = $self->{_io}->read_s2le();
     $self->{entity_layer_index} = $self->{_io}->read_s1();
-    $self->{unknown2} = $self->{_io}->read_bytes(3);
+    $self->{flag1} = $self->{_io}->read_s1();
+    $self->{flag2} = $self->{_io}->read_s1();
+    $self->{flag3} = $self->{_io}->read_s1();
     if ($self->entity_mode()->entity_color_flag()) {
         $self->{entity_color} = $self->{_io}->read_s1();
     }
@@ -319,9 +321,19 @@ sub entity_layer_index {
     return $self->{entity_layer_index};
 }
 
-sub unknown2 {
+sub flag1 {
     my ($self) = @_;
-    return $self->{unknown2};
+    return $self->{flag1};
+}
+
+sub flag2 {
+    my ($self) = @_;
+    return $self->{flag2};
+}
+
+sub flag3 {
+    my ($self) = @_;
+    return $self->{flag3};
 }
 
 sub entity_color {
@@ -476,6 +488,82 @@ sub to_and_y {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityText;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_bytes(8);
+    $self->{y} = $self->{_io}->read_bytes(8);
+    $self->{height} = $self->{_io}->read_bytes(8);
+    $self->{size} = $self->{_io}->read_s2le();
+    $self->{value} = $self->{_io}->read_bytes($self->size());
+    if ($self->entity_common()->flag2() == 1) {
+        $self->{angle} = $self->{_io}->read_bytes(8);
+    }
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+sub height {
+    my ($self) = @_;
+    return $self->{height};
+}
+
+sub size {
+    my ($self) = @_;
+    return $self->{size};
+}
+
+sub value {
+    my ($self) = @_;
+    return $self->{value};
+}
+
+sub angle {
+    my ($self) = @_;
+    return $self->{angle};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityArc;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -586,6 +674,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TEXT) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityText->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
