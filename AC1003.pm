@@ -799,7 +799,14 @@ sub _read {
     $self->{unknown1} = $self->{_io}->read_s2le();
     $self->{unknown2} = $self->{_io}->read_s2le();
     $self->{unknown3} = $self->{_io}->read_s2le();
-    $self->{unknown4a} = $self->{_io}->read_bytes(27);
+    $self->{dwg_version} = $self->{_io}->read_s1();
+    $self->{entities_start} = $self->{_io}->read_s4le();
+    $self->{entities_end} = $self->{_io}->read_s4le();
+    $self->{blocks_start} = $self->{_io}->read_s4le();
+    $self->{rl1} = $self->{_io}->read_bytes(4);
+    $self->{blocks_end} = $self->{_io}->read_s4le();
+    $self->{rl2} = $self->{_io}->read_bytes(4);
+    $self->{unknown4a} = $self->{_io}->read_bytes(2);
     $self->{number_of_blocks} = $self->{_io}->read_s2le();
     $self->{unknown4b} = $self->{_io}->read_bytes(8);
     $self->{number_of_layers} = $self->{_io}->read_s2le();
@@ -1002,6 +1009,41 @@ sub unknown2 {
 sub unknown3 {
     my ($self) = @_;
     return $self->{unknown3};
+}
+
+sub dwg_version {
+    my ($self) = @_;
+    return $self->{dwg_version};
+}
+
+sub entities_start {
+    my ($self) = @_;
+    return $self->{entities_start};
+}
+
+sub entities_end {
+    my ($self) = @_;
+    return $self->{entities_end};
+}
+
+sub blocks_start {
+    my ($self) = @_;
+    return $self->{blocks_start};
+}
+
+sub rl1 {
+    my ($self) = @_;
+    return $self->{rl1};
+}
+
+sub blocks_end {
+    my ($self) = @_;
+    return $self->{blocks_end};
+}
+
+sub rl2 {
+    my ($self) = @_;
+    return $self->{rl2};
 }
 
 sub unknown4a {

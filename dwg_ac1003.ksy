@@ -37,8 +37,22 @@ types:
         type: s2
       - id: unknown3
         type: s2
+      - id: dwg_version
+        type: s1
+      - id: entities_start
+        type: s4
+      - id: entities_end
+        type: s4
+      - id: blocks_start
+        type: s4
+      - id: rl1
+        size: 4
+      - id: blocks_end
+        type: s4
+      - id: rl2
+        size: 4
       - id: unknown4a
-        size: 27
+        size: 2
       - id: number_of_blocks
         type: s2
       - id: unknown4b
