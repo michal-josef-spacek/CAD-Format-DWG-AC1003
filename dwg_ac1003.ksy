@@ -534,7 +534,7 @@ types:
             'entities::polyline': entity_polyline
             'entities::unknown4': entity_tmp
             'entities::seqend': entity_seqend
-##            'entities::shape': entity_shape
+            'entities::shape': entity_shape
             'entities::solid': entity_solid
             'entities::text': entity_text
             'entities::trace': entity_trace
@@ -774,20 +774,24 @@ types:
         type: entity_common
       - id: unknown
         size: 4
-##  entity_shape:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##      - id: height
-##        size: 8
-##      - id: angle
-##        size: 8
-##      - id: item_num
-##        type: s2
+  entity_shape:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x
+        type: f8
+      - id: y
+        type: f8
+      - id: height
+        type: f8
+      - id: item_num
+        type: u1
+      - id: angle
+        type: f8
+        ## TODO Probably bits (2 without explicit angle =0)
+        if: entity_common.flag2 == 3
+      - id: load_num
+        type: u1
   entity_solid:
     seq:
       - id: entity_common

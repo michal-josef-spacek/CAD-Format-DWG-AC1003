@@ -916,6 +916,9 @@ sub _read {
     if ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SOLID) {
         $self->{data} = CAD::Format::DWG::AC1003::EntitySolid->new($self->{_io}, $self, $self->{_root});
     }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SHAPE) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityShape->new($self->{_io}, $self, $self->{_root});
+    }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
         $self->{data} = CAD::Format::DWG::AC1003::EntitySeqend->new($self->{_io}, $self, $self->{_root});
     }
@@ -2256,6 +2259,82 @@ sub y {
 sub radius {
     my ($self) = @_;
     return $self->{radius};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityShape;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+    $self->{height} = $self->{_io}->read_f8le();
+    $self->{item_num} = $self->{_io}->read_u1();
+    if ($self->entity_common()->flag2() == 3) {
+        $self->{angle} = $self->{_io}->read_f8le();
+    }
+    $self->{load_num} = $self->{_io}->read_u1();
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+sub height {
+    my ($self) = @_;
+    return $self->{height};
+}
+
+sub item_num {
+    my ($self) = @_;
+    return $self->{item_num};
+}
+
+sub angle {
+    my ($self) = @_;
+    return $self->{angle};
+}
+
+sub load_num {
+    my ($self) = @_;
+    return $self->{load_num};
 }
 
 ########################################################################
