@@ -529,7 +529,6 @@ types:
             'entities::dim': entity_dim
             'entities::line': entity_line
             'entities::tmp': entity_tmp
-##            'entities::load': entity_load
             'entities::point': entity_point
             'entities::polyline': entity_polyline
 ##            'entities::unknown': entity_tmp
@@ -748,14 +747,6 @@ types:
         type: s2
       - id: xxx
         size: entity_size - 4
-##  entity_load:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: size
-##        type: s2
-##      - id: value
-##        size: size
   entity_point:
     seq:
       - id: entity_common
@@ -867,7 +858,6 @@ enums:
     7: text
     8: arc
     9: trace
-    10: load
     11: solid
     12: block_begin
     13: block_end
