@@ -532,7 +532,7 @@ types:
 ##            'entities::load': entity_load
             'entities::point': entity_point
             'entities::polyline': entity_polyline
-            'entities::unknown4': entity_tmp
+##            'entities::unknown': entity_tmp
             'entities::seqend': entity_seqend
             'entities::shape': entity_shape
             'entities::solid': entity_solid
@@ -872,11 +872,8 @@ enums:
     12: block_begin
     13: block_end
     14: block_insert
-    15: unknown1
-    16: unknown2
     17: seqend
     18: polyline
-    19: unknown4
     20: vertex
     23: dim
   osnap_modes:

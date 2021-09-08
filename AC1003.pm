@@ -36,11 +36,8 @@ our $ENTITIES_SOLID = 11;
 our $ENTITIES_BLOCK_BEGIN = 12;
 our $ENTITIES_BLOCK_END = 13;
 our $ENTITIES_BLOCK_INSERT = 14;
-our $ENTITIES_UNKNOWN1 = 15;
-our $ENTITIES_UNKNOWN2 = 16;
 our $ENTITIES_SEQEND = 17;
 our $ENTITIES_POLYLINE = 18;
-our $ENTITIES_UNKNOWN4 = 19;
 our $ENTITIES_VERTEX = 20;
 our $ENTITIES_DIM = 23;
 
@@ -921,9 +918,6 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_SEQEND) {
         $self->{data} = CAD::Format::DWG::AC1003::EntitySeqend->new($self->{_io}, $self, $self->{_root});
-    }
-    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_UNKNOWN4) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_DIM) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityDim->new($self->{_io}, $self, $self->{_root});
