@@ -526,6 +526,7 @@ types:
 ##            'entities::block_end': entity_block_end
 ##            'entities::block_insert' : entity_block_insert
             'entities::circle': entity_circle
+            'entities::dim': entity_dim
             'entities::line': entity_line
             'entities::tmp': entity_tmp
 ##            'entities::load': entity_load
@@ -641,6 +642,93 @@ types:
       - id: y
         size: 8
       - id: radius
+        size: 8
+  entity_dim:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: dim
+        type:
+          switch-on: entity_common.flag2
+          cases:
+            '24': entity_dim_horizontal
+            '30': entity_dim_aligned
+            '122': entity_dim_angular
+  entity_dim_aligned:
+    seq:
+      - id: block_index
+        type: s2
+      - id: dimension_line_definitng_point_x
+        type: f8
+      - id: dimension_line_definitng_point_y
+        type: f8
+      - id: default_text_position_x
+        type: f8
+      - id: default_text_position_y
+        type: f8
+      - id: unknown1
+        size: 1
+      - id: text_size
+        type: s2
+      - id: text
+        size: text_size
+      - id: extension_defining_point1_x
+        type: f8
+      - id: extension_defining_point1_y
+        type: f8
+      - id: extension_defining_point2_x
+        type: f8
+      - id: extension_defining_point2_y
+        type: f8
+  entity_dim_angular:
+    seq:
+      - id: block_index
+        type: s2
+      - id: first_line_defining_point_x
+        type: f8
+      - id: first_line_defining_point_y
+        type: f8
+      - id: user_specified_text_position_x
+        type: f8
+      - id: user_specified_text_position_y
+        type: f8
+      - id: unknown
+        size: 1
+      - id: x
+        type: f8
+      - id: y
+        type: f8
+      - id: x1
+        type: f8
+      - id: y1
+        type: f8
+      - id: x2
+        type: f8
+      - id: y2
+        type: f8
+      - id: dimension_line_arc_definition_point_x
+        type: f8
+      - id: dimension_line_arc_definition_point_y
+        type: f8
+  entity_dim_horizontal:
+    seq:
+      - id: block_index
+        type: s2
+      - id: dimension_line_defining_point_x
+        size: 8
+      - id: dimension_line_defining_point_y
+        size: 8
+      - id: default_text_position_x
+        size: 8
+      - id: default_text_position_y
+        size: 8
+      - id: extension_defining_point1_x
+        size: 8
+      - id: extension_defining_point1_y
+        size: 8
+      - id: extension_defining_point2_x
+        size: 8
+      - id: extension_defining_point2_y
         size: 8
   entity_line:
     seq:
@@ -806,6 +894,7 @@ enums:
     18: polyline
     19: unknown4
     20: vertex
+    23: dim
   osnap_modes:
     0: none
     1: endpoint

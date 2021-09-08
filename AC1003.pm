@@ -44,6 +44,7 @@ our $ENTITIES_SEQEND = 17;
 our $ENTITIES_POLYLINE = 18;
 our $ENTITIES_UNKNOWN4 = 19;
 our $ENTITIES_VERTEX = 20;
+our $ENTITIES_DIM = 23;
 
 our $ATTRIBUTES_FALSE = 0;
 our $ATTRIBUTES_NORMAL = 1;
@@ -124,6 +125,92 @@ sub entities {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityDimHorizontal;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{block_index} = $self->{_io}->read_s2le();
+    $self->{dimension_line_defining_point_x} = $self->{_io}->read_bytes(8);
+    $self->{dimension_line_defining_point_y} = $self->{_io}->read_bytes(8);
+    $self->{default_text_position_x} = $self->{_io}->read_bytes(8);
+    $self->{default_text_position_y} = $self->{_io}->read_bytes(8);
+    $self->{extension_defining_point1_x} = $self->{_io}->read_bytes(8);
+    $self->{extension_defining_point1_y} = $self->{_io}->read_bytes(8);
+    $self->{extension_defining_point2_x} = $self->{_io}->read_bytes(8);
+    $self->{extension_defining_point2_y} = $self->{_io}->read_bytes(8);
+}
+
+sub block_index {
+    my ($self) = @_;
+    return $self->{block_index};
+}
+
+sub dimension_line_defining_point_x {
+    my ($self) = @_;
+    return $self->{dimension_line_defining_point_x};
+}
+
+sub dimension_line_defining_point_y {
+    my ($self) = @_;
+    return $self->{dimension_line_defining_point_y};
+}
+
+sub default_text_position_x {
+    my ($self) = @_;
+    return $self->{default_text_position_x};
+}
+
+sub default_text_position_y {
+    my ($self) = @_;
+    return $self->{default_text_position_y};
+}
+
+sub extension_defining_point1_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_x};
+}
+
+sub extension_defining_point1_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_y};
+}
+
+sub extension_defining_point2_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_x};
+}
+
+sub extension_defining_point2_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_y};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityTmp;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -171,6 +258,110 @@ sub entity_size {
 sub xxx {
     my ($self) = @_;
     return $self->{xxx};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityDimAligned;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{block_index} = $self->{_io}->read_s2le();
+    $self->{dimension_line_definitng_point_x} = $self->{_io}->read_f8le();
+    $self->{dimension_line_definitng_point_y} = $self->{_io}->read_f8le();
+    $self->{default_text_position_x} = $self->{_io}->read_f8le();
+    $self->{default_text_position_y} = $self->{_io}->read_f8le();
+    $self->{unknown1} = $self->{_io}->read_bytes(1);
+    $self->{text_size} = $self->{_io}->read_s2le();
+    $self->{text} = $self->{_io}->read_bytes($self->text_size());
+    $self->{extension_defining_point1_x} = $self->{_io}->read_f8le();
+    $self->{extension_defining_point1_y} = $self->{_io}->read_f8le();
+    $self->{extension_defining_point2_x} = $self->{_io}->read_f8le();
+    $self->{extension_defining_point2_y} = $self->{_io}->read_f8le();
+}
+
+sub block_index {
+    my ($self) = @_;
+    return $self->{block_index};
+}
+
+sub dimension_line_definitng_point_x {
+    my ($self) = @_;
+    return $self->{dimension_line_definitng_point_x};
+}
+
+sub dimension_line_definitng_point_y {
+    my ($self) = @_;
+    return $self->{dimension_line_definitng_point_y};
+}
+
+sub default_text_position_x {
+    my ($self) = @_;
+    return $self->{default_text_position_x};
+}
+
+sub default_text_position_y {
+    my ($self) = @_;
+    return $self->{default_text_position_y};
+}
+
+sub unknown1 {
+    my ($self) = @_;
+    return $self->{unknown1};
+}
+
+sub text_size {
+    my ($self) = @_;
+    return $self->{text_size};
+}
+
+sub text {
+    my ($self) = @_;
+    return $self->{text};
+}
+
+sub extension_defining_point1_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_x};
+}
+
+sub extension_defining_point1_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_y};
+}
+
+sub extension_defining_point2_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_x};
+}
+
+sub extension_defining_point2_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_y};
 }
 
 ########################################################################
@@ -572,6 +763,59 @@ sub angle {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityDim;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    my $_on = $self->entity_common()->flag2();
+    if ($_on == 24) {
+        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimHorizontal->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == 30) {
+        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimAligned->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == 122) {
+        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimAngular->new($self->{_io}, $self, $self->{_root});
+    }
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub dim {
+    my ($self) = @_;
+    return $self->{dim};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityArc;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -679,6 +923,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_UNKNOWN4) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_DIM) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityDim->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
@@ -1839,6 +2086,122 @@ sub dim_alternate_units_multiplier {
 sub dim_linear_measurements_scale_factor {
     my ($self) = @_;
     return $self->{dim_linear_measurements_scale_factor};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityDimAngular;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{block_index} = $self->{_io}->read_s2le();
+    $self->{first_line_defining_point_x} = $self->{_io}->read_f8le();
+    $self->{first_line_defining_point_y} = $self->{_io}->read_f8le();
+    $self->{user_specified_text_position_x} = $self->{_io}->read_f8le();
+    $self->{user_specified_text_position_y} = $self->{_io}->read_f8le();
+    $self->{unknown} = $self->{_io}->read_bytes(1);
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+    $self->{x1} = $self->{_io}->read_f8le();
+    $self->{y1} = $self->{_io}->read_f8le();
+    $self->{x2} = $self->{_io}->read_f8le();
+    $self->{y2} = $self->{_io}->read_f8le();
+    $self->{dimension_line_arc_definition_point_x} = $self->{_io}->read_f8le();
+    $self->{dimension_line_arc_definition_point_y} = $self->{_io}->read_f8le();
+}
+
+sub block_index {
+    my ($self) = @_;
+    return $self->{block_index};
+}
+
+sub first_line_defining_point_x {
+    my ($self) = @_;
+    return $self->{first_line_defining_point_x};
+}
+
+sub first_line_defining_point_y {
+    my ($self) = @_;
+    return $self->{first_line_defining_point_y};
+}
+
+sub user_specified_text_position_x {
+    my ($self) = @_;
+    return $self->{user_specified_text_position_x};
+}
+
+sub user_specified_text_position_y {
+    my ($self) = @_;
+    return $self->{user_specified_text_position_y};
+}
+
+sub unknown {
+    my ($self) = @_;
+    return $self->{unknown};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+sub x1 {
+    my ($self) = @_;
+    return $self->{x1};
+}
+
+sub y1 {
+    my ($self) = @_;
+    return $self->{y1};
+}
+
+sub x2 {
+    my ($self) = @_;
+    return $self->{x2};
+}
+
+sub y2 {
+    my ($self) = @_;
+    return $self->{y2};
+}
+
+sub dimension_line_arc_definition_point_x {
+    my ($self) = @_;
+    return $self->{dimension_line_arc_definition_point_x};
+}
+
+sub dimension_line_arc_definition_point_y {
+    my ($self) = @_;
+    return $self->{dimension_line_arc_definition_point_y};
 }
 
 ########################################################################
