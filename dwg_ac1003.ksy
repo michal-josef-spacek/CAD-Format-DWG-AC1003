@@ -533,8 +533,6 @@ types:
             'entities::point': entity_point
             'entities::polyline': entity_polyline
             'entities::unknown4': entity_tmp
-##            'entities::repeat_begin': entity_repeat_begin
-##            'entities::repeat_end': entity_repeat_end
             'entities::seqend': entity_seqend
 ##            'entities::shape': entity_shape
             'entities::solid': entity_solid
@@ -770,22 +768,6 @@ types:
     seq:
       - id: entity_common
         type: entity_common
-##  entity_repeat_begin:
-##    seq:
-##      - id: layer
-##        type: s2
-##  entity_repeat_end:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: columns
-##        type: s2
-##      - id: rows
-##        type: s2
-##      - id: column_distance
-##        size: 8
-##      - id: row_distance
-##        size: 8
   entity_seqend:
     seq:
       - id: entity_common
@@ -878,8 +860,6 @@ enums:
     2: point
     3: circle
     4: shape
-    5: repeat_begin
-    6: repeat_end
     7: text
     8: arc
     9: trace
