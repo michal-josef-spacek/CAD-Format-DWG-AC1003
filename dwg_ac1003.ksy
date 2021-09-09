@@ -522,8 +522,6 @@ types:
           switch-on: entity_type
           cases:
             'entities::arc': entity_arc
-##            'entities::block_begin': entity_block_begin
-##            'entities::block_end': entity_block_end
 ##            'entities::block_insert' : entity_block_insert
             'entities::circle': entity_circle
             'entities::dim': entity_dim
@@ -596,22 +594,6 @@ types:
         size: 8
       - id: angle_to
         size: 8
-##  entity_block_begin:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: size
-##        type: s2
-##      - id: value
-##        size: size
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##  entity_block_end:
-##    seq:
-##      - id: layer
-##        type: s2
 ##  entity_block_insert:
 ##    seq:
 ##      - id: layer
@@ -859,8 +841,6 @@ enums:
     8: arc
     9: trace
     11: solid
-    12: block_begin
-    13: block_end
     14: block_insert
     17: seqend
     18: polyline
