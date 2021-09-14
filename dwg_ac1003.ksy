@@ -869,17 +869,17 @@ types:
       - id: entity_common
         type: entity_common
       - id: x
-        size: 8
+        type: f8
       - id: y
-        size: 8
+        type: f8
       - id: height
-        size: 8
+        type: f8
       - id: size
         type: s2
       - id: value
         size: size
       - id: angle
-        size: 8
+        type: f8
         if: entity_common.flag2_8
   entity_trace:
     seq:

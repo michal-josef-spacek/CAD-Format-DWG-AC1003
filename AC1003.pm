@@ -854,13 +854,13 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
-    $self->{x} = $self->{_io}->read_bytes(8);
-    $self->{y} = $self->{_io}->read_bytes(8);
-    $self->{height} = $self->{_io}->read_bytes(8);
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+    $self->{height} = $self->{_io}->read_f8le();
     $self->{size} = $self->{_io}->read_s2le();
     $self->{value} = $self->{_io}->read_bytes($self->size());
     if ($self->entity_common()->flag2_8()) {
-        $self->{angle} = $self->{_io}->read_bytes(8);
+        $self->{angle} = $self->{_io}->read_f8le();
     }
 }
 
