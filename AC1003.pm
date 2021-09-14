@@ -300,6 +300,18 @@ sub _read {
     if ($self->entity_common()->flag2_5()) {
         $self->{z_scale} = $self->{_io}->read_f8le();
     }
+    if ($self->entity_common()->flag2_4()) {
+        $self->{columns} = $self->{_io}->read_u2le();
+    }
+    if ($self->entity_common()->flag2_3()) {
+        $self->{rows} = $self->{_io}->read_u2le();
+    }
+    if ($self->entity_common()->flag2_2()) {
+        $self->{column_spacing} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_1()) {
+        $self->{row_spacing} = $self->{_io}->read_f8le();
+    }
 }
 
 sub entity_common {
@@ -340,6 +352,26 @@ sub rotation_angle_in_radians {
 sub z_scale {
     my ($self) = @_;
     return $self->{z_scale};
+}
+
+sub columns {
+    my ($self) = @_;
+    return $self->{columns};
+}
+
+sub rows {
+    my ($self) = @_;
+    return $self->{rows};
+}
+
+sub column_spacing {
+    my ($self) = @_;
+    return $self->{column_spacing};
+}
+
+sub row_spacing {
+    my ($self) = @_;
+    return $self->{row_spacing};
 }
 
 ########################################################################

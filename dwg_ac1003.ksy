@@ -703,6 +703,22 @@ types:
         type: f8
         if: entity_common.flag2_5
         doc: INSERT/43
+      - id: columns
+        type: u2
+        if: entity_common.flag2_4
+        doc: DIMENSION/70
+      - id: rows
+        type: u2
+        if: entity_common.flag2_3
+        doc: DIMENSION/71
+      - id: column_spacing
+        type: f8
+        if: entity_common.flag2_2
+        doc: INSERT/44
+      - id: row_spacing
+        type: f8
+        if: entity_common.flag2_1
+        doc: INSERT/45
   entity_circle:
     seq:
       - id: entity_common
