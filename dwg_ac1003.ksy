@@ -523,7 +523,7 @@ types:
           cases:
             'entities::arc': entity_arc
             'entities::attdef': entity_attdef
-##            'entities::block_insert' : entity_block_insert
+            'entities::insert' : entity_insert
             'entities::circle': entity_circle
             'entities::dim': entity_dim
             'entities::line': entity_line
@@ -674,24 +674,35 @@ types:
         type: f8
         if: entity_common.flag2_1
         doc: ATTDEF/21
-##  entity_block_insert:
-##    seq:
-##      - id: layer
-##        type: s2
-##      - id: size
-##        type: s2
-##      - id: value
-##        size: size
-##      - id: x
-##        size: 8
-##      - id: y
-##        size: 8
-##      - id: x_scale
-##        size: 8
-##      - id: y_scale
-##        size: 8
-##      - id: rotation_angle
-##        size: 8
+  entity_insert:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: block_index
+        type: s2
+        doc: INSERT/2
+      - id: x
+        type: f8
+        doc: INSERT/10
+      - id: y
+        type: f8
+        doc: INSERT/20
+      - id: x_scale
+        type: f8
+        if: entity_common.flag2_8
+        doc: INSERT/41
+      - id: y_scale
+        type: f8
+        if: entity_common.flag2_7
+        doc: INSERT/42
+      - id: rotation_angle_in_radians
+        type: f8
+        if: entity_common.flag2_6
+        doc: INSERT/50
+      - id: z_scale
+        type: f8
+        if: entity_common.flag2_5
+        doc: INSERT/43
   entity_circle:
     seq:
       - id: entity_common
@@ -932,7 +943,7 @@ enums:
     8: arc
     9: trace
     11: solid
-    14: block_insert
+    14: insert
     15: attdef
     17: seqend
     18: polyline

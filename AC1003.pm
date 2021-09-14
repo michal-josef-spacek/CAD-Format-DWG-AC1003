@@ -32,7 +32,7 @@ our $ENTITIES_TEXT = 7;
 our $ENTITIES_ARC = 8;
 our $ENTITIES_TRACE = 9;
 our $ENTITIES_SOLID = 11;
-our $ENTITIES_BLOCK_INSERT = 14;
+our $ENTITIES_INSERT = 14;
 our $ENTITIES_ATTDEF = 15;
 our $ENTITIES_SEQEND = 17;
 our $ENTITIES_POLYLINE = 18;
@@ -251,6 +251,94 @@ sub to_and_x {
 sub to_and_y {
     my ($self) = @_;
     return $self->{to_and_y};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityInsert;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{block_index} = $self->{_io}->read_s2le();
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+    if ($self->entity_common()->flag2_8()) {
+        $self->{x_scale} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_7()) {
+        $self->{y_scale} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_6()) {
+        $self->{rotation_angle_in_radians} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_5()) {
+        $self->{z_scale} = $self->{_io}->read_f8le();
+    }
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub block_index {
+    my ($self) = @_;
+    return $self->{block_index};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+sub x_scale {
+    my ($self) = @_;
+    return $self->{x_scale};
+}
+
+sub y_scale {
+    my ($self) = @_;
+    return $self->{y_scale};
+}
+
+sub rotation_angle_in_radians {
+    my ($self) = @_;
+    return $self->{rotation_angle_in_radians};
+}
+
+sub z_scale {
+    my ($self) = @_;
+    return $self->{z_scale};
 }
 
 ########################################################################
@@ -1229,6 +1317,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TEXT) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityText->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_INSERT) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityInsert->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
