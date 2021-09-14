@@ -530,6 +530,7 @@ types:
             'entities::tmp': entity_tmp
             'entities::point': entity_point
             'entities::polyline': entity_polyline
+            'entities::polyline2': entity_polyline
             'entities::seqend': entity_seqend
             'entities::shape': entity_shape
             'entities::solid': entity_solid
@@ -810,6 +811,16 @@ types:
     seq:
       - id: entity_common
         type: entity_common
+      - id: unknown
+        type: u1
+        if: entity_common.flag2_7
+        doc: DIMENSION/70
+      - id: x
+        type: f8
+        if: entity_common.flag2_6
+      - id: y
+        type: f8
+        if: entity_common.flag2_6
   entity_seqend:
     seq:
       - id: entity_common
@@ -895,9 +906,15 @@ types:
       - id: entity_common
         type: entity_common
       - id: x
-        size: 8
+        type: f8
       - id: y
-        size: 8
+        type: f8
+      - id: width
+        type: f8
+        if: entity_common.flag2_8
+      - id: bulge
+        type: f8
+        if: entity_common.flag2_6
   attdef_flags:
     seq:
       - id: flag_1
@@ -950,6 +967,7 @@ enums:
     15: attdef
     17: seqend
     18: polyline
+    19: polyline2
     20: vertex
     23: dim
   osnap_modes:

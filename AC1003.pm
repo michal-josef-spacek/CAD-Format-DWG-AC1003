@@ -36,6 +36,7 @@ our $ENTITIES_INSERT = 14;
 our $ENTITIES_ATTDEF = 15;
 our $ENTITIES_SEQEND = 17;
 our $ENTITIES_POLYLINE = 18;
+our $ENTITIES_POLYLINE2 = 19;
 our $ENTITIES_VERTEX = 20;
 our $ENTITIES_DIM = 23;
 
@@ -1320,6 +1321,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_INSERT) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityInsert->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POLYLINE2) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityPolyline->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_CIRCLE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityCircle->new($self->{_io}, $self, $self->{_root});
@@ -2642,8 +2646,14 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
-    $self->{x} = $self->{_io}->read_bytes(8);
-    $self->{y} = $self->{_io}->read_bytes(8);
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+    if ($self->entity_common()->flag2_8()) {
+        $self->{width} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_6()) {
+        $self->{bulge} = $self->{_io}->read_f8le();
+    }
 }
 
 sub entity_common {
@@ -2659,6 +2669,16 @@ sub x {
 sub y {
     my ($self) = @_;
     return $self->{y};
+}
+
+sub width {
+    my ($self) = @_;
+    return $self->{width};
+}
+
+sub bulge {
+    my ($self) = @_;
+    return $self->{bulge};
 }
 
 ########################################################################
@@ -2834,11 +2854,35 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    if ($self->entity_common()->flag2_7()) {
+        $self->{unknown} = $self->{_io}->read_u1();
+    }
+    if ($self->entity_common()->flag2_6()) {
+        $self->{x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_6()) {
+        $self->{y} = $self->{_io}->read_f8le();
+    }
 }
 
 sub entity_common {
     my ($self) = @_;
     return $self->{entity_common};
+}
+
+sub unknown {
+    my ($self) = @_;
+    return $self->{unknown};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
 }
 
 1;
