@@ -688,14 +688,14 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
-    $self->{from_x} = $self->{_io}->read_bytes(8);
-    $self->{from_y} = $self->{_io}->read_bytes(8);
-    $self->{from_and_x} = $self->{_io}->read_bytes(8);
-    $self->{from_and_y} = $self->{_io}->read_bytes(8);
-    $self->{to_x} = $self->{_io}->read_bytes(8);
-    $self->{to_y} = $self->{_io}->read_bytes(8);
-    $self->{to_and_x} = $self->{_io}->read_bytes(8);
-    $self->{to_and_y} = $self->{_io}->read_bytes(8);
+    $self->{from_x} = $self->{_io}->read_f8le();
+    $self->{from_y} = $self->{_io}->read_f8le();
+    $self->{from_and_x} = $self->{_io}->read_f8le();
+    $self->{from_and_y} = $self->{_io}->read_f8le();
+    $self->{to_x} = $self->{_io}->read_f8le();
+    $self->{to_y} = $self->{_io}->read_f8le();
+    $self->{to_and_x} = $self->{_io}->read_f8le();
+    $self->{to_and_y} = $self->{_io}->read_f8le();
 }
 
 sub entity_common {
