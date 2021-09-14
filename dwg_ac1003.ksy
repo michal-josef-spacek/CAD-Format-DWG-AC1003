@@ -530,7 +530,6 @@ types:
             'entities::tmp': entity_tmp
             'entities::point': entity_point
             'entities::polyline': entity_polyline
-##            'entities::unknown': entity_tmp
             'entities::seqend': entity_seqend
             'entities::shape': entity_shape
             'entities::solid': entity_solid
