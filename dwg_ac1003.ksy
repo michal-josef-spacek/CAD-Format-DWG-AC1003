@@ -614,15 +614,15 @@ types:
       - id: entity_common
         type: entity_common
       - id: x
-        size: 8
+        type: f8
       - id: y
-        size: 8
+        type: f8
       - id: radius
-        size: 8
+        type: f8
       - id: angle_from
-        size: 8
+        type: f8
       - id: angle_to
-        size: 8
+        type: f8
   entity_attdef:
     seq:
       - id: entity_common
