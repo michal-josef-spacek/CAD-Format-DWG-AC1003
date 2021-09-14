@@ -804,9 +804,9 @@ types:
       - id: entity_common
         type: entity_common
       - id: x
-        size: 8
+        type: f8
       - id: y
-        size: 8
+        type: f8
   entity_polyline:
     seq:
       - id: entity_common
