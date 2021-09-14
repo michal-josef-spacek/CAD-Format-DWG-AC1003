@@ -849,21 +849,21 @@ types:
       - id: entity_common
         type: entity_common
       - id: from_x
-        size: 8
+        type: f8
       - id: from_y
-        size: 8
+        type: f8
       - id: from_and_x
-        size: 8
+        type: f8
       - id: from_and_y
-        size: 8
+        type: f8
       - id: to_x
-        size: 8
+        type: f8
       - id: to_y
-        size: 8
+        type: f8
       - id: to_and_x
-        size: 8
+        type: f8
       - id: to_and_y
-        size: 8
+        type: f8
   entity_text:
     seq:
       - id: entity_common
