@@ -842,6 +842,7 @@ enums:
     9: trace
     11: solid
     14: block_insert
+    15: attdef
     17: seqend
     18: polyline
     20: vertex
