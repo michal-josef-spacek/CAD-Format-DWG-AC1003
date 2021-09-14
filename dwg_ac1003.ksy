@@ -522,6 +522,7 @@ types:
           switch-on: entity_type
           cases:
             'entities::arc': entity_arc
+            'entities::attdef': entity_attdef
 ##            'entities::block_insert' : entity_block_insert
             'entities::circle': entity_circle
             'entities::dim': entity_dim
@@ -622,6 +623,57 @@ types:
         size: 8
       - id: angle_to
         size: 8
+  entity_attdef:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: start_point_x
+        type: f8
+        doc: ATTDEF/10
+      - id: start_point_y
+        type: f8
+        doc: ATTDEF/20
+      - id: height
+        type: f8
+        doc: ATTDEF/40
+      - id: default_size
+        type: s2
+      - id: default
+        size: default_size
+        doc: ATTDEF/1
+      - id: prompt_size
+        type: s2
+      - id: prompt
+        size: prompt_size
+        doc: ATTDEF/3
+      - id: tag_size
+        type: s2
+      - id: tag
+        size: tag_size
+        doc: ATTDEF/2
+      - id: flags
+        type: attdef_flags
+        doc: ATTDEF/70
+      - id: rotation_angle_in_radians
+        type: f8
+        if: entity_common.flag2_7
+        doc: ATTDEF/50
+      - id: width_scale_factor
+        type: f8
+        if: entity_common.flag2_6
+        doc: ATTDEF/41
+      - id: flags2
+        type: attdef_flags2
+        if: entity_common.flag2_2
+        doc: ATTDEF/72
+      - id: end_point_x
+        type: f8
+        if: entity_common.flag2_1
+        doc: ATTDEF/11
+      - id: end_point_y
+        type: f8
+        if: entity_common.flag2_1
+        doc: ATTDEF/21
 ##  entity_block_insert:
 ##    seq:
 ##      - id: layer
@@ -832,6 +884,43 @@ types:
         size: 8
       - id: y
         size: 8
+  attdef_flags:
+    seq:
+      - id: flag_1
+        type: b1
+      - id: flag_2
+        type: b1
+      - id: flag_3
+        type: b1
+      - id: flag_4
+        type: b1
+      - id: flag_5
+        type: b1
+      - id: invisible
+        type: b1
+      - id: constant
+        type: b1
+      - id: verify
+        type: b1
+  attdef_flags2:
+    seq:
+## TODO Tohle je divne
+      - id: flag_1
+        type: b1
+      - id: flag_2
+        type: b1
+      - id: flag_3
+        type: b1
+      - id: flag_4
+        type: b1
+      - id: flag_5
+        type: b1
+      - id: middle
+        type: b1
+      - id: right
+        type: b1
+      - id: center
+        type: b1
 enums:
   entities:
     -127: tmp

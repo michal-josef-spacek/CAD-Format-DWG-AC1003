@@ -489,6 +489,86 @@ sub y {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::AttdefFlags;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{flag_1} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_2} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_3} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_4} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_5} = $self->{_io}->read_bits_int_be(1);
+    $self->{invisible} = $self->{_io}->read_bits_int_be(1);
+    $self->{constant} = $self->{_io}->read_bits_int_be(1);
+    $self->{verify} = $self->{_io}->read_bits_int_be(1);
+}
+
+sub flag_1 {
+    my ($self) = @_;
+    return $self->{flag_1};
+}
+
+sub flag_2 {
+    my ($self) = @_;
+    return $self->{flag_2};
+}
+
+sub flag_3 {
+    my ($self) = @_;
+    return $self->{flag_3};
+}
+
+sub flag_4 {
+    my ($self) = @_;
+    return $self->{flag_4};
+}
+
+sub flag_5 {
+    my ($self) = @_;
+    return $self->{flag_5};
+}
+
+sub invisible {
+    my ($self) = @_;
+    return $self->{invisible};
+}
+
+sub constant {
+    my ($self) = @_;
+    return $self->{constant};
+}
+
+sub verify {
+    my ($self) = @_;
+    return $self->{verify};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityTrace;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -575,6 +655,86 @@ sub to_and_y {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::AttdefFlags2;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{flag_1} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_2} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_3} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_4} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag_5} = $self->{_io}->read_bits_int_be(1);
+    $self->{middle} = $self->{_io}->read_bits_int_be(1);
+    $self->{right} = $self->{_io}->read_bits_int_be(1);
+    $self->{center} = $self->{_io}->read_bits_int_be(1);
+}
+
+sub flag_1 {
+    my ($self) = @_;
+    return $self->{flag_1};
+}
+
+sub flag_2 {
+    my ($self) = @_;
+    return $self->{flag_2};
+}
+
+sub flag_3 {
+    my ($self) = @_;
+    return $self->{flag_3};
+}
+
+sub flag_4 {
+    my ($self) = @_;
+    return $self->{flag_4};
+}
+
+sub flag_5 {
+    my ($self) = @_;
+    return $self->{flag_5};
+}
+
+sub middle {
+    my ($self) = @_;
+    return $self->{middle};
+}
+
+sub right {
+    my ($self) = @_;
+    return $self->{right};
+}
+
+sub center {
+    my ($self) = @_;
+    return $self->{center};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityText;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -648,6 +808,144 @@ sub value {
 sub angle {
     my ($self) = @_;
     return $self->{angle};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::EntityAttdef;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{start_point_x} = $self->{_io}->read_f8le();
+    $self->{start_point_y} = $self->{_io}->read_f8le();
+    $self->{height} = $self->{_io}->read_f8le();
+    $self->{default_size} = $self->{_io}->read_s2le();
+    $self->{default} = $self->{_io}->read_bytes($self->default_size());
+    $self->{prompt_size} = $self->{_io}->read_s2le();
+    $self->{prompt} = $self->{_io}->read_bytes($self->prompt_size());
+    $self->{tag_size} = $self->{_io}->read_s2le();
+    $self->{tag} = $self->{_io}->read_bytes($self->tag_size());
+    $self->{flags} = CAD::Format::DWG::AC1003::AttdefFlags->new($self->{_io}, $self, $self->{_root});
+    if ($self->entity_common()->flag2_7()) {
+        $self->{rotation_angle_in_radians} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_6()) {
+        $self->{width_scale_factor} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_2()) {
+        $self->{flags2} = CAD::Format::DWG::AC1003::AttdefFlags2->new($self->{_io}, $self, $self->{_root});
+    }
+    if ($self->entity_common()->flag2_1()) {
+        $self->{end_point_x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_1()) {
+        $self->{end_point_y} = $self->{_io}->read_f8le();
+    }
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub start_point_x {
+    my ($self) = @_;
+    return $self->{start_point_x};
+}
+
+sub start_point_y {
+    my ($self) = @_;
+    return $self->{start_point_y};
+}
+
+sub height {
+    my ($self) = @_;
+    return $self->{height};
+}
+
+sub default_size {
+    my ($self) = @_;
+    return $self->{default_size};
+}
+
+sub default {
+    my ($self) = @_;
+    return $self->{default};
+}
+
+sub prompt_size {
+    my ($self) = @_;
+    return $self->{prompt_size};
+}
+
+sub prompt {
+    my ($self) = @_;
+    return $self->{prompt};
+}
+
+sub tag_size {
+    my ($self) = @_;
+    return $self->{tag_size};
+}
+
+sub tag {
+    my ($self) = @_;
+    return $self->{tag};
+}
+
+sub flags {
+    my ($self) = @_;
+    return $self->{flags};
+}
+
+sub rotation_angle_in_radians {
+    my ($self) = @_;
+    return $self->{rotation_angle_in_radians};
+}
+
+sub width_scale_factor {
+    my ($self) = @_;
+    return $self->{width_scale_factor};
+}
+
+sub flags2 {
+    my ($self) = @_;
+    return $self->{flags2};
+}
+
+sub end_point_x {
+    my ($self) = @_;
+    return $self->{end_point_x};
+}
+
+sub end_point_y {
+    my ($self) = @_;
+    return $self->{end_point_y};
 }
 
 ########################################################################
@@ -940,6 +1238,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_VERTEX) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityVertex->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_ATTDEF) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityAttdef->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POINT) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityPoint->new($self->{_io}, $self, $self->{_root});
