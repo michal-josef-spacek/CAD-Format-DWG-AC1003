@@ -604,10 +604,10 @@ types:
         type: s1
         if: entity_mode.entity_linetype_flag
       - id: entity_elevation
-        size: 8
+        type: f8
         if: entity_mode.entity_elevation_flag
       - id: entity_thickness
-        size: 8
+        type: f8
         if: entity_mode.entity_thickness_flag
   entity_arc:
     seq:
@@ -780,13 +780,17 @@ types:
       - id: entity_common
         type: entity_common
       - id: x1
-        size: 8
+        type: f8
+        doc: LINE/10
       - id: y1
-        size: 8
+        type: f8
+        doc: LINE/20
       - id: x2
-        size: 8
+        type: f8
+        doc: LINE/11
       - id: y2
-        size: 8
+        type: f8
+        doc: LINE/21
   entity_tmp:
     seq:
       - id: entity_mode

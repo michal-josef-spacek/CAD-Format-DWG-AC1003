@@ -399,10 +399,10 @@ sub _read {
         $self->{entity_linetype_index} = $self->{_io}->read_s1();
     }
     if ($self->entity_mode()->entity_elevation_flag()) {
-        $self->{entity_elevation} = $self->{_io}->read_bytes(8);
+        $self->{entity_elevation} = $self->{_io}->read_f8le();
     }
     if ($self->entity_mode()->entity_thickness_flag()) {
-        $self->{entity_thickness} = $self->{_io}->read_bytes(8);
+        $self->{entity_thickness} = $self->{_io}->read_f8le();
     }
 }
 
@@ -2772,10 +2772,10 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
-    $self->{x1} = $self->{_io}->read_bytes(8);
-    $self->{y1} = $self->{_io}->read_bytes(8);
-    $self->{x2} = $self->{_io}->read_bytes(8);
-    $self->{y2} = $self->{_io}->read_bytes(8);
+    $self->{x1} = $self->{_io}->read_f8le();
+    $self->{y1} = $self->{_io}->read_f8le();
+    $self->{x2} = $self->{_io}->read_f8le();
+    $self->{y2} = $self->{_io}->read_f8le();
 }
 
 sub entity_common {
