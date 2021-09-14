@@ -118,92 +118,6 @@ sub entities {
 }
 
 ########################################################################
-package CAD::Format::DWG::AC1003::EntityDimHorizontal;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{block_index} = $self->{_io}->read_s2le();
-    $self->{dimension_line_defining_point_x} = $self->{_io}->read_bytes(8);
-    $self->{dimension_line_defining_point_y} = $self->{_io}->read_bytes(8);
-    $self->{default_text_position_x} = $self->{_io}->read_bytes(8);
-    $self->{default_text_position_y} = $self->{_io}->read_bytes(8);
-    $self->{extension_defining_point1_x} = $self->{_io}->read_bytes(8);
-    $self->{extension_defining_point1_y} = $self->{_io}->read_bytes(8);
-    $self->{extension_defining_point2_x} = $self->{_io}->read_bytes(8);
-    $self->{extension_defining_point2_y} = $self->{_io}->read_bytes(8);
-}
-
-sub block_index {
-    my ($self) = @_;
-    return $self->{block_index};
-}
-
-sub dimension_line_defining_point_x {
-    my ($self) = @_;
-    return $self->{dimension_line_defining_point_x};
-}
-
-sub dimension_line_defining_point_y {
-    my ($self) = @_;
-    return $self->{dimension_line_defining_point_y};
-}
-
-sub default_text_position_x {
-    my ($self) = @_;
-    return $self->{default_text_position_x};
-}
-
-sub default_text_position_y {
-    my ($self) = @_;
-    return $self->{default_text_position_y};
-}
-
-sub extension_defining_point1_x {
-    my ($self) = @_;
-    return $self->{extension_defining_point1_x};
-}
-
-sub extension_defining_point1_y {
-    my ($self) = @_;
-    return $self->{extension_defining_point1_y};
-}
-
-sub extension_defining_point2_x {
-    my ($self) = @_;
-    return $self->{extension_defining_point2_x};
-}
-
-sub extension_defining_point2_y {
-    my ($self) = @_;
-    return $self->{extension_defining_point2_y};
-}
-
-########################################################################
 package CAD::Format::DWG::AC1003::EntityTmp;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -251,110 +165,6 @@ sub entity_size {
 sub xxx {
     my ($self) = @_;
     return $self->{xxx};
-}
-
-########################################################################
-package CAD::Format::DWG::AC1003::EntityDimAligned;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{block_index} = $self->{_io}->read_s2le();
-    $self->{dimension_line_definitng_point_x} = $self->{_io}->read_f8le();
-    $self->{dimension_line_definitng_point_y} = $self->{_io}->read_f8le();
-    $self->{default_text_position_x} = $self->{_io}->read_f8le();
-    $self->{default_text_position_y} = $self->{_io}->read_f8le();
-    $self->{unknown1} = $self->{_io}->read_bytes(1);
-    $self->{text_size} = $self->{_io}->read_s2le();
-    $self->{text} = $self->{_io}->read_bytes($self->text_size());
-    $self->{extension_defining_point1_x} = $self->{_io}->read_f8le();
-    $self->{extension_defining_point1_y} = $self->{_io}->read_f8le();
-    $self->{extension_defining_point2_x} = $self->{_io}->read_f8le();
-    $self->{extension_defining_point2_y} = $self->{_io}->read_f8le();
-}
-
-sub block_index {
-    my ($self) = @_;
-    return $self->{block_index};
-}
-
-sub dimension_line_definitng_point_x {
-    my ($self) = @_;
-    return $self->{dimension_line_definitng_point_x};
-}
-
-sub dimension_line_definitng_point_y {
-    my ($self) = @_;
-    return $self->{dimension_line_definitng_point_y};
-}
-
-sub default_text_position_x {
-    my ($self) = @_;
-    return $self->{default_text_position_x};
-}
-
-sub default_text_position_y {
-    my ($self) = @_;
-    return $self->{default_text_position_y};
-}
-
-sub unknown1 {
-    my ($self) = @_;
-    return $self->{unknown1};
-}
-
-sub text_size {
-    my ($self) = @_;
-    return $self->{text_size};
-}
-
-sub text {
-    my ($self) = @_;
-    return $self->{text};
-}
-
-sub extension_defining_point1_x {
-    my ($self) = @_;
-    return $self->{extension_defining_point1_x};
-}
-
-sub extension_defining_point1_y {
-    my ($self) = @_;
-    return $self->{extension_defining_point1_y};
-}
-
-sub extension_defining_point2_x {
-    my ($self) = @_;
-    return $self->{extension_defining_point2_x};
-}
-
-sub extension_defining_point2_y {
-    my ($self) = @_;
-    return $self->{extension_defining_point2_y};
 }
 
 ########################################################################
@@ -477,8 +287,23 @@ sub _read {
     $self->{entity_size} = $self->{_io}->read_s2le();
     $self->{entity_layer_index} = $self->{_io}->read_s1();
     $self->{flag1} = $self->{_io}->read_s1();
-    $self->{flag2} = $self->{_io}->read_s1();
-    $self->{flag3} = $self->{_io}->read_s1();
+    $self->{flag2_1} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_2} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_3} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_4} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_5} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_6} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_7} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag2_8} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_1} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_2} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_3} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_4} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_5} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_6} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_7} = $self->{_io}->read_bits_int_be(1);
+    $self->{flag3_8} = $self->{_io}->read_bits_int_be(1);
+    $self->{_io}->align_to_byte();
     if ($self->entity_mode()->entity_color_flag()) {
         $self->{entity_color} = $self->{_io}->read_s1();
     }
@@ -513,14 +338,84 @@ sub flag1 {
     return $self->{flag1};
 }
 
-sub flag2 {
+sub flag2_1 {
     my ($self) = @_;
-    return $self->{flag2};
+    return $self->{flag2_1};
 }
 
-sub flag3 {
+sub flag2_2 {
     my ($self) = @_;
-    return $self->{flag3};
+    return $self->{flag2_2};
+}
+
+sub flag2_3 {
+    my ($self) = @_;
+    return $self->{flag2_3};
+}
+
+sub flag2_4 {
+    my ($self) = @_;
+    return $self->{flag2_4};
+}
+
+sub flag2_5 {
+    my ($self) = @_;
+    return $self->{flag2_5};
+}
+
+sub flag2_6 {
+    my ($self) = @_;
+    return $self->{flag2_6};
+}
+
+sub flag2_7 {
+    my ($self) = @_;
+    return $self->{flag2_7};
+}
+
+sub flag2_8 {
+    my ($self) = @_;
+    return $self->{flag2_8};
+}
+
+sub flag3_1 {
+    my ($self) = @_;
+    return $self->{flag3_1};
+}
+
+sub flag3_2 {
+    my ($self) = @_;
+    return $self->{flag3_2};
+}
+
+sub flag3_3 {
+    my ($self) = @_;
+    return $self->{flag3_3};
+}
+
+sub flag3_4 {
+    my ($self) = @_;
+    return $self->{flag3_4};
+}
+
+sub flag3_5 {
+    my ($self) = @_;
+    return $self->{flag3_5};
+}
+
+sub flag3_6 {
+    my ($self) = @_;
+    return $self->{flag3_6};
+}
+
+sub flag3_7 {
+    my ($self) = @_;
+    return $self->{flag3_7};
+}
+
+sub flag3_8 {
+    my ($self) = @_;
+    return $self->{flag3_8};
 }
 
 sub entity_color {
@@ -715,7 +610,7 @@ sub _read {
     $self->{height} = $self->{_io}->read_bytes(8);
     $self->{size} = $self->{_io}->read_s2le();
     $self->{value} = $self->{_io}->read_bytes($self->size());
-    if ($self->entity_common()->flag2() == 1) {
+    if ($self->entity_common()->flag2_8()) {
         $self->{angle} = $self->{_io}->read_bytes(8);
     }
 }
@@ -786,15 +681,46 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
-    my $_on = $self->entity_common()->flag2();
-    if ($_on == 24) {
-        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimHorizontal->new($self->{_io}, $self, $self->{_root});
+    $self->{block_index} = $self->{_io}->read_s2le();
+    $self->{dimension_line_defining_point_x} = $self->{_io}->read_f8le();
+    $self->{dimension_line_defining_point_y} = $self->{_io}->read_f8le();
+    $self->{default_text_position_x} = $self->{_io}->read_f8le();
+    $self->{default_text_position_y} = $self->{_io}->read_f8le();
+    if ($self->entity_common()->flag2_7()) {
+        $self->{unknown1} = $self->{_io}->read_u1();
     }
-    elsif ($_on == 30) {
-        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimAligned->new($self->{_io}, $self, $self->{_root});
+    if ($self->entity_common()->flag2_6()) {
+        $self->{text_size} = $self->{_io}->read_s2le();
     }
-    elsif ($_on == 122) {
-        $self->{dim} = CAD::Format::DWG::AC1003::EntityDimAngular->new($self->{_io}, $self, $self->{_root});
+    if ($self->entity_common()->flag2_6()) {
+        $self->{text} = $self->{_io}->read_bytes($self->text_size());
+    }
+    if ($self->entity_common()->flag2_5()) {
+        $self->{extension_defining_point1_x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_5()) {
+        $self->{extension_defining_point1_y} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_4()) {
+        $self->{extension_defining_point2_x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_4()) {
+        $self->{extension_defining_point2_y} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_3()) {
+        $self->{defining_point_x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_3()) {
+        $self->{defining_point_y} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_2()) {
+        $self->{dimension_line_arc_definition_point_x} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_2()) {
+        $self->{dimension_line_arc_definition_point_y} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag3_8()) {
+        $self->{rotation_in_radians} = $self->{_io}->read_f8le();
     }
 }
 
@@ -803,9 +729,89 @@ sub entity_common {
     return $self->{entity_common};
 }
 
-sub dim {
+sub block_index {
     my ($self) = @_;
-    return $self->{dim};
+    return $self->{block_index};
+}
+
+sub dimension_line_defining_point_x {
+    my ($self) = @_;
+    return $self->{dimension_line_defining_point_x};
+}
+
+sub dimension_line_defining_point_y {
+    my ($self) = @_;
+    return $self->{dimension_line_defining_point_y};
+}
+
+sub default_text_position_x {
+    my ($self) = @_;
+    return $self->{default_text_position_x};
+}
+
+sub default_text_position_y {
+    my ($self) = @_;
+    return $self->{default_text_position_y};
+}
+
+sub unknown1 {
+    my ($self) = @_;
+    return $self->{unknown1};
+}
+
+sub text_size {
+    my ($self) = @_;
+    return $self->{text_size};
+}
+
+sub text {
+    my ($self) = @_;
+    return $self->{text};
+}
+
+sub extension_defining_point1_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_x};
+}
+
+sub extension_defining_point1_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point1_y};
+}
+
+sub extension_defining_point2_x {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_x};
+}
+
+sub extension_defining_point2_y {
+    my ($self) = @_;
+    return $self->{extension_defining_point2_y};
+}
+
+sub defining_point_x {
+    my ($self) = @_;
+    return $self->{defining_point_x};
+}
+
+sub defining_point_y {
+    my ($self) = @_;
+    return $self->{defining_point_y};
+}
+
+sub dimension_line_arc_definition_point_x {
+    my ($self) = @_;
+    return $self->{dimension_line_arc_definition_point_x};
+}
+
+sub dimension_line_arc_definition_point_y {
+    my ($self) = @_;
+    return $self->{dimension_line_arc_definition_point_y};
+}
+
+sub rotation_in_radians {
+    my ($self) = @_;
+    return $self->{rotation_in_radians};
 }
 
 ########################################################################
@@ -2082,122 +2088,6 @@ sub dim_linear_measurements_scale_factor {
 }
 
 ########################################################################
-package CAD::Format::DWG::AC1003::EntityDimAngular;
-
-our @ISA = 'IO::KaitaiStruct::Struct';
-
-sub from_file {
-    my ($class, $filename) = @_;
-    my $fd;
-
-    open($fd, '<', $filename) or return undef;
-    binmode($fd);
-    return new($class, IO::KaitaiStruct::Stream->new($fd));
-}
-
-sub new {
-    my ($class, $_io, $_parent, $_root) = @_;
-    my $self = IO::KaitaiStruct::Struct->new($_io);
-
-    bless $self, $class;
-    $self->{_parent} = $_parent;
-    $self->{_root} = $_root || $self;;
-
-    $self->_read();
-
-    return $self;
-}
-
-sub _read {
-    my ($self) = @_;
-
-    $self->{block_index} = $self->{_io}->read_s2le();
-    $self->{first_line_defining_point_x} = $self->{_io}->read_f8le();
-    $self->{first_line_defining_point_y} = $self->{_io}->read_f8le();
-    $self->{user_specified_text_position_x} = $self->{_io}->read_f8le();
-    $self->{user_specified_text_position_y} = $self->{_io}->read_f8le();
-    $self->{unknown} = $self->{_io}->read_bytes(1);
-    $self->{x} = $self->{_io}->read_f8le();
-    $self->{y} = $self->{_io}->read_f8le();
-    $self->{x1} = $self->{_io}->read_f8le();
-    $self->{y1} = $self->{_io}->read_f8le();
-    $self->{x2} = $self->{_io}->read_f8le();
-    $self->{y2} = $self->{_io}->read_f8le();
-    $self->{dimension_line_arc_definition_point_x} = $self->{_io}->read_f8le();
-    $self->{dimension_line_arc_definition_point_y} = $self->{_io}->read_f8le();
-}
-
-sub block_index {
-    my ($self) = @_;
-    return $self->{block_index};
-}
-
-sub first_line_defining_point_x {
-    my ($self) = @_;
-    return $self->{first_line_defining_point_x};
-}
-
-sub first_line_defining_point_y {
-    my ($self) = @_;
-    return $self->{first_line_defining_point_y};
-}
-
-sub user_specified_text_position_x {
-    my ($self) = @_;
-    return $self->{user_specified_text_position_x};
-}
-
-sub user_specified_text_position_y {
-    my ($self) = @_;
-    return $self->{user_specified_text_position_y};
-}
-
-sub unknown {
-    my ($self) = @_;
-    return $self->{unknown};
-}
-
-sub x {
-    my ($self) = @_;
-    return $self->{x};
-}
-
-sub y {
-    my ($self) = @_;
-    return $self->{y};
-}
-
-sub x1 {
-    my ($self) = @_;
-    return $self->{x1};
-}
-
-sub y1 {
-    my ($self) = @_;
-    return $self->{y1};
-}
-
-sub x2 {
-    my ($self) = @_;
-    return $self->{x2};
-}
-
-sub y2 {
-    my ($self) = @_;
-    return $self->{y2};
-}
-
-sub dimension_line_arc_definition_point_x {
-    my ($self) = @_;
-    return $self->{dimension_line_arc_definition_point_x};
-}
-
-sub dimension_line_arc_definition_point_y {
-    my ($self) = @_;
-    return $self->{dimension_line_arc_definition_point_y};
-}
-
-########################################################################
 package CAD::Format::DWG::AC1003::EntityCircle;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -2288,7 +2178,7 @@ sub _read {
     $self->{y} = $self->{_io}->read_f8le();
     $self->{height} = $self->{_io}->read_f8le();
     $self->{item_num} = $self->{_io}->read_u1();
-    if ($self->entity_common()->flag2() == 3) {
+    if ($self->entity_common()->flag2_8()) {
         $self->{angle} = $self->{_io}->read_f8le();
     }
     $self->{load_num} = $self->{_io}->read_u1();

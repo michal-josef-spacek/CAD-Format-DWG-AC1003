@@ -564,10 +564,38 @@ types:
         type: s1
       - id: flag1
         type: s1
-      - id: flag2
-        type: s1
-      - id: flag3
-        type: s1
+      - id: flag2_1
+        type: b1
+      - id: flag2_2
+        type: b1
+      - id: flag2_3
+        type: b1
+      - id: flag2_4
+        type: b1
+      - id: flag2_5
+        type: b1
+      - id: flag2_6
+        type: b1
+      - id: flag2_7
+        type: b1
+      - id: flag2_8
+        type: b1
+      - id: flag3_1
+        type: b1
+      - id: flag3_2
+        type: b1
+      - id: flag3_3
+        type: b1
+      - id: flag3_4
+        type: b1
+      - id: flag3_5
+        type: b1
+      - id: flag3_6
+        type: b1
+      - id: flag3_7
+        type: b1
+      - id: flag3_8
+        type: b1
       - id: entity_color
         type: s1
         if: entity_mode.entity_color_flag
@@ -626,89 +654,64 @@ types:
     seq:
       - id: entity_common
         type: entity_common
-      - id: dim
-        type:
-          switch-on: entity_common.flag2
-          cases:
-            '24': entity_dim_horizontal
-            '30': entity_dim_aligned
-            '122': entity_dim_angular
-  entity_dim_aligned:
-    seq:
-      - id: block_index
-        type: s2
-      - id: dimension_line_definitng_point_x
-        type: f8
-      - id: dimension_line_definitng_point_y
-        type: f8
-      - id: default_text_position_x
-        type: f8
-      - id: default_text_position_y
-        type: f8
-      - id: unknown1
-        size: 1
-      - id: text_size
-        type: s2
-      - id: text
-        size: text_size
-      - id: extension_defining_point1_x
-        type: f8
-      - id: extension_defining_point1_y
-        type: f8
-      - id: extension_defining_point2_x
-        type: f8
-      - id: extension_defining_point2_y
-        type: f8
-  entity_dim_angular:
-    seq:
-      - id: block_index
-        type: s2
-      - id: first_line_defining_point_x
-        type: f8
-      - id: first_line_defining_point_y
-        type: f8
-      - id: user_specified_text_position_x
-        type: f8
-      - id: user_specified_text_position_y
-        type: f8
-      - id: unknown
-        size: 1
-      - id: x
-        type: f8
-      - id: y
-        type: f8
-      - id: x1
-        type: f8
-      - id: y1
-        type: f8
-      - id: x2
-        type: f8
-      - id: y2
-        type: f8
-      - id: dimension_line_arc_definition_point_x
-        type: f8
-      - id: dimension_line_arc_definition_point_y
-        type: f8
-  entity_dim_horizontal:
-    seq:
       - id: block_index
         type: s2
       - id: dimension_line_defining_point_x
-        size: 8
+        type: f8
+        doc: DIMENSION/10
       - id: dimension_line_defining_point_y
-        size: 8
+        type: f8
+        doc: DIMENSION/20
       - id: default_text_position_x
-        size: 8
+        type: f8
+        doc: DIMENSION/11
       - id: default_text_position_y
-        size: 8
+        type: f8
+        doc: DIMENSION/21
+      - id: unknown1
+        type: u1
+        if: entity_common.flag2_7
+        doc: DIMENSION/70
+      - id: text_size
+        type: s2
+        if: entity_common.flag2_6
+      - id: text
+        size: text_size
+        if: entity_common.flag2_6
+        doc: DIMENSION/1
       - id: extension_defining_point1_x
-        size: 8
+        type: f8
+        if: entity_common.flag2_5
+        doc: DIMENSION/13
       - id: extension_defining_point1_y
-        size: 8
+        type: f8
+        if: entity_common.flag2_5
+        doc: DIMENSION/23
       - id: extension_defining_point2_x
-        size: 8
+        type: f8
+        if: entity_common.flag2_4
+        doc: DIMENSION/14
       - id: extension_defining_point2_y
-        size: 8
+        type: f8
+        if: entity_common.flag2_4
+        doc: DIMENSION/24
+      - id: defining_point_x
+        type: f8
+        if: entity_common.flag2_3
+        doc: DIMENSION/15
+      - id: defining_point_y
+        type: f8
+        if: entity_common.flag2_3
+        doc: DIMENSION/25
+      - id: dimension_line_arc_definition_point_x
+        type: f8
+        if: entity_common.flag2_2
+      - id: dimension_line_arc_definition_point_y
+        type: f8
+        if: entity_common.flag2_2
+      - id: rotation_in_radians
+        type: f8
+        if: entity_common.flag3_8
   entity_line:
     seq:
       - id: entity_common
@@ -761,8 +764,7 @@ types:
         type: u1
       - id: angle
         type: f8
-        ## TODO Probably bits (2 without explicit angle =0)
-        if: entity_common.flag2 == 3
+        if: entity_common.flag2_8
       - id: load_num
         type: u1
   entity_solid:
@@ -801,7 +803,7 @@ types:
         size: size
       - id: angle
         size: 8
-        if: entity_common.flag2 == 1
+        if: entity_common.flag2_8
   entity_trace:
     seq:
       - id: entity_common
