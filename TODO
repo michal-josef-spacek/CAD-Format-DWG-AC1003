@@ -1,16 +1,12 @@
 TODO
 ====
 1. Odstranit prebytecne SNAP*.DWG soubory
-4. Kde je ulozeno $CHAMFERA?
-https://www.4mcad.cz/v/chamfera
-Vypada, ze nikde
-5. Kde je ulozeno $CHAMFERB?
-https://www.4mcad.cz/v/chamferb
-Vypada, ze nikde
 8. header begin and end?
 9. tests for created_date
 10. tests for updated date
-11.
+11. - id: unknown4b
+    Neco jako decode_preR13_section_ptr v libredwg
+12.
 
 Applied
 =======
@@ -28,3 +24,13 @@ OK [20210815] skim
 2. Kde je ulozeno $DIMBLK, jak se to ovlivnuje?
 https://knowledge.autodesk.com/support/autocad-lt/learn-explore/caas/CloudHelp/cloudhelp/2019/ENU/AutoCAD-LT/files/GUID-6E09DCCA-313F-4FF4-BB1B-F41B512B9CC9-htm.html
 OK [20210824] skim
+
+4. Kde je ulozeno $CHAMFERA?
+https://www.4mcad.cz/v/chamfera
+Vypada, ze nikde
+OK [20210909] skim
+
+5. Kde je ulozeno $CHAMFERB?
+https://www.4mcad.cz/v/chamferb
+Vypada, ze nikde
+OK [20210909] skim
