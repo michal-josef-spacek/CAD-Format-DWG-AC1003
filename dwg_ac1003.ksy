@@ -870,17 +870,13 @@ types:
     seq:
       - id: entity_common
         type: entity_common
-      - id: unknown1
+      - id: closed
         type: u1
         if: entity_common.flag2_8
         doc: POLYLINE/66
-      - id: unknown2
-        type: u1
-        if: entity_common.flag2_7
-        doc: POLYLINE/70
       - id: x
         type: f8
-        if: entity_common.flag2_6
+        if: entity_common.flag2_7
         doc: POLYLINE/40
       - id: y
         type: f8

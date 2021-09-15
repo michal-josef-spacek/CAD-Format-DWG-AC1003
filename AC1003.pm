@@ -3027,12 +3027,9 @@ sub _read {
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
     if ($self->entity_common()->flag2_8()) {
-        $self->{unknown1} = $self->{_io}->read_u1();
+        $self->{closed} = $self->{_io}->read_u1();
     }
     if ($self->entity_common()->flag2_7()) {
-        $self->{unknown2} = $self->{_io}->read_u1();
-    }
-    if ($self->entity_common()->flag2_6()) {
         $self->{x} = $self->{_io}->read_f8le();
     }
     if ($self->entity_common()->flag2_6()) {
@@ -3045,14 +3042,9 @@ sub entity_common {
     return $self->{entity_common};
 }
 
-sub unknown1 {
+sub closed {
     my ($self) = @_;
-    return $self->{unknown1};
-}
-
-sub unknown2 {
-    my ($self) = @_;
-    return $self->{unknown2};
+    return $self->{closed};
 }
 
 sub x {
