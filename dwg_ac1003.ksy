@@ -960,14 +960,21 @@ types:
         type: entity_common
       - id: x
         type: f8
+        doc: VERTEX/10
       - id: y
         type: f8
+        doc: VERTEX/20
       - id: width
         type: f8
         if: entity_common.flag2_8
       - id: bulge
         type: f8
         if: entity_common.flag2_6
+        doc: VERTEX/42
+      - id: unknown_in_radians
+        type: f8
+        if: entity_common.flag2_4
+        doc: VERTEX/50
   attdef_flags:
     seq:
       - id: flag_1

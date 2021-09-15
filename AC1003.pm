@@ -2818,6 +2818,9 @@ sub _read {
     if ($self->entity_common()->flag2_6()) {
         $self->{bulge} = $self->{_io}->read_f8le();
     }
+    if ($self->entity_common()->flag2_4()) {
+        $self->{unknown_in_radians} = $self->{_io}->read_f8le();
+    }
 }
 
 sub entity_common {
@@ -2843,6 +2846,11 @@ sub width {
 sub bulge {
     my ($self) = @_;
     return $self->{bulge};
+}
+
+sub unknown_in_radians {
+    my ($self) = @_;
+    return $self->{unknown_in_radians};
 }
 
 ########################################################################
