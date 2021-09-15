@@ -527,6 +527,7 @@ types:
             'entities::circle': entity_circle
             'entities::dim': entity_dim
             'entities::line': entity_line
+            'entities::line3d': entity_line3d
             'entities::tmp': entity_tmp
             'entities::point': entity_point
             'entities::polyline': entity_polyline
@@ -807,6 +808,30 @@ types:
       - id: y2
         type: f8
         doc: LINE/21
+  entity_line3d:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x1
+        type: f8
+        doc: 3DLINE/10
+      - id: y1
+        type: f8
+        doc: 3DLINE/20
+      - id: z1
+        type: f8
+        if: entity_common.flag2_8
+        doc: 3DLINE/30
+      - id: x2
+        type: f8
+        doc: 3DLINE/11
+      - id: y2
+        type: f8
+        doc: 3DLINE/21
+      - id: z2
+        type: f8
+        if: entity_common.flag2_7
+        doc: 3DLINE/31
   entity_tmp:
     seq:
       - id: entity_mode
@@ -985,6 +1010,7 @@ enums:
     18: polyline
     19: polyline2
     20: vertex
+    21: line3d
     23: dim
   osnap_modes:
     0: none
