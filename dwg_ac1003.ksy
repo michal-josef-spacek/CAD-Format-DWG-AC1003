@@ -526,6 +526,7 @@ types:
             'entities::insert' : entity_insert
             'entities::circle': entity_circle
             'entities::dim': entity_dim
+            'entities::face3d': entity_face3d
             'entities::line': entity_line
             'entities::line3d': entity_line3d
             'entities::tmp': entity_tmp
@@ -792,6 +793,10 @@ types:
       - id: rotation_in_radians
         type: f8
         if: entity_common.flag3_8
+  entity_face3d:
+    seq:
+      - id: entity_common
+        type: entity_common
   entity_line:
     seq:
       - id: entity_common
@@ -1011,6 +1016,7 @@ enums:
     19: polyline2
     20: vertex
     21: line3d
+    22: face3d
     23: dim
   osnap_modes:
     0: none
