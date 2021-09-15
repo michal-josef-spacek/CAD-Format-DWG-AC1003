@@ -617,14 +617,19 @@ types:
         type: entity_common
       - id: x
         type: f8
+        doc: ARC/10
       - id: y
         type: f8
+        doc: ARC/20
       - id: radius
         type: f8
+        doc: ARC/40
       - id: angle_from
         type: f8
+        doc: ARC/50
       - id: angle_to
         type: f8
+        doc: ARC/51
   entity_attdef:
     seq:
       - id: entity_common
@@ -711,11 +716,11 @@ types:
       - id: columns
         type: u2
         if: entity_common.flag2_4
-        doc: DIMENSION/70
+        doc: INSERT/70
       - id: rows
         type: u2
         if: entity_common.flag2_3
-        doc: DIMENSION/71
+        doc: INSERT/71
       - id: column_spacing
         type: f8
         if: entity_common.flag2_2
@@ -730,10 +735,13 @@ types:
         type: entity_common
       - id: x
         type: f8
+        doc: CIRCLE/10
       - id: y
         type: f8
+        doc: CIRCLE/20
       - id: radius
         type: f8
+        doc: CIRCLE/40
   entity_dim:
     seq:
       - id: entity_common
@@ -854,8 +862,10 @@ types:
         type: entity_common
       - id: x
         type: f8
+        doc: POINT/10
       - id: y
         type: f8
+        doc: POINT/20
   entity_polyline:
     seq:
       - id: entity_common
@@ -871,9 +881,11 @@ types:
       - id: x
         type: f8
         if: entity_common.flag2_6
+        doc: POLYLINE/40
       - id: y
         type: f8
         if: entity_common.flag2_6
+        doc: POLYLINE/41
   entity_seqend:
     seq:
       - id: entity_common
