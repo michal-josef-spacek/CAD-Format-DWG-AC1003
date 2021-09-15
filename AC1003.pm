@@ -1096,6 +1096,9 @@ sub _read {
     if ($self->entity_common()->flag2_6()) {
         $self->{width_scale_factor} = $self->{_io}->read_f8le();
     }
+    if ($self->entity_common()->flag2_4()) {
+        $self->{unknown_index} = $self->{_io}->read_u1();
+    }
     if ($self->entity_common()->flag2_2()) {
         $self->{flags2} = CAD::Format::DWG::AC1003::AttdefFlags2->new($self->{_io}, $self, $self->{_root});
     }
@@ -1170,6 +1173,11 @@ sub rotation_angle_in_radians {
 sub width_scale_factor {
     my ($self) = @_;
     return $self->{width_scale_factor};
+}
+
+sub unknown_index {
+    my ($self) = @_;
+    return $self->{unknown_index};
 }
 
 sub flags2 {
@@ -3010,8 +3018,11 @@ sub _read {
     my ($self) = @_;
 
     $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    if ($self->entity_common()->flag2_8()) {
+        $self->{unknown1} = $self->{_io}->read_u1();
+    }
     if ($self->entity_common()->flag2_7()) {
-        $self->{unknown} = $self->{_io}->read_u1();
+        $self->{unknown2} = $self->{_io}->read_u1();
     }
     if ($self->entity_common()->flag2_6()) {
         $self->{x} = $self->{_io}->read_f8le();
@@ -3026,9 +3037,14 @@ sub entity_common {
     return $self->{entity_common};
 }
 
-sub unknown {
+sub unknown1 {
     my ($self) = @_;
-    return $self->{unknown};
+    return $self->{unknown1};
+}
+
+sub unknown2 {
+    my ($self) = @_;
+    return $self->{unknown2};
 }
 
 sub x {

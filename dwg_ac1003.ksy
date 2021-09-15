@@ -664,6 +664,9 @@ types:
         type: f8
         if: entity_common.flag2_6
         doc: ATTDEF/41
+      - id: unknown_index
+        type: u1
+        if: entity_common.flag2_4
       - id: flags2
         type: attdef_flags2
         if: entity_common.flag2_2
@@ -857,10 +860,14 @@ types:
     seq:
       - id: entity_common
         type: entity_common
-      - id: unknown
+      - id: unknown1
+        type: u1
+        if: entity_common.flag2_8
+        doc: POLYLINE/66
+      - id: unknown2
         type: u1
         if: entity_common.flag2_7
-        doc: DIMENSION/70
+        doc: POLYLINE/70
       - id: x
         type: f8
         if: entity_common.flag2_6
