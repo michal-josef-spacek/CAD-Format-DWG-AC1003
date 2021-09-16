@@ -1,5 +1,5 @@
 ---
-abstract: 'Read AutoCAD AC1003 DWG file.'
+abstract: 'Read AutoCAD 2.62 DWG file.'
 author:
   - 'Michal Josef Spacek <skim@cpan.org>'
 build_requires:
