@@ -1,4 +1,5 @@
 AC1003.pm
+AC1003.pod
 Changes
 dwg_ac1003.ksy
 inc/Module/Install.pm

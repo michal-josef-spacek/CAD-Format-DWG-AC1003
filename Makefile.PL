@@ -16,7 +16,7 @@ author_requires 'Test::Pod::Coverage' => 0;
 license 'bsd';
 name 'CAD-Format-DWG-AC1003';
 perl_version 5.008;
-readme_from 'AC1003.pm';
+readme_from 'AC1003.pod';
 requires 'Encode' => 0;
 requires 'IO::KaitaiStruct' => 0;
 recursive_author_tests('xt');
