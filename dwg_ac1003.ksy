@@ -18,10 +18,42 @@ seq:
   - id: header
     type: header
   - id: entities
-    type: entity
+    type: real_entities
+    size: header.entities_end - header.entities_start
+  - id: blocks
+    type: block
     repeat: expr
-    repeat-expr: header.number_of_entities
+    repeat-expr: header.number_of_blocks
+  - id: layers
+    type: layer
+    repeat: expr
+    repeat-expr: header.number_of_layers
+  - id: styles
+    type: style
+    repeat: expr
+    repeat-expr: header.number_of_styles
 types:
+  block:
+    seq:
+      - id: unknown1
+        type: s1
+      - id: block_name
+        size: 31
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+      - id: u1
+        type: s1
+      - id: u2
+        type: s1
+      - id: u3
+        type: s1
+      - id: u4
+        type: s1
+      - id: u5
+        type: s1
+      - id: u6
+        type: s1
   header:
     seq:
       - id: magic
@@ -376,6 +408,7 @@ types:
         size: 32
         type: str
         encoding: ASCII
+        terminator: 0x2e
         doc: $DIMBLK
       - id: unknown30
         type: s1
@@ -1020,6 +1053,92 @@ types:
         type: b1
       - id: center
         type: b1
+  layer:
+    seq:
+      - id: frozen
+        type: s1
+        doc: LAYER/70
+      - id: layer_name
+        size: 31
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+        doc: LAYER/2
+      - id: unknown1
+        type: s1
+      - id: color
+        type: s1
+        doc: LAYER/62
+      - id: unknown2
+        type: s1
+      - id: linetype_index
+        type: s1
+        doc: LAYER/6
+      - id: unknown3
+        type: s1
+      - id: unknown4
+        type: s1
+  real_entities:
+    seq:
+      - id: entities
+        type: entity
+        repeat: eos
+  style:
+    seq:
+      - id: flag1_1
+        type: b1
+      - id: flag1_2
+        type: b1
+      - id: flag1_3
+        type: b1
+      - id: flag1_4
+        type: b1
+      - id: flag1_5
+        type: b1
+      - id: flag1_vertical
+        type: b1
+      - id: flag1_7
+        type: b1
+      - id: flag1_8
+        type: b1
+      - id: text
+        size: 31
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+      - id: height
+        type: f8
+        doc: STYLE/40
+      - id: unknown1
+        type: u1
+      - id: width_factor
+        type: f8
+        doc: STYLE/41
+      - id: obliquing_angle_in_radians
+        type: f8
+        doc: STYLE/50
+      - id: flag2_1
+        type: b1
+        doc: STYLE/71
+      - id: flag2_2
+        type: b1
+      - id: flag2_3
+        type: b1
+      - id: flag2_4
+        type: b1
+      - id: flag2_5
+        type: b1
+      - id: flag2_upside_down
+        type: b1
+      - id: flag2_backwards
+        type: b1
+      - id: flag2_8
+        type: b1
+      - id: u12
+        type: f8
+        doc: STYLE/42
+      - id: font_file
+        size: 90
 enums:
   entities:
     -127: tmp
