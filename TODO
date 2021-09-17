@@ -6,11 +6,6 @@ TODO
 10. tests for updated date
 11. - id: unknown4b
     Neco jako decode_preR13_section_ptr v libredwg
-12. blocks table
-13. layers table
-14. styles table
-15. linetypes table
-16. views table
 17.
 
 Applied
@@ -39,3 +34,18 @@ OK [20210909] skim
 https://www.4mcad.cz/v/chamferb
 Vypada, ze nikde
 OK [20210909] skim
+
+12. blocks table
+OK [20210917] skim
+
+13. layers table
+OK [20210917] skim
+
+14. styles table
+OK [20210917] skim
+
+15. linetypes table
+OK [20210917] skim
+
+16. views table
+OK [20210917] skim
