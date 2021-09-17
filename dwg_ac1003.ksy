@@ -572,7 +572,6 @@ types:
             'entities::face3d': entity_face3d
             'entities::line': entity_line
             'entities::line3d': entity_line3d
-            'entities::tmp': entity_tmp
             'entities::point': entity_point
             'entities::polyline': entity_polyline
             'entities::polyline2': entity_polyline
@@ -582,6 +581,7 @@ types:
             'entities::text': entity_text
             'entities::trace': entity_trace
             'entities::vertex': entity_vertex
+            _: entity_tmp
   entity_mode:
     seq:
       - id: entity_mode1
@@ -1238,7 +1238,6 @@ types:
         doc: VIEW/31
 enums:
   entities:
-    -127: tmp
     1: line
     2: point
     3: circle

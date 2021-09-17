@@ -23,7 +23,6 @@ our $COORDINATES_ABSOLUTE_COORDINATES = 0;
 our $COORDINATES_ABSOLUTE_COORDINATES_REALTIME = 1;
 our $COORDINATES_RELATIVE_POLAR_COORDINATES = 2;
 
-our $ENTITIES_TMP = -127;
 our $ENTITIES_LINE = 1;
 our $ENTITIES_POINT = 2;
 our $ENTITIES_CIRCLE = 3;
@@ -2032,11 +2031,11 @@ sub _read {
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TRACE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityTrace->new($self->{_io}, $self, $self->{_root});
     }
-    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_TMP) {
-        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
-    }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POLYLINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityPolyline->new($self->{_io}, $self, $self->{_root});
+    }
+    else {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityTmp->new($self->{_io}, $self, $self->{_root});
     }
 }
 
