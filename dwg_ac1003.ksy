@@ -1103,7 +1103,7 @@ types:
         doc: LTYPE/2
       - id: u3
         type: u1
-      - id: line_setting
+      - id: description
         size: 44
         type: str
         encoding: ASCII
@@ -1111,13 +1111,13 @@ types:
         doc: LTYPE/3
       - id: u5
         size: 4
-      - id: u6
+      - id: alignment
         type: u1
         doc: LTYPE/72
-      - id: u7
+      - id: num_dashes
         type: u1
         doc: LTYPE/73
-      - id: u8
+      - id: pattern_len
         type: f8
         doc: LTYPE/40
       - id: u9

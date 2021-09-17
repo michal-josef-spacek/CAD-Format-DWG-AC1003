@@ -941,11 +941,11 @@ sub _read {
     $self->{u2} = $self->{_io}->read_u1();
     $self->{linetype_name} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(31), 46, 0));
     $self->{u3} = $self->{_io}->read_u1();
-    $self->{line_setting} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(44), 46, 0));
+    $self->{description} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(44), 46, 0));
     $self->{u5} = $self->{_io}->read_bytes(4);
-    $self->{u6} = $self->{_io}->read_u1();
-    $self->{u7} = $self->{_io}->read_u1();
-    $self->{u8} = $self->{_io}->read_f8le();
+    $self->{alignment} = $self->{_io}->read_u1();
+    $self->{num_dashes} = $self->{_io}->read_u1();
+    $self->{pattern_len} = $self->{_io}->read_f8le();
     $self->{u9} = $self->{_io}->read_f8le();
     $self->{u10} = $self->{_io}->read_f8le();
     $self->{u11} = $self->{_io}->read_f8le();
@@ -976,9 +976,9 @@ sub u3 {
     return $self->{u3};
 }
 
-sub line_setting {
+sub description {
     my ($self) = @_;
-    return $self->{line_setting};
+    return $self->{description};
 }
 
 sub u5 {
@@ -986,19 +986,19 @@ sub u5 {
     return $self->{u5};
 }
 
-sub u6 {
+sub alignment {
     my ($self) = @_;
-    return $self->{u6};
+    return $self->{alignment};
 }
 
-sub u7 {
+sub num_dashes {
     my ($self) = @_;
-    return $self->{u7};
+    return $self->{num_dashes};
 }
 
-sub u8 {
+sub pattern_len {
     my ($self) = @_;
-    return $self->{u8};
+    return $self->{pattern_len};
 }
 
 sub u9 {
