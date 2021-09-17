@@ -121,6 +121,17 @@ sub _read {
     for (my $i = 0; $i < $n_styles; $i++) {
         $self->{styles}[$i] = CAD::Format::DWG::AC1003::Style->new($self->{_io}, $self, $self->{_root});
     }
+    $self->{linetypes} = ();
+    my $n_linetypes = $self->header()->number_of_linetypes();
+    for (my $i = 0; $i < $n_linetypes; $i++) {
+        $self->{linetypes}[$i] = CAD::Format::DWG::AC1003::Linetype->new($self->{_io}, $self, $self->{_root});
+    }
+    $self->{u1} = $self->{_io}->read_bytes(35);
+    $self->{views} = ();
+    my $n_views = $self->header()->number_of_views();
+    for (my $i = 0; $i < $n_views; $i++) {
+        $self->{views}[$i] = CAD::Format::DWG::AC1003::View->new($self->{_io}, $self, $self->{_root});
+    }
 }
 
 sub header {
@@ -146,6 +157,21 @@ sub layers {
 sub styles {
     my ($self) = @_;
     return $self->{styles};
+}
+
+sub linetypes {
+    my ($self) = @_;
+    return $self->{linetypes};
+}
+
+sub u1 {
+    my ($self) = @_;
+    return $self->{u1};
+}
+
+sub views {
+    my ($self) = @_;
+    return $self->{views};
 }
 
 sub _raw_entities {
@@ -880,6 +906,140 @@ sub entity_elevation {
 sub entity_thickness {
     my ($self) = @_;
     return $self->{entity_thickness};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::Linetype;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{u1} = $self->{_io}->read_bytes(38);
+    $self->{u2} = $self->{_io}->read_u1();
+    $self->{linetype_name} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(31), 46, 0));
+    $self->{u3} = $self->{_io}->read_u1();
+    $self->{line_setting} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(44), 46, 0));
+    $self->{u5} = $self->{_io}->read_bytes(4);
+    $self->{u6} = $self->{_io}->read_u1();
+    $self->{u7} = $self->{_io}->read_u1();
+    $self->{u8} = $self->{_io}->read_f8le();
+    $self->{u9} = $self->{_io}->read_f8le();
+    $self->{u10} = $self->{_io}->read_f8le();
+    $self->{u11} = $self->{_io}->read_f8le();
+    $self->{u12} = $self->{_io}->read_f8le();
+    $self->{u13} = $self->{_io}->read_f8le();
+    $self->{u14} = $self->{_io}->read_f8le();
+    $self->{u15} = $self->{_io}->read_f8le();
+    $self->{u16} = $self->{_io}->read_bytes(3);
+}
+
+sub u1 {
+    my ($self) = @_;
+    return $self->{u1};
+}
+
+sub u2 {
+    my ($self) = @_;
+    return $self->{u2};
+}
+
+sub linetype_name {
+    my ($self) = @_;
+    return $self->{linetype_name};
+}
+
+sub u3 {
+    my ($self) = @_;
+    return $self->{u3};
+}
+
+sub line_setting {
+    my ($self) = @_;
+    return $self->{line_setting};
+}
+
+sub u5 {
+    my ($self) = @_;
+    return $self->{u5};
+}
+
+sub u6 {
+    my ($self) = @_;
+    return $self->{u6};
+}
+
+sub u7 {
+    my ($self) = @_;
+    return $self->{u7};
+}
+
+sub u8 {
+    my ($self) = @_;
+    return $self->{u8};
+}
+
+sub u9 {
+    my ($self) = @_;
+    return $self->{u9};
+}
+
+sub u10 {
+    my ($self) = @_;
+    return $self->{u10};
+}
+
+sub u11 {
+    my ($self) = @_;
+    return $self->{u11};
+}
+
+sub u12 {
+    my ($self) = @_;
+    return $self->{u12};
+}
+
+sub u13 {
+    my ($self) = @_;
+    return $self->{u13};
+}
+
+sub u14 {
+    my ($self) = @_;
+    return $self->{u14};
+}
+
+sub u15 {
+    my ($self) = @_;
+    return $self->{u15};
+}
+
+sub u16 {
+    my ($self) = @_;
+    return $self->{u16};
 }
 
 ########################################################################
@@ -3461,6 +3621,98 @@ sub x {
 sub y {
     my ($self) = @_;
     return $self->{y};
+}
+
+########################################################################
+package CAD::Format::DWG::AC1003::View;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{u1} = $self->{_io}->read_bytes(4);
+    $self->{view_name} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(31), 46, 0));
+    $self->{u2} = $self->{_io}->read_u1();
+    $self->{view_size} = $self->{_io}->read_f8le();
+    $self->{center_point_x} = $self->{_io}->read_f8le();
+    $self->{center_point_y} = $self->{_io}->read_f8le();
+    $self->{view_width} = $self->{_io}->read_f8le();
+    $self->{view_dir_x} = $self->{_io}->read_f8le();
+    $self->{view_dir_y} = $self->{_io}->read_f8le();
+    $self->{view_dir_z} = $self->{_io}->read_f8le();
+}
+
+sub u1 {
+    my ($self) = @_;
+    return $self->{u1};
+}
+
+sub view_name {
+    my ($self) = @_;
+    return $self->{view_name};
+}
+
+sub u2 {
+    my ($self) = @_;
+    return $self->{u2};
+}
+
+sub view_size {
+    my ($self) = @_;
+    return $self->{view_size};
+}
+
+sub center_point_x {
+    my ($self) = @_;
+    return $self->{center_point_x};
+}
+
+sub center_point_y {
+    my ($self) = @_;
+    return $self->{center_point_y};
+}
+
+sub view_width {
+    my ($self) = @_;
+    return $self->{view_width};
+}
+
+sub view_dir_x {
+    my ($self) = @_;
+    return $self->{view_dir_x};
+}
+
+sub view_dir_y {
+    my ($self) = @_;
+    return $self->{view_dir_y};
+}
+
+sub view_dir_z {
+    my ($self) = @_;
+    return $self->{view_dir_z};
 }
 
 1;

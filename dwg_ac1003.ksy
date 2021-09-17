@@ -32,6 +32,16 @@ seq:
     type: style
     repeat: expr
     repeat-expr: header.number_of_styles
+  - id: linetypes
+    type: linetype
+    repeat: expr
+    repeat-expr: header.number_of_linetypes
+  - id: u1
+    size: 35
+  - id: views
+    type: view
+    repeat: expr
+    repeat-expr: header.number_of_views
 types:
   block:
     seq:
@@ -1078,6 +1088,61 @@ types:
         type: s1
       - id: unknown4
         type: s1
+  linetype:
+    seq:
+      - id: u1
+        size: 38
+      - id: u2
+        type: u1
+        doc: LTYPE/70
+      - id: linetype_name
+        size: 31
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+        doc: LTYPE/2
+      - id: u3
+        type: u1
+      - id: line_setting
+        size: 44
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+        doc: LTYPE/3
+      - id: u5
+        size: 4
+      - id: u6
+        type: u1
+        doc: LTYPE/72
+      - id: u7
+        type: u1
+        doc: LTYPE/73
+      - id: u8
+        type: f8
+        doc: LTYPE/40
+      - id: u9
+        type: f8
+        doc: LTYPE/49
+      - id: u10
+        type: f8
+        doc: LTYPE/49
+      - id: u11
+        type: f8
+        doc: LTYPE/49
+      - id: u12
+        type: f8
+        doc: LTYPE/49
+      - id: u13
+        type: f8
+        doc: LTYPE/49
+      - id: u14
+        type: f8
+        doc: LTYPE/49
+      - id: u15
+        type: f8
+        doc: LTYPE/49
+      - id: u16
+        size: 3
   real_entities:
     seq:
       - id: entities
@@ -1139,6 +1204,38 @@ types:
         doc: STYLE/42
       - id: font_file
         size: 90
+  view:
+    seq:
+      - id: u1
+        size: 4
+      - id: view_name
+        size: 31
+        type: str
+        encoding: ASCII
+        terminator: 0x2e
+      - id: u2
+        type: u1
+      - id: view_size
+        type: f8
+        doc: VIEW/40
+      - id: center_point_x
+        type: f8
+        doc: VIEW/10
+      - id: center_point_y
+        type: f8
+        doc: VIEW/20
+      - id: view_width
+        type: f8
+        doc: VIEW/41
+      - id: view_dir_x
+        type: f8
+        doc: VIEW/11
+      - id: view_dir_y
+        type: f8
+        doc: VIEW/21
+      - id: view_dir_z
+        type: f8
+        doc: VIEW/31
 enums:
   entities:
     -127: tmp
