@@ -125,7 +125,6 @@ sub _read {
     for (my $i = 0; $i < $n_linetypes; $i++) {
         $self->{linetypes}[$i] = CAD::Format::DWG::AC1003::Linetype->new($self->{_io}, $self, $self->{_root});
     }
-    $self->{u1} = $self->{_io}->read_bytes(35);
     $self->{views} = ();
     my $n_views = $self->header()->number_of_views();
     for (my $i = 0; $i < $n_views; $i++) {
@@ -161,11 +160,6 @@ sub styles {
 sub linetypes {
     my ($self) = @_;
     return $self->{linetypes};
-}
-
-sub u1 {
-    my ($self) = @_;
-    return $self->{u1};
 }
 
 sub views {
@@ -605,6 +599,7 @@ sub _read {
     $self->{_io}->align_to_byte();
     $self->{u12} = $self->{_io}->read_f8le();
     $self->{font_file} = $self->{_io}->read_bytes(90);
+    $self->{u13} = $self->{_io}->read_bytes(38);
 }
 
 sub flag1_1 {
@@ -720,6 +715,11 @@ sub u12 {
 sub font_file {
     my ($self) = @_;
     return $self->{font_file};
+}
+
+sub u13 {
+    my ($self) = @_;
+    return $self->{u13};
 }
 
 ########################################################################
@@ -937,7 +937,6 @@ sub new {
 sub _read {
     my ($self) = @_;
 
-    $self->{u1} = $self->{_io}->read_bytes(38);
     $self->{u2} = $self->{_io}->read_u1();
     $self->{linetype_name} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(31), 46, 0));
     $self->{u3} = $self->{_io}->read_u1();
@@ -953,12 +952,7 @@ sub _read {
     $self->{u13} = $self->{_io}->read_f8le();
     $self->{u14} = $self->{_io}->read_f8le();
     $self->{u15} = $self->{_io}->read_f8le();
-    $self->{u16} = $self->{_io}->read_bytes(3);
-}
-
-sub u1 {
-    my ($self) = @_;
-    return $self->{u1};
+    $self->{u16} = $self->{_io}->read_bytes(41);
 }
 
 sub u2 {
@@ -2133,20 +2127,26 @@ sub _read {
     $self->{entities_start} = $self->{_io}->read_s4le();
     $self->{entities_end} = $self->{_io}->read_s4le();
     $self->{blocks_start} = $self->{_io}->read_s4le();
-    $self->{rl1} = $self->{_io}->read_bytes(4);
+    $self->{block_item_size} = $self->{_io}->read_s2le();
+    $self->{rl1} = $self->{_io}->read_bytes(2);
     $self->{blocks_end} = $self->{_io}->read_s4le();
     $self->{rl2} = $self->{_io}->read_bytes(4);
     $self->{unknown4a} = $self->{_io}->read_bytes(2);
     $self->{number_of_blocks} = $self->{_io}->read_s2le();
-    $self->{unknown4b} = $self->{_io}->read_bytes(8);
+    $self->{unknown4b} = $self->{_io}->read_s2le();
+    $self->{unknown4c} = $self->{_io}->read_s4le();
+    $self->{layer_item_size} = $self->{_io}->read_s2le();
     $self->{number_of_layers} = $self->{_io}->read_s2le();
-    $self->{unknown4c} = $self->{_io}->read_bytes(8);
+    $self->{unknown4d} = $self->{_io}->read_bytes(6);
+    $self->{style_item_size} = $self->{_io}->read_s2le();
     $self->{number_of_styles} = $self->{_io}->read_s2le();
-    $self->{unknown4d} = $self->{_io}->read_bytes(8);
-    $self->{number_of_linetypes} = $self->{_io}->read_s2le();
-    $self->{unknown4e} = $self->{_io}->read_bytes(8);
-    $self->{number_of_views} = $self->{_io}->read_s2le();
     $self->{unknown4f} = $self->{_io}->read_bytes(6);
+    $self->{linetype_item_size} = $self->{_io}->read_s2le();
+    $self->{number_of_linetypes} = $self->{_io}->read_s2le();
+    $self->{unknown4h} = $self->{_io}->read_bytes(6);
+    $self->{view_item_size} = $self->{_io}->read_s2le();
+    $self->{number_of_views} = $self->{_io}->read_s2le();
+    $self->{unknown4j} = $self->{_io}->read_bytes(6);
     $self->{insertion_base_x} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
     $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
@@ -2361,6 +2361,11 @@ sub blocks_start {
     return $self->{blocks_start};
 }
 
+sub block_item_size {
+    my ($self) = @_;
+    return $self->{block_item_size};
+}
+
 sub rl1 {
     my ($self) = @_;
     return $self->{rl1};
@@ -2391,19 +2396,19 @@ sub unknown4b {
     return $self->{unknown4b};
 }
 
-sub number_of_layers {
-    my ($self) = @_;
-    return $self->{number_of_layers};
-}
-
 sub unknown4c {
     my ($self) = @_;
     return $self->{unknown4c};
 }
 
-sub number_of_styles {
+sub layer_item_size {
     my ($self) = @_;
-    return $self->{number_of_styles};
+    return $self->{layer_item_size};
+}
+
+sub number_of_layers {
+    my ($self) = @_;
+    return $self->{number_of_layers};
 }
 
 sub unknown4d {
@@ -2411,14 +2416,39 @@ sub unknown4d {
     return $self->{unknown4d};
 }
 
+sub style_item_size {
+    my ($self) = @_;
+    return $self->{style_item_size};
+}
+
+sub number_of_styles {
+    my ($self) = @_;
+    return $self->{number_of_styles};
+}
+
+sub unknown4f {
+    my ($self) = @_;
+    return $self->{unknown4f};
+}
+
+sub linetype_item_size {
+    my ($self) = @_;
+    return $self->{linetype_item_size};
+}
+
 sub number_of_linetypes {
     my ($self) = @_;
     return $self->{number_of_linetypes};
 }
 
-sub unknown4e {
+sub unknown4h {
     my ($self) = @_;
-    return $self->{unknown4e};
+    return $self->{unknown4h};
+}
+
+sub view_item_size {
+    my ($self) = @_;
+    return $self->{view_item_size};
 }
 
 sub number_of_views {
@@ -2426,9 +2456,9 @@ sub number_of_views {
     return $self->{number_of_views};
 }
 
-sub unknown4f {
+sub unknown4j {
     my ($self) = @_;
-    return $self->{unknown4f};
+    return $self->{unknown4j};
 }
 
 sub insertion_base_x {

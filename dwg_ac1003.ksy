@@ -36,8 +36,6 @@ seq:
     type: linetype
     repeat: expr
     repeat-expr: header.number_of_linetypes
-  - id: u1
-    size: 35
   - id: views
     type: view
     repeat: expr
@@ -87,8 +85,10 @@ types:
         type: s4
       - id: blocks_start
         type: s4
+      - id: block_item_size
+        type: s2
       - id: rl1
-        size: 4
+        size: 2
       - id: blocks_end
         type: s4
       - id: rl2
@@ -98,22 +98,32 @@ types:
       - id: number_of_blocks
         type: s2
       - id: unknown4b
-        size: 8
-      - id: number_of_layers
         type: s2
       - id: unknown4c
-        size: 8
-      - id: number_of_styles
+        type: s4
+      - id: layer_item_size
+        type: s2
+      - id: number_of_layers
         type: s2
       - id: unknown4d
-        size: 8
-      - id: number_of_linetypes
+        size: 6
+      - id: style_item_size
         type: s2
-      - id: unknown4e
-        size: 8
-      - id: number_of_views
+      - id: number_of_styles
         type: s2
       - id: unknown4f
+        size: 6
+      - id: linetype_item_size
+        type: s2
+      - id: number_of_linetypes
+        type: s2
+      - id: unknown4h
+        size: 6
+      - id: view_item_size
+        type: s2
+      - id: number_of_views
+        type: s2
+      - id: unknown4j
         size: 6
       - id: insertion_base_x
         size: 8
@@ -1090,8 +1100,6 @@ types:
         type: s1
   linetype:
     seq:
-      - id: u1
-        size: 38
       - id: u2
         type: u1
         doc: LTYPE/70
@@ -1142,7 +1150,7 @@ types:
         type: f8
         doc: LTYPE/49
       - id: u16
-        size: 3
+        size: 41
   real_entities:
     seq:
       - id: entities
@@ -1204,6 +1212,8 @@ types:
         doc: STYLE/42
       - id: font_file
         size: 90
+      - id: u13
+        size: 38
   view:
     seq:
       - id: u1
