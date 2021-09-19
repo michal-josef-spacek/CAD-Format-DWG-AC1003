@@ -23,23 +23,23 @@ seq:
   - id: blocks
     type: block
     repeat: expr
-    repeat-expr: header.number_of_blocks
+    repeat-expr: header.number_of_table_blocks
   - id: layers
     type: layer
     repeat: expr
-    repeat-expr: header.number_of_layers
+    repeat-expr: header.number_of_table_layers
   - id: styles
     type: style
     repeat: expr
-    repeat-expr: header.number_of_styles
+    repeat-expr: header.number_of_table_styles
   - id: linetypes
     type: linetype
     repeat: expr
-    repeat-expr: header.number_of_linetypes
+    repeat-expr: header.number_of_table_linetypes
   - id: views
     type: view
     repeat: expr
-    repeat-expr: header.number_of_views
+    repeat-expr: header.number_of_table_views
 types:
   block:
     seq:
@@ -87,44 +87,54 @@ types:
         type: s4
       - id: block_item_size
         type: s2
-      - id: rl1
+      - id: unknown4a
         size: 2
       - id: blocks_end
         type: s4
-      - id: rl2
-        size: 4
-      - id: unknown4a
-        size: 2
-      - id: number_of_blocks
-        type: s2
       - id: unknown4b
-        type: s2
+        size: 2
       - id: unknown4c
-        type: s4
-      - id: layer_item_size
+        size: 2
+      - id: block_table_item_size
         type: s2
-      - id: number_of_layers
+      - id: number_of_table_blocks
         type: s2
-      - id: unknown4d
-        size: 6
-      - id: style_item_size
+      - id: unknown4e
+        size: 2
+      - id: block_table_begin
+        type: u4
+      - id: layer_table_item_size
         type: s2
-      - id: number_of_styles
+      - id: number_of_table_layers
         type: s2
-      - id: unknown4f
-        size: 6
-      - id: linetype_item_size
+      - id: unknown4g
+        size: 2
+      - id: layer_table_begin
+        type: u4
+      - id: style_table_item_size
         type: s2
-      - id: number_of_linetypes
+      - id: number_of_table_styles
         type: s2
-      - id: unknown4h
-        size: 6
-      - id: view_item_size
+      - id: unknown4i
+        size: 2
+      - id: style_table_begin
+        type: u4
+      - id: linetype_table_item_size
         type: s2
-      - id: number_of_views
+      - id: number_of_table_linetypes
         type: s2
-      - id: unknown4j
-        size: 6
+      - id: unknown4k
+        size: 2
+      - id: linetype_table_begin
+        type: u4
+      - id: view_table_item_size
+        type: s2
+      - id: number_of_table_views
+        type: s2
+      - id: unknown4m
+        size: 2
+      - id: view_table_begin
+        type: u4
       - id: insertion_base_x
         size: 8
         doc: 0x005e-0x0065, $INSBASE/10
