@@ -1279,14 +1279,18 @@ enums:
     2: point
     3: circle
     4: shape
+    # NOT_USED 5: repeat_begin
+    # NOT_USED 6: repeat_end
     7: text
     8: arc
     9: trace
+    # NOT_USED 10: load
     11: solid
     12: block_begin
     13: block_end
     14: insert
     15: attdef
+    # 16 TODO Implement
     17: seqend
     18: polyline
     19: polyline2
