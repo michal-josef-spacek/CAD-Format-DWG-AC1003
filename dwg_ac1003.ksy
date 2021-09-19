@@ -40,6 +40,9 @@ seq:
     type: view
     repeat: expr
     repeat-expr: header.number_of_table_views
+  - id: block_entities
+    type: real_entities
+    size: header.blocks_end - header.blocks_start
 types:
   block:
     seq:
@@ -85,7 +88,7 @@ types:
         type: s4
       - id: blocks_start
         type: s4
-      - id: block_item_size
+      - id: blocks_size
         type: s2
       - id: unknown4a
         size: 2
@@ -586,6 +589,8 @@ types:
           cases:
             'entities::arc': entity_arc
             'entities::attdef': entity_attdef
+            'entities::block_begin': entity_block_begin
+            'entities::block_end': entity_block_end
             'entities::insert' : entity_insert
             'entities::circle': entity_circle
             'entities::dim': entity_dim
@@ -747,6 +752,18 @@ types:
         type: f8
         if: entity_common.flag2_1
         doc: ATTDEF/21
+  entity_block_begin:
+    seq:
+      - id: entity_common
+        type: entity_common
+      - id: x
+        type: f8
+      - id: y
+        type: f8
+  entity_block_end:
+    seq:
+      - id: entity_common
+        type: entity_common
   entity_insert:
     seq:
       - id: entity_common
@@ -1266,6 +1283,8 @@ enums:
     8: arc
     9: trace
     11: solid
+    12: block_begin
+    13: block_end
     14: insert
     15: attdef
     17: seqend

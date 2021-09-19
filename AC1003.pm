@@ -31,6 +31,8 @@ our $ENTITIES_TEXT = 7;
 our $ENTITIES_ARC = 8;
 our $ENTITIES_TRACE = 9;
 our $ENTITIES_SOLID = 11;
+our $ENTITIES_BLOCK_BEGIN = 12;
+our $ENTITIES_BLOCK_END = 13;
 our $ENTITIES_INSERT = 14;
 our $ENTITIES_ATTDEF = 15;
 our $ENTITIES_SEQEND = 17;
@@ -130,6 +132,9 @@ sub _read {
     for (my $i = 0; $i < $n_views; $i++) {
         $self->{views}[$i] = CAD::Format::DWG::AC1003::View->new($self->{_io}, $self, $self->{_root});
     }
+    $self->{_raw_block_entities} = $self->{_io}->read_bytes(($self->header()->blocks_end() - $self->header()->blocks_start()));
+    my $io__raw_block_entities = IO::KaitaiStruct::Stream->new($self->{_raw_block_entities});
+    $self->{block_entities} = CAD::Format::DWG::AC1003::RealEntities->new($io__raw_block_entities, $self, $self->{_root});
 }
 
 sub header {
@@ -167,9 +172,19 @@ sub views {
     return $self->{views};
 }
 
+sub block_entities {
+    my ($self) = @_;
+    return $self->{block_entities};
+}
+
 sub _raw_entities {
     my ($self) = @_;
     return $self->{_raw_entities};
+}
+
+sub _raw_block_entities {
+    my ($self) = @_;
+    return $self->{_raw_block_entities};
 }
 
 ########################################################################
@@ -1036,6 +1051,44 @@ sub u16 {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityBlockEnd;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityPoint;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -1714,6 +1767,56 @@ sub end_point_y {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityBlockBegin;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{entity_common} = CAD::Format::DWG::AC1003::EntityCommon->new($self->{_io}, $self, $self->{_root});
+    $self->{x} = $self->{_io}->read_f8le();
+    $self->{y} = $self->{_io}->read_f8le();
+}
+
+sub entity_common {
+    my ($self) = @_;
+    return $self->{entity_common};
+}
+
+sub x {
+    my ($self) = @_;
+    return $self->{x};
+}
+
+sub y {
+    my ($self) = @_;
+    return $self->{y};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::EntityDim;
 
 our @ISA = 'IO::KaitaiStruct::Struct';
@@ -1989,6 +2092,9 @@ sub _read {
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_DIM) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityDim->new($self->{_io}, $self, $self->{_root});
     }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_BLOCK_BEGIN) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityBlockBegin->new($self->{_io}, $self, $self->{_root});
+    }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_LINE) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityLine->new($self->{_io}, $self, $self->{_root});
     }
@@ -2018,6 +2124,9 @@ sub _read {
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_ATTDEF) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityAttdef->new($self->{_io}, $self, $self->{_root});
+    }
+    elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_BLOCK_END) {
+        $self->{data} = CAD::Format::DWG::AC1003::EntityBlockEnd->new($self->{_io}, $self, $self->{_root});
     }
     elsif ($_on == $CAD::Format::DWG::AC1003::ENTITIES_POINT) {
         $self->{data} = CAD::Format::DWG::AC1003::EntityPoint->new($self->{_io}, $self, $self->{_root});
@@ -2127,7 +2236,7 @@ sub _read {
     $self->{entities_start} = $self->{_io}->read_s4le();
     $self->{entities_end} = $self->{_io}->read_s4le();
     $self->{blocks_start} = $self->{_io}->read_s4le();
-    $self->{block_item_size} = $self->{_io}->read_s2le();
+    $self->{blocks_size} = $self->{_io}->read_s2le();
     $self->{unknown4a} = $self->{_io}->read_bytes(2);
     $self->{blocks_end} = $self->{_io}->read_s4le();
     $self->{unknown4b} = $self->{_io}->read_bytes(2);
@@ -2366,9 +2475,9 @@ sub blocks_start {
     return $self->{blocks_start};
 }
 
-sub block_item_size {
+sub blocks_size {
     my ($self) = @_;
-    return $self->{block_item_size};
+    return $self->{blocks_size};
 }
 
 sub unknown4a {
