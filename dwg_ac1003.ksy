@@ -252,7 +252,7 @@ types:
         type: s2
         doc: 0x014a-0x014b, $CLAYER
       - id: unknown6
-        size: 8
+        type: f8
         doc: 0x014c-0x0153
       - id: unknown7a
         size: 2
@@ -267,7 +267,7 @@ types:
         size: 2
         doc: 0x015a-0x015b
       - id: unknown8
-        size: 8
+        type: f8
         doc: 0x015c-0x0163
       - id: linear_units_format
         enum: unit_types
@@ -387,41 +387,41 @@ types:
         size: 8
         doc: 0x024a-0x0251, $VIEWDIR/30
       - id: unknown11
-        size: 8
+        type: f8
       - id: unknown12
-        size: 8
+        type: f8
       - id: unknown13
-        size: 8
+        type: f8
       - id: unknown14
-        size: 8
+        type: f8
       - id: unknown15
-        size: 8
+        type: f8
       - id: unknown16
-        size: 8
+        type: f8
       - id: unknown17
-        size: 8
+        type: f8
       - id: unknown18
-        size: 8
+        type: f8
       - id: unknown19
-        size: 8
+        type: f8
       - id: unknown20
-        size: 8
+        type: f8
       - id: unknown21
-        size: 8
+        type: f8
       - id: unknown22
-        size: 8
+        type: f8
       - id: unknown23
-        size: 8
+        type: f8
       - id: unknown24
-        size: 8
+        type: f8
       - id: unknown25
-        size: 8
+        type: f8
       - id: unknown26
-        size: 8
+        type: f8
       - id: unknown27
-        size: 8
+        type: f8
       - id: unknown28
-        size: 8
+        type: f8
       - id: unknown29
         size: 2
       - id: blip
@@ -498,7 +498,7 @@ types:
       - id: unknown33b
         size: 7
       - id: unknown34
-        size: 8
+        type: f8
       - id: angle_base
         size: 8
         doc: 0x0353-0x035a, $ANGBASE
