@@ -214,6 +214,7 @@ types:
       - id: snap_iso_pair
         type: s2
         doc: 0x0114-0x0115, $SNAPISOPAIR
+        # TODO enum ISOPLAIN command
       - id: grid
         type: s2
         doc: 0x0116-0x0117, $GRIDMODE
