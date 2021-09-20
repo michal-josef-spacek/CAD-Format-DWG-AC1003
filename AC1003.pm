@@ -2291,9 +2291,9 @@ sub _read {
     $self->{number_of_table_views} = $self->{_io}->read_s2le();
     $self->{unknown4m} = $self->{_io}->read_bytes(2);
     $self->{view_table_begin} = $self->{_io}->read_u4le();
-    $self->{insertion_base_x} = $self->{_io}->read_bytes(8);
-    $self->{insertion_base_y} = $self->{_io}->read_bytes(8);
-    $self->{insertion_base_z} = $self->{_io}->read_bytes(8);
+    $self->{insertion_base_x} = $self->{_io}->read_f8le();
+    $self->{insertion_base_y} = $self->{_io}->read_f8le();
+    $self->{insertion_base_z} = $self->{_io}->read_f8le();
     $self->{number_of_entities} = $self->{_io}->read_s2le();
     $self->{drawing_first_x} = $self->{_io}->read_bytes(8);
     $self->{drawing_first_y} = $self->{_io}->read_bytes(8);

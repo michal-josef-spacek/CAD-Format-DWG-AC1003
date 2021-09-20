@@ -139,13 +139,13 @@ types:
       - id: view_table_begin
         type: u4
       - id: insertion_base_x
-        size: 8
+        type: f8
         doc: 0x005e-0x0065, $INSBASE/10
       - id: insertion_base_y
-        size: 8
+        type: f8
         doc: 0x0066-0x006d, $INSBASE/20
       - id: insertion_base_z
-        size: 8
+        type: f8
         doc: 0x006e-0x0075
       - id: number_of_entities
         type: s2
