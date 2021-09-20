@@ -74,11 +74,11 @@ types:
         size: 6
       - id: zero_one_or_three
         type: s1
-      - id: unknown1
+      - id: version_major
         type: s2
-      - id: unknown2
+      - id: version_minor
         type: s2
-      - id: unknown3
+      - id: version_micro
         type: s2
       - id: dwg_version
         type: s1

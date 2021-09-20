@@ -2259,9 +2259,9 @@ sub _read {
     $self->{magic} = $self->{_io}->read_bytes(6);
     $self->{zeros} = $self->{_io}->read_bytes(6);
     $self->{zero_one_or_three} = $self->{_io}->read_s1();
-    $self->{unknown1} = $self->{_io}->read_s2le();
-    $self->{unknown2} = $self->{_io}->read_s2le();
-    $self->{unknown3} = $self->{_io}->read_s2le();
+    $self->{version_major} = $self->{_io}->read_s2le();
+    $self->{version_minor} = $self->{_io}->read_s2le();
+    $self->{version_micro} = $self->{_io}->read_s2le();
     $self->{dwg_version} = $self->{_io}->read_s1();
     $self->{entities_start} = $self->{_io}->read_s4le();
     $self->{entities_end} = $self->{_io}->read_s4le();
@@ -2470,19 +2470,19 @@ sub zero_one_or_three {
     return $self->{zero_one_or_three};
 }
 
-sub unknown1 {
+sub version_major {
     my ($self) = @_;
-    return $self->{unknown1};
+    return $self->{version_major};
 }
 
-sub unknown2 {
+sub version_minor {
     my ($self) = @_;
-    return $self->{unknown2};
+    return $self->{version_minor};
 }
 
-sub unknown3 {
+sub version_micro {
     my ($self) = @_;
-    return $self->{unknown3};
+    return $self->{version_micro};
 }
 
 sub dwg_version {
