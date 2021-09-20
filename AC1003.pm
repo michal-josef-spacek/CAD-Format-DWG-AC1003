@@ -967,7 +967,12 @@ sub _read {
     $self->{u13} = $self->{_io}->read_f8le();
     $self->{u14} = $self->{_io}->read_f8le();
     $self->{u15} = $self->{_io}->read_f8le();
-    $self->{u16} = $self->{_io}->read_bytes(41);
+    $self->{u16} = $self->{_io}->read_f8le();
+    $self->{u17} = $self->{_io}->read_f8le();
+    $self->{u18} = $self->{_io}->read_f8le();
+    $self->{u19} = $self->{_io}->read_f8le();
+    $self->{u20} = $self->{_io}->read_f8le();
+    $self->{u21} = $self->{_io}->read_bytes(1);
 }
 
 sub u2 {
@@ -1048,6 +1053,31 @@ sub u15 {
 sub u16 {
     my ($self) = @_;
     return $self->{u16};
+}
+
+sub u17 {
+    my ($self) = @_;
+    return $self->{u17};
+}
+
+sub u18 {
+    my ($self) = @_;
+    return $self->{u18};
+}
+
+sub u19 {
+    my ($self) = @_;
+    return $self->{u19};
+}
+
+sub u20 {
+    my ($self) = @_;
+    return $self->{u20};
+}
+
+sub u21 {
+    my ($self) = @_;
+    return $self->{u21};
 }
 
 ########################################################################

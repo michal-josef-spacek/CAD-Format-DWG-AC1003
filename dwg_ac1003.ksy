@@ -1178,7 +1178,22 @@ types:
         type: f8
         doc: LTYPE/49
       - id: u16
-        size: 41
+        type: f8
+        doc: LTYPE/49
+      - id: u17
+        type: f8
+        doc: LTYPE/49
+      - id: u18
+        type: f8
+        doc: LTYPE/49
+      - id: u19
+        type: f8
+        doc: LTYPE/49
+      - id: u20
+        type: f8
+        doc: LTYPE/49
+      - id: u21
+        size: 1
   real_entities:
     seq:
       - id: entities
