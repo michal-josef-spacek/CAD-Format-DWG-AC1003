@@ -1306,7 +1306,7 @@ enums:
     13: block_end
     14: insert
     15: attdef
-    # 16 TODO Implement
+    # 16 TODO attrib
     17: seqend
     18: polyline
     19: polyline2
