@@ -167,16 +167,16 @@ types:
       - id: drawing_second_z
         type: f8
       - id: limits_min_x
-        size: 8
+        type: f8
         doc: 0x00a8-0x00af, $LIMMIN/10
       - id: limits_min_y
-        size: 8
+        type: f8
         doc: 0x00b0-0x00b7, $LIMMIN/20
       - id: limits_max_x
-        size: 8
+        type: f8
         doc: 0x00b8-0x00bf
       - id: limits_max_y
-        size: 8
+        type: f8
         doc: 0x00c0-0x00c7
       - id: view_ctrl_x
         size: 8
