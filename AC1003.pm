@@ -243,10 +243,10 @@ sub _read {
         $self->{u7} = $self->{_io}->read_u1();
     }
     if ($self->entity_common()->flag2_1()) {
-        $self->{u8} = $self->{_io}->read_f8le();
+        $self->{aligned_to_x} = $self->{_io}->read_f8le();
     }
     if ($self->entity_common()->flag2_1()) {
-        $self->{u9} = $self->{_io}->read_f8le();
+        $self->{aligned_to_y} = $self->{_io}->read_f8le();
     }
 }
 
@@ -310,14 +310,14 @@ sub u7 {
     return $self->{u7};
 }
 
-sub u8 {
+sub aligned_to_x {
     my ($self) = @_;
-    return $self->{u8};
+    return $self->{aligned_to_x};
 }
 
-sub u9 {
+sub aligned_to_y {
     my ($self) = @_;
-    return $self->{u9};
+    return $self->{aligned_to_y};
 }
 
 ########################################################################

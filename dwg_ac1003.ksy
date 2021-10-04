@@ -792,11 +792,11 @@ types:
         type: u1
         if: entity_common.flag2_2
         # 1, 2 nebo 7?
-      - id: u8
+      - id: aligned_to_x
         type: f8
         if: entity_common.flag2_1
         doc: ATRRIB/11
-      - id: u9
+      - id: aligned_to_y
         type: f8
         if: entity_common.flag2_1
         doc: ATRRIB/21
