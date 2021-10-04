@@ -286,7 +286,7 @@ types:
         type: f8
         doc: 0x0172-0x0179, $AXISUNIT/20
       - id: sketch_increment
-        size: 8
+        type: f8
         doc: 0x017a-0x0181, $SKETCHINC
       - id: fillet_radius
         size: 8
