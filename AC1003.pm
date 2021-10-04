@@ -2670,7 +2670,7 @@ sub _read {
     $self->{axis_value_x} = $self->{_io}->read_f8le();
     $self->{axis_value_y} = $self->{_io}->read_f8le();
     $self->{sketch_increment} = $self->{_io}->read_f8le();
-    $self->{fillet_radius} = $self->{_io}->read_bytes(8);
+    $self->{fillet_radius} = $self->{_io}->read_f8le();
     $self->{units_for_angles} = $self->{_io}->read_s2le();
     $self->{angular_precision} = $self->{_io}->read_s2le();
     $self->{text_style} = $self->{_io}->read_s2le();

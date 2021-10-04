@@ -289,7 +289,7 @@ types:
         type: f8
         doc: 0x017a-0x0181, $SKETCHINC
       - id: fillet_radius
-        size: 8
+        type: f8
         doc: $FILETRAD
       - id: units_for_angles
         enum: units_for_angles
