@@ -318,7 +318,7 @@ types:
         type: f8
         doc: $DIMSCALE
       - id: dim_arrowhead_size
-        size: 8
+        type: f8
         doc: $DIMASZ
       - id: dim_extension_line_offset
         size: 8

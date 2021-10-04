@@ -13,12 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_arrowhead_size')->set
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DAH1.DWG')->s,
 );
-my $dim_arrowhead_size = unpack 'd<', $obj->header->dim_arrowhead_size;
-is($dim_arrowhead_size, 0.18, 'Dimension arrowhead size (0.18 - default).');
+is($obj->header->dim_arrowhead_size, 0.18, 'Dimension arrowhead size (0.18 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DAH2.DWG')->s,
 );
-$dim_arrowhead_size = unpack 'd<', $obj->header->dim_arrowhead_size;
-is($dim_arrowhead_size, 1.2345, 'Dimension arrowhead size (1.2345).');
+is($obj->header->dim_arrowhead_size, 1.2345, 'Dimension arrowhead size (1.2345).');
