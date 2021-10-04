@@ -194,10 +194,10 @@ types:
         type: s2
         doc: 0x00e8-0x00e9, $SNAPMODE
       - id: snap_resolution_x
-        size: 8
+        type: f8
         doc: 0x00ea-0x00f1, $SNAPUNIT/10
       - id: snap_resolution_y
-        size: 8
+        type: f8
         doc: 0x00f2-0x00f9, $SNAPUNIT/20
       - id: snap_base_x
         size: 8
