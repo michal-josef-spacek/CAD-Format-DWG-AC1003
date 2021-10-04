@@ -324,7 +324,7 @@ types:
         type: f8
         doc: $DIMEXO
       - id: dim_baseline_spacing
-        size: 8
+        type: f8
         doc: $DIMDLI
       - id: dim_extension_line_extend
         size: 8
