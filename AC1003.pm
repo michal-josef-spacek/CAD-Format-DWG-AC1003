@@ -2637,7 +2637,7 @@ sub _read {
     $self->{view_ctrl_x} = $self->{_io}->read_f8le();
     $self->{view_ctrl_y} = $self->{_io}->read_f8le();
     $self->{view_ctrl_z} = $self->{_io}->read_f8le();
-    $self->{view_size} = $self->{_io}->read_bytes(8);
+    $self->{view_size} = $self->{_io}->read_f8le();
     $self->{snap} = $self->{_io}->read_s2le();
     $self->{snap_resolution_x} = $self->{_io}->read_bytes(8);
     $self->{snap_resolution_y} = $self->{_io}->read_bytes(8);

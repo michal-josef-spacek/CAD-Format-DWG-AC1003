@@ -188,7 +188,7 @@ types:
         type: f8
         doc: 0x00d8-0x00da
       - id: view_size
-        size: 8
+        type: f8
         doc: 0x00e0-0x00e7
       - id: snap
         type: s2
