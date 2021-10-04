@@ -1428,3 +1428,5 @@ enums:
     1: center
     2: end
     3: aligned
+    4: middle
+    5: fit
