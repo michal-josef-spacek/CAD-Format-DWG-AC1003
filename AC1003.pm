@@ -2647,8 +2647,8 @@ sub _read {
     $self->{snap_style} = $self->{_io}->read_s2le();
     $self->{snap_iso_pair} = $self->{_io}->read_s2le();
     $self->{grid} = $self->{_io}->read_s2le();
-    $self->{grid_unit_x} = $self->{_io}->read_bytes(8);
-    $self->{grid_unit_y} = $self->{_io}->read_bytes(8);
+    $self->{grid_unit_x} = $self->{_io}->read_f8le();
+    $self->{grid_unit_y} = $self->{_io}->read_f8le();
     $self->{ortho} = $self->{_io}->read_s2le();
     $self->{regen} = $self->{_io}->read_s2le();
     $self->{fill} = $self->{_io}->read_s2le();

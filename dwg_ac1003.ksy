@@ -219,10 +219,10 @@ types:
         type: s2
         doc: 0x0116-0x0117, $GRIDMODE
       - id: grid_unit_x
-        size: 8
+        type: f8
         doc: 0x0118-0x011f, $GRIDUNIT/10
       - id: grid_unit_y
-        size: 8
+        type: f8
         doc: 0x0120-0x0127, $GRIDUNIT/20
       - id: ortho
         type: s2
