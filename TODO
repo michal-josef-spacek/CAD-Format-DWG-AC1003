@@ -7,7 +7,6 @@ TODO
 11. - id: unknown4b
     Neco jako decode_preR13_section_ptr v libredwg
 17. Import attrib z prechozi verze
-18. Implement face3d
 19.
 
 Applied
@@ -51,3 +50,6 @@ OK [20210917] skim
 
 16. views table
 OK [20210917] skim
+
+18. Implement face3d
+OK [20211004] skim
