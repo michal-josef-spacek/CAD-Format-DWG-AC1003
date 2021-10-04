@@ -240,7 +240,7 @@ types:
         type: s2
         doc: 0x0130-0x0131, $DRAGMODE
       - id: linetype_scale
-        size: 8
+        type: f8
         doc: 0x0132-0x0139, $LTSCALE
       - id: text_size
         size: 8
