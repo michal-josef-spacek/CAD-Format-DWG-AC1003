@@ -232,7 +232,7 @@ sub _read {
     $self->{text} = $self->{_io}->read_bytes($self->size());
     $self->{size2} = $self->{_io}->read_s2le();
     $self->{text2} = $self->{_io}->read_bytes($self->size2());
-    $self->{u4} = $self->{_io}->read_bytes(1);
+    $self->{u4} = $self->{_io}->read_u1();
     if ($self->entity_common()->flag2_7()) {
         $self->{u5} = $self->{_io}->read_f8le();
     }

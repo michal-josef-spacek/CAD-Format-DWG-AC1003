@@ -775,7 +775,7 @@ types:
       - id: text2
         size: size2
       - id: u4
-        size: 1
+        type: u1
       - id: u5
         type: f8
         if: entity_common.flag2_7
