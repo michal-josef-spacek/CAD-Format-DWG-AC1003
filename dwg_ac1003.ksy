@@ -200,10 +200,10 @@ types:
         type: f8
         doc: 0x00f2-0x00f9, $SNAPUNIT/20
       - id: snap_base_x
-        size: 8
+        type: f8
         doc: 0x00fa-0x0101, $SNAPBASE/10
       - id: snap_base_y
-        size: 8
+        type: f8
         doc: 0x0102-0x0109, $SNAPBASE/20
       - id: snap_angle
         size: 8
