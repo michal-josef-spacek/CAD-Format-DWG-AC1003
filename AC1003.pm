@@ -2755,11 +2755,11 @@ sub _read {
     $self->{user_integer_3} = $self->{_io}->read_s2le();
     $self->{user_integer_4} = $self->{_io}->read_s2le();
     $self->{user_integer_5} = $self->{_io}->read_s2le();
-    $self->{user_real_1} = $self->{_io}->read_bytes(8);
-    $self->{user_real_2} = $self->{_io}->read_bytes(8);
-    $self->{user_real_3} = $self->{_io}->read_bytes(8);
-    $self->{user_real_4} = $self->{_io}->read_bytes(8);
-    $self->{user_real_5} = $self->{_io}->read_bytes(8);
+    $self->{user_real_1} = $self->{_io}->read_f8le();
+    $self->{user_real_2} = $self->{_io}->read_f8le();
+    $self->{user_real_3} = $self->{_io}->read_f8le();
+    $self->{user_real_4} = $self->{_io}->read_f8le();
+    $self->{user_real_5} = $self->{_io}->read_f8le();
     $self->{dim_alternate_units} = $self->{_io}->read_s1();
     $self->{dim_alternate_units_decimal_places} = $self->{_io}->read_s1();
     $self->{dim_associative} = $self->{_io}->read_s1();
