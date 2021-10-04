@@ -2679,7 +2679,7 @@ sub _read {
     $self->{menu} = Encode::decode("ASCII", $self->{_io}->read_bytes(15));
     $self->{dim_scale} = $self->{_io}->read_f8le();
     $self->{dim_arrowhead_size} = $self->{_io}->read_f8le();
-    $self->{dim_extension_line_offset} = $self->{_io}->read_bytes(8);
+    $self->{dim_extension_line_offset} = $self->{_io}->read_f8le();
     $self->{dim_baseline_spacing} = $self->{_io}->read_bytes(8);
     $self->{dim_extension_line_extend} = $self->{_io}->read_bytes(8);
     $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_bytes(8);
