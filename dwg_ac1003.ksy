@@ -179,13 +179,13 @@ types:
         type: f8
         doc: 0x00c0-0x00c7
       - id: view_ctrl_x
-        size: 8
+        type: f8
         doc: 0x00c8-0x00cf, $VIEWCTRL/10
       - id: view_ctrl_y
-        size: 8
+        type: f8
         doc: 0x00d0-0x00d7, $VIEWCTRL/20
       - id: view_ctrl_z
-        size: 8
+        type: f8
         doc: 0x00d8-0x00da
       - id: view_size
         size: 8
