@@ -372,7 +372,7 @@ types:
       - id: unknown10
         size: 45
       - id: elevation
-        size: 8
+        type: f8
         doc: $ELEVATION
       - id: thickness
         size: 8

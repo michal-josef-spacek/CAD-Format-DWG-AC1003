@@ -13,12 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/elevation')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('E1.DWG')->s,
 );
-my $elevation = unpack 'd<', $obj->header->elevation;
-is($elevation, 0, 'Elevation (0 - default).');
+is($obj->header->elevation, 0, 'Elevation (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('E2.DWG')->s,
 );
-$elevation = unpack 'd<', $obj->header->elevation;
-is($elevation, 1.2345, 'Elevation (1.2345).');
+is($obj->header->elevation, 1.2345, 'Elevation (1.2345).');
