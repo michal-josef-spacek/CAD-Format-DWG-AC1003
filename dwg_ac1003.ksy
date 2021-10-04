@@ -206,7 +206,7 @@ types:
         type: f8
         doc: 0x0102-0x0109, $SNAPBASE/20
       - id: snap_angle
-        size: 8
+        type: f8
         doc: 0x010a-0x0111, $SNAPANG
       - id: snap_style
         type: s2
