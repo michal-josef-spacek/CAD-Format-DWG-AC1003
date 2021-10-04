@@ -315,7 +315,7 @@ types:
         encoding: ASCII
         doc: $MENU
       - id: dim_scale
-        size: 8
+        type: f8
         doc: $DIMSCALE
       - id: dim_arrowhead_size
         size: 8

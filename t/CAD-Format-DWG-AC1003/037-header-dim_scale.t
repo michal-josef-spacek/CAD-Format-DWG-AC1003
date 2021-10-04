@@ -13,12 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_scale')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DS1.DWG')->s,
 );
-my $dim_scale = unpack 'd<', $obj->header->dim_scale;
-is($dim_scale, 1, 'Dimension scale (1 - default).');
+is($obj->header->dim_scale, 1, 'Dimension scale (1 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DS2.DWG')->s,
 );
-$dim_scale = unpack 'd<', $obj->header->dim_scale;
-is($dim_scale, 1.2345, 'Dimension scale (1.2345).');
+is($obj->header->dim_scale, 1.2345, 'Dimension scale (1.2345).');
