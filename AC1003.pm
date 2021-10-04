@@ -236,14 +236,17 @@ sub _read {
     if ($self->entity_common()->flag2_7()) {
         $self->{u5} = $self->{_io}->read_f8le();
     }
-    if ($self->entity_common()->flag2_2()) {
+    if ($self->entity_common()->flag2_4()) {
         $self->{u6} = $self->{_io}->read_u1();
     }
-    if ($self->entity_common()->flag2_1()) {
-        $self->{u7} = $self->{_io}->read_f8le();
+    if ($self->entity_common()->flag2_2()) {
+        $self->{u7} = $self->{_io}->read_u1();
     }
     if ($self->entity_common()->flag2_1()) {
         $self->{u8} = $self->{_io}->read_f8le();
+    }
+    if ($self->entity_common()->flag2_1()) {
+        $self->{u9} = $self->{_io}->read_f8le();
     }
 }
 
@@ -310,6 +313,11 @@ sub u7 {
 sub u8 {
     my ($self) = @_;
     return $self->{u8};
+}
+
+sub u9 {
+    my ($self) = @_;
+    return $self->{u9};
 }
 
 ########################################################################
