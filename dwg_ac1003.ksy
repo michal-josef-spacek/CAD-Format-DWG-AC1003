@@ -280,10 +280,10 @@ types:
         type: s2
         doc: 0x0168-0x0169, $AXISMODE
       - id: axis_value_x
-        size: 8
+        type: f8
         doc: 0x016a-0x171, $AXISUNIT/10
       - id: axis_value_y
-        size: 8
+        type: f8
         doc: 0x0172-0x0179, $AXISUNIT/20
       - id: sketch_increment
         size: 8
