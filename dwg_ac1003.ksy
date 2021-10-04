@@ -243,7 +243,7 @@ types:
         type: f8
         doc: 0x0132-0x0139, $LTSCALE
       - id: text_size
-        size: 8
+        type: f8
         doc: 0x013a-0x0141, $TEXTSIZE
       - id: trace_width
         size: 8
