@@ -246,7 +246,7 @@ types:
         type: f8
         doc: 0x013a-0x0141, $TEXTSIZE
       - id: trace_width
-        size: 8
+        type: f8
         doc: 0x0142-0x0149, $TRACEWID
       - id: current_layer
         type: s2

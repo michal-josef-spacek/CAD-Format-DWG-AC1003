@@ -2656,7 +2656,7 @@ sub _read {
     $self->{drag} = $self->{_io}->read_s2le();
     $self->{linetype_scale} = $self->{_io}->read_f8le();
     $self->{text_size} = $self->{_io}->read_f8le();
-    $self->{trace_width} = $self->{_io}->read_bytes(8);
+    $self->{trace_width} = $self->{_io}->read_f8le();
     $self->{current_layer} = $self->{_io}->read_s2le();
     $self->{unknown6} = $self->{_io}->read_f8le();
     $self->{unknown7a} = $self->{_io}->read_bytes(2);
