@@ -762,23 +762,29 @@ types:
         type: entity_common
       - id: u1
         type: f8
+        doc: ATTRIB/10
       - id: u2
         type: f8
+        doc: ATTRIB/20
       - id: u3
         type: f8
+        doc: ATRRIB/40
       - id: size
         type: s2
       - id: text
         size: size
+        doc: ATRRIB/1
       - id: size2
         type: s2
       - id: text2
         size: size2
+        doc: ATRRIB/2
       - id: u4
         type: u1
       - id: u5
         type: f8
         if: entity_common.flag2_7
+        doc: ATRRIB/50
       - id: u6
         type: u1
         if: entity_common.flag2_4
@@ -789,9 +795,11 @@ types:
       - id: u8
         type: f8
         if: entity_common.flag2_1
+        doc: ATRRIB/11
       - id: u9
         type: f8
         if: entity_common.flag2_1
+        doc: ATRRIB/21
   entity_block_begin:
     seq:
       - id: entity_common
