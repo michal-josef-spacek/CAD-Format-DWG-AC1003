@@ -2556,8 +2556,12 @@ sub _read {
     $self->{dim_sho} = $self->{_io}->read_s1();
     $self->{dim_measurement_postfix} = Encode::decode("ASCII", $self->{_io}->read_bytes(16));
     $self->{dim_alternate_measurement_postfix} = Encode::decode("ASCII", $self->{_io}->read_bytes(16));
-    $self->{dim_alternate_units_multiplier} = $self->{_io}->read_bytes(8);
-    $self->{dim_linear_measurements_scale_factor} = $self->{_io}->read_bytes(8);
+    if ($self->version_micro() == 122) {
+        $self->{dim_alternate_units_multiplier} = $self->{_io}->read_bytes(8);
+    }
+    if ($self->version_micro() == 122) {
+        $self->{dim_linear_measurements_scale_factor} = $self->{_io}->read_bytes(8);
+    }
 }
 
 sub create_date {
