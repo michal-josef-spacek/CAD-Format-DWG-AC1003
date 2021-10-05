@@ -2770,7 +2770,7 @@ sub _read {
         $self->{dim_alternate_units_multiplier} = $self->{_io}->read_f8le();
     }
     if ($self->version_micro() == 122) {
-        $self->{dim_linear_measurements_scale_factor} = $self->{_io}->read_bytes(8);
+        $self->{dim_linear_measurements_scale_factor} = $self->{_io}->read_f8le();
     }
 }
 

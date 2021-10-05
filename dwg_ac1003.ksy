@@ -572,7 +572,7 @@ types:
         doc: 0x03c5-0x03cc, $DIMALTF
         if: version_micro == 122
       - id: dim_linear_measurements_scale_factor
-        size: 8
+        type: f8
         doc: 0x03cd-0x03d4, $DIMLFAC
         if: version_micro == 122
     instances:
