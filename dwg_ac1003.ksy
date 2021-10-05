@@ -327,7 +327,7 @@ types:
         type: f8
         doc: $DIMDLI
       - id: dim_extension_line_extend
-        size: 8
+        type: f8
         doc: $DIMEXE
       - id: dim_maximum_tolerance_limit
         size: 8
