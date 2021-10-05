@@ -568,7 +568,7 @@ types:
         encoding: ASCII
         doc: $DIMAPOST, TODO And prefix
       - id: dim_alternate_units_multiplier
-        size: 8
+        type: f8
         doc: 0x03c5-0x03cc, $DIMALTF
         if: version_micro == 122
       - id: dim_linear_measurements_scale_factor
