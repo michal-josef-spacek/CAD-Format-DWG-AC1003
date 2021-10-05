@@ -513,7 +513,7 @@ types:
         type: f8
         doc: $PDSIZE
       - id: polyline_width
-        size: 8
+        type: f8
         doc: $PLINEWID
       - id: user_integer_1
         type: s2
