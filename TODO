@@ -6,7 +6,6 @@ TODO
 10. tests for updated date
 11. - id: unknown4b
     Neco jako decode_preR13_section_ptr v libredwg
-19. Rewrite type 'size: 8' to f8
 20.
 
 Applied
@@ -56,3 +55,6 @@ OK [20211004] skim
 
 17. Import attrib z prechozi verze
 OK [20211004] skim
+
+19. Rewrite type 'size: 8' to f8
+OK [20211005] skim
