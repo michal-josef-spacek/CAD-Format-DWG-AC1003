@@ -342,7 +342,7 @@ types:
         type: f8
         doc: 0x01e3-0x01ea, $DIMCEN
       - id: dim_oblique_stroke_size
-        size: 8
+        type: f8
         doc: 0x01eb-0x01f2, $DIMTSZ
       - id: dim_tolerances
         type: s1

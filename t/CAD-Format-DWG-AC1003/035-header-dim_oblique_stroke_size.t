@@ -13,12 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_oblique_stroke_size')
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-my $dim_oblique_stroke_size = unpack 'd<', $obj->header->dim_oblique_stroke_size;
-is($dim_oblique_stroke_size, 0, 'Dimension oblique stroke size (0 - default).');
+is($obj->header->dim_oblique_stroke_size, 0, 'Dimension oblique stroke size (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-$dim_oblique_stroke_size = unpack 'd<', $obj->header->dim_oblique_stroke_size;
-is($dim_oblique_stroke_size, 1.2345, 'Dimension oblique stroke size (1.2345).');
+is($obj->header->dim_oblique_stroke_size, 1.2345, 'Dimension oblique stroke size (1.2345).');
