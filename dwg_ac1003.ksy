@@ -378,13 +378,13 @@ types:
         type: f8
         doc: $THICKNESS
       - id: view_point_x
-        size: 8
+        type: f8
         doc: 0x0239-0x0241, $VIEWDIR/10
       - id: view_point_y
-        size: 8
+        type: f8
         doc: 0x0242-0x0249, $VIEWDIR/20
       - id: view_point_z
-        size: 8
+        type: f8
         doc: 0x024a-0x0251, $VIEWDIR/30
       - id: unknown11
         type: f8

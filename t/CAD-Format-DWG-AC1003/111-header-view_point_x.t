@@ -13,26 +13,22 @@ my $data_dir = File::Object->new->up->dir('data/header/view_point')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP1.DWG')->s,
 );
-my $view_point_x = unpack 'd<', $obj->header->view_point_x;
-is($view_point_x, 0, 'View point x (0 - default).');
+is($obj->header->view_point_x, 0, 'View point x (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP2.DWG')->s,
 );
-$view_point_x = unpack 'd<', $obj->header->view_point_x;
-is($view_point_x, 1, 'View point x (1).');
+is($obj->header->view_point_x, 1, 'View point x (1).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP3.DWG')->s,
 );
-$view_point_x = unpack 'd<', $obj->header->view_point_x;
-is($view_point_x, 0, 'View point x (0 - default).');
+is($obj->header->view_point_x, 0, 'View point x (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP4.DWG')->s,
 );
-$view_point_x = unpack 'd<', $obj->header->view_point_x;
-is($view_point_x, 1.2345, 'View point x (1.2345).');
+is($obj->header->view_point_x, 1.2345, 'View point x (1.2345).');

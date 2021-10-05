@@ -2698,9 +2698,9 @@ sub _read {
     $self->{unknown10} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_f8le();
     $self->{thickness} = $self->{_io}->read_f8le();
-    $self->{view_point_x} = $self->{_io}->read_bytes(8);
-    $self->{view_point_y} = $self->{_io}->read_bytes(8);
-    $self->{view_point_z} = $self->{_io}->read_bytes(8);
+    $self->{view_point_x} = $self->{_io}->read_f8le();
+    $self->{view_point_y} = $self->{_io}->read_f8le();
+    $self->{view_point_z} = $self->{_io}->read_f8le();
     $self->{unknown11} = $self->{_io}->read_f8le();
     $self->{unknown12} = $self->{_io}->read_f8le();
     $self->{unknown13} = $self->{_io}->read_f8le();
