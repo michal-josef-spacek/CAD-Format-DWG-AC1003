@@ -2724,7 +2724,7 @@ sub _read {
     $self->{unknown29a} = $self->{_io}->read_bytes(1);
     $self->{dim_suppression_of_zeros} = $self->{_io}->read_s1();
     $self->{dim_rounding} = $self->{_io}->read_f8le();
-    $self->{dim_extension_line_extend2} = $self->{_io}->read_bytes(8);
+    $self->{dim_extension_line_extend2} = $self->{_io}->read_f8le();
     $self->{dim_arrowhead_block} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes(32), 46, 0));
     $self->{unknown30} = $self->{_io}->read_s1();
     $self->{circle_zoom_percent} = $self->{_io}->read_s2le();

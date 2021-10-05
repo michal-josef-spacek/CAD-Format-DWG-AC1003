@@ -436,7 +436,7 @@ types:
         type: f8
         doc: 0x02e6-0x02ed, $DIMRND
       - id: dim_extension_line_extend2
-        size: 8
+        type: f8
         doc: 0x02ee-0x02f5, $DIMDLE
       - id: dim_arrowhead_block
         size: 32
