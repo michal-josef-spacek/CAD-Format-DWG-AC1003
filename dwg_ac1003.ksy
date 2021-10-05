@@ -333,7 +333,7 @@ types:
         type: f8
         doc: 0x01cb-0x01d2, $DIMTP
       - id: dim_minimum_tolerance_limit
-        size: 8
+        type: f8
         doc: 0x01d3-0x01da, $DIMTM
       - id: dim_text_height
         size: 8
