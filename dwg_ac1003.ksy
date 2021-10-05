@@ -433,7 +433,7 @@ types:
         type: s1
         doc: 0x02e5, $DIMZIN
       - id: dim_rounding
-        size: 8
+        type: f8
         doc: 0x02e6-0x02ed, $DIMRND
       - id: dim_extension_line_extend2
         size: 8
