@@ -375,7 +375,7 @@ types:
         type: f8
         doc: $ELEVATION
       - id: thickness
-        size: 8
+        type: f8
         doc: $THICKNESS
       - id: view_point_x
         size: 8

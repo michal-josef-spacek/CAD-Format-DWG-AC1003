@@ -13,12 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/thickness')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('T1.DWG')->s,
 );
-my $thickness = unpack 'd<', $obj->header->thickness;
-is($thickness, 0, 'Thickness (0 - default).');
+is($obj->header->thickness, 0, 'Thickness (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('T2.DWG')->s,
 );
-$thickness = unpack 'd<', $obj->header->thickness;
-is($thickness, 1.2345, 'Thickness (1.2345).');
+is($obj->header->thickness, 1.2345, 'Thickness (1.2345).');

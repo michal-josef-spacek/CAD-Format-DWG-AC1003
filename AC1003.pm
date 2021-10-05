@@ -2697,7 +2697,7 @@ sub _read {
     $self->{limits_check} = $self->{_io}->read_s2le();
     $self->{unknown10} = $self->{_io}->read_bytes(45);
     $self->{elevation} = $self->{_io}->read_f8le();
-    $self->{thickness} = $self->{_io}->read_bytes(8);
+    $self->{thickness} = $self->{_io}->read_f8le();
     $self->{view_point_x} = $self->{_io}->read_bytes(8);
     $self->{view_point_y} = $self->{_io}->read_bytes(8);
     $self->{view_point_z} = $self->{_io}->read_bytes(8);
