@@ -336,7 +336,7 @@ types:
         type: f8
         doc: 0x01d3-0x01da, $DIMTM
       - id: dim_text_height
-        size: 8
+        type: f8
         doc: 0x01db-0x01e2, $DIMTXT
       - id: dim_center_mark_control
         size: 8
