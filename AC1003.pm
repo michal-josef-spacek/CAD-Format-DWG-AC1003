@@ -2685,7 +2685,7 @@ sub _read {
     $self->{dim_maximum_tolerance_limit} = $self->{_io}->read_f8le();
     $self->{dim_minimum_tolerance_limit} = $self->{_io}->read_f8le();
     $self->{dim_text_height} = $self->{_io}->read_f8le();
-    $self->{dim_center_mark_control} = $self->{_io}->read_bytes(8);
+    $self->{dim_center_mark_control} = $self->{_io}->read_f8le();
     $self->{dim_oblique_stroke_size} = $self->{_io}->read_bytes(8);
     $self->{dim_tolerances} = $self->{_io}->read_s1();
     $self->{dim_limits_default_text} = $self->{_io}->read_s1();

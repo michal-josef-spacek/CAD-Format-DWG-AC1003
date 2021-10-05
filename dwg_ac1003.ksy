@@ -339,7 +339,7 @@ types:
         type: f8
         doc: 0x01db-0x01e2, $DIMTXT
       - id: dim_center_mark_control
-        size: 8
+        type: f8
         doc: 0x01e3-0x01ea, $DIMCEN
       - id: dim_oblique_stroke_size
         size: 8
