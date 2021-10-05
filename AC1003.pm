@@ -2745,7 +2745,7 @@ sub _read {
     $self->{sketch_type} = $self->{_io}->read_s1();
     $self->{unknown33b} = $self->{_io}->read_bytes(7);
     $self->{unknown34} = $self->{_io}->read_f8le();
-    $self->{angle_base} = $self->{_io}->read_bytes(8);
+    $self->{angle_base} = $self->{_io}->read_f8le();
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
     $self->{point_size} = $self->{_io}->read_bytes(8);

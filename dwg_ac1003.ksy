@@ -500,7 +500,7 @@ types:
       - id: unknown34
         type: f8
       - id: angle_base
-        size: 8
+        type: f8
         doc: 0x0353-0x035a, $ANGBASE
       - id: angle_direction
         enum: angle_direction
