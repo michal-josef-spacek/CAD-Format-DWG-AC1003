@@ -510,7 +510,7 @@ types:
         type: s2
         doc: 0x035d-0x035e, $PDMODE
       - id: point_size
-        size: 8
+        type: f8
         doc: $PDSIZE
       - id: polyline_width
         size: 8

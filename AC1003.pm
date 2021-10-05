@@ -2748,7 +2748,7 @@ sub _read {
     $self->{angle_base} = $self->{_io}->read_f8le();
     $self->{angle_direction} = $self->{_io}->read_s2le();
     $self->{point_mode} = $self->{_io}->read_s2le();
-    $self->{point_size} = $self->{_io}->read_bytes(8);
+    $self->{point_size} = $self->{_io}->read_f8le();
     $self->{polyline_width} = $self->{_io}->read_bytes(8);
     $self->{user_integer_1} = $self->{_io}->read_s2le();
     $self->{user_integer_2} = $self->{_io}->read_s2le();
