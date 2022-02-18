@@ -2763,7 +2763,7 @@ sub _read {
     $self->{text_size} = $self->{_io}->read_f8le();
     $self->{trace_width} = $self->{_io}->read_f8le();
     $self->{current_layer} = $self->{_io}->read_s2le();
-    $self->{unknown6} = $self->{_io}->read_f8le();
+    $self->{current_color_convert} = $self->{_io}->read_f8le();
     $self->{unknown7a} = $self->{_io}->read_bytes(2);
     $self->{unknown7b} = $self->{_io}->read_bytes(2);
     $self->{unknown7c} = $self->{_io}->read_bytes(2);
@@ -3253,9 +3253,9 @@ sub current_layer {
     return $self->{current_layer};
 }
 
-sub unknown6 {
+sub current_color_convert {
     my ($self) = @_;
-    return $self->{unknown6};
+    return $self->{current_color_convert};
 }
 
 sub unknown7a {
