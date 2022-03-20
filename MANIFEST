@@ -32,7 +32,7 @@ t/CAD-Format-DWG-AC1003/010-header-blip.t
 t/CAD-Format-DWG-AC1003/011-header-circle_zoom_percent.t
 t/CAD-Format-DWG-AC1003/012-header-coordinates.t
 t/CAD-Format-DWG-AC1003/013-header-current_color.t
-t/CAD-Format-DWG-AC1003/014-header-current_layer.t
+t/CAD-Format-DWG-AC1003/014-header-current_layer_index.t
 t/CAD-Format-DWG-AC1003/015-header-current_linetype.t
 t/CAD-Format-DWG-AC1003/016-header-dim_alternate_measurement_postfix.t
 t/CAD-Format-DWG-AC1003/017-header-dim_alternate_units.t
@@ -179,8 +179,8 @@ t/data/header/current_color/CC1.DWG
 t/data/header/current_color/CC2.DWG
 t/data/header/current_color/CC3.DWG
 t/data/header/current_color/CC4.DWG
-t/data/header/current_layer/CL1.DWG
-t/data/header/current_layer/CL2.DWG
+t/data/header/current_layer_index/CL1.DWG
+t/data/header/current_layer_index/CL2.DWG
 t/data/header/current_linetype/CL1.DWG
 t/data/header/current_linetype/CL2.DWG
 t/data/header/current_linetype/CL3.DWG
