@@ -13,22 +13,22 @@ my $data_dir = File::Object->new->up->dir('data/header/view_point')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP1.DWG')->s,
 );
-is($obj->header->view_point_y, 0, 'View point y (0 - default).');
+is($obj->header->view_point->y, 0, 'View point y (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP2.DWG')->s,
 );
-is($obj->header->view_point_y, 2, 'View point y (2).');
+is($obj->header->view_point->y, 2, 'View point y (2).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP3.DWG')->s,
 );
-is($obj->header->view_point_y, 0, 'View point y (0 - default).');
+is($obj->header->view_point->y, 0, 'View point y (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VP4.DWG')->s,
 );
-is($obj->header->view_point_y, 0, 'View point y (0 - default).');
+is($obj->header->view_point->y, 0, 'View point y (0 - default).');

@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/snap')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SNAP_ROT.DWG')->s,
 );
-is($obj->header->snap_base_y, 2, 'Span base y (2).');
+is($obj->header->snap_base->y, 2, 'Span base y (2).');
