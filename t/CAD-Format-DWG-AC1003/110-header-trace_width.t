@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/trace_width')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('TRACE_WIDTH1.DWG')->s,
 );
-is($obj->header->trace_width, 0.05, 'Trace width (0.05 - default).');
+is($obj->header->variables->trace_width, 0.05, 'Trace width (0.05 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('TRACE_WIDTH2.DWG')->s,
 );
-is($obj->header->trace_width, 1.2345, 'Trace width (1.2345).');
+is($obj->header->variables->trace_width, 1.2345, 'Trace width (1.2345).');

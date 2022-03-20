@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_extension_line_offset
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DEX1.DWG')->s,
 );
-is($obj->header->dim_extension_line_offset, 0.0625, 'Dimension extension line offset (0.0625 - default).');
+is($obj->header->variables->dim_extension_line_offset, 0.0625, 'Dimension extension line offset (0.0625 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DEX2.DWG')->s,
 );
-is($obj->header->dim_extension_line_offset, 1.2345, 'Dimension extension line offset (1.2345).');
+is($obj->header->variables->dim_extension_line_offset, 1.2345, 'Dimension extension line offset (1.2345).');

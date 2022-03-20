@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/grid')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('GRID_ASPECT.DWG')->s,
 );
-is($obj->header->grid_unit->y, 6, 'Grid unit y (6).');
+is($obj->header->variables->grid_unit->y, 6, 'Grid unit y (6).');

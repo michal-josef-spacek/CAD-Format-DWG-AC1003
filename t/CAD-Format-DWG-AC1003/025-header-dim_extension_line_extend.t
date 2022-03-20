@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_extension_line_extend
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DIMEXE1.DWG')->s,
 );
-is($obj->header->dim_extension_line_extend, 0.18, 'Dimension extension line extend (0.18 - default).');
+is($obj->header->variables->dim_extension_line_extend, 0.18, 'Dimension extension line extend (0.18 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DIMEXE2.DWG')->s,
 );
-is($obj->header->dim_extension_line_extend, 1.2345, 'Dimension extension line extend (1.2345).');
+is($obj->header->variables->dim_extension_line_extend, 1.2345, 'Dimension extension line extend (1.2345).');

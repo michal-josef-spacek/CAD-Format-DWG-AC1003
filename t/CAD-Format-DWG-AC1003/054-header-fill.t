@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/fill')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('FILL_ON.DWG')->s,
 );
-is($obj->header->fill, 1, 'Fill (1).');
+is($obj->header->variables->fill, 1, 'Fill (1).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('FILL_OFF.DWG')->s,
 );
-is($obj->header->fill, 0, 'Fill (0).');
+is($obj->header->variables->fill, 0, 'Fill (0).');

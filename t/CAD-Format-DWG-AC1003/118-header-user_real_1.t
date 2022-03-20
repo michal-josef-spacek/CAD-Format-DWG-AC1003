@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/user_real_1')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('USERR11.DWG')->s,
 );
-is($obj->header->user_real_1, '0', 'User real 1 (0 - default).');
+is($obj->header->variables->user_real_1, '0', 'User real 1 (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('USERR12.DWG')->s,
 );
-is($obj->header->user_real_1, '1.2345', 'User real 1 (1.2345).');
+is($obj->header->variables->user_real_1, '1.2345', 'User real 1 (1.2345).');

@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/grid')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('GRID_OFF.DWG')->s,
 );
-is($obj->header->grid, 0, 'Grid (0).');
+is($obj->header->variables->grid, 0, 'Grid (0).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('GRID_ON.DWG')->s,
 );
-is($obj->header->grid, 1, 'Grid (1).');
+is($obj->header->variables->grid, 1, 'Grid (1).');

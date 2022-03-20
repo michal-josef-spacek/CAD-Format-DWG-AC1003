@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/ortho')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('ORTHO_OF.DWG')->s,
 );
-is($obj->header->ortho, 0, 'Ortho (0).');
+is($obj->header->variables->ortho, 0, 'Ortho (0).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('ORTHO_ON.DWG')->s,
 );
-is($obj->header->ortho, 1, 'Ortho (1).');
+is($obj->header->variables->ortho, 1, 'Ortho (1).');

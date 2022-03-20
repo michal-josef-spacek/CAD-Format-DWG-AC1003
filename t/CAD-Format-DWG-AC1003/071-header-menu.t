@@ -13,19 +13,19 @@ my $data_dir = File::Object->new->up->dir('data/header/menu')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('MENU1.DWG')->s,
 );
-my $menu = unpack 'Z*', $obj->header->menu;
+my $menu = unpack 'Z*', $obj->header->variables->menu;
 is($menu, 'ACAD', 'Menu (ACAD - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('MENU2.DWG')->s,
 );
-$menu = unpack 'Z*', $obj->header->menu;
+$menu = unpack 'Z*', $obj->header->variables->menu;
 is($menu, '', 'Menu (none).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('MENU3.DWG')->s,
 );
-$menu = unpack 'Z*', $obj->header->menu;
+$menu = unpack 'Z*', $obj->header->variables->menu;
 is($menu, 'EXAMPLE1', 'Menu (EXAMPLE1).');

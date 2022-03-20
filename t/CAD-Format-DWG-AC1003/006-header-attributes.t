@@ -13,16 +13,16 @@ my $data_dir = File::Object->new->up->dir('data/header/attributes')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('A1.DWG')->s,
 );
-is($obj->header->attributes, 1, 'Attributes (1 - normal - default).');
+is($obj->header->variables->attributes, 1, 'Attributes (1 - normal - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('A2.DWG')->s,
 );
-is($obj->header->attributes, 0, 'Attributes (0 - off).');
+is($obj->header->variables->attributes, 0, 'Attributes (0 - off).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('A3.DWG')->s,
 );
-is($obj->header->attributes, 2, 'Attributes (2 - on).');
+is($obj->header->variables->attributes, 2, 'Attributes (2 - on).');

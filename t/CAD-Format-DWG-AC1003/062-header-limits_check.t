@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/limits_check')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('LCH1.DWG')->s,
 );
-is($obj->header->limits_check, 0, 'Limits check (0 - default).');
+is($obj->header->variables->limits_check, 0, 'Limits check (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('LCH2.DWG')->s,
 );
-is($obj->header->limits_check, 1, 'Limits check (1).');
+is($obj->header->variables->limits_check, 1, 'Limits check (1).');

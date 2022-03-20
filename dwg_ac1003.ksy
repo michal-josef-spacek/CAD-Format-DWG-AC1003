@@ -128,6 +128,20 @@ types:
         type: table
       - id: table_view
         type: table
+      - id: variables
+        type: header_variables
+  table:
+    seq:
+      - id: item_size
+        type: u2
+      - id: items
+        type: u2
+      - id: unknown
+        size: 2
+      - id: begin
+        type: u4
+  header_variables:
+    seq:
       - id: insertion_base
         type: point_3d
         doc: 0x005e-0x0075, $INSBASE/10|20|30
@@ -517,27 +531,17 @@ types:
       - id: dim_alternate_units_multiplier
         type: f8
         doc: 0x03c5-0x03cc, $DIMALTF
-        if: num_header_vars == 122
+        if: _parent.num_header_vars == 122
       - id: dim_linear_measurements_scale_factor
         type: f8
         doc: 0x03cd-0x03d4, $DIMLFAC
-        if: num_header_vars == 122
+        if: _parent.num_header_vars == 122
     instances:
       create_date:
         value: create_date_days + (create_date_ms / 86400000.0)
       update_date:
         value: update_date_days + (update_date_ms / 86400000.0)
       ## TODO
-  table:
-    seq:
-      - id: item_size
-        type: u2
-      - id: items
-        type: u2
-      - id: unknown
-        size: 2
-      - id: begin
-        type: u4
   entity:
     seq:
       - id: entity_type

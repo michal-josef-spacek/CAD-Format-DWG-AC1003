@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/view')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VIEW.DWG')->s,
 );
-is($obj->header->view_ctrl->z, 0, 'View ctrl z (0).');
+is($obj->header->variables->view_ctrl->z, 0, 'View ctrl z (0).');

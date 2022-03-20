@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_associative')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-is($obj->header->dim_associative, 1, 'Dimension associative (1 - on - default).');
+is($obj->header->variables->dim_associative, 1, 'Dimension associative (1 - on - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-is($obj->header->dim_associative, 0, 'Dimension associative (0 - off).');
+is($obj->header->variables->dim_associative, 0, 'Dimension associative (0 - off).');

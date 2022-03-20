@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/snap')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SNAP_ST2.DWG')->s,
 );
-is($obj->header->snap_style, 1, 'Span style (1).');
+is($obj->header->variables->snap_style, 1, 'Span style (1).');

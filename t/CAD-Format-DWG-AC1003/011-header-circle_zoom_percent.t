@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/circle_zoom_percent')->se
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('CZP1.DWG')->s,
 );
-is($obj->header->circle_zoom_percent, 100, 'Circle zoom percent (100 - default).');
+is($obj->header->variables->circle_zoom_percent, 100, 'Circle zoom percent (100 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('CZP2.DWG')->s,
 );
-is($obj->header->circle_zoom_percent, 20000, 'Circle zoom percent (20000).');
+is($obj->header->variables->circle_zoom_percent, 20000, 'Circle zoom percent (20000).');

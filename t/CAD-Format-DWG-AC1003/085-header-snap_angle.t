@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/snap')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SNAP_ROT.DWG')->s,
 );
-is($obj->header->snap_angle, 0.261799387799149, 'Span angle in radians (0.261799387799149).');
+is($obj->header->variables->snap_angle, 0.261799387799149, 'Span angle in radians (0.261799387799149).');

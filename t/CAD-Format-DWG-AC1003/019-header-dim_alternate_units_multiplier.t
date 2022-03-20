@@ -13,12 +13,12 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_alternate_units_multi
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-is($obj->header->dim_alternate_units_multiplier, 25.4,
+is($obj->header->variables->dim_alternate_units_multiplier, 25.4,
 	'Dimension alternate units multiplier (25.4 - inch/mm - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-is($obj->header->dim_alternate_units_multiplier, 1.2345,
+is($obj->header->variables->dim_alternate_units_multiplier, 1.2345,
 	'Dimension alternate units multiplier (1.2345).');

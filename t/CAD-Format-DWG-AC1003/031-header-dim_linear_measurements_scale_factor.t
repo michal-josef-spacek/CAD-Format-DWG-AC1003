@@ -13,12 +13,12 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_linear_measurements_s
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-is($obj->header->dim_linear_measurements_scale_factor, 1,
+is($obj->header->variables->dim_linear_measurements_scale_factor, 1,
 	'Dimension linear measurements scale factor (1 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-is($obj->header->dim_linear_measurements_scale_factor, 1.2345,
+is($obj->header->variables->dim_linear_measurements_scale_factor, 1.2345,
 	'Dimension linear measurements scale factor (1.2345).');

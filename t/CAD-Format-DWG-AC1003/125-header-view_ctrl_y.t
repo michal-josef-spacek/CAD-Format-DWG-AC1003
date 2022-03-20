@@ -13,4 +13,4 @@ my $data_dir = File::Object->new->up->dir('data/header/view')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('VIEW.DWG')->s,
 );
-is($obj->header->view_ctrl->y, '4.5', 'View ctrl y (4.5).');
+is($obj->header->variables->view_ctrl->y, '4.5', 'View ctrl y (4.5).');

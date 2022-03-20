@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_maximum_tolerance_lim
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-is($obj->header->dim_maximum_tolerance_limit, 0, 'Dimension maximum tolerance limit (0 - default).');
+is($obj->header->variables->dim_maximum_tolerance_limit, 0, 'Dimension maximum tolerance limit (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-is($obj->header->dim_maximum_tolerance_limit, 1.2345, 'Dimension maximum tolerance limit (1.2345).');
+is($obj->header->variables->dim_maximum_tolerance_limit, 1.2345, 'Dimension maximum tolerance limit (1.2345).');

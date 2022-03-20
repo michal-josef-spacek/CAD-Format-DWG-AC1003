@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/snap')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SNAP_ON.DWG')->s,
 );
-is($obj->header->snap_resolution->x, 1, 'Span resolution x (1).');
+is($obj->header->variables->snap_resolution->x, 1, 'Span resolution x (1).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('SNAP_OFF.DWG')->s,
 );
-is($obj->header->snap_resolution->x, 1, 'Span resolution x (1).');
+is($obj->header->variables->snap_resolution->x, 1, 'Span resolution x (1).');

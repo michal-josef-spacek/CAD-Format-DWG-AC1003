@@ -13,7 +13,7 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_arrowhead_block')->se
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DIMBLK1.DWG')->s,
 );
-my $dim_arrowhead_block = unpack 'Z*', $obj->header->dim_arrowhead_block;
+my $dim_arrowhead_block = unpack 'Z*', $obj->header->variables->dim_arrowhead_block;
 is($dim_arrowhead_block, '',
 	'Dimension arrowhead block (\'\' - default).');
 
@@ -21,13 +21,13 @@ is($dim_arrowhead_block, '',
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DIMBLK2.DWG')->s,
 );
-$dim_arrowhead_block = unpack 'Z*', $obj->header->dim_arrowhead_block;
+$dim_arrowhead_block = unpack 'Z*', $obj->header->variables->dim_arrowhead_block;
 is($dim_arrowhead_block, 'DOT', 'Dimension arrowhead block (DOT).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DIMBLK3.DWG')->s,
 );
-$dim_arrowhead_block = unpack 'Z*', $obj->header->dim_arrowhead_block;
+$dim_arrowhead_block = unpack 'Z*', $obj->header->variables->dim_arrowhead_block;
 is($dim_arrowhead_block, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ01234',
 	'Dimension arrowhead block (ABCDEFGHIJKLMNOPQRSTUVWXYZ01234 - maximum length).');

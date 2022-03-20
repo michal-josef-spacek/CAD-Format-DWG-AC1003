@@ -13,19 +13,19 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_alternate_units_decim
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D1.DWG')->s,
 );
-is($obj->header->dim_alternate_units_decimal_places, 2,
+is($obj->header->variables->dim_alternate_units_decimal_places, 2,
 	'Dimension alternate units decimal places (2 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D2.DWG')->s,
 );
-is($obj->header->dim_alternate_units_decimal_places, 3,
+is($obj->header->variables->dim_alternate_units_decimal_places, 3,
 	'Dimension alternate units decimal places (3).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('D3.DWG')->s,
 );
-is($obj->header->dim_alternate_units_decimal_places, 1,
+is($obj->header->variables->dim_alternate_units_decimal_places, 1,
 	'Dimension alternate units decimal places (1).');

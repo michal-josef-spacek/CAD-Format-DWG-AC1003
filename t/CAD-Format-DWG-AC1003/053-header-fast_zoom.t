@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/fast_zoom')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('FASTZOOM1.DWG')->s,
 );
-is($obj->header->fast_zoom, 1, 'Fast zoom (1).');
+is($obj->header->variables->fast_zoom, 1, 'Fast zoom (1).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('FASTZOOM2.DWG')->s,
 );
-is($obj->header->fast_zoom, 0, 'Fast zoom (0).');
+is($obj->header->variables->fast_zoom, 0, 'Fast zoom (0).');

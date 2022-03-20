@@ -13,10 +13,10 @@ my $data_dir = File::Object->new->up->dir('data/header/dim_baseline_spacing')->s
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DMDLI1.DWG')->s,
 );
-is($obj->header->dim_baseline_spacing, 0.38, 'Dimension baseline spacing (0.38 - default).');
+is($obj->header->variables->dim_baseline_spacing, 0.38, 'Dimension baseline spacing (0.38 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('DMDLI2.DWG')->s,
 );
-is($obj->header->dim_baseline_spacing, 1.2345, 'Dimension baseline spacing (1.2345).');
+is($obj->header->variables->dim_baseline_spacing, 1.2345, 'Dimension baseline spacing (1.2345).');
