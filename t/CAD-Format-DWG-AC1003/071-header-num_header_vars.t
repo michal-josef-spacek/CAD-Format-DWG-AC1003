@@ -7,10 +7,10 @@ use Test::More 'tests' => 2;
 use Test::NoWarnings;
 
 # Data directory.
-my $data_dir = File::Object->new->up->dir('data/header/version_micro')->set;
+my $data_dir = File::Object->new->up->dir('data/header/num_header_vars')->set;
 
 # Test.
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('BLANK.DWG')->s,
 );
-is($obj->header->version_micro, 122, 'Micro version (122).');
+is($obj->header->num_header_vars, 122, 'Number of header variables (122).');

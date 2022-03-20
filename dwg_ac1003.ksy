@@ -100,7 +100,7 @@ types:
         type: s2
       - id: num_sections
         type: s2
-      - id: version_micro
+      - id: num_header_vars
         type: s2
       - id: dwg_version
         type: s1
@@ -563,11 +563,11 @@ types:
       - id: dim_alternate_units_multiplier
         type: f8
         doc: 0x03c5-0x03cc, $DIMALTF
-        if: version_micro == 122
+        if: num_header_vars == 122
       - id: dim_linear_measurements_scale_factor
         type: f8
         doc: 0x03cd-0x03d4, $DIMLFAC
-        if: version_micro == 122
+        if: num_header_vars == 122
     instances:
       create_date:
         value: create_date_days + (create_date_ms / 86400000.0)
