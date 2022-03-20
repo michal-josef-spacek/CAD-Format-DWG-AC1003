@@ -1349,8 +1349,9 @@ types:
         size: 38
   view:
     seq:
-      - id: u1
-        size: 4
+      - id: flag
+        type: view_flag
+        doc: VIEW/70
       - id: view_name
         size: 32
         type: str
@@ -1368,6 +1369,28 @@ types:
       - id: view_dir
         type: point_3d
         doc: VIEW/11|21|31
+      - id: u3
+        type: s2
+      - id: u4
+        type: u1
+  view_flag:
+    seq:
+      - id: flag1
+        type: b1
+      - id: flag2
+        type: b1
+      - id: flag3
+        type: b1
+      - id: flag4
+        type: b1
+      - id: flag5
+        type: b1
+      - id: flag6
+        type: b1
+      - id: flag7
+        type: b1
+      - id: flag8
+        type: b1
   point_2d:
     seq:
       - id: x
