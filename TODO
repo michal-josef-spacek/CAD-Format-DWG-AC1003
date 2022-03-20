@@ -11,7 +11,8 @@ TODO
 So size: 4 instead of size: 1
 23. Test for drawing_first->z
 24. Test for drawing_second->z
-25.
+25. Test for view_ctrl->z
+26.
 
 Applied
 =======
