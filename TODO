@@ -11,7 +11,6 @@ TODO
 So size: 4 instead of size: 1
 23. Test for drawing_first->z
 24. Test for drawing_second->z
-25. Test for view_ctrl->z
 26.
 
 Applied
@@ -66,4 +65,7 @@ OK [20211004] skim
 OK [20211005] skim
 
 21. Update layer_flag from 2.10
+OK [20220320] skim
+
+25. Test for view_ctrl->z
 OK [20220320] skim
