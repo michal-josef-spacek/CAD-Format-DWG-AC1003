@@ -7,10 +7,10 @@ use Test::More 'tests' => 2;
 use Test::NoWarnings;
 
 # Data directory.
-my $data_dir = File::Object->new->up->dir('data/header/version_minor')->set;
+my $data_dir = File::Object->new->up->dir('data/header/num_sections')->set;
 
 # Test.
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('BLANK.DWG')->s,
 );
-is($obj->header->version_minor, 5, 'Minor version (5).');
+is($obj->header->num_sections, 5, 'Number of sections (5).');
