@@ -7,7 +7,6 @@ TODO
 11. - id: unknown4b
     Neco jako decode_preR13_section_ptr v libredwg
 20. Update style from 2.10
-21. Update layer_flag from 2.10
 22. Add view_flag
 So size: 4 instead of size: 1
 23.
@@ -62,3 +61,6 @@ OK [20211004] skim
 
 19. Rewrite type 'size: 8' to f8
 OK [20211005] skim
+
+21. Update layer_flag from 2.10
+OK [20220320] skim
