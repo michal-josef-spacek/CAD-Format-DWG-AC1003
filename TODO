@@ -9,7 +9,6 @@ TODO
 20. Update style from 2.10
 22. Add view_flag
 So size: 4 instead of size: 1
-24. Test for drawing_second->z
 26.
 
 Applied
@@ -70,4 +69,7 @@ OK [20220320] skim
 OK [20220320] skim
 
 23. Test for drawing_first->z
+OK [20220320] skim
+
+24. Test for drawing_second->z
 OK [20220320] skim
