@@ -1057,36 +1057,8 @@ types:
         type: u1
         if: entity_common.flag2_5
         doc: TEXT/7
-      - id: flags1
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags2
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags3
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags4
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags5
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags_upside_down
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags_backwards
-        type: b1
-        if: entity_common.flag2_4
-        doc: TEXT/71
-      - id: flags8
-        type: b1
+      - id: generation
+        type: generation_flags
         if: entity_common.flag2_4
         doc: TEXT/71
       - id: type
@@ -1323,24 +1295,10 @@ types:
       - id: obliquing_angle_in_radians
         type: f8
         doc: STYLE/50
-      - id: flag2_1
-        type: b1
+      - id: generation
+        type: generation_flags
         doc: STYLE/71
-      - id: flag2_2
-        type: b1
-      - id: flag2_3
-        type: b1
-      - id: flag2_4
-        type: b1
-      - id: flag2_5
-        type: b1
-      - id: flag2_upside_down
-        type: b1
-      - id: flag2_backwards
-        type: b1
-      - id: flag2_8
-        type: b1
-      - id: u12
+      - id: last_height
         type: f8
         doc: STYLE/42
       - id: font_file
@@ -1388,6 +1346,24 @@ types:
       - id: flag6
         type: b1
       - id: flag7
+        type: b1
+      - id: flag8
+        type: b1
+  generation_flags:
+    seq:
+      - id: flag1
+        type: b1
+      - id: flag2
+        type: b1
+      - id: flag3
+        type: b1
+      - id: flag4
+        type: b1
+      - id: flag5
+        type: b1
+      - id: upside_down
+        type: b1
+      - id: backwards
         type: b1
       - id: flag8
         type: b1
