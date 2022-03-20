@@ -88,7 +88,7 @@ t/CAD-Format-DWG-AC1003/066-header-linear_units_precision.t
 t/CAD-Format-DWG-AC1003/067-header-linetype_scale.t
 t/CAD-Format-DWG-AC1003/068-header-magic.t
 t/CAD-Format-DWG-AC1003/069-header-menu.t
-t/CAD-Format-DWG-AC1003/070-header-number_of_entities.t
+t/CAD-Format-DWG-AC1003/070-header-num_entities.t
 t/CAD-Format-DWG-AC1003/071-header-num_sections.t
 t/CAD-Format-DWG-AC1003/072-header-ortho.t
 t/CAD-Format-DWG-AC1003/073-header-osnap.t
@@ -276,10 +276,10 @@ t/data/header/linetype_scale/LTSCALE2.DWG
 t/data/header/menu/MENU1.DWG
 t/data/header/menu/MENU2.DWG
 t/data/header/menu/MENU3.DWG
+t/data/header/num_entities/NUM0.DWG
+t/data/header/num_entities/NUM1.DWG
+t/data/header/num_entities/NUM2.DWG
 t/data/header/num_sections/BLANK.DWG
-t/data/header/number_of_entities/NUM0.DWG
-t/data/header/number_of_entities/NUM1.DWG
-t/data/header/number_of_entities/NUM2.DWG
 t/data/header/ortho/ORTHO_OF.DWG
 t/data/header/ortho/ORTHO_ON.DWG
 t/data/header/osnap/OSNAP_CEN.DWG

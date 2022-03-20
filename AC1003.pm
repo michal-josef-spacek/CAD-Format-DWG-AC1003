@@ -2792,7 +2792,7 @@ sub _read {
     $self->{insertion_base_x} = $self->{_io}->read_f8le();
     $self->{insertion_base_y} = $self->{_io}->read_f8le();
     $self->{insertion_base_z} = $self->{_io}->read_f8le();
-    $self->{number_of_entities} = $self->{_io}->read_s2le();
+    $self->{num_entities} = $self->{_io}->read_u2le();
     $self->{drawing_first_x} = $self->{_io}->read_f8le();
     $self->{drawing_first_y} = $self->{_io}->read_f8le();
     $self->{drawing_first_z} = $self->{_io}->read_f8le();
@@ -3067,9 +3067,9 @@ sub insertion_base_z {
     return $self->{insertion_base_z};
 }
 
-sub number_of_entities {
+sub num_entities {
     my ($self) = @_;
-    return $self->{number_of_entities};
+    return $self->{num_entities};
 }
 
 sub drawing_first_x {
