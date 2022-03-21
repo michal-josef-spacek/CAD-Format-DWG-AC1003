@@ -844,12 +844,9 @@ types:
       - id: dimension_line_defining_point_y
         type: f8
         doc: DIMENSION/20
-      - id: default_text_position_x
-        type: f8
-        doc: DIMENSION/11
-      - id: default_text_position_y
-        type: f8
-        doc: DIMENSION/21
+      - id: default_text_position
+        type: point_2d
+        doc: DIMENSION/11|21
       - id: unknown1
         type: u1
         if: entity_common.flag2_7

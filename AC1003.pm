@@ -2642,8 +2642,7 @@ sub _read {
     $self->{block_index} = $self->{_io}->read_s2le();
     $self->{dimension_line_defining_point_x} = $self->{_io}->read_f8le();
     $self->{dimension_line_defining_point_y} = $self->{_io}->read_f8le();
-    $self->{default_text_position_x} = $self->{_io}->read_f8le();
-    $self->{default_text_position_y} = $self->{_io}->read_f8le();
+    $self->{default_text_position} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
     if ($self->entity_common()->flag2_7()) {
         $self->{unknown1} = $self->{_io}->read_u1();
     }
@@ -2699,14 +2698,9 @@ sub dimension_line_defining_point_y {
     return $self->{dimension_line_defining_point_y};
 }
 
-sub default_text_position_x {
+sub default_text_position {
     my ($self) = @_;
-    return $self->{default_text_position_x};
-}
-
-sub default_text_position_y {
-    my ($self) = @_;
-    return $self->{default_text_position_y};
+    return $self->{default_text_position};
 }
 
 sub unknown1 {
