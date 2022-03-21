@@ -2664,10 +2664,7 @@ sub _read {
         $self->{extension_defining_point2_y} = $self->{_io}->read_f8le();
     }
     if ($self->entity_common()->flag2_3()) {
-        $self->{defining_point_x} = $self->{_io}->read_f8le();
-    }
-    if ($self->entity_common()->flag2_3()) {
-        $self->{defining_point_y} = $self->{_io}->read_f8le();
+        $self->{defining_point} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
     }
     if ($self->entity_common()->flag2_2()) {
         $self->{dimension_line_arc_definition_point} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
@@ -2732,14 +2729,9 @@ sub extension_defining_point2_y {
     return $self->{extension_defining_point2_y};
 }
 
-sub defining_point_x {
+sub defining_point {
     my ($self) = @_;
-    return $self->{defining_point_x};
-}
-
-sub defining_point_y {
-    my ($self) = @_;
-    return $self->{defining_point_y};
+    return $self->{defining_point};
 }
 
 sub dimension_line_arc_definition_point {

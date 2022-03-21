@@ -871,14 +871,10 @@ types:
         type: f8
         if: entity_common.flag2_4
         doc: DIMENSION/24
-      - id: defining_point_x
-        type: f8
+      - id: defining_point
+        type: point_2d
         if: entity_common.flag2_3
-        doc: DIMENSION/15
-      - id: defining_point_y
-        type: f8
-        if: entity_common.flag2_3
-        doc: DIMENSION/25
+        doc: DIMENSION/15|25
       - id: dimension_line_arc_definition_point
         type: point_2d
         if: entity_common.flag2_2
