@@ -885,11 +885,8 @@ types:
         type: f8
         if: entity_common.flag2_3
         doc: DIMENSION/25
-      - id: dimension_line_arc_definition_point_x
-        type: f8
-        if: entity_common.flag2_2
-      - id: dimension_line_arc_definition_point_y
-        type: f8
+      - id: dimension_line_arc_definition_point
+        type: point_2d
         if: entity_common.flag2_2
       - id: rotation_in_radians
         type: f8

@@ -2672,10 +2672,7 @@ sub _read {
         $self->{defining_point_y} = $self->{_io}->read_f8le();
     }
     if ($self->entity_common()->flag2_2()) {
-        $self->{dimension_line_arc_definition_point_x} = $self->{_io}->read_f8le();
-    }
-    if ($self->entity_common()->flag2_2()) {
-        $self->{dimension_line_arc_definition_point_y} = $self->{_io}->read_f8le();
+        $self->{dimension_line_arc_definition_point} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
     }
     if ($self->entity_common()->flag3_8()) {
         $self->{rotation_in_radians} = $self->{_io}->read_f8le();
@@ -2757,14 +2754,9 @@ sub defining_point_y {
     return $self->{defining_point_y};
 }
 
-sub dimension_line_arc_definition_point_x {
+sub dimension_line_arc_definition_point {
     my ($self) = @_;
-    return $self->{dimension_line_arc_definition_point_x};
-}
-
-sub dimension_line_arc_definition_point_y {
-    my ($self) = @_;
-    return $self->{dimension_line_arc_definition_point_y};
+    return $self->{dimension_line_arc_definition_point};
 }
 
 sub rotation_in_radians {
