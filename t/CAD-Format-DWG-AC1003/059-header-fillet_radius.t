@@ -13,7 +13,7 @@ my $data_dir = File::Object->new->up->dir('data/header/fillet_radius')->set;
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('FILLET1.DWG')->s,
 );
-is($obj->header->variables->fillet_radius, 0, 'Fillet radius - default (0).');
+is($obj->header->variables->fillet_radius, 0, 'Fillet radius (0 - default).');
 
 # Test.
 $obj = CAD::Format::DWG::AC1003->from_file(
