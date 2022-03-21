@@ -855,14 +855,10 @@ types:
         size: text_size
         if: entity_common.flag2_6
         doc: DIMENSION/1
-      - id: extension_defining_point1_x
-        type: f8
+      - id: extension_defining_point1
+        type: point_2d
         if: entity_common.flag2_5
-        doc: DIMENSION/13
-      - id: extension_defining_point1_y
-        type: f8
-        if: entity_common.flag2_5
-        doc: DIMENSION/23
+        doc: DIMENSION/13|23
       - id: extension_defining_point2_x
         type: f8
         if: entity_common.flag2_4
