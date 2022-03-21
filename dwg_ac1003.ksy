@@ -838,12 +838,9 @@ types:
         type: entity_common
       - id: block_index
         type: s2
-      - id: dimension_line_defining_point_x
-        type: f8
-        doc: DIMENSION/10
-      - id: dimension_line_defining_point_y
-        type: f8
-        doc: DIMENSION/20
+      - id: dimension_line_defining_point
+        type: point_2d
+        doc: DIMENSION/10|20
       - id: default_text_position
         type: point_2d
         doc: DIMENSION/11|21
