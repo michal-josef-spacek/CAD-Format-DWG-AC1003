@@ -93,7 +93,7 @@ METHODS
 
     Get list of block entitites.
 
-    Returns CAD::Format::DWG::AC1003::RealEntities instance
+    Returns CAD::Format::DWG::AC1003::RealEntities instance.
 
 DEPENDENCIES
     IO::KaitaiStruct.

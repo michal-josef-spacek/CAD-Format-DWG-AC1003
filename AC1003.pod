@@ -106,7 +106,7 @@ Returns reference to array with CAD::Format::DWG::AC1003::View instances.
 
 Get list of block entitites.
 
-Returns CAD::Format::DWG::AC1003::RealEntities instance
+Returns CAD::Format::DWG::AC1003::RealEntities instance.
 
 =head1 DEPENDENCIES
 
