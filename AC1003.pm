@@ -143,7 +143,7 @@ sub _read {
     for (my $i = 0; $i < $n_views; $i++) {
         $self->{views}[$i] = CAD::Format::DWG::AC1003::View->new($self->{_io}, $self, $self->{_root});
     }
-    $self->{_raw_block_entities} = $self->{_io}->read_bytes(($self->header()->blocks_end() - $self->header()->blocks_start()));
+    $self->{_raw_block_entities} = $self->{_io}->read_bytes($self->header()->blocks_size_b());
     my $io__raw_block_entities = IO::KaitaiStruct::Stream->new($self->{_raw_block_entities});
     $self->{block_entities} = CAD::Format::DWG::AC1003::RealEntities->new($io__raw_block_entities, $self, $self->{_root});
     if (!($self->_io()->is_eof())) {
@@ -3731,6 +3731,20 @@ sub _read {
     $self->{table_linetype} = CAD::Format::DWG::AC1003::Table->new($self->{_io}, $self, $self->{_root});
     $self->{table_view} = CAD::Format::DWG::AC1003::Table->new($self->{_io}, $self, $self->{_root});
     $self->{variables} = CAD::Format::DWG::AC1003::HeaderVariables->new($self->{_io}, $self, $self->{_root});
+}
+
+sub blocks_size_a {
+    my ($self) = @_;
+    return $self->{blocks_size_a} if ($self->{blocks_size_a});
+    $self->{blocks_size_a} = (($self->blocks_size() & 4278190080) >> 24);
+    return $self->{blocks_size_a};
+}
+
+sub blocks_size_b {
+    my ($self) = @_;
+    return $self->{blocks_size_b} if ($self->{blocks_size_b});
+    $self->{blocks_size_b} = ($self->blocks_size() & 16777215);
+    return $self->{blocks_size_b};
 }
 
 sub magic {
