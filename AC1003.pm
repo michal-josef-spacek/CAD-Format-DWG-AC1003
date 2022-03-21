@@ -2655,10 +2655,7 @@ sub _read {
         $self->{extension_defining_point1} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
     }
     if ($self->entity_common()->flag2_4()) {
-        $self->{extension_defining_point2_x} = $self->{_io}->read_f8le();
-    }
-    if ($self->entity_common()->flag2_4()) {
-        $self->{extension_defining_point2_y} = $self->{_io}->read_f8le();
+        $self->{extension_defining_point2} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
     }
     if ($self->entity_common()->flag2_3()) {
         $self->{defining_point} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
@@ -2711,14 +2708,9 @@ sub extension_defining_point1 {
     return $self->{extension_defining_point1};
 }
 
-sub extension_defining_point2_x {
+sub extension_defining_point2 {
     my ($self) = @_;
-    return $self->{extension_defining_point2_x};
-}
-
-sub extension_defining_point2_y {
-    my ($self) = @_;
-    return $self->{extension_defining_point2_y};
+    return $self->{extension_defining_point2};
 }
 
 sub defining_point {

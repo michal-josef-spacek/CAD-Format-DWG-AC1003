@@ -859,14 +859,10 @@ types:
         type: point_2d
         if: entity_common.flag2_5
         doc: DIMENSION/13|23
-      - id: extension_defining_point2_x
-        type: f8
+      - id: extension_defining_point2
+        type: point_2d
         if: entity_common.flag2_4
-        doc: DIMENSION/14
-      - id: extension_defining_point2_y
-        type: f8
-        if: entity_common.flag2_4
-        doc: DIMENSION/24
+        doc: DIMENSION/14|24
       - id: defining_point
         type: point_2d
         if: entity_common.flag2_3
