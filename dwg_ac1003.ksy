@@ -173,7 +173,7 @@ types:
         doc: 0x00e0-0x00e7, $VIEWSIZE/40
       - id: snap
         type: s2
-        doc: 0x00e8-0x00e9, $SNAPMODE
+        doc: 0x00e8-0x00e9, $SNAPMODE/70
       - id: snap_resolution
         type: point_2d
         doc: 0x00ea-0x00f9, $SNAPUNIT/10|20
