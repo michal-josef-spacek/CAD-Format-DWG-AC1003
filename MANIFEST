@@ -155,7 +155,10 @@ t/CAD-Format-DWG-AC1003/133-header-view_point_z.t
 t/CAD-Format-DWG-AC1003/134-header-view_size.t
 t/CAD-Format-DWG-AC1003/135-header-zeros.t
 t/CAD-Format-DWG-AC1003/136-header-zero_one_or_three.t
+t/CAD-Format-DWG-AC1003/137-entities-arc.t
 t/data/blank/BLANK.DWG
+t/data/entity/arc/ARC1.DWG
+t/data/entity/arc/ARC2.DWG
 t/data/header/angle_base/AB1.DWG
 t/data/header/angle_base/AB2.DWG
 t/data/header/angle_direction/AD1.DWG
