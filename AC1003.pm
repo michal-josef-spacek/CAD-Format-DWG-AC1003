@@ -2832,10 +2832,9 @@ sub _read {
     $self->{user_elapsed_timer_days} = $self->{_io}->read_u4le();
     $self->{user_elapsed_timer_ms} = $self->{_io}->read_u4le();
     $self->{user_timer} = $self->{_io}->read_s2le();
-    $self->{fast_zoom} = $self->{_io}->read_s1();
-    $self->{unknown33} = $self->{_io}->read_bytes(1);
-    $self->{sketch_type} = $self->{_io}->read_s1();
-    $self->{unknown33b} = $self->{_io}->read_bytes(7);
+    $self->{fast_zoom} = $self->{_io}->read_u2le();
+    $self->{sketch_type} = $self->{_io}->read_u2le();
+    $self->{unknown33b} = $self->{_io}->read_bytes(6);
     $self->{unknown34} = $self->{_io}->read_f8le();
     $self->{angle_base} = $self->{_io}->read_f8le();
     $self->{angle_direction} = $self->{_io}->read_s2le();
@@ -3313,11 +3312,6 @@ sub user_timer {
 sub fast_zoom {
     my ($self) = @_;
     return $self->{fast_zoom};
-}
-
-sub unknown33 {
-    my ($self) = @_;
-    return $self->{unknown33};
 }
 
 sub sketch_type {

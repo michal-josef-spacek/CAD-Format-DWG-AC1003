@@ -418,15 +418,13 @@ types:
         type: s2
         doc: 0x033f-0x0340, $USRTIMER
       - id: fast_zoom
-        type: s1
-        doc: 0x0341, $FASTZOOM
-      - id: unknown33
-        size: 1
+        type: u2
+        doc: 0x0341-0x0342, $FASTZOOM
       - id: sketch_type
-        type: s1
-        doc: 0x0343, $SKPOLY
+        type: u2
+        doc: 0x0343-0x0344, $SKPOLY
       - id: unknown33b
-        size: 7
+        size: 6
       - id: unknown34
         type: f8
       - id: angle_base
