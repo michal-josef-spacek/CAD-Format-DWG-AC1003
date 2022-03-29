@@ -466,10 +466,8 @@ types:
       - id: sketch_type
         type: u2
         doc: 0x0343-0x0344, $SKPOLY
-      - id: unknown33b
-        size: 6
-      - id: unknown34
-        type: f8
+      - id: unknown_date
+        type: unknown_date
       - id: angle_base
         type: f8
         doc: 0x0353-0x035a, $ANGBASE
@@ -591,6 +589,22 @@ types:
         type: f8
       - id: unknown_repeating18
         type: f8
+  unknown_date:
+    seq:
+      - id: month
+        type: u2
+      - id: day
+        type: u2
+      - id: year
+        type: u2
+      - id: hour
+        type: u2
+      - id: minute
+        type: u2
+      - id: second
+        type: u2
+      - id: ms
+        type: u2
   entity:
     seq:
       - id: entity_type
