@@ -1354,8 +1354,12 @@ types:
         encoding: ASCII
         terminator: 0x00
         doc: STYLE/3
-      - id: u1
+      - id: bigfont_file
         size: 64
+        type: str
+        encoding: ASCII
+        terminator: 0x00
+        doc: STYLE/4
   style_flag:
     seq:
       - id: flag1
