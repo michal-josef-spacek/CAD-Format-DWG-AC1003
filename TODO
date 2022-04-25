@@ -8,7 +8,6 @@ TODO
     Neco jako decode_preR13_section_ptr v libredwg
 20. Update style from 2.10
 26. Detect same test files as BLANK.DWG and use BLANK.DWG
-27. Sync attdef and attrib with previous version.
 28.
 
 Applied
@@ -77,3 +76,6 @@ OK [20220320] skim
 22. Add view_flag
 So size: 4 instead of size: 1
 OK [20220320] skim
+
+27. Sync attdef and attrib with previous version.
+OK [20220425] skim
