@@ -8,7 +8,8 @@ TODO
     Neco jako decode_preR13_section_ptr v libredwg
 20. Update style from 2.10
 26. Detect same test files as BLANK.DWG and use BLANK.DWG
-28.
+28. dim_type 5 and 6 probably doesn't exist
+29.
 
 Applied
 =======
