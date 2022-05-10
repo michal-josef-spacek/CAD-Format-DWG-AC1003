@@ -971,6 +971,7 @@ types:
       - id: dimension_line_arc_definition_point
         type: point_2d
         if: entity_common.flag2_2
+        doc: DIMENSION/16|26
       - id: rotation_in_radians
         type: f8
         if: entity_common.flag3_8
