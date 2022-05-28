@@ -10,6 +10,7 @@ use Test::NoWarnings;
 my $data_dir = File::Object->new->up->dir('data/entity/3dface')->set;
 
 # Test.
+note("File '3DFACE1.DWG'");
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('3DFACE1.DWG')->s,
 );
@@ -32,6 +33,7 @@ my $entities = @{$obj->entities->entities};
 is($entities, 1, 'Number of entities (1).');
 
 # Test.
+note("File '3DFACE2.DWG'");
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('3DFACE2.DWG')->s,
 );
@@ -57,6 +59,7 @@ $entities = @{$obj->entities->entities};
 is($entities, 1, 'Number of entities (1).');
 
 # Test.
+note("File '3DFACE3.DWG'");
 $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('3DFACE3.DWG')->s,
 );
