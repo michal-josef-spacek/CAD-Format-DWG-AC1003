@@ -155,10 +155,10 @@ t/CAD-Format-DWG-AC1003/133-header-view_point_z.t
 t/CAD-Format-DWG-AC1003/134-header-view_size.t
 t/CAD-Format-DWG-AC1003/135-header-zeros.t
 t/CAD-Format-DWG-AC1003/136-header-zero_one_or_three.t
-t/CAD-Format-DWG-AC1003/137-entities-arc.t
-t/CAD-Format-DWG-AC1003/138-entities-attdef.t
-t/CAD-Format-DWG-AC1003/139-entities-circle.t
-t/CAD-Format-DWG-AC1003/140-entities-3dface.t
+t/CAD-Format-DWG-AC1003/137-entities-3dface.t
+t/CAD-Format-DWG-AC1003/138-entities-arc.t
+t/CAD-Format-DWG-AC1003/139-entities-attdef.t
+t/CAD-Format-DWG-AC1003/140-entities-circle.t
 t/data/blank/BLANK.DWG
 t/data/entity/3dface/3DFACE1.DWG
 t/data/entity/3dface/3DFACE2.DWG
