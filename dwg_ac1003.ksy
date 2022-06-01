@@ -1449,8 +1449,8 @@ types:
       - id: view_dir
         type: point_3d
         doc: VIEW/11|21|31
-      - id: u3
-        type: s2
+      - id: flag_3d
+        type: u2
       - id: u4
         type: u1
   view_flag:
