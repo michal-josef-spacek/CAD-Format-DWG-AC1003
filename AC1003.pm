@@ -2893,10 +2893,10 @@ sub _read {
         $self->{dim_type} = CAD::Format::DWG::AC1003::DimType->new($self->{_io}, $self, $self->{_root});
     }
     if ($self->entity_common()->flag2_6()) {
-        $self->{text_size} = $self->{_io}->read_s2le();
+        $self->{len_text} = $self->{_io}->read_s2le();
     }
     if ($self->entity_common()->flag2_6()) {
-        $self->{text} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes($self->text_size()), 0, 0));
+        $self->{text} = Encode::decode("ASCII", IO::KaitaiStruct::Stream::bytes_terminate($self->{_io}->read_bytes($self->len_text()), 0, 0));
     }
     if ($self->entity_common()->flag2_5()) {
         $self->{extension_defining_point1} = CAD::Format::DWG::AC1003::Point2d->new($self->{_io}, $self, $self->{_root});
@@ -2940,9 +2940,9 @@ sub dim_type {
     return $self->{dim_type};
 }
 
-sub text_size {
+sub len_text {
     my ($self) = @_;
-    return $self->{text_size};
+    return $self->{len_text};
 }
 
 sub text {
