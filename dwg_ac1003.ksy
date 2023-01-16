@@ -653,12 +653,6 @@ types:
         type: b1
   entity_common:
     seq:
-      - id: entity_mode
-        type: entity_mode
-      - id: entity_size
-        type: s2
-      - id: entity_layer_index
-        type: s2
       - id: flag2_1
         type: b1
       - id: flag2_2
@@ -691,6 +685,16 @@ types:
         type: b1
       - id: flag3_8
         type: b1
+  entity_arc:
+    seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
+      - id: entity_common
+        type: entity_common
       - id: entity_color
         type: s1
         if: entity_mode.entity_color_flag
@@ -703,10 +707,6 @@ types:
       - id: entity_thickness
         type: f8
         if: entity_mode.entity_thickness_flag
-  entity_arc:
-    seq:
-      - id: entity_common
-        type: entity_common
       - id: center_point
         type: point_2d
         doc: ARC/10|20
@@ -721,8 +721,26 @@ types:
         doc: ARC/51
   entity_attdef:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: start_point
         type: point_2d
         doc: ATTDEF/10|20
@@ -805,8 +823,26 @@ types:
         type: b1
   entity_attrib:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: point_from
         type: point_2d
         doc: ATTRIB/10|20
@@ -881,19 +917,73 @@ types:
         type: b1
   entity_block_begin:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: insert_point
         type: point_2d
         doc: BLOCK/10|20
   entity_block_end:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
   entity_insert:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: block_index
         type: s2
         doc: INSERT/2
@@ -937,8 +1027,26 @@ types:
         doc: INSERT/45
   entity_circle:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: center_point
         type: point_2d
         doc: CIRCLE/10|20
@@ -947,8 +1055,26 @@ types:
         doc: CIRCLE/40
   entity_dim:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: block_index
         type: s2
       - id: dimension_line_defining_point
@@ -1005,8 +1131,26 @@ types:
         enum: dim_type
   entity_face3d:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: first_point_x
         type: f8
       - id: first_point_y
@@ -1055,8 +1199,26 @@ types:
         type: b1
   entity_line:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: x1
         type: f8
         doc: LINE/10
@@ -1071,8 +1233,26 @@ types:
         doc: LINE/21
   entity_line3d:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: x1
         type: f8
         doc: 3DLINE/10
@@ -1103,8 +1283,26 @@ types:
         size: entity_size - 4
   entity_point:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: x
         type: f8
         doc: POINT/10
@@ -1113,8 +1311,26 @@ types:
         doc: POINT/20
   entity_polyline:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: flag
         type: polyline_flags
         if: entity_common.flag2_8
@@ -1147,14 +1363,50 @@ types:
         type: b1
   entity_seqend:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: unknown
         size: 4
   entity_shape:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: x
         type: f8
         doc: SHAPE/10
@@ -1176,8 +1428,26 @@ types:
         if: entity_common.flag2_7
   entity_solid:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: from
         type: point_2d
       - id: from_and
@@ -1188,8 +1458,26 @@ types:
         type: point_2d
   entity_text:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: insert_point
         type: point_2d
         doc: TEXT/10|20
@@ -1235,8 +1523,26 @@ types:
         doc: TEXT/11|21
   entity_trace:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: from
         type: point_2d
       - id: from_and
@@ -1247,8 +1553,26 @@ types:
         type: point_2d
   entity_vertex:
     seq:
+      - id: entity_mode
+        type: entity_mode
+      - id: entity_size
+        type: s2
+      - id: entity_layer_index
+        type: s2
       - id: entity_common
         type: entity_common
+      - id: entity_color
+        type: s1
+        if: entity_mode.entity_color_flag
+      - id: entity_linetype_index
+        type: s1
+        if: entity_mode.entity_linetype_flag
+      - id: entity_elevation
+        type: f8
+        if: entity_mode.entity_elevation_flag
+      - id: entity_thickness
+        type: f8
+        if: entity_mode.entity_thickness_flag
       - id: x
         type: f8
         doc: VERTEX/10
