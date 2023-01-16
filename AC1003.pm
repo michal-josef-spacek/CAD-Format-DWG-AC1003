@@ -1121,6 +1121,86 @@ sub row_spacing {
 }
 
 ########################################################################
+package CAD::Format::DWG::AC1003::EntityFace3dOpts;
+
+our @ISA = 'IO::KaitaiStruct::Struct';
+
+sub from_file {
+    my ($class, $filename) = @_;
+    my $fd;
+
+    open($fd, '<', $filename) or return undef;
+    binmode($fd);
+    return new($class, IO::KaitaiStruct::Stream->new($fd));
+}
+
+sub new {
+    my ($class, $_io, $_parent, $_root) = @_;
+    my $self = IO::KaitaiStruct::Struct->new($_io);
+
+    bless $self, $class;
+    $self->{_parent} = $_parent;
+    $self->{_root} = $_root || $self;;
+
+    $self->_read();
+
+    return $self;
+}
+
+sub _read {
+    my ($self) = @_;
+
+    $self->{has_z_first} = $self->{_io}->read_bits_int_be(1);
+    $self->{has_z_second} = $self->{_io}->read_bits_int_be(1);
+    $self->{has_z_third} = $self->{_io}->read_bits_int_be(1);
+    $self->{has_z_fourth} = $self->{_io}->read_bits_int_be(1);
+    $self->{unknown_16} = $self->{_io}->read_bits_int_be(1);
+    $self->{unknown_32} = $self->{_io}->read_bits_int_be(1);
+    $self->{unknown_64} = $self->{_io}->read_bits_int_be(1);
+    $self->{unknown_128} = $self->{_io}->read_bits_int_be(1);
+}
+
+sub has_z_first {
+    my ($self) = @_;
+    return $self->{has_z_first};
+}
+
+sub has_z_second {
+    my ($self) = @_;
+    return $self->{has_z_second};
+}
+
+sub has_z_third {
+    my ($self) = @_;
+    return $self->{has_z_third};
+}
+
+sub has_z_fourth {
+    my ($self) = @_;
+    return $self->{has_z_fourth};
+}
+
+sub unknown_16 {
+    my ($self) = @_;
+    return $self->{unknown_16};
+}
+
+sub unknown_32 {
+    my ($self) = @_;
+    return $self->{unknown_32};
+}
+
+sub unknown_64 {
+    my ($self) = @_;
+    return $self->{unknown_64};
+}
+
+sub unknown_128 {
+    my ($self) = @_;
+    return $self->{unknown_128};
+}
+
+########################################################################
 package CAD::Format::DWG::AC1003::Style;
 
 our @ISA = 'IO::KaitaiStruct::Struct';

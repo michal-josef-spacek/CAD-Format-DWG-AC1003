@@ -1035,6 +1035,24 @@ types:
       - id: fourth_point_z
         type: f8
         if: entity_common.flag2_5
+  entity_face3d_opts:
+    seq:
+      - id: has_z_first
+        type: b1
+      - id: has_z_second
+        type: b1
+      - id: has_z_third
+        type: b1
+      - id: has_z_fourth
+        type: b1
+      - id: unknown_16
+        type: b1
+      - id: unknown_32
+        type: b1
+      - id: unknown_64
+        type: b1
+      - id: unknown_128
+        type: b1
   entity_line:
     seq:
       - id: entity_common
