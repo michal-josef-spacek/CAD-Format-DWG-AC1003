@@ -149,9 +149,9 @@ t/CAD-Format-DWG-AC1003/127-header-user_timer.t
 t/CAD-Format-DWG-AC1003/128-header-view_ctrl_x.t
 t/CAD-Format-DWG-AC1003/129-header-view_ctrl_y.t
 t/CAD-Format-DWG-AC1003/130-header-view_ctrl_z.t
-t/CAD-Format-DWG-AC1003/131-header-view_point_x.t
-t/CAD-Format-DWG-AC1003/132-header-view_point_y.t
-t/CAD-Format-DWG-AC1003/133-header-view_point_z.t
+t/CAD-Format-DWG-AC1003/131-header-view_dir_x.t
+t/CAD-Format-DWG-AC1003/132-header-view_dir_y.t
+t/CAD-Format-DWG-AC1003/133-header-view_dir_z.t
 t/CAD-Format-DWG-AC1003/134-header-view_size.t
 t/CAD-Format-DWG-AC1003/135-header-zeros.t
 t/CAD-Format-DWG-AC1003/136-header-zero_one_or_three.t
@@ -426,10 +426,10 @@ t/data/header/user_real_5/USERR52.DWG
 t/data/header/user_timer/UT1.DWG
 t/data/header/user_timer/UT2.DWG
 t/data/header/view/VIEW.DWG
-t/data/header/view_point/VP1.DWG
-t/data/header/view_point/VP2.DWG
-t/data/header/view_point/VP3.DWG
-t/data/header/view_point/VP4.DWG
+t/data/header/view_dir/VP1.DWG
+t/data/header/view_dir/VP2.DWG
+t/data/header/view_dir/VP3.DWG
+t/data/header/view_dir/VP4.DWG
 t/data/header/zero_one_or_three/BLANK.DWG
 xt/CAD-Format-DWG-AC1003/01-pod_coverage.t
 xt/CAD-Format-DWG-AC1003/02-pod.t
