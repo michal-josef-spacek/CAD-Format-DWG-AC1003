@@ -59,15 +59,9 @@ types:
         encoding: ASCII
         terminator: 0x00
         doc: BLOCK/2
-      - id: u2
-        type: s1
-      - id: u3
-        type: s1
-      - id: u4
-        type: s1
-      - id: u5
-        type: s1
-      - id: u6
+      - id: begin_address_in_block_table
+        type: u4
+      - id: u1
         type: s1
   block_flag:
     seq:
