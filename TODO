@@ -9,7 +9,8 @@ TODO
 20. Update style from 2.10
 26. Detect same test files as BLANK.DWG and use BLANK.DWG
 28. dim_type 5 and 6 probably doesn't exist
-29.
+29. Rename test files to use 'variable' name as other modules.
+30.
 
 Applied
 =======
