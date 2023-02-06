@@ -7,10 +7,10 @@ use Test::More 'tests' => 2;
 use Test::NoWarnings;
 
 # Data directory.
-my $data_dir = File::Object->new->up->dir('data/header/blocks_size_raw')->set;
+my $data_dir = File::Object->new->up->dir('data/blank')->set;
 
 # Test.
 my $obj = CAD::Format::DWG::AC1003->from_file(
 	$data_dir->file('BLANK.DWG')->s,
 );
-is($obj->header->blocks_size, 0, 'Size of blocks section (0).');
+is($obj->header->entities_size, 0, 'Size of entities section (0).');
